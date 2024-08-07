@@ -13,12 +13,9 @@ import java.util.Map;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    // SqlSession: SQL 명령문을 실행하기 위한 메서드 제공
     @Autowired SqlSession session;
 
-    // namespace: scope 을 지정해주는 유일한 식별자
-    // 같은 namespace 내에서는 SQL 문장들을 공유할 수 있음.
-    private static String namespace = "com.neo.byez.dao.user.UserDao.";
+    private static final String namespace = "com.firstSpring.dao.user.UserDao.";
 
     // 테스트용 delete 문
     @Override
@@ -32,11 +29,6 @@ public class UserDaoImpl implements UserDao {
         return session.delete(namespace + "deleteAllTestUser");
     }
 
-    // 현재 시간 확인하는 select 문 (Timestamp 활용)
-    @Override
-    public Timestamp selectNow() throws Exception {
-        return session.selectOne(namespace + "selectNow");
-    }
 
     // 회원가입한 고객의 수
     @Override
@@ -69,14 +61,6 @@ public class UserDaoImpl implements UserDao {
     @Override
     public UserDto selectUser(String id) throws Exception {
         return session.selectOne(namespace + "selectUser", id);
-    }
-
-    // UPDATE
-    // 1.2. 로그인 시 최근 접속일시 업데이트
-    // view 에서 입력한 id 를 매개변수로 받고 UserDto 인스턴스에 수정된 고객 정보 담아서 반환
-    @Override
-    public int updateRecentLoginDatetime(String id) throws Exception {
-        return session.update(namespace + "updateRecentLoginDatetime", id);
     }
 
     // INSERT

@@ -33,11 +33,6 @@ public interface UserDao {
     // 1.1.1. view 에서 입력한 id 를 매개변수로 받고 UserDto 인스턴스에 고객 정보 담아서 반환
     UserDto selectUser(String id) throws Exception;
 
-    // UPDATE
-    // 1.2. 로그인 시 최근 접속일시 업데이트
-    // view 에서 입력한 id 를 매개변수로 받고 UserDto 인스턴스에 수정된 고객 정보 담아서 반환
-    int updateRecentLoginDatetime(String id) throws Exception;
-
     // INSERT
     // 2. 회원가입
     // 2.1. 아이디, 비밀번호, 이름, 생년월일, 성별, 전화번호, 휴대폰 번호, 이메일, 가입일, 가입상태, 최초등록일, 최초등록자, 최종수정일, 최종수정자 데이터 추가

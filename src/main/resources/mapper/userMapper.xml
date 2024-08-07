@@ -15,6 +15,7 @@
         DELETE FROM cust
     </delete>
 
+
     <!-- 회원가입한 전체 고객의 수 -->
     <select id="countUser" resultType="int">
         SELECT count(*) FROM cust
@@ -24,6 +25,14 @@
     <select id="selectUserAll" resultType="UserDto">
         SELECT * FROM cust
         ORDER BY reg_dt DESC
+    </select>
+
+    <!-- 회원가입한 전체 고객 정보 중 특정 아이디 조회 -->
+    <select id="selectAllUserId" parameterType="string" resultType="UserDto">
+        SELECT id, pwd, name, email, bef_birth, mobile_num, mail_key, join_state, recent_login
+        FROM cust
+        WHERE id = #{id}
+          AND mail_auth = 'Y'
     </select>
 
     <!-- 활성화 상태인 전체 고객의 수 -->
@@ -92,56 +101,47 @@
     <!-- 비밀번호 찾기 : 새로운 비밀번호 업데이트하고 최종 수정일시 및 수정자 업데이트 -->
     <update id="updateUserPwd" parameterType="map">
         UPDATE cust
-        SET pwd = #{pwd}, up_date = NOW(), up_id = #{id}
+        SET pwd = #{pwd}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
         WHERE id = #{id}
-          AND join_state = 'Y'
+          AND st_cd = 'O'
     </update>
 
     <!-- 이메일 인증 : 특정 사용자 식별하여 인증번호 업데이트 -->
     <update id="updateMailKey" parameterType="UserDto">
         UPDATE cust
-        SET mail_key = #{mail_key}, up_date = NOW(), up_id = #{id}
+        SET mail_key = #{mailKey}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
         WHERE email = #{email}
     </update>
 
     <!-- 이메일 변경 -->
     <update id="updateUserEmail" parameterType="string">
         UPDATE cust
-        SET email = #{email}, up_date = NOW(), up_id = #{id}
+        SET email = #{email}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
         WHERE id = #{id}
-          AND join_state = 'Y'
+          AND st_cd = 'O'
     </update>
 
     <!-- 생년월일 변경 -->
     <update id="updateUserBefBirth" parameterType="map">
         UPDATE cust
-        SET bef_birth = #{bef_birth}, up_date = NOW(), up_id = #{id}
+        SET birth = #{birth},last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
         WHERE id = #{id}
-          AND join_state = 'Y'
+          AND st_cd = 'O'
     </update>
 
     <!-- 핸드폰 번호 변경 -->
-    <!-- 문자 인증 필요하나, 우선 인증 없이 변경할 수 있도록 구현 -->
-    <update id="updateUserMobileNum" parameterType="map">
+    <update id="updateUserPhoneNum" parameterType="map">
         UPDATE cust
-        SET mobile_num = #{mobile_num}, up_date = NOW(), up_id = #{id}
+        SET ph_num = #{phNum}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
         WHERE id = #{id}
-          AND join_state = 'Y'
+          AND st_cd = 'O'
     </update>
 
-    <!-- 회원탈퇴 : 가입상태를 N으로 업데이트하고 최종 수정일시 및 수정자 업데이트 -->
+    <!-- 회원탈퇴 : 회원상태를 L으로 업데이트하고 최종 수정일시 및 수정자 업데이트 -->
     <update id="updateUserState" parameterType="string">
         UPDATE cust
-        SET join_state = 'N', quit_date = NOW(), up_date = NOW(), up_id = #{id}
+        SET st_cd = 'L', quit_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),  last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
         WHERE id = #{id};
     </update>
-
-    <!-- 회원가입한 전체 고객 정보 중 특정 아이디 조회 -->
-    <select id="selectAllUserId" parameterType="string" resultType="UserDto">
-        SELECT id, pwd, name, email, bef_birth, mobile_num, mail_key, join_state, recent_login
-        FROM cust
-        WHERE id = #{id}
-          AND mail_auth = 'Y'
-    </select>
 
 </mapper>
