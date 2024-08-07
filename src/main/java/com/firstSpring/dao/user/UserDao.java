@@ -12,9 +12,6 @@ public interface UserDao {
     // 테스트용 deleteAll 문
     int deleteAllTestUser() throws Exception;
 
-    // 현재 시간 확인하는 select 문 (Timestamp 활용)
-    Timestamp selectNow() throws Exception;
-
     // 회원가입한 고객의 수
     int countUser() throws Exception;
 
