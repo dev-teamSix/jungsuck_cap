@@ -35,5 +35,8 @@
 <tx:annotation-driven/>
 
 <!--	<context:annotation-config/>-->
-<context:component-scan base-package="com.firstSpring"/>
+<context:component-scan base-package="com.firstSpring.dao"/>
+<context:component-scan base-package="com.firstSpring.service"/>
+<context:component-scan base-package="com.firstSpring.controller"/>
+<context:component-scan base-package="com.firstSpring.domain"/>
 </beans>

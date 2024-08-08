@@ -27,7 +27,7 @@
         ORDER BY reg_dt DESC
     </select>
 
-    <!-- 회원가입한 전체 고객 정보 중 특정 아이디 조회 -->
+    <!-- 전체 가입고객(탈퇴회원 포함) 중 특정 아이디를 가진 고객 정보 확인 -->
     <select id="selectAllUserId" parameterType="string" resultType="UserDto">
         SELECT id, pwd, name, email, bef_birth, mobile_num, mail_key, join_state, recent_login
         FROM cust
@@ -53,7 +53,7 @@
     <!-- 특정 id를 가진 회원 & 활성화인 상태 & 이메일 인증 여부가 Y 인 회원을 select-->
     <!-- stCd(회원상태)가 비활성화,탈퇴상태는 조회 불가 -->
     <select id="selectUser" parameterType="string" resultType="UserDto">
-        SELECT id, email, pwd, name, birth, gender, ph_num, mail_key, st_cd, reg_dt
+        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt
         FROM cust
         WHERE id = #{id}
           AND st_cd = 'O'
