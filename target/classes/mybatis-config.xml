@@ -4,5 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
+        <typeAlias alias="OrderDto" type="com.firstSpring.domain.order.OrderDto"/>
+        <typeAlias alias="OrderHistDto" type="com.firstSpring.domain.order.OrderHistDto"/>
+        <typeAlias alias="OrderItemDto" type="com.firstSpring.domain.order.OrderItemDto"/>
     </typeAliases>
 </configuration>

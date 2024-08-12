@@ -10,7 +10,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/ItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/ItemFormDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/ItemImgDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/MemberFormDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/OrderDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/OrderHistDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/OrderItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/BaseEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/BaseTimeEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ItemImg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/OrderItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/exception/OutOfStockException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/orderMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/itemDtl.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/orderList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/order/OrderDaoImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/entity/PageHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/Hello.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/PageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/PageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/entity/PageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/entity/PageHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/Hello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/entity/PageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/entity/PageHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +64,9 @@
       <list>
         <option value="spring-beans.schema" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
+        <option value="Interface" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -33,6 +78,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;khyeeun&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/khyeeun/jungsuck_cap.git&quot;,
+    &quot;accountId&quot;: &quot;1f242f2a-e351-4add-8dd7-872d52eea9e2&quot;
+  }
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -40,9 +97,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2kHrebr2mF8kEwXdpECYn7IQbOv" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -52,12 +109,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.OrderDaoImplTest.increaseInvAmnt.executor": "Run",
+    "JUnit.OrderDaoImplTest.selectOrder.executor": "Run",
+    "JUnit.OrderDaoImplTest.selectProdName.executor": "Run",
+    "JUnit.PageHandlerTest.test.executor": "Run",
+    "JUnit.PageHandlerTest.test2.executor": "Run",
+    "JUnit.PageHandlerTest.test3.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Tomcat Server.Tomcat 9.0.821.executor": "Run",
-    "git-widget-placeholder": "kyungsik",
+    "Tomcat Server.Tomcat 9.0.89.executor": "Run",
+    "Tomcat Server.Tomcat 9.0.90.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "git-widget-placeholder": "order",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/user/IdeaProjects/jungsuk_cap/src/main/java/com/firstSpring/service",
+    "last_opened_file_path": "D:/Mydata/Code_Study/java/devcamp/toyproject/jungsuck_cap",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -66,7 +134,13 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.30804598",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -80,21 +154,101 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\resources" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.firstSpring.service.order" />
+      <recent name="com.firstSpring.dao.order" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.firstSpring.entity" />
+      <recent name="com.firstSpring.dao.order" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.90">
+    <configuration name="OrderDaoImplTest.selectOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.order.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.order" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.order.OrderDaoImplTest" />
+      <option name="METHOD_NAME" value="selectOrder" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.821" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.821" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="OrderDaoImplTest.selectProdName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.order.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.order" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.order.OrderDaoImplTest" />
+      <option name="METHOD_NAME" value="selectProdName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PageHandlerTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.entity" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.entity.PageHandlerTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PageHandlerTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.entity" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.entity.PageHandlerTest" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PageHandlerTest.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.entity" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.entity.PageHandlerTest" />
+      <option name="METHOD_NAME" value="test3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.90" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.90" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80" />
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -105,7 +259,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="b40ab88a-25ca-456e-a4b2-411e51c18cec" />
+        <option name="BASE_DIRECTORY_NAME" value="5de97ca7-42e6-4889-9a56-8026f0dc4311" />
         <option name="HTTP_PORT" value="80" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
@@ -269,11 +423,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.OrderDaoImplTest.selectOrder" />
+      <item itemvalue="JUnit.OrderDaoImplTest.selectProdName" />
+      <item itemvalue="JUnit.PageHandlerTest.test" />
+      <item itemvalue="JUnit.PageHandlerTest.test2" />
+      <item itemvalue="JUnit.PageHandlerTest.test3" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.90" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.PageHandlerTest.test3" />
+        <item itemvalue="JUnit.PageHandlerTest.test2" />
+        <item itemvalue="JUnit.PageHandlerTest.test" />
+        <item itemvalue="JUnit.OrderDaoImplTest.selectOrder" />
+        <item itemvalue="JUnit.OrderDaoImplTest.selectProdName" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.22-corretto-11.0.22-3183f394aec4-cd32a1c5" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
       </set>
     </attachedChunks>
   </component>
@@ -286,6 +458,9 @@
       <option name="presentableId" value="Default" />
       <updated>1722951440047</updated>
       <workItem from="1722951441084" duration="5883000" />
+      <workItem from="1722999745051" duration="51824000" />
+      <workItem from="1723280040011" duration="38798000" />
+      <workItem from="1723363528200" duration="34370000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
