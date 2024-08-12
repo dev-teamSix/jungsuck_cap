@@ -90,11 +90,10 @@
 
 
     <!-- 아이디 찾기 : 이메일 인증 시 작성하는 고객명 및 이메일을 조회하여 특정 고객의 아이디 및 인증번호 조회 -->
-    <select id="selectUserId" parameterType="UserDto" resultType="UserDto">
+    <select id="selectUserId" parameterType="string" resultType="UserDto">
         SELECT id, mail_key
         FROM cust
         WHERE email = #{email}
-          AND name = #{name}
           AND st_cd = 'O'
     </select>
 
@@ -113,29 +112,44 @@
         WHERE email = #{email}
     </update>
 
-    <!-- 이메일 변경 -->
-    <update id="updateUserEmail" parameterType="string">
+    <!-- 회원정보 수정 -->
+    <update id="updateUserInfo" parameterType="UserDto">
         UPDATE cust
-        SET email = #{email}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
+        SET ph_num = #{phNum},
+            birth = #{birth},
+            email = #{email},
+            last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),
+            last_mod_id = #{id}
         WHERE id = #{id}
           AND st_cd = 'O'
     </update>
 
-    <!-- 생년월일 변경 -->
-    <update id="updateUserBefBirth" parameterType="map">
+    <!-- 로그인 성공 시 최근 접속일시 업데이트 -->
+    <update id="updateRecentLoginDatetime" parameterType="string">
         UPDATE cust
-        SET birth = #{birth},last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
+        SET recent_login =DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),
+            last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),
+            last_mod_id = #{id}
         WHERE id = #{id}
           AND st_cd = 'O'
     </update>
 
-    <!-- 핸드폰 번호 변경 -->
-    <update id="updateUserPhoneNum" parameterType="map">
-        UPDATE cust
-        SET ph_num = #{phNum}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
-        WHERE id = #{id}
-          AND st_cd = 'O'
-    </update>
+
+<!--    &lt;!&ndash; 생년월일 변경 &ndash;&gt;-->
+<!--    <update id="updateUserBefBirth" parameterType="map">-->
+<!--        UPDATE cust-->
+<!--        SET birth = #{birth},last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}-->
+<!--        WHERE id = #{id}-->
+<!--          AND st_cd = 'O'-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash; 핸드폰 번호 변경 &ndash;&gt;-->
+<!--    <update id="updateUserPhoneNum" parameterType="map">-->
+<!--        UPDATE cust-->
+<!--        SET ph_num = #{phNum}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}-->
+<!--        WHERE id = #{id}-->
+<!--          AND st_cd = 'O'-->
+<!--    </update>-->
 
     <!-- 회원탈퇴 : 회원상태를 L으로 업데이트하고 최종 수정일시 및 수정자 업데이트 -->
     <update id="updateUserState" parameterType="string">
@@ -143,5 +157,4 @@
         SET st_cd = 'L', quit_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),  last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
         WHERE id = #{id};
     </update>
-
 </mapper>

@@ -9,19 +9,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="feature : UserDao 작성">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/user/UserDaoImplTest.java" afterDir="false" />
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="feature : UserDaoTest 작성">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/user/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/user/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/tmp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/tmp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/tmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/DBConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DBConnectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/entity/PageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/entity/PageHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/user/UserDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/user/UserDaoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/entity/PageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/entity/PageHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/aspectjrt-1.6.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/jcl-over-slf4j-1.6.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/slf4j-api-1.6.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/slf4j-log4j12-1.6.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-aop-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-beans-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-context-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-core-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-expression-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-jcl-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-jdbc-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-tx-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-web-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/lib/spring-webmvc-5.0.7.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +59,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Class" />
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -71,8 +100,10 @@
     "JUnit.UserDaoImplTest.executor": "Run",
     "JUnit.UserDaoImplTest.insertUserDaoTest.executor": "Run",
     "JUnit.UserDaoImplTest.userDao_주입상태_확인_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.가입한_회원_생년월일_변경_성공_테스트.executor": "Run",
     "JUnit.UserDaoImplTest.고객정보_삭제_테스트_메서드_기능_확인.executor": "Run",
     "JUnit.UserDaoImplTest.고객정보_추가_테스트_메서드_기능_확인.executor": "Run",
+    "JUnit.UserDaoImplTest.탈퇴한_회원_생년월일_변경_실패_테스트.executor": "Run",
     "JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트.executor": "Run",
     "JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트.executor": "Run",
     "JUnit.UserDaoImplTest.회원가입한_고객수_확인테스트.executor": "Run",
@@ -85,6 +116,7 @@
     "git-widget-placeholder": "kyungsik",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/user/IdeaProjects/jungsuk_cap/src/main/resources/mapper",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -103,6 +135,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.firstSpring.service.user" />
       <recent name="com.firstSpring.dao.user" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -122,7 +155,7 @@
       <recent name="com.firstSpring.dao.user" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserDaoImplTest">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.821">
     <configuration name="UserDaoImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
@@ -134,22 +167,6 @@
       <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
       <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserDaoImplTest.회원가입한_고객수_확인테스트" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
-      <option name="METHOD_NAME" value="회원가입한_고객수_확인테스트" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,6 +198,38 @@
       <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
       <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
       <option name="METHOD_NAME" value="탈퇴한_회원_이메일_인증_실패_테스트" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoImplTest.가입한_회원_생년월일_변경_성공_테스트" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
+      <option name="METHOD_NAME" value="가입한_회원_생년월일_변경_성공_테스트" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoImplTest.탈퇴한_회원_생년월일_변경_실패_테스트" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
+      <option name="METHOD_NAME" value="탈퇴한_회원_생년월일_변경_실패_테스트" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -378,10 +427,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.UserDaoImplTest.고객정보_삭제_테스트_메서드_기능_확인" />
       <item itemvalue="JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트" />
       <item itemvalue="JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트" />
-      <item itemvalue="JUnit.UserDaoImplTest.회원가입한_고객수_확인테스트" />
       <item itemvalue="JUnit.UserDaoImplTest" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.821" />
     </list>
@@ -390,8 +437,6 @@
         <item itemvalue="JUnit.UserDaoImplTest" />
         <item itemvalue="JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트" />
         <item itemvalue="JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트" />
-        <item itemvalue="JUnit.UserDaoImplTest.회원가입한_고객수_확인테스트" />
-        <item itemvalue="JUnit.UserDaoImplTest.고객정보_삭제_테스트_메서드_기능_확인" />
       </list>
     </recent_temporary>
   </component>
@@ -414,7 +459,11 @@
       <workItem from="1723029659097" duration="7900000" />
       <workItem from="1723038077050" duration="2432000" />
       <workItem from="1723080299642" duration="9573000" />
-      <workItem from="1723095765933" duration="26797000" />
+      <workItem from="1723095765933" duration="26842000" />
+      <workItem from="1723167083075" duration="6027000" />
+      <workItem from="1723381984197" duration="7948000" />
+      <workItem from="1723426414413" duration="18358000" />
+      <workItem from="1723451849892" duration="15554000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
@@ -464,7 +513,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723040656064</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feature : UserDaoTest 작성">
+      <option name="closed" value="true" />
+      <created>1723127257055</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1723127257055</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,6 +555,7 @@
     <MESSAGE value="init : server test" />
     <MESSAGE value="feature : UserMapper 작성" />
     <MESSAGE value="feature : UserDao 작성" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature : UserDao 작성" />
+    <MESSAGE value="feature : UserDaoTest 작성" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature : UserDaoTest 작성" />
   </component>
 </project>

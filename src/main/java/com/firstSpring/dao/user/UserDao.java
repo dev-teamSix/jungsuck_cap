@@ -1,6 +1,7 @@
 package com.firstSpring.dao.user;
 
 import com.firstSpring.domain.user.UserDto;
+import com.firstSpring.entity.LogException;
 
 import java.util.List;
 
@@ -30,6 +31,8 @@ public interface UserDao {
     // > 회원상태가 활성화('O') & 메일 인증 여부가 'Y' & 특정 id를 가진 회원
     UserDto selectUser(String id) throws Exception;
 
+    int updateRecentLoginDatetime(String id) throws Exception;
+
     // Sign Up (INSERT)
     // > 아이디, 이메일, 비밀번호, 이름, 생년월일, 성별, 폰번호, 우편번호, 도로명주소, 지번주소, 상세주소, 메일인증키, 시스템컬럼을 insert
     // > 회원상태 활성화('O') & 메일인증 여부('Y')
@@ -42,20 +45,20 @@ public interface UserDao {
 
     // 아이디 찾기 (SELECT)
     // > 이름 및 이메일로 식별된 특정 회원의 아이디 조회
-    UserDto selectUserId(UserDto userDto) throws Exception;
+    UserDto selectUserId(String email) throws Exception;
 
     // 비밀번호 찾기 (UPDATE)
     // > 비밀번호 찾기 시 새로운 비밀번호로 변경
     int updateUserPwd(String id, String pwd) throws Exception;
 
-    // 이메일 변경 (UPDATE)
-    int updateUserEmail(String id, String email) throws Exception;
-
-    // 생년월일 변경 (UPDATE)
-    int updateUserBefBirth(String id, String birth) throws Exception;
-
-    // 핸드폰 번호 변경 (UPDATE)
-    int updateUserMobileNum(String id, String ph_num) throws Exception;
+    // 회원 정보 수정 (UPDATE)
+    int updateUserInfo(UserDto userDto) throws Exception;
+//
+//    // 생년월일 변경 (UPDATE)
+//    int updateUserBefBirth(String id, String birth) throws Exception;
+//
+//    // 핸드폰 번호 변경 (UPDATE)
+//    int updateUserMobileNum(String id, String ph_num) throws Exception;
 
     // 회원탈퇴 (UPDATE)
     // > 회원 상태를 'O' -> 'L' 으로 변경
