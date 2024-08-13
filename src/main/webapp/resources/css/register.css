@@ -7,7 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 155vh;; /* 화면 높이의 100% */
+    height: 155vh;
 }
 
 /* 페이지 콘텐츠의 스타일 */
@@ -21,11 +21,11 @@ body {
 .content {
     background: #fff;
     border-radius: 8px;
-    padding: 58px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 600px; /* 화면에 맞게 최대 너비를 조정 */
-    box-sizing: border-box; /* 패딩과 테두리를 포함하여 너비 계산 */
+    padding: 120px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 110%;
+    max-width: 600px;
+    box-sizing: border-box;
 }
 
 .register-box-body {
@@ -51,7 +51,6 @@ body {
 .form-control {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
@@ -77,7 +76,6 @@ body {
 .email-container button {
     flex: 0;
     padding: 7px 7px;
-    margin-bottom: 10px;
     font-size: 16px;
     min-width: 118px;
 }
@@ -142,3 +140,68 @@ body {
 .deepblue {
     color: #003d6c;
 }
+
+/* 인증번호 관련 요소 기본적으로 숨기기 */
+#alertCertified,
+#checkEmail,
+.bi-exclamation-square-fill.deepblue {
+    display: none;
+}
+
+/* 가입하기 버튼을 페이지 오른쪽으로 정렬 */
+#joinButton {
+    float: right;
+}
+
+/* 주소 검색 버튼 크기 및 위치 조정 */
+#searchAddressButton {
+    margin-left: 10px;
+    padding: 5px 20px; /* 패딩을 통해 가로 길이 조정 */
+    font-size: 14px;
+    height: 30px;
+    background-color: #fff; /* 버튼 배경색을 흰색으로 */
+    color: #6a0dad; /* 글씨체 색상을 보라색으로 */
+    border: 2px solid #6a0dad; /* 보라색 테두리 */
+    border-radius: 4px; /* 부드러운 모서리 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 전환 효과 */
+    width: 227px;
+}
+
+#searchAddressButton:hover {
+    background-color: #6a0dad; /* 호버 시 배경색을 보라색으로 */
+    color: #fff; /* 호버 시 글씨체 색상을 흰색으로 */
+}
+
+/* 다른 버튼 스타일 조정 */
+.btn-primary, .btn-default {
+    background-color: #fff; /* 버튼 배경색을 흰색으로 */
+    color: #6a0dad; /* 글씨체 색상을 보라색으로 */
+    border: 2px solid #6a0dad; /* 보라색 테두리 */
+    border-radius: 4px; /* 부드러운 모서리 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    padding: 10px 20px; /* 가로 길이를 조금 더 늘림 */
+    transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.btn-primary:hover, .btn-default:hover {
+    background-color: #6a0dad; /* 호버 시 배경색을 보라색으로 */
+    color: #fff; /* 호버 시 글씨체 색상을 흰색으로 */
+}
+
+#error-message {
+    color: red;
+    font-size: 10px;
+}
+
+.errorMsg{
+    color: red;
+    font-size: 15px;
+}
+
+[id^="alert"] {
+    color: red;
+    font-size: 15px;
+}
+
+

@@ -29,10 +29,10 @@
 
     <!-- 전체 가입고객(탈퇴회원 포함) 중 특정 아이디를 가진 고객 정보 확인 -->
     <select id="selectAllUserId" parameterType="string" resultType="UserDto">
-        SELECT id, pwd, name, email, bef_birth, mobile_num, mail_key, join_state, recent_login
+        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt,recent_login
         FROM cust
         WHERE id = #{id}
-          AND mail_auth = 'Y'
+          AND is_mail_auth = 'Y'
     </select>
 
     <!-- 활성화 상태인 전체 고객의 수 -->
@@ -53,7 +53,7 @@
     <!-- 특정 id를 가진 회원 & 활성화인 상태 & 이메일 인증 여부가 Y 인 회원을 select-->
     <!-- stCd(회원상태)가 비활성화,탈퇴상태는 조회 불가 -->
     <select id="selectUser" parameterType="string" resultType="UserDto">
-        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt
+        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt,recent_login
         FROM cust
         WHERE id = #{id}
           AND st_cd = 'O'
@@ -64,7 +64,7 @@
     <!-- 회원가입 완료 시점에 메일 인증 상태 Y 됨 -->
     <insert id="insertUser" parameterType="UserDto">
         INSERT INTO cust (
-            id, st_cd, email, pwd, name, birth, gender, ph_num, zip, road_adr, jibun_adr, det_adr, is_mail_auth, mail_key, reg_dt, frst_reg_dt, frst_reg_id, last_mod_dt, last_mod_id
+            id, st_cd, email, pwd, name, birth, gender, ph_num, zip, road_adr, jibun_adr, det_adr, is_mail_auth, mail_key, reg_dt, frst_reg_dt, frst_reg_id, last_mod_dt, last_mod_id, recent_login
         ) VALUES (
                      #{id},
                      'O',
@@ -84,7 +84,8 @@
                      DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), -- 최초등록일시
                      #{id},
                      DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), -- 최종수정일시
-                     #{id}
+                     #{id},
+                     DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s')
                  )
     </insert>
 

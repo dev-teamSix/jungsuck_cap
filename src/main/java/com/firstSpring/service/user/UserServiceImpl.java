@@ -102,6 +102,7 @@ public class UserServiceImpl implements UserService{
         }
     }
 
+
     // 암호화 전후 비밀번호 비교
     @Override
     @LogException
@@ -150,8 +151,14 @@ public class UserServiceImpl implements UserService{
         // 1. 회원 비밀번호 암호화해서 userDto에 저장
         // 2. 회원가입 성공 시 1 반환
         // 3. 회원가입 실패 시 0 반환
-        String password = passwordEncoder.encode(userDto.getPwd());
+
+        // 입력란에서 비밀번호 및 비밀번호 확인용으로 2개 받아옴.
+        // split() 메서드로 , 기준으로 나눠서 저장
+        String pwd1 = userDto.getPwd().split(",")[0];
+
+        String password = passwordEncoder.encode(pwd1);
         userDto.setPwd(password);
+
         try {
             userDao.insertUser(userDto);
             return true;
@@ -229,7 +236,7 @@ public class UserServiceImpl implements UserService{
                 "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 
         // 보내는 사람
-        String from = "gimg65697@gmail.com";
+        String from = "0711kyungh@naver.com";
 
         try {
             // 메일 내용 넣을 객체와, 이를 도와주는 Helper 객체 생성
