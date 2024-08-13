@@ -27,7 +27,32 @@
 
     <insert id="insertItem" parameterType="OrderItemDto">
         INSERT INTO order_item
-            (ord_item_no,
+        (
+            ord_no,
+            prod_num,
+            qty,
+            prod_name,
+            price,
+            frst_reg_dt,
+            frst_reg_id,
+            last_mod_dt,
+            last_mod_id)
+        VALUES
+            (
+                #{ord_no},
+                #{prod_num},
+                #{qty},
+                #{prod_name},
+                #{price},
+                #{frst_reg_dt},
+                #{frst_reg_id},
+                #{last_mod_dt},
+                #{last_mod_id})
+    </insert>
+
+    <insert id="insertItemReturn" parameterType="java.util.HashMap">
+        INSERT INTO order_item
+            (
              ord_no,
              prod_num,
              qty,
@@ -38,22 +63,21 @@
                last_mod_dt,
                last_mod_id)
         VALUES
-            (#{ord_item_no},
-               #{ord_no},
-               #{prod_num},
-               #{qty},
-               #{prod_name},
-               #{price},
-               #{frst_reg_dt},
-               #{frst_reg_id},
-               #{last_mod_dt},
-               #{last_mod_id})
+            (
+               #{orderDto.ord_no_return},
+               #{orderItemDto.prod_num},
+               #{orderItemDto.qty},
+               #{orderItemDto.prod_name},
+               #{orderItemDto.price},
+               #{orderItemDto.frst_reg_dt},
+               #{orderItemDto.frst_reg_id},
+               #{orderItemDto.last_mod_dt},
+               #{orderItemDto.last_mod_id})
     </insert>
 
     <insert id="insertOrder" parameterType="OrderDto">
         INSERT INTO orders
-            (ord_no,
-             cust_id,
+            (cust_id,
              ord_st_cd,
              ord_dt,
              cnl_dt,
@@ -62,8 +86,7 @@
              last_mod_dt,
              last_mod_id)
         VALUES
-            (#{ord_no},
-             #{cust_id},
+            (#{cust_id},
              #{ord_st_cd},
              #{ord_dt},
              #{cnl_dt},
@@ -71,6 +94,10 @@
              #{frst_reg_id},
              #{last_mod_dt},
              #{last_mod_id})
+
+        <selectKey keyProperty="ord_no_return" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 
     <select id="selectProdName" parameterType="String" resultType="String">

@@ -15,6 +15,8 @@ public interface OrderDao {
 
     int insertItem(OrderItemDto dto) throws Exception;
 
+    int insertItemReturn(Map map) throws Exception;
+
     int insertOrder(OrderDto dto) throws Exception;
 
     String selectProdName(String prod_num) throws Exception;

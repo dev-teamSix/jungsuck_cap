@@ -11,7 +11,7 @@ public interface OrderService {
 
     int cancel(OrderDto orderDto) throws Exception;
 
-    int order(OrderDto orderDto, OrderItemDto orderItemDto) throws Exception;
+    int order(OrderItemDto orderItemDto, String cust_id) throws Exception;
 
     List<OrderItemDto> getOrderItem(int ord_no) throws Exception;
 

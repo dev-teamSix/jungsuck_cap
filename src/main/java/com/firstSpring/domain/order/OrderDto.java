@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class OrderDto {
     private Integer ord_no;
+    private Integer ord_no_return;
     private String cust_id;
     private String ord_st_cd;
     private LocalDateTime ord_dt;
@@ -125,5 +126,13 @@ public class OrderDto {
                 ", last_mod_dt=" + last_mod_dt +
                 ", last_mod_id='" + last_mod_id + '\'' +
                 '}';
+    }
+
+    public Integer getOrd_no_return() {
+        return ord_no_return;
+    }
+
+    public void setOrd_no_return(Integer ord_no_return) {
+        this.ord_no_return = ord_no_return;
     }
 }

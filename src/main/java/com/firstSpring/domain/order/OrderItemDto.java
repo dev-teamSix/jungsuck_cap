@@ -8,6 +8,7 @@ import java.util.Objects;
 public class OrderItemDto {
     private Integer ord_item_no;
     private Integer ord_no;
+    private Integer ord_no_return;
     private String prod_num;
     private Integer qty;
     private String prod_name;
@@ -139,5 +140,13 @@ public class OrderItemDto {
                 ", last_mod_dt=" + last_mod_dt +
                 ", last_mod_id='" + last_mod_id + '\'' +
                 '}';
+    }
+
+    public Integer getOrd_no_return() {
+        return ord_no_return;
+    }
+
+    public void setOrd_no_return(Integer ord_no_return) {
+        this.ord_no_return = ord_no_return;
     }
 }

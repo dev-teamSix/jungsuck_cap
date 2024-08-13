@@ -24,6 +24,8 @@
     let msg = "${msg}"
     if(msg == "CANCEL_OK") alert("주문이 취소되었습니다.");
     if(msg == "CANCEL_ERR") alert("주문 취소에 실패했습니다.");
+    if(msg == "ORDER_OK") alert("주문 되었습니다.");
+    if(msg == "ORDER_ERR") alert("주문에 실패했습니다.");
 </script>
 <div  class="content-mg">
 

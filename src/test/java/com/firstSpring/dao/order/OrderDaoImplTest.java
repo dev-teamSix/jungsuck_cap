@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TestTransaction;
 
 import static org.junit.Assert.*;
 
@@ -33,7 +34,8 @@ public class OrderDaoImplTest {
     }
 
     @Test
-    public void insertOrder() {
+    public void insertOrder() throws Exception {
+
     }
 
     @Test

@@ -36,10 +36,39 @@ public class OrderController {
 //    HttpSession session = request.getSession();
 //    String cust_id = (String) session.getAttribute("id");
 
-    @PostMapping("/order")
+    @GetMapping("/tempItemPage")
+    public String tempItemPage() {
+        return "itemDtl";
+    }
+
+    @PostMapping("/ordering")
+    public String ordering(OrderItemDto orderItemDto, Integer page, Integer pageSize, Model m, HttpSession session, RedirectAttributes rattr) {
+        try {
+            m.addAttribute("page", page);
+            m.addAttribute("pageSize", pageSize);
+
+            // 현재 사용자
+//            String cust_id = (String) request.getSession().getAttribute("id");
+            String cust_id = "asdf";
+
+            int success = orderService.order(orderItemDto, cust_id);
+            System.out.println("success = " + success);
+
+            if(success == 0) {
+                throw new Exception("order error");
+            }
+
+            rattr.addFlashAttribute("msg", "ORDER_OK");
+        } catch (Exception e) {
+            e.printStackTrace();
+            rattr.addFlashAttribute("msg", "ORDER_ERR");
+        }
+
+        return "redirect:/order/list";
+    }
 
     @GetMapping("/list")
-    public String orders(Integer page, Integer pageSize, Model m, HttpServletRequest request) {
+    public String orderList(Integer page, Integer pageSize, Model m, HttpServletRequest request) {
 //        if(!loginCheck(request))
 //            return "redirect:/login/login?toURL="+request.getRequestURL();  // 로그인을 안했으면 로그인 화면으로 이동
         // 회원 기능 주석처리

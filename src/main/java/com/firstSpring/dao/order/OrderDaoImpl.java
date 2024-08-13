@@ -36,6 +36,11 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
+    public int insertItemReturn(Map map) throws Exception {
+        return session.insert(namespace+"insertItemReturn", map);
+    }
+
+    @Override
     public int insertOrder(OrderDto dto) throws Exception {
         return session.insert(namespace+"insertOrder", dto);
     }

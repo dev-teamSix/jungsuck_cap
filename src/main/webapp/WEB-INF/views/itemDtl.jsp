@@ -21,57 +21,82 @@
     </ul>
 </div>
 <script>
-    let msg="${msg}";
-    if(msg=="WRT_ERR") alert("게시물 등록에 실패했습니다. 다시 시도해 주세요.");
+    let msg = "${msg}"
 </script>
-<div style="margin-left:25%;margin-right:25%">
-    <h2>게시물 ${mode=="new" ? "글쓰기" : "읽기"}</h2>
-    <form action="" id="form">
-        <input type="hidden" name="bno" value="${boardDto.bno}">
-        <input type="text" name="title" value="${boardDto.title}" ${mode=="new" ? '' : 'readonly="readonly"'}>
-        <textarea name="content" id="" cols="30" rows="10" ${mode=="new" ? '' : 'readonly="readonly"'}>${boardDto.content}</textarea>
-        <button type="button" id="writeBtn" class="btn">글쓰기</button>
-        <button type="button" id="modifyBtn" class="btn">수정</button>
-        <button type="button" id="removeBtn" class="btn">삭제</button>
-        <button type="button" id="listBtn" class="btn">목록</button>
-    </form>
-</div>
+<form action="" id="form">
+    <div class="content" style="margin-left:25%;margin-right:25%">
+
+        <input type="hidden" name="prod_num" id="prod_num" value="1">
+
+        <div class="d-flex">
+
+            <div class="wd50">
+                <span class="badge badge-primary mgb-15">
+                    판매중
+                </span>
+
+                <input type="hidden" value="스몰 클래식 N 볼캡" id="prod_name" name="prod_name">
+                <div class="h4">스몰 클래식 N 볼캡</div>
+                <hr class="my-4">
+
+                <div class="text-right">
+                    <div class="h4 text-danger text-left">
+                        <input type="hidden" value="1000" id="price" name="price">
+                        <span>1000</span>원
+                    </div>
+                    <div class="input-group w-50">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">수량</span>
+                        </div>
+                        <input type="number" name="qty" id="qty" class="form-control" value="1" min="1">
+                    </div>
+                </div>
+                <hr class="my-4">
+
+                <div class="text-right mgt-50">
+                    <h5>결제 금액</h5>
+                    <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
+                </div>
+                <div class="text-right">
+                    <button type="button" id="cartBtn" class="btn btn-light border border-primary btn-lg">장바구니 담기</button>
+                    <button type="button" id="orderBtn" class="btn btn-light border border-primary btn-lg">주문하기</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="jumbotron jumbotron-fluid mgt-30">
+            <div class="container">
+                <h4 class="display-5">상품 상세 설명</h4>
+                <hr class="my-4">
+                <p class="lead">설명: 스몰 클래식 N 볼캡</p>
+            </div>
+        </div>
+    </div>
+</form>
 <script>
     $(document).ready(function () {
-        $('#listBtn').on("click", function () {
-            location.href = "<c:url value='/board/list'/>?page=${page}&pageSize=${pageSize}";
-        });
-        $('#modifyBtn').on("click", function () {
-            let form = $('#form');
-            let isReadOnly = $("input[name=title]").attr('readonly');
+        calculateTotalPrice();
 
-            if(isReadOnly=='readonly') {
-                $("input[name=title]").attr('readonly', false);
-                $("textarea").attr('readonly', false);
-                $("#modifyBtn").html("등록");
-                $("h2").html("게시물 수정");
-                return;
-            }
+        $("#qty").change( function(){
+            calculateTotalPrice();
+        });
 
-            <%--form.attr("action", "<c:url value='/board/modify'/>");--%>
-            form.attr("action", "<c:url value='/board/modify?page=${page}&pageSize=${pageSize}'/>");
-            form.attr("method", "post");
-            form.submit();
-        });
-        $('#writeBtn').on("click", function () {
+        $('#orderBtn').on("click", function () {
+            if(!confirm("정말로 주문하시겠습니까?")) return;
             let form = $('#form');
-            form.attr("action", "<c:url value='/board/write'/>");
-            form.attr("method", "post");
-            form.submit();
-        });
-        $('#removeBtn').on("click", function () {
-            if(!confirm("정말로 삭제하시겠습니까?")) return;
-            let form = $('#form');
-            form.attr("action", "<c:url value='/board/remove?page=${page}&pageSize=${pageSize}'/>");
+            form.attr("action", "<c:url value='/order/ordering?page=${page}&pageSize=${pageSize}'/>");
             form.attr("method", "post");
             form.submit();
         });
     });
+
+    function calculateTotalPrice(){
+        var qty = $("#qty").val();
+        var price = $("#price").val();
+        var totalPrice = price*qty;
+        $("#totalPrice").html(totalPrice + '원');
+    }
 </script>
 </body>
 </html>
