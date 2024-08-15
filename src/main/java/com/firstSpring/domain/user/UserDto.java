@@ -96,6 +96,17 @@ public class UserDto {
     @JsonProperty("birthDay")
     private String birthDay;
 
+    @JsonProperty("recent_login")
+    private String recentLogin;
+
+    public String getRecentLogin() {
+        return recentLogin;
+    }
+
+    public void setRecentLogin(String recentLogin) {
+        this.recentLogin = recentLogin;
+    }
+
     // 기본 생성자
     public UserDto() {
     }

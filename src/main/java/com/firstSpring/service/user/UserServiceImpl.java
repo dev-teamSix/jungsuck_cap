@@ -3,15 +3,18 @@ package com.firstSpring.service.user;
 import com.firstSpring.dao.user.UserDao;
 import com.firstSpring.domain.user.UserDto;
 import com.firstSpring.entity.LogException;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 
 import javax.mail.internet.MimeMessage;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @Service
@@ -28,20 +31,55 @@ public class UserServiceImpl implements UserService{
     }
 
 
-    // 로그인 - SELECT (=READ; 조회 기능)
-    @Transactional(rollbackFor = Exception.class)
+    // 가입 회원 아이디 조회여부 확인
     @Override
     @LogException
-    public UserDto getCustLoginInfo(String id) {
-        // 1. 아이디 조회 성공 -> 매개변수로 받은 아이디로 조회한 고객 정보를 userDto 에 저장
-        // 1.1. 최근 로그인 일시 업데이트
-        // 2. 예외 발생 시 null 반환
+    public boolean checkExistOfId(String id) {
         try {
-            updateRecentLoginHist(id);
+            if (userDao.selectUser(id) != null) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public UserDto getCustLoginInfo(String id) {
+        // 아이디 조회 성공 -> 매개변수로 받은 아이디로 조회한 고객 정보를 userDto 에 저장
+        // 예외 발생 시 null 처리
+        try {
             return userDao.selectUser(id);
         }
         catch (Exception e) {
             return null;
+        }
+    }
+
+    // PWD 일치여부 확인
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    @LogException
+    public boolean checkPwdMatch(String id, String pwd) {
+        // id로 조회한 비밀번호 (암호화하여 저장되어 있음)
+        String encodedPwd;
+        try {
+            encodedPwd = userDao.selectUser(id).getPwd();
+
+            // 비밀번호 비교 결과: True/False
+            // true -> 최근 로그인 일시 업데이트 후 true 반환
+            // false -> false반환
+            if(authenticatePwd(pwd, encodedPwd)) {
+                updateRecentLoginHist(id);
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
@@ -55,12 +93,28 @@ public class UserServiceImpl implements UserService{
     // 아이디 찾기
     @Override
     @LogException
-    public UserDto findUserId(String email) {
+    public UserDto findUserId(String name,String email) {
         // 1. 아이디 조회 성공 -> 특정 고객의 아이디가 저장되어 있는 userDto 반환
         // 2. 아이디 조회 실패 -> userDto = null
         UserDto userDto = null;
         try {
-            userDto = userDao.selectUserId(email);
+            userDto = userDao.selectUserId(name,email);
+            return userDto;
+        }
+        catch (Exception e) {
+            return userDto;
+        }
+    }
+
+    // 전체 가입고객(탈퇴회원 포함) 중 특정 이메일과 특정 아이디를 가진 고객 정보 확인
+    @Override
+    @LogException
+    public UserDto findUserIdAndEmail(String id, String email) {
+        // 1. 아이디&이메일 조회 성공 -> userDto 반환
+        // 2. 아이디&이메일 조회 실패 -> null
+        UserDto userDto = null;
+        try {
+            userDto = userDao.selectAllUserIdEmail(id,email);
             return userDto;
         }
         catch (Exception e) {
@@ -86,33 +140,18 @@ public class UserServiceImpl implements UserService{
         }
     }
 
-    // 가입 회원 아이디 조회여부 확인
+    // 전체 가입고객(탈퇴회원 포함)의 이메일 조회하여 이메일 중복여부 확인
     @Override
     @LogException
-    public boolean checkExistOfId(String id) {
+    public boolean checkDuplicatedEmail(String email) {
+        // 1. 중복되는 이메일이 없으면 true
+        // 2. 중복되는 이메일이 있으면 false
         try {
-            if (userDao.selectUser(id) != null) {
+            if(userDao.selectAllUserEmail(email)==null) {
                 return true;
-            } else {
+            }else {
                 return false;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-
-    // 암호화 전후 비밀번호 비교
-    @Override
-    @LogException
-    public boolean checkPwdMatch(String id, String pwd) {
-        // id로 조회한 비밀번호 (암호화하여 저장되어 있음)
-        String encodedPwd;
-        try {
-            encodedPwd = userDao.selectUser(id).getPwd();
-            // 비밀번호 비교 결과: True/False
-            return authenticatePwd(pwd, encodedPwd);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -133,7 +172,8 @@ public class UserServiceImpl implements UserService{
         // 가입회원이 아닌 경우 비밀번호 변경 실패
         if (checkExistOfId(id)) {
             try {
-                userDao.updateUserPwd(id, pwd);
+                String encodePassword = passwordEncoder.encode(pwd); // 비밀번호 암호화
+                userDao.updateUserPwd(id, encodePassword);
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -166,6 +206,20 @@ public class UserServiceImpl implements UserService{
             e.printStackTrace();
             return false;
         }
+    }
+
+    // validator 에러메세지 결과 반환
+    @LogException
+    @Override
+    public Map<String,String> validateHandling(Errors errors) {
+        Map<String,String> validatorResult = new HashMap<>();
+
+        // 유효성 검사에 실패한 필드 목록을 받음
+        for (FieldError error : errors.getFieldErrors()) {
+            String validKeyName = String.format("valid_%s",error.getField());
+            validatorResult.put(validKeyName,error.getCode());
+        }
+        return validatorResult;
     }
 
     // 이메일 인증

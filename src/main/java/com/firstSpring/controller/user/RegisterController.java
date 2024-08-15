@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +25,14 @@ import java.util.Map;
 public class RegisterController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
+    // response에 정보를 담을 map
+    private final static Map<String, Object> response = new HashMap<>();
+
+    // validator 등록
     @InitBinder
+    @LogException
     public void checkDataFormat(WebDataBinder binder) {
         binder.setValidator(new RegisterValidator());
     }
@@ -41,31 +47,33 @@ public class RegisterController {
     // 회원가입 (POST)
     @PostMapping("/save")
     @LogException
-    public String savaUserProcess(@Valid @ModelAttribute("userDto") UserDto userDto, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            List<ObjectError> errorMsgs = result.getAllErrors();
+    public String savaUserProcess(@Valid @ModelAttribute("userDto") UserDto userDto, Errors errors, Model model) {
+        if (errors.hasErrors()) {
             model.addAttribute("userDto",userDto);
-            model.addAttribute("errorMsg", errorMsgs.get(0).getCode());
+            Map<String,String> validatorResult = userService.validateHandling(errors);
+            for(String key: validatorResult.keySet()) {
+                model.addAttribute(key,validatorResult.get(key));
+            }
             return "register";
         }
 
         userService.saveCustJoinInfo(userDto);
-        return "home";
+        return "/login/form";
     }
 
     // ID 중복확인 (POST)
     @PostMapping("/checkDuplicatedId")
     @ResponseBody
     @LogException
-    public ResponseEntity<Map<String, String>> checkDuplicatedId(@RequestParam("id") String id) {
-        Map<String, String> response = new HashMap<>();
+    public ResponseEntity<Map<String, Object>> checkDuplicatedId(@RequestParam("id") String id) {
         if (!userService.checkDuplicatedId(id)) {
             response.put("result", "fail");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         } else {
             response.put("result", "success");
             response.put("message", "사용가능한 아이디입니다.");
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 
@@ -73,9 +81,8 @@ public class RegisterController {
     @PostMapping("/checkDuplicatedEmail")
     @ResponseBody
     @LogException
-    public ResponseEntity<Map<String, String>>  checkDuplicatedEmail (String email) {
-        Map<String, String> response = new HashMap<>();
-        if (userService.findUserId(email)!=null) {
+    public ResponseEntity<Map<String, Object>>  checkDuplicatedEmail (String email) {
+        if (!userService.checkDuplicatedEmail(email)) {
             response.put("result", "fail");
         } else {
             response.put("result", "success");
@@ -90,8 +97,6 @@ public class RegisterController {
     @ResponseBody
     @LogException
     public ResponseEntity<Map<String,Object>> checkEmail(String email) {
-        HashMap<String,Object> response = new HashMap();
-
         int checkNum = userService.sendMail(email);
         response.put("code",checkNum);
 

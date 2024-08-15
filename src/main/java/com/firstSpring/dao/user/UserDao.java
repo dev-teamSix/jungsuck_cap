@@ -27,6 +27,14 @@ public interface UserDao {
     // 전체 가입고객(탈퇴회원 포함) 중 특정 아이디를 가진 고객 정보 확인
     UserDto selectAllUserId(String id) throws Exception;
 
+    // 전체 가입고객(탈퇴회원 포함) 중 특정 이메일을 가진 고객 정보 확인
+    @LogException
+    UserDto selectAllUserEmail(String id) throws Exception;
+
+    // 전체 가입고객(탈퇴회원 포함) 중 특정 이메일과 특정 아이디를 가진 고객 정보 확인
+    @LogException
+    UserDto selectAllUserIdEmail(String id, String email) throws Exception;
+
     // Login (SELECT)
     // > 회원상태가 활성화('O') & 메일 인증 여부가 'Y' & 특정 id를 가진 회원
     UserDto selectUser(String id) throws Exception;
@@ -45,7 +53,7 @@ public interface UserDao {
 
     // 아이디 찾기 (SELECT)
     // > 이름 및 이메일로 식별된 특정 회원의 아이디 조회
-    UserDto selectUserId(String email) throws Exception;
+    UserDto selectUserId(String name,String email) throws Exception;
 
     // 비밀번호 찾기 (UPDATE)
     // > 비밀번호 찾기 시 새로운 비밀번호로 변경

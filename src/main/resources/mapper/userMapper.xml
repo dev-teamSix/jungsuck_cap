@@ -35,6 +35,24 @@
           AND is_mail_auth = 'Y'
     </select>
 
+    <!-- 전체 가입고객(탈퇴회원 포함) 중 특정 이메일을 가진 고객 정보 확인 -->
+    <select id="selectAllUserEmail" parameterType="string" resultType="UserDto">
+        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt,recent_login
+        FROM cust
+        WHERE email = #{email}
+          AND is_mail_auth = 'Y'
+    </select>
+
+    <!-- 전체 가입고객(탈퇴회원 포함) 중 특정 이메일과 특정 아이디를 가진 고객 정보 확인 -->
+    <select id="selectAllUserIdEmail" parameterType="map" resultType="UserDto">
+        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt,recent_login
+        FROM cust
+        WHERE id = #{id}
+          AND  email = #{email}
+          AND is_mail_auth = 'Y'
+    </select>
+
+
     <!-- 활성화 상태인 전체 고객의 수 -->
     <select id="countActiveUser" resultType="int">
         SELECT count(*)
@@ -91,12 +109,14 @@
 
 
     <!-- 아이디 찾기 : 이메일 인증 시 작성하는 고객명 및 이메일을 조회하여 특정 고객의 아이디 및 인증번호 조회 -->
-    <select id="selectUserId" parameterType="string" resultType="UserDto">
+    <select id="selectUserId" parameterType="map" resultType="UserDto">
         SELECT id, mail_key
         FROM cust
         WHERE email = #{email}
+          AND name = #{name}
           AND st_cd = 'O'
     </select>
+
 
     <!-- 비밀번호 찾기 : 새로운 비밀번호 업데이트하고 최종 수정일시 및 수정자 업데이트 -->
     <update id="updateUserPwd" parameterType="map">

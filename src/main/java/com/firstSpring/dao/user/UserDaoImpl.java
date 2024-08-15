@@ -68,6 +68,23 @@ public class UserDaoImpl implements UserDao {
         return session.selectOne(namespace + "selectAllUserId", id);
     }
 
+    // 전체 가입고객(탈퇴회원 포함) 중 특정 이메일을 가진 고객 정보 확인
+    @Override
+    @LogException
+    public UserDto selectAllUserEmail(String email) throws Exception {
+        return session.selectOne(namespace + "selectAllUserEmail", email);
+    }
+
+    // 전체 가입고객(탈퇴회원 포함) 중 특정 이메일과 특정 아이디를 가진 고객 정보 확인
+    @Override
+    @LogException
+    public UserDto selectAllUserIdEmail(String id, String email) throws Exception {
+        Map map = new HashMap();
+        map.put("id",id);
+        map.put("email",email);
+        return session.selectOne(namespace + "selectAllUserIdEmail", map);
+    }
+
     // Login (SELECT)
     // > 회원상태가 활성화('O') & 메일 인증 여부가 'Y' & 특정 id를 가진 회원
     @Override
@@ -106,8 +123,11 @@ public class UserDaoImpl implements UserDao {
     // > 이름 및 이메일로 식별된 특정 회원의 아이디 조회
     @Override
     @LogException
-    public UserDto selectUserId(String email) throws Exception {
-        return session.selectOne(namespace + "selectUserId", email);
+    public UserDto selectUserId(String name, String email) throws Exception {
+        Map map = new HashMap();
+        map.put("name",name);
+        map.put("email",email);
+        return session.selectOne(namespace + "selectUserId", map);
     }
 
     // 비밀번호 찾기 (UPDATE)

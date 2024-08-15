@@ -25,17 +25,24 @@ public class RegisterValidator implements Validator {
         UserDto userDto = (UserDto) target;
 
         validateId(userDto.getId(), errors);
-        validateName(userDto.getName(), errors);
         validatePwd(userDto.getPwd(),userDto.getId(), errors);
+        validateName(userDto.getName(), errors);
         validateEmail(userDto.getEmail(), errors);
         validateBirth(userDto.getBirth(), errors);
         validateMobileNum(userDto.getPhNum(), errors);
         validateGender(userDto.getGender(), errors);
         validateMailKey(userDto.getMailKey(), errors);
+        validateAddr(userDto.getZip(),errors);
+    }
+
+    // 주소 유효성 검사
+    public void validateAddr(String zip, Errors errors) {
+        // 주소 : 입력하지 않았거나 공백이 들어간 경우
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "zip", ADDR_MISSING.getMessage());
     }
 
     // 메일 인증번호 유효성 검사
-    private void validateMailKey(String mailKey, Errors errors) {
+    public void validateMailKey(String mailKey, Errors errors) {
         // 메일 인증번호 : 입력하지 않았거나 공백이 들어간 경우
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mailKey", EMAIL_KEY_MISSING.getMessage());
 
@@ -51,7 +58,7 @@ public class RegisterValidator implements Validator {
     }
 
     // 성별 유효성 검사
-    private void validateGender(String gender, Errors errors) {
+    public void validateGender(String gender, Errors errors) {
         // 성별 : 입력하지 않았거나 공백이 들어간 경우
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", GENDER_MISSING.getMessage());
     }
@@ -91,45 +98,59 @@ public class RegisterValidator implements Validator {
     }
 
     // 비밀번호 유효성 검증
-    public void validatePwd(String pwd,String id, Errors errors) {
-        String pwd1 = pwd.split(",")[0];
-        String pwd2 = pwd.split(",")[1];
-
-        // 비밀번호(pwd1) 및 비밀번호 확인(pwd2) 값 동일하게 입력했는지 확인
-        if (!pwd1.equals(pwd2)) {
-            errors.rejectValue("pwd", MISMATCHED_PASSWORD.getMessage());
+    public void validatePwd(String pwd, String id, Errors errors) {
+        if (pwd == null || pwd.trim().isEmpty()) {
+            errors.rejectValue("pwd", PASSWORD_MISSING.getMessage());
+            return;
         }
 
-        // PWD : 입력하지 않았거나 공백 들어간 경우
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "pwd", PASSWORD_MISSING.getMessage());
+        String[] pwdParts = pwd.split(",");
+        if (pwdParts.length < 2) {
+            errors.rejectValue("pwd", "비밀번호와 비밀번호 확인이 필요합니다.");
+            return;
+        }
 
-        // PWD : 지정된 글자수 범위를 벗어난 경우 (8자 이상, 30자 이하)
+        String pwd1 = pwdParts[0];
+        String pwd2 = pwdParts[1];
+
+        // 비밀번호와 비밀번호 확인이 일치하지 않을 떄
+        if (!pwd1.equals(pwd2)) {
+            errors.rejectValue("pwd", WRONG_PASSWORD.getMessage());
+        }
+
+        // 비밀번호 8이상 30이하
         if (pwd1.length() < 8 || pwd1.length() > 30) {
             errors.rejectValue("pwd", PASSWORD_LENGTH_OUT_OF_BOUNDS.getMessage());
         }
 
-        // PWD : 4자리 이상의 연속적인 숫자 제한
-        for (int i = 0; i < pwd1.length() - 3; i++) {
-            char a = pwd1.charAt(i);
-            char b = pwd1.charAt(i + 1);
-            char c = pwd1.charAt(i + 2);
-            char d = pwd1.charAt(i + 3);
-
-            if (a + 1 == b && b + 1 == c && c + 1 == d) {
-                errors.rejectValue("pwd", SEQUENTIAL_CHARACTERS.getMessage());
-                break;
-            }
-        }
-
-        // PWD : 영문, 숫자, 특수문자 조합 (cf. 특수문자 종류 제한 없음)
-        if (!pwd1.matches("^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[~!@#$%^ &*()_+.,?]).{8,30}$")) {
-            errors.rejectValue("pwd", INVALID_PASSWORD_FORMAT.getMessage());
-        }
-
-        // PWD : ID 포함시
+        // 비밀번호에 아이디 포함 X
         if (pwd1.contains(id)) {
             errors.rejectValue("pwd", PASSWORD_CONTAINS_ID.getMessage());
         }
+
+        // 연속적인 4자리 숫자 검사
+        if (hasSequentialNumbers(pwd1)) {
+            errors.rejectValue("pwd",SEQUENTIAL_CHARACTERS.getMessage() );
+        }
+    }
+
+    // 연속적인 4자리 숫자 제한 검사 함수
+    private boolean hasSequentialNumbers(String pwd) {
+        for (int i = 0; i < pwd.length() - 3; i++) {
+            char a = pwd.charAt(i);
+            char b = pwd.charAt(i + 1);
+            char c = pwd.charAt(i + 2);
+            char d = pwd.charAt(i + 3);
+
+            // 모든 문자가 숫자인지 확인
+            if (Character.isDigit(a) && Character.isDigit(b) && Character.isDigit(c) && Character.isDigit(d)) {
+                // 4자리 연속 숫자 검사
+                if (a + 1 == b && b + 1 == c && c + 1 == d) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     // 이메일 유효성 검증
@@ -178,6 +199,8 @@ public class RegisterValidator implements Validator {
             e.printStackTrace();
             errors.rejectValue("birth", INVALID_BIRTH_FORMAT.getMessage());
         }
+
+        // 100년정도 차이나는 년도 입력시 유효성 처리
     }
 
 
