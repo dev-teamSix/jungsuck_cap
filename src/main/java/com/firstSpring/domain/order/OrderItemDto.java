@@ -1,7 +1,5 @@
 package com.firstSpring.domain.order;
 
-import com.firstSpring.entity.OrderItem;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 

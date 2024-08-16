@@ -2,7 +2,6 @@ package com.firstSpring.controller.order;
 
 import com.firstSpring.domain.order.CartItemDto;
 import com.firstSpring.domain.order.OrderItemDto;
-import com.firstSpring.entity.OrderItem;
 import com.firstSpring.service.order.CartService;
 import com.firstSpring.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
