@@ -4,5 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
+        <typeAlias alias="NoticeDto" type="com.firstSpring.domain.board.NoticeDto"/>
+
+        <typeAlias alias="SearchCondition" type="com.firstSpring.domain.board.SearchCondition"/>
+        <typeAlias alias="QnaDto" type="com.firstSpring.domain.board.QnaDto"/>
     </typeAliases>
 </configuration>

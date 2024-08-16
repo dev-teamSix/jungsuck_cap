@@ -1,6 +1,6 @@
-package com.firstSpring.entity;
+package com.firstSpring.domain.board;
 
-import com.firstSpring.domain.board.SearchCondition;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Objects;
 
@@ -27,6 +27,33 @@ public class PageHandler {
 
     public PageHandler(){} // 기본 생성자
 
+    public PageHandler(int totalCnt,Integer page){
+        this(totalCnt,new SearchCondition(page,10));
+    }
+
+    public PageHandler(int totalCnt, Integer page, Integer pageSize){
+        this(totalCnt, new SearchCondition(page,pageSize));
+    }
+
+    public PageHandler(int totalCnt,SearchCondition sc) {
+        this.totalCnt = totalCnt;
+        this.sc = sc;
+        System.out.println("PageHandler(sc):"+sc);
+        System.out.println("sc값체크:):"+sc.getKeyword());
+        System.out.println("sc값체크2:):"+sc.getOption_date());
+        System.out.println("sc값체크3:):"+sc.getOption_key());
+        doPaging(totalCnt,sc);
+    }
+
+    private void doPaging(int totalCnt, SearchCondition sc) {
+        this.totalPage = totalCnt / sc.getPageSize() + (totalCnt % sc.getPageSize()==0? 0:1);
+        this.sc.setPage(Math.min(sc.getPage(), totalPage));  // page가 totalPage보다 크지 않게
+        this.beginPage = (this.sc.getPage() -1) / navSize * navSize + 1; // 11 -> 11, 10 -> 1, 15->11. 따로 떼어내서 테스트
+        this.endPage = Math.min(beginPage + navSize - 1, totalPage);
+        this.prevPage = beginPage!=1;
+        this.nextPage = endPage!=totalPage;
+    }
+
 
     public PageHandler(Integer totalCnt,Integer page,Integer pageSize) {
         this.totalCnt = totalCnt;
@@ -40,11 +67,13 @@ public class PageHandler {
         this.offset = (this.page-1)*this.pageSize;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PageHandler that = (PageHandler) o;
+        com.firstSpring.domain.board.PageHandler that = (com.firstSpring.domain.board.PageHandler) o;
         return totalCnt == that.totalCnt && page == that.page && pageSize == that.pageSize;
     }
 
@@ -66,6 +95,23 @@ public class PageHandler {
                 ", prevPage=" + prevPage +
                 ", nextPage=" + nextPage +
                 '}';
+    }
+
+
+    public String getQueryString() {
+        return getQueryString(this.sc.getPage());
+    }
+
+    public String getQueryString(Integer page) {
+        // ?page=10&pageSize=10&option=A&keyword=title
+        return UriComponentsBuilder.newInstance()
+                .queryParam("page",     page)
+                .queryParam("pageSize", sc.getPageSize())
+                .queryParam("option_key",   sc.getOption_key())
+                .queryParam("option_date",sc.getOption_date())
+                .queryParam("keyword",  sc.getKeyword())
+                .build().toString();
+
     }
 
     public int getNavSize() {
@@ -140,4 +186,3 @@ public class PageHandler {
         this.nextPage = nextPage;
     }
 }
-
