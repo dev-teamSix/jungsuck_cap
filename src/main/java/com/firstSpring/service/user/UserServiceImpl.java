@@ -208,6 +208,7 @@ public class UserServiceImpl implements UserService{
         }
     }
 
+    // 회원가입 시, 유효성 체크
     // validator 에러메세지 결과 반환
     @LogException
     @Override
@@ -283,7 +284,7 @@ public class UserServiceImpl implements UserService{
         int checkNum = random.nextInt(888888) + 111111;
 
         // 메일 제목, 내용
-        String subject = "회원가입 인증 메일입니다.";
+        String subject = "본인인증 메일입니다.";
         String content = "홈페이지를 방문해주셔서 감사합니다. "+
                 "인증 번호는 "+ checkNum + " 입니다." +
                 "\r\n" +

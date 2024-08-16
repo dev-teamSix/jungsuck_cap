@@ -10,10 +10,10 @@
     <title>로그인</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery (필수) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/css/login.css">
     <script>
         let errorMsg = "${errorMsg}";
@@ -239,9 +239,62 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        // 아이디 찾기
+        $("#findIdButton").click(function () {
+            var name = $("#user_name").val().trim();
+            var email = $("#user_email").val().trim();
+
+            // 이름과 이메일이 입력되었는지 확인
+            if (name === "" || email === "") {
+                $("#answerLine").css({
+                    "color": "red",
+                    "text-align": "center",
+                    "text-size": "10px"
+                });
+                $("#answerLine").text("아이디와 이메일을 모두 입력해주세요.");
+                return;  // 유효성 검사를 통과하지 못하면 AJAX 요청을 보내지 않음
+            }
+
+            $.ajax({
+                type: "post",
+                url: "/find/id",
+                data: {
+                    name: name,
+                    email: email
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.result === 'fail') {
+                        $("#answerLine").css({
+                            "color": "red",
+                            "text-align": "center",
+                            "text-size": "10px"
+                        });
+                        $("#answerLine").text("일치하는 아이디가 없습니다. 다시 확인해주세요.");
+                    } else {
+                        $("#answerLine").css({
+                            "color": "green",
+                            "text-align": "center",
+                            "text-size": "10px"
+                        });
+                        $("#answerLine").text(data.message); // 서버에서 반환한 메시지를 사용
+                    }
+                },
+                error: function (xhr, status, error) {
+                    const response = xhr.responseJSON;
+                    $("#answerLine").css({
+                        "color": "red",
+                        "text-align": "center",
+                        "text-size": "10px"
+                    });
+                    $("#answerLine").text(response.message);
+                }
+            });
+        });
+
+
         let code = '';
         $('#checkEmailButton').click(function() {
             let email = $('#findEmailInput').val(); // email 가져오기
@@ -259,7 +312,7 @@
                         $('#emailInfo').hide();
                         $('#emailCodeInput').hide();
                     } else {
-                        alert("인증번호 발송이 완료되었습니다. 입력한 이메일에서 인증번호 확인을 해주세요.");
+                        alert(data.message);
                         // 인증번호 입력 필드 및 정보 메시지 표시
                         $('#emailInfo').show();
                         $('#emailCodeInput').show();
@@ -274,6 +327,25 @@
 
                         $('#checkEmail').prop('disabled', false);
                         $('#findPwInput').prop('disabled', true); // 인증 완료 전까지 비밀번호 입력 비활성화
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // 서버 응답에서 result 값을 확인하여 처리
+                    let response = xhr.responseJSON;
+                    let result = response && response.result;
+                    let message = response && response.message ? response.message : "서버와의 통신 중 에러가 발생했습니다.";
+
+                    if (result === 'fail') {
+                        // 'fail' 응답 처리
+                        $('#alertEmail').show();
+                        $('#emailInfo').hide();
+                        $('#emailCodeInput').hide();
+                    } else if (result === 'error') {
+                        // 'error' 응답 처리
+                        alert(message);
+                    } else {
+                        // 예기치 않은 오류 처리
+                        alert(message);
                     }
                 }
             });
@@ -385,9 +457,14 @@
                     if (data.result == 'fail') {
                         alert("해당하는 아이디가 존재하지 않습니다");
                     } else {
-                        alert("비밀번호 변경에 성공하였습니다.");
+                        alert(data.message);
                         location.reload();
                     }
+                },
+                error: function(xhr, status, error) {
+                    const response = xhr.responseJSON;
+                    // AJAX 요청 실패 시
+                    alert(response.message);
                 }
             });
         });

@@ -22,12 +22,8 @@ import java.util.Map;
 @RequestMapping("/login")
 public class LoginController {
 
-    private UserService userService;
-
     @Autowired
-    public LoginController(UserService service) {
-        this.userService = service;
-    }
+    private UserService userService;
 
     // validator 등록
     @InitBinder

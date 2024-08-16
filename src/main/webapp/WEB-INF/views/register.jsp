@@ -224,6 +224,10 @@
     });
     window.addEventListener("DOMContentLoaded",function (){
         checkGender();
+        // errorMsg가 존재하면 alert로 표시
+        <c:if test="${not empty errorMsg}">
+        alert("${errorMsg}");
+        </c:if>
         // 모든 필드가 초기값으로 설정되도록 유지
         if ($("#joinIdInput").val()) {
             $("#alertId").css({
@@ -331,27 +335,36 @@
             }else {
                 $.ajax({
                     type: "post",
-                    url : "/user/checkDuplicatedId",
+                    url: "/user/checkDuplicatedId",
                     data: {
-                        id : $("#joinIdInput").val()
+                        id: $("#joinIdInput").val()
                     },
                     dataType: "json",
-                    success: function (data) {
-                        if(data.result == "fail") {
+                    success: function(data) {
+                        if(data.result === "fail") {
                             $("#alertId").css({
-                                "color":"red",
-                                "font-size" : "10px"
+                                "color": "red",
+                                "font-size": "10px"
                             });
-                            $("#alertId").text("! 이미 사용중인 아이디입니다.")
-                        }else {
+                            $("#alertId").text(data.message);
+                        } else {
                             $("#alertId").css({
-                                "color":"black",
-                                "font-size" : "10px"
+                                "color": "black",
+                                "font-size": "10px"
                             });
-                            $("#alertId").text("✔️ 사용 가능한 아이디입니다.")
+                            $("#alertId").text("✔️ 사용 가능한 아이디입니다.");
                         }
+                    },
+                    error: function(xhr) {
+                        const response = xhr.responseJSON;
+                        $("#alertId").css({
+                            "color": "red",
+                            "font-size": "10px"
+                        });
+                        $("#alertId").text(response.message);
                     }
                 });
+
             }
         });
 
@@ -537,24 +550,24 @@
                     type: "post",
                     url : "/user/checkDuplicatedEmail",
                     data: {
-                        email : email
+                        email: email
                     },
                     dataType: "json",
-                    success: function (data) {
-                        if(data.result == "fail") {
-                            $("#alertEmail").css({
-                                "color":"red",
-                                "font-size":"10px"
-                            });
-                            $("#alertEmail").text("!  이메일이 이미 사용중입니다.");
-                        }else {
-                            $("#alertEmail").css({
-                                "color":"black",
-                                "font-size":"10px"
-                            });
-                            $("#alertEmail").text("✔️ 사용 가능한 이메일주소입니다.");
-                            $("#checkEmailButton").attr("disabled",false);
-                        }
+                    success: function(data) {
+                        $("#alertEmail").css({
+                            "color": "black",
+                            "font-size": "10px"
+                        });
+                        $("#alertEmail").text("✔️ 사용 가능한 이메일주소입니다.");
+                        $("#checkEmailButton").attr("disabled", false);
+                    },
+                    error: function(xhr) {
+                        const response = xhr.responseJSON;
+                        $("#alertEmail").css({
+                            "color": "red",
+                            "font-size": "10px"
+                        });
+                        $("#alertEmail").text(response.message);
                     }
                 });
             }
@@ -569,15 +582,9 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    if (data.result == "error") {
-                        alert("서버와 통신중 에러가 발생했습니다.");
-                        $("#alertCertified").css({
-                            "color": "red",
-                            "font-size": "10px"
-                        });
-                        $("#alertCertified").text("! 서버와 통신중 에러가 발생했습니다.");
-                    } else {
-                        alert("인증번호 발송이 완료되었습니다. 입력한 이메일에서 인증번호 확인을 해주세요.");
+                    // 성공적으로 인증번호가 발송된 경우
+                    if (data.result === "success") {
+                        alert(data.message);
                         $("#alertCertified").text("! 인증번호를 입력해주세요.");
                         $("#alertCertified").css({
                             "color": "red",
@@ -592,6 +599,16 @@
                         $("#checkEmail").show();
                         $(".bi-exclamation-square-fill.deepblue").show();
                     }
+                },
+                error: function(xhr) {
+                    // 서버 오류 발생 시 처리
+                    const response = xhr.responseJSON;
+                    alert(response.message);
+                    $("#alertCertified").css({
+                        "color": "red",
+                        "font-size": "10px"
+                    });
+                    $("#alertCertified").text(response.result || "! 서버와 통신 중 에러가 발생했습니다.");
                 }
             });
         });

@@ -49,7 +49,9 @@ public class RegisterController {
     @LogException
     public String savaUserProcess(@Valid @ModelAttribute("userDto") UserDto userDto, Errors errors, Model model) {
         if (errors.hasErrors()) {
+            // 회원가입 실패시 입력 데이터 값을 유지
             model.addAttribute("userDto",userDto);
+            // 유효성 통과 못한 필드와 메시지를 핸들링
             Map<String,String> validatorResult = userService.validateHandling(errors);
             for(String key: validatorResult.keySet()) {
                 model.addAttribute(key,validatorResult.get(key));
@@ -57,7 +59,17 @@ public class RegisterController {
             return "register";
         }
 
-        userService.saveCustJoinInfo(userDto);
+        // saveCustJoinInfo 결과가
+        // false -> fail
+        // true -> success
+        if(!userService.saveCustJoinInfo(userDto)){
+            // 회원가입 실패시 입력 데이터 값을 유지
+            model.addAttribute("userDto",userDto);
+            model.addAttribute("errorMsg", "회원가입에 실패하셨습니다.");
+            return "register";
+        }
+
+        // 회원가입 성공시 로그인폼으로 이동
         return "/login/form";
     }
 
@@ -66,12 +78,15 @@ public class RegisterController {
     @ResponseBody
     @LogException
     public ResponseEntity<Map<String, Object>> checkDuplicatedId(@RequestParam("id") String id) {
+        // 아이디 중복이면 -> fail
+        // 아이디 중복이 아니면 -> success
         if (!userService.checkDuplicatedId(id)) {
             response.put("result", "fail");
+            response.put("message", "! 이미 사용중인 아이디입니다.");
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         } else {
             response.put("result", "success");
-            response.put("message", "사용가능한 아이디입니다.");
+            response.put("message", "✔ 사용 가능한 아이디입니다.");
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
     }
@@ -81,15 +96,20 @@ public class RegisterController {
     @PostMapping("/checkDuplicatedEmail")
     @ResponseBody
     @LogException
-    public ResponseEntity<Map<String, Object>>  checkDuplicatedEmail (String email) {
+    public ResponseEntity<Map<String, Object>> checkDuplicatedEmail(String email) {
+        // 이메일 중복이면 -> fail
+        // 이메일 중복이 아니면 -> success
         if (!userService.checkDuplicatedEmail(email)) {
             response.put("result", "fail");
+            response.put("message", "!  이메일이 이미 사용중입니다.");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         } else {
             response.put("result", "success");
-            response.put("message", "사용가능한 이메일주소입니다.");
+            response.put("message", "✔ 사용 가능한 이메일주소입니다.");
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 
     // 이메일로 본인 인증 절차 진행 (POST)
     // > 입력받은 이메일 주소로 인증번호 전송
@@ -97,9 +117,19 @@ public class RegisterController {
     @ResponseBody
     @LogException
     public ResponseEntity<Map<String,Object>> checkEmail(String email) {
-        int checkNum = userService.sendMail(email);
-        response.put("code",checkNum);
+        Integer checkNum = userService.sendMail(email); // 메일 인증번호 전송
 
-        return new ResponseEntity<>(response,HttpStatus.OK);
+        // 인증번호가 null -> fail
+        // null이 아니면 -> 인증번호 전달
+        if (checkNum == null) {
+            response.put("result", "fail");
+            response.put("message","서버와 통신 중 에러가 발생했습니다.");
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        } else {
+            response.put("result", "success");
+            response.put("message","인증번호 발송이 완료되었습니다. 입력한 이메일에서 인증번호 확인을 해주세요.");
+            response.put("code", checkNum);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
     }
 }
