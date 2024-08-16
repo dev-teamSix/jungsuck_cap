@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.firstSpring.dao.ImageMapper">
+
+    <!-- ImageDto 매핑용 ResultMap -->
+    <resultMap id="imageDtoResultMap" type="ImageDto">
+        <id property="imgNo" column="img_no"/>
+        <result property="url" column="url"/>
+        <result property="fileName" column="file_name"/>
+        <result property="fileExt" column="file_ext"/>
+        <result property="fileSize" column="file_size"/>
+        <result property="asptRatio" column="aspt_ratio"/>
+        <result property="horzLen" column="horz_len"/>
+        <result property="vertLen" column="vert_len"/>
+        <result property="detail" column="detail"/>
+        <result property="firstRegDt" column="first_reg_dt"/>
+        <result property="firstRegId" column="first_reg_id"/>
+        <result property="lastModDt" column="last_mod_dt"/>
+        <result property="lastModId" column="last_mod_id"/>
+    </resultMap>
+
+    <!-- 모든 이미지 조회 -->
+    <select id="selectAll" resultMap="imageDtoResultMap">
+        select img_no,
+               url,
+               file_name,
+               file_ext,
+               file_size,
+               aspt_ratio,
+               horz_len,
+               vert_len,
+               detail,
+               first_reg_dt,
+               first_reg_id,
+               last_mod_dt,
+               last_mod_id
+        from image;
+    </select>
+
+    <!-- 특정 이미지 조회 -->
+    <select id="select" parameterType="int" resultMap="imageDtoResultMap">
+        select img_no,
+               url,
+               file_name,
+               file_ext,
+               file_size,
+               aspt_ratio,
+               horz_len,
+               vert_len,
+               detail,
+               first_reg_dt,
+               first_reg_id,
+               last_mod_dt,
+               last_mod_id
+        from image
+        where img_no=#{imgNo};
+    </select>
+
+    <!-- 이미지 등록 -->
+    <insert id="insert" parameterType="ImageDto">
+        insert into image
+        (url, file_name, file_ext, file_size, aspt_ratio, horz_len, vert_len, detail,
+         first_reg_dt, first_reg_id,last_mod_dt, last_mod_id)
+        values (#{url}, #{fileName}, #{fileExt}, #{fileSize}, #{asptRatio}, #{horzLen}, #{vertLen}, #{detail},
+                DATE_FORMAT(NOW(), '%Y-%m-%d %T'), #{firstRegId},  DATE_FORMAT(NOW(), '%Y-%m-%d %T'), #{lastModId});
+    </insert>
+
+    <!-- 이미지 수정-->
+    <update id="update" parameterType="ImageDto">
+
+    </update>
+
+    <!--특정 이미지 제거-->
+    <delete id="delete" parameterType="int">
+        DELETE FROM image
+        WHERE imgNo = #{imgNo}
+    </delete>
+
+    <!--모든 상품 제거 -->
+    <delete id="deleteAll">
+        DELETE FROM image;
+    </delete>
+
+
+
+
+</mapper>
