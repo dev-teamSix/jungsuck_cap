@@ -14,5 +14,9 @@
         <typeAlias type="com.firstSpring.domain.product.ProdColJoinDto" alias="ProdColJoinDto"/>
         <typeAlias type="com.firstSpring.domain.product.ImageDto" alias="ImageDto"/>
 
+        <typeAlias alias="OrderDto" type="com.firstSpring.domain.order.OrderDto"/>
+        <typeAlias alias="OrderItemDto" type="com.firstSpring.domain.order.OrderItemDto"/>
+        <typeAlias alias="CartDto" type="com.firstSpring.domain.order.CartDto"/>
+        <typeAlias alias="CartItemDto" type="com.firstSpring.domain.order.CartItemDto"/>
     </typeAliases>
 </configuration>
