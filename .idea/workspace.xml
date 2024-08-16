@@ -9,8 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="회원가입, 로그인, 아이디찾기, 비밀번호 찾기까지 완성">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/FindIdPwdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/FindIdPwdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +27,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="CSS File" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -40,9 +50,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2kHrebr2mF8kEwXdpECYn7IQbOv" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -50,46 +60,161 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 9.0.821.executor": "Run",
-    "git-widget-placeholder": "kyungsik",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/user/IdeaProjects/jungsuk_cap/src/main/java/com/firstSpring/service",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.30804598",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.DBConnectionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.NOT_NULL_제약조건_위반_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.PK_중복_불가능_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.insertUserDaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.userDao_주입상태_확인_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.가입한_회원_생년월일_변경_성공_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.고객정보_삭제_테스트_메서드_기능_확인.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.고객정보_추가_테스트_메서드_기능_확인.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.탈퇴한_회원_생년월일_변경_실패_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserDaoImplTest.회원가입한_고객수_확인테스트.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.821.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;kyungsik&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/IdeaProjects/jungsuk_cap/src/main/webapp/resources/css&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.firstSpring.service.user" />
+      <recent name="com.firstSpring.dao.user" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\webapp\resources\css" />
+      <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\resources\mapper" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\service" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\domain" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\dao" />
-      <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\controller\order" />
-      <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\controller\board" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\resources" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.firstSpring.dao.user" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.821">
+    <configuration name="UserDaoImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoImplTest.활성화_상태_고객수_확인테스트" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
+      <option name="METHOD_NAME" value="활성화_상태_고객수_확인테스트" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
+      <option name="METHOD_NAME" value="탈퇴한_회원_이메일_인증_실패_테스트" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoImplTest.가입한_회원_생년월일_변경_성공_테스트" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
+      <option name="METHOD_NAME" value="가입한_회원_생년월일_변경_성공_테스트" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoImplTest.탈퇴한_회원_생년월일_변경_실패_테스트" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
+      <option name="METHOD_NAME" value="탈퇴한_회원_생년월일_변경_실패_테스트" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoImplTest.고객정보_삭제_테스트_메서드_기능_확인" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
+      <option name="METHOD_NAME" value="고객정보_삭제_테스트_메서드_기능_확인" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -269,6 +394,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트" />
+      <item itemvalue="JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트" />
+      <item itemvalue="JUnit.UserDaoImplTest" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.821" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserDaoImplTest" />
+        <item itemvalue="JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트" />
+        <item itemvalue="JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -285,7 +423,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1722951440047</updated>
-      <workItem from="1722951441084" duration="5883000" />
+      <workItem from="1722951441084" duration="19838000" />
+      <workItem from="1723029659097" duration="7900000" />
+      <workItem from="1723038077050" duration="2432000" />
+      <workItem from="1723080299642" duration="9573000" />
+      <workItem from="1723095765933" duration="26842000" />
+      <workItem from="1723167083075" duration="6027000" />
+      <workItem from="1723381984197" duration="7948000" />
+      <workItem from="1723426414413" duration="18358000" />
+      <workItem from="1723451849892" duration="15657000" />
+      <workItem from="1723512127485" duration="35920000" />
+      <workItem from="1723600448848" duration="37271000" />
+      <workItem from="1723699588680" duration="27773000" />
+      <workItem from="1723772598628" duration="12411000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
@@ -303,7 +453,71 @@
       <option name="project" value="LOCAL" />
       <updated>1722994961898</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="init : server test">
+      <option name="closed" value="true" />
+      <created>1722997794021</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1722997794021</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feature : UserMapper 작성">
+      <option name="closed" value="true" />
+      <created>1723037771952</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723037771952</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feature : UserDao 작성">
+      <option name="closed" value="true" />
+      <created>1723040611864</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723040611864</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feature : UserDao 작성">
+      <option name="closed" value="true" />
+      <created>1723040656064</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723040656064</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feature : UserDaoTest 작성">
+      <option name="closed" value="true" />
+      <created>1723127257055</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1723127257055</updated>
+    </task>
+    <task id="LOCAL-00008" summary="회원가입 view 유효성 검사까지 완료">
+      <option name="closed" value="true" />
+      <created>1723471245833</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723471245833</updated>
+    </task>
+    <task id="LOCAL-00009" summary="회원가입 view 백단 유효성 검사까지 완료">
+      <option name="closed" value="true" />
+      <created>1723559653392</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723559653392</updated>
+    </task>
+    <task id="LOCAL-00010" summary="회원가입, 로그인, 아이디찾기, 비밀번호 찾기까지 완성">
+      <option name="closed" value="true" />
+      <created>1723730687302</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723730687302</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,6 +549,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init : first commit" />
     <MESSAGE value="init : server test" />
-    <option name="LAST_COMMIT_MESSAGE" value="init : server test" />
+    <MESSAGE value="feature : UserMapper 작성" />
+    <MESSAGE value="feature : UserDao 작성" />
+    <MESSAGE value="feature : UserDaoTest 작성" />
+    <MESSAGE value="회원가입 view 유효성 검사까지 완료" />
+    <MESSAGE value="회원가입 view 백단 유효성 검사까지 완료" />
+    <MESSAGE value="회원가입, 로그인, 아이디찾기, 비밀번호 찾기까지 완성" />
+    <option name="LAST_COMMIT_MESSAGE" value="회원가입, 로그인, 아이디찾기, 비밀번호 찾기까지 완성" />
   </component>
 </project>
