@@ -4,5 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
+        <typeAlias type="com.firstSpring.domain.product.ProductDto" alias="ProductDto"/>
+        <typeAlias type="com.firstSpring.domain.product.ProductListDto" alias="ProductListDto"/>
+        <typeAlias type="com.firstSpring.domain.product.ProductRequest" alias="ProductRequest"/>
+        <typeAlias type="com.firstSpring.domain.product.ProductCategoryDto" alias="ProductCategoryDto"/>
+        <typeAlias type="com.firstSpring.domain.product.ProductHighCategoryDto" alias="ProductHighCategoryDto"/>
+        <typeAlias type="com.firstSpring.domain.product.ProductColorDto" alias="ProductColorDto"/>
+        <typeAlias type="com.firstSpring.domain.product.ProdColJoinDto" alias="ProdColJoinDto"/>
+        <typeAlias type="com.firstSpring.domain.product.ImageDto" alias="ImageDto"/>
+
     </typeAliases>
 </configuration>

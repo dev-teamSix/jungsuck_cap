@@ -10,7 +10,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/product/ProdCatgController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/product/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ImageDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ImageDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductCategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductCategoryDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductColorDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductColorDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/product/ImageDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/product/ProdColJoinDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/product/ProductCategoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/product/ProductColorDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/product/ProductDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/product/ProductHighCategoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/product/ProductListDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/product/ProductRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ProdSearchCondtion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/product/ProductCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/product/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/imageMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/productCategoryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/productColorMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/productMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/category.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/categorys.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/product.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/productError.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/products.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/product/p1_detail.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/product/p1_main.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/product/p2_detail.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/product/p2_main.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/product/p3_detail.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/images/product/p3_main.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/product/ProductCategoryDaoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/product/ProductColorDaoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/product/ProductDaoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/service/product/ProductCategoryServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/service/product/ProductServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/Hello.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/Hello.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/entity/PageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/entity/PageHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/Hello.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/Hello.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/entity/PageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/entity/PageHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +77,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
+        <option value="CSS File" />
+        <option value="Interface" />
+        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -33,6 +93,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6c75d2cc-a8ee-4624-89f5-112ce31362b5/console.sql" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -40,9 +103,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2kHrebr2mF8kEwXdpECYn7IQbOv" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -50,51 +113,181 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 9.0.821.executor": "Run",
-    "git-widget-placeholder": "kyungsik",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/user/IdeaProjects/jungsuk_cap/src/main/java/com/firstSpring/service",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.30804598",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.ProductCategoryDaoTest.deleteTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.insertTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.selectHighCatg.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.selectHighLowListTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.selectListByNameTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.selectTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.updateTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryServiceTest.RegisterExTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryServiceTest.isDuplicatedName.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryServiceTest.isHighCatg.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryServiceTest.register.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductColorDaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductColorDaoTest.selectListByProd.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.countAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.countTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.increaseViewCnt.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.increaseViewCntExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.insertExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.insertFailTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.insertTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectListExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectListTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectListWithJoinTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.updateInfo.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.updateInfoExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.updateInfoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.getList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.modifyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.readDetailTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.readTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.removeTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.821.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;product&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/yunseo/toy-project/toy2/jungsuck_cap/src/main/webapp/resources/images/product&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\yunseo\toy-project\toy2\jungsuck_cap\src\main\webapp\resources\images\product" />
+      <recent name="C:\yunseo\toy-project\toy2\jungsuck_cap\src\main\resources\mapper" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\service" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\domain" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\dao" />
-      <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\controller\order" />
-      <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\controller\board" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\resources" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.firstSpring.service.product" />
+      <recent name="com.firstSpring.dao.product" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.firstSpring.service.product" />
+      <recent name="com.firstSpring.dao.product" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.firstSpring.domain.product" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
+  <component name="RunManager" selected="JUnit.ProductServiceTest.readTest">
+    <configuration name="ProductCategoryDaoTest.selectHighCatg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.product" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.product.ProductCategoryDaoTest" />
+      <option name="METHOD_NAME" value="selectHighCatg" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.821" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.821" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="ProductCategoryDaoTest.selectListByNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.product" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.product.ProductCategoryDaoTest" />
+      <option name="METHOD_NAME" value="selectListByNameTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductCategoryServiceTest.isDuplicatedName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.service.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.service.product" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.service.product.ProductCategoryServiceTest" />
+      <option name="METHOD_NAME" value="isDuplicatedName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductCategoryServiceTest.isHighCatg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.service.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.service.product" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.service.product.ProductCategoryServiceTest" />
+      <option name="METHOD_NAME" value="isHighCatg" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceTest.readTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.service.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.service.product" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.service.product.ProductServiceTest" />
+      <option name="METHOD_NAME" value="readTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.821" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.91" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$PROJECT_DIR$/../../../../jdk-11.0.23">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -106,7 +299,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="b40ab88a-25ca-456e-a4b2-411e51c18cec" />
-        <option name="HTTP_PORT" value="80" />
+        <option name="HTTP_PORT" value="8020" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -269,11 +462,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.ProductServiceTest.readTest" />
+      <item itemvalue="JUnit.ProductCategoryDaoTest.selectHighCatg" />
+      <item itemvalue="JUnit.ProductCategoryDaoTest.selectListByNameTest" />
+      <item itemvalue="JUnit.ProductCategoryServiceTest.isDuplicatedName" />
+      <item itemvalue="JUnit.ProductCategoryServiceTest.isHighCatg" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.821" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ProductServiceTest.readTest" />
+        <item itemvalue="JUnit.ProductCategoryServiceTest.isDuplicatedName" />
+        <item itemvalue="JUnit.ProductCategoryDaoTest.selectListByNameTest" />
+        <item itemvalue="JUnit.ProductCategoryServiceTest.isHighCatg" />
+        <item itemvalue="JUnit.ProductCategoryDaoTest.selectHighCatg" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.22-corretto-11.0.22-3183f394aec4-cd32a1c5" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -286,6 +497,18 @@
       <option name="presentableId" value="Default" />
       <updated>1722951440047</updated>
       <workItem from="1722951441084" duration="5883000" />
+      <workItem from="1723077484948" duration="43978000" />
+      <workItem from="1723133992831" duration="12647000" />
+      <workItem from="1723163660031" duration="24741000" />
+      <workItem from="1723268312703" duration="17547000" />
+      <workItem from="1723424283603" duration="4193000" />
+      <workItem from="1723433336909" duration="28998000" />
+      <workItem from="1723511416348" duration="1677000" />
+      <workItem from="1723513139327" duration="27396000" />
+      <workItem from="1723598245891" duration="35889000" />
+      <workItem from="1723684100795" duration="30836000" />
+      <workItem from="1723759149039" duration="7074000" />
+      <workItem from="1723770437540" duration="23780000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
@@ -320,7 +543,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="product" />
                       </list>
                     </value>
                   </entry>
@@ -336,5 +559,9 @@
     <MESSAGE value="init : first commit" />
     <MESSAGE value="init : server test" />
     <option name="LAST_COMMIT_MESSAGE" value="init : server test" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
