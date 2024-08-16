@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.firstSpring.dao.ProductColorMapper">
+
+    <resultMap id="productColorDtoResultMap" type="ProductColorDto">
+        <id property="colNo" column="col_no" />
+        <result property="prodNo" column="prod_no"/>
+        <result property="colName" column="col_name"/>
+        <result property="imgNo" column="img_no"/>
+        <result property="colRgbCd" column="col_rgb_cd"/>
+        <result property="addPric" column="add_pric"/>
+        <result property="invAmnt" column="inv_amnt"/>
+        <result property="stCd" column="st_cd"/>
+        <result property="isDisp" column="is_disp"/>
+        <result property="dispOrd" column="disp_ord"/>
+        <result property="firstRegDt" column="first_reg_dt"/>
+        <result property="firstRegId" column="first_reg_id"/>
+        <result property="lastModDt" column="last_mod_dt"/>
+        <result property="lastModId" column="last_mod_id"/>
+    </resultMap>
+
+    <resultMap id="imageDtoResultMap" type="ImageDto">
+        <id property="imgNo" column="img_no"/>
+        <result property="url" column="url"/>
+        <result property="fileName" column="file_name"/>
+        <result property="fileExt" column="file_ext"/>
+        <result property="fileSize" column="file_size"/>
+        <result property="asptRatio" column="aspt_ratio"/>
+        <result property="horzLen" column="horz_len"/>
+        <result property="vertLen" column="vert_len"/>
+        <result property="detail" column="detail"/>
+        <result property="firstRegDt" column="first_reg_dt"/>
+        <result property="firstRegId" column="first_reg_id"/>
+        <result property="lastModDt" column="last_mod_dt"/>
+        <result property="lastModId" column="last_mod_id"/>
+    </resultMap>
+
+    <resultMap id="prodColJoinDtoResultMap" type="ProdColJoinDto">
+        <association property="productColor" resultMap="productColorDtoResultMap" javaType="ProductColorDto" column="col_no" columnPrefix="pc_"/>
+        <association property="image" resultMap="imageDtoResultMap" javaType="ImageDto" column="img_no" columnPrefix="i_"/>
+    </resultMap>
+
+    <!-- 모든 상품 색상 조회 -->
+    <select id="selectAll" resultMap="productColorDtoResultMap">
+        SELECT col_no,
+               prod_no,
+               col_name,
+               img_no,
+               col_rgb_cd,
+               add_pric,
+               inv_amnt,
+               st_cd,
+               is_disp,
+               disp_ord,
+               first_reg_dt,
+               first_reg_id,
+               last_mod_dt,
+               last_mod_id
+        FROM prod_col
+        ORDER BY disp_ord, col_name;
+    </select>
+
+    <!-- 특정 상품의 색상 정보 조회-->
+    <select id="selectListByProd" parameterType="int" resultMap="productColorDtoResultMap">
+        SELECT col_no,
+               prod_no,
+               col_name,
+               img_no,
+               col_rgb_cd,
+               add_pric,
+               inv_amnt,
+               st_cd,
+               is_disp,
+               disp_ord,
+               first_reg_dt,
+               first_reg_id,
+               last_mod_dt,
+               last_mod_id
+        FROM prod_col
+        WHERE prod_no = #{prodNo}
+          AND is_disp = 'Y'
+        ORDER BY disp_ord;
+    </select>
+
+    <!-- 특정 상품의 색상 정보 조회(이미지 정보 포함)-->
+    <select id="selectListByProdWithJoin" parameterType="int" resultMap="prodColJoinDtoResultMap" >
+        SELECT pc.col_no        as pc_col_no
+             , pc.prod_no       as pc_prod_no
+             , pc.col_name      as pc_col_name
+             , pc.col_rgb_cd    as pc_col_rgb_cd
+             , pc.add_pric      as pc_add_pric
+             , pc.inv_amnt      as pc_inv_amnt
+             , pc.st_cd         as pc_st_cd
+             , pc.is_disp       as pc_is_disp
+             , pc.disp_ord      as pc_disp_ord
+             , i.img_no         as i_img_no
+             , i.url            as i_url
+             , i.file_name      as i_file_name
+             , i.file_ext       as i_file_ext
+        FROM prod_col pc
+        LEFT JOIN image i ON pc.img_no = i.img_no
+        WHERE pc.prod_no = #{prodNo};
+    </select>
+
+    <!-- 상품 특정 색상 조회 -->
+    <select id="select" parameterType="int">
+        SELECT col_no,
+               prod_no,
+               col_name,
+               img_no,
+               col_rgb_cd,
+               add_pric,
+               inv_amnt,
+               st_cd,
+               is_disp,
+               disp_ord,
+               first_reg_dt,
+               first_reg_id,
+               last_mod_dt,
+               last_mod_id
+        FROM prod_col
+        WHERE col_no = #{colNo}
+    </select>
+
+    <!-- 상품 색상별 등록-->
+    <insert id="insert" parameterType = "ProductColorDto">
+        insert into prod_col
+            (prod_no, col_name, img_no, col_rgb_cd,
+             add_pric, inv_amnt, st_cd, is_disp,disp_ord,
+             first_reg_dt, first_reg_id, last_mod_dt, last_mod_id)
+        values
+            (#{prodNo}, #{colName}, #{imgNo}, #{colRgbCd},
+             #{addPric}, #{invAmnt}, #{stCd}, #{isDisp}, #{dispOrd},
+                DATE_FORMAT(NOW(), '%Y-%m-%d %T'), 'manager1', DATE_FORMAT(NOW(), '%Y-%m-%d %T'), 'manager1');
+
+    </insert>
+
+    <!-- 상품 색상별 정보 변경 -->
+    <update id="update" parameterType = "ProductColorDto">
+        update prod_col
+        set col_name = #{colName},
+            img_no = #{imgNo},
+            col_rgb_cd = #{colRgbCd},
+            add_pric = #{addPric},
+            inv_amnt = #{invAmnt},
+            st_cd = #{stCd},
+            is_disp = #{isDisp},
+            disp_ord = #{dispOrd},
+            last_mod_dt =  DATE_FORMAT(NOW(), '%Y-%m-%d %T'),
+            last_mod_id = #{lastModId}
+        where col_no = #{colNo} and prod_no = #{prodNo};
+    </update>
+
+    <!--상품 색상별 제거-->
+    <delete id="delete" parameterType="Map">
+        DELETE FROM prod_col
+        WHERE col_no = #{colNo} and prod_no = #{prodNo};
+    </delete>
+
+    <!-- 모든 상품 제거 -->
+    <delete id="deleteAll">
+        DELETE FROM prod_col
+    </delete>
+</mapper>

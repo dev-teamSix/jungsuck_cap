@@ -3,7 +3,7 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:context="http://www.springframework.org/schema/context"
-	   xmlns:tx="http://www.springframework.org/schema/tx" xmlns:beans="http://www.springframework.org/schema/c"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
 	   xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
@@ -13,47 +13,47 @@
 	<!--		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>-->
 	<!--		<property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/springbasic?useUnicode=true&amp;characterEncoding=utf8"></property>-->
 	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-	<property name="url" value="jdbc:mysql://localhost:3306/toypj2?useUnicode=true&amp;characterEncoding=utf8"></property>
-	<property name="username" value="root"></property>
+	<property name="url" value="jdbc:mysql://localhost:3306/cap_jungsuck?useUnicode=true&amp;characterEncoding=utf8"></property>
+	<property name="username" value="castello"></property>
 	<property name="password" value="1234"></property>
 </bean>
 
-<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref="dataSource"/>
-	<property name="configLocation"  value="classpath:mybatis-config.xml"/>
-	<property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
-</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation"  value="classpath:mybatis-config.xml"/>
+		<property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
+	</bean>
 
-<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-	<constructor-arg ref="sqlSessionFactory"/>
-</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
 
-<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-	<property name="dataSource" ref="dataSource"/>
-</bean>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
 
-<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-	<property name="host" value="smtp.naver.com"/>
-	<property name="port" value="465"/>
-	<property name="username" value="0711kyungh@naver.com"/>
-	<property name="password" value="1CZN64TS3G6D"/>
-	<property name="javaMailProperties">
-		<props>
-			<prop key="mail.smtp.auth">true</prop>
-			<prop key="mail.smtp.ssl.enable">true</prop>
-			<prop key="mail.smtp.ssl.trust">smtp.naver.com</prop>
-			<prop key="mail.debug">true</prop>
-		</props>
-	</property>
-</bean>
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.naver.com"/>
+		<property name="port" value="465"/>
+		<property name="username" value="0711kyungh@naver.com"/>
+		<property name="password" value="1CZN64TS3G6D"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.ssl.enable">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.naver.com</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
 
 
-<tx:annotation-driven/>
+	<tx:annotation-driven/>
 
-<!--	<context:annotation-config/>-->
-<context:component-scan base-package="com.firstSpring.dao"/>
-<context:component-scan base-package="com.firstSpring.service"/>
-<context:component-scan base-package="com.firstSpring.controller"/>
-<context:component-scan base-package="com.firstSpring.domain"/>
-<context:component-scan base-package="com.firstSpring.entity"/>
+	<!--	<context:annotation-config/>-->
+	<context:component-scan base-package="com.firstSpring.dao"/>
+	<context:component-scan base-package="com.firstSpring.service"/>
+	<context:component-scan base-package="com.firstSpring.controller"/>
+	<context:component-scan base-package="com.firstSpring.domain"/>
+	<context:component-scan base-package="com.firstSpring.entity"/>
 </beans>
