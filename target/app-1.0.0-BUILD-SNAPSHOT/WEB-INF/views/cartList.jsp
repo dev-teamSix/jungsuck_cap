@@ -173,6 +173,7 @@
 
             var dataList = new Array();
             var paramData = new Object();
+            var data = new Object();
 
             $("input[name=cartChkBox]:checked").each(function() {
                 var cart_item_no = $(this).val();
@@ -182,7 +183,6 @@
                 var price = $("#price_" + cart_item_no).val();
                 var from_cart = $("#from_cart_" + cart_item_no).val();
 
-                var data = new Object();
                 data["cart_item_no"] = cart_item_no;
                 data["prod_num"] = prod_num;
                 data["qty"] = qty;

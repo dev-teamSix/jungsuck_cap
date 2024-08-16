@@ -67,7 +67,7 @@
         FROM cart_item AS i INNER JOIN product AS p
             ON i.prod_num = p.prod_num
         WHERE i.cart_no = #{cart_no}
-        ORDER BY cart_item_no ASC;
+        ORDER BY cart_item_no DESC;
     </select>
 
     <select id="selectCartNo" parameterType="String" resultType="int">
