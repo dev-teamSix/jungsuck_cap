@@ -9,19 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/cartList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/cartList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/CartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/cartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/cartMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/cartList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/cartList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/CartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/cartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/cartMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,9 +20,9 @@
       <list>
         <option value="spring-beans.schema" />
         <option value="JUnit4 Test Class" />
-        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -46,24 +34,15 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;khyeeun&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/khyeeun/jungsuck_cap.git&quot;,
-    &quot;accountId&quot;: &quot;1f242f2a-e351-4add-8dd7-872d52eea9e2&quot;
-  }
-}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
     <option name="FILTER_INFO" value="true" />
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -77,26 +56,45 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;JUnit.CartDaoImplTest.insertCart.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CartDaoImplTest.selectCartNo.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OrderDaoImplTest.increaseInvAmnt.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OrderDaoImplTest.insertOrder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OrderDaoImplTest.selectOrder.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OrderDaoImplTest.selectProdName.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PageHandlerTest.test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PageHandlerTest.test2.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PageHandlerTest.test3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DBConnectionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.Test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.count.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.deleteAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.getNextKey.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.increaseViewCnt.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.insert.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.insert2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.insert3.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.searchCountTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.searchSelectPageTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.select.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.selectAll.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.NoticeDaoImplTest.selectPage.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeDaoImplTest.update.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeServiceImplTest.modify.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeServiceImplTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeServiceImplTest.remove.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.NoticeServiceImplTest.write.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QnaDaoImplTest.count.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QnaDaoImplTest.deleteTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QnaDaoImplTest.insertTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QnaDaoImplTest.selectTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QnaDaoImplTest.updateTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QnaDaoImplTest.viewCntTest.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;StatusDashboardGroupingRule&quot;: &quot;true&quot;,
     &quot;Tomcat Server.Tomcat 9.0.821.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.89.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.90.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.91.executor&quot;: &quot;Run&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;cart&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sukmo&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Mydata/Code_Study/java/devcamp/toyproject/jungsuck_cap&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sukmo/IdeaProjects/jungsuck_cap/src/main/webapp/WEB-INF/views/board&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -105,22 +103,22 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql_aurora_aws&quot;,
       &quot;mysql&quot;
     ]
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sukmo\IdeaProjects\jungsuck_cap\src\main\webapp\WEB-INF\views\board" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\service" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\domain" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\dao" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\controller\order" />
-      <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\controller\board" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\resources" />
@@ -128,105 +126,105 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="com.firstSpring.dao.order" />
-      <recent name="com.firstSpring.service.order" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.firstSpring.dao.order" />
-      <recent name="com.firstSpring.entity" />
+      <recent name="com.firstSpring.dao.board" />
+      <recent name="com.firstSpring.service.board" />
     </key>
   </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="logging.level.jdbc.sqltiming=DEBUG logging.level.jdbc.resultsettable=DEBUG logging.level.jdbc.connection=DEBUG" />
+    </option>
+  </component>
   <component name="RunDashboard">
-    <option name="excludedTypes">
+    <option name="configurationTypes">
       <set>
-        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
+        <option value="Application" />
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.89">
-    <configuration name="CartDaoImplTest.insertCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.91">
+    <configuration name="QnaDaoImplTest.count" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.dao.order.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.dao.order" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.order.CartDaoImplTest" />
-      <option name="METHOD_NAME" value="insertCart" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="count" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CartDaoImplTest.selectCartNo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QnaDaoImplTest.deleteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.dao.order.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.dao.order" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.order.CartDaoImplTest" />
-      <option name="METHOD_NAME" value="selectCartNo" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="deleteTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderDaoImplTest.insertOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QnaDaoImplTest.selectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.dao.order.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.dao.order" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.order.OrderDaoImplTest" />
-      <option name="METHOD_NAME" value="insertOrder" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="selectTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderDaoImplTest.selectOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QnaDaoImplTest.updateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.dao.order.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.dao.order" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.order.OrderDaoImplTest" />
-      <option name="METHOD_NAME" value="selectOrder" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="updateTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderDaoImplTest.selectProdName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QnaDaoImplTest.viewCntTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.dao.order.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.dao.order" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.order.OrderDaoImplTest" />
-      <option name="METHOD_NAME" value="selectProdName" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="viewCntTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.89" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.89" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80" />
+    <configuration name="Tomcat 9.0.91" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.91" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -235,16 +233,21 @@
             <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
+        <file path="$PROJECT_DIR$">
+          <settings>
+            <option name="CONTEXT_PATH" value="/jungsuck_cap" />
+          </settings>
+        </file>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="b81f9601-ecc6-4cb7-b29c-11509f3f9294" />
+        <option name="BASE_DIRECTORY_NAME" value="b40ab88a-25ca-456e-a4b2-411e51c18cec" />
         <option name="HTTP_PORT" value="80" />
       </server-settings>
+      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
+      <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
+      <log_file alias="Tomcat Localhost Access Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*" />
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="50869" />
       </RunnerSettings>
@@ -402,28 +405,28 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CartDaoImplTest.insertCart" />
-      <item itemvalue="JUnit.CartDaoImplTest.selectCartNo" />
-      <item itemvalue="JUnit.OrderDaoImplTest.selectProdName" />
-      <item itemvalue="JUnit.OrderDaoImplTest.insertOrder" />
-      <item itemvalue="JUnit.OrderDaoImplTest.selectOrder" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.89" />
+      <item itemvalue="JUnit.QnaDaoImplTest.count" />
+      <item itemvalue="JUnit.QnaDaoImplTest.deleteTest" />
+      <item itemvalue="JUnit.QnaDaoImplTest.selectTest" />
+      <item itemvalue="JUnit.QnaDaoImplTest.updateTest" />
+      <item itemvalue="JUnit.QnaDaoImplTest.viewCntTest" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.91" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OrderDaoImplTest.selectOrder" />
-        <item itemvalue="JUnit.CartDaoImplTest.selectCartNo" />
-        <item itemvalue="JUnit.CartDaoImplTest.insertCart" />
-        <item itemvalue="JUnit.OrderDaoImplTest.selectProdName" />
-        <item itemvalue="JUnit.OrderDaoImplTest.insertOrder" />
+        <item itemvalue="JUnit.QnaDaoImplTest.count" />
+        <item itemvalue="JUnit.QnaDaoImplTest.deleteTest" />
+        <item itemvalue="JUnit.QnaDaoImplTest.updateTest" />
+        <item itemvalue="JUnit.QnaDaoImplTest.viewCntTest" />
+        <item itemvalue="JUnit.QnaDaoImplTest.selectTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -436,10 +439,18 @@
       <option name="presentableId" value="Default" />
       <updated>1722951440047</updated>
       <workItem from="1722951441084" duration="5883000" />
-      <workItem from="1722999745051" duration="51824000" />
-      <workItem from="1723280040011" duration="38798000" />
-      <workItem from="1723363528200" duration="149481000" />
-      <workItem from="1723768974048" duration="24941000" />
+      <workItem from="1723000627898" duration="24475000" />
+      <workItem from="1723079491417" duration="14900000" />
+      <workItem from="1723102245024" duration="16883000" />
+      <workItem from="1723164276142" duration="24131000" />
+      <workItem from="1723271223840" duration="10692000" />
+      <workItem from="1723284938089" duration="7401000" />
+      <workItem from="1723424333185" duration="35004000" />
+      <workItem from="1723510330538" duration="35975000" />
+      <workItem from="1723596460481" duration="36214000" />
+      <workItem from="1723684991957" duration="34589000" />
+      <workItem from="1723770240726" duration="18504000" />
+      <workItem from="1723799356663" duration="1871000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
@@ -457,15 +468,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722994961898</updated>
     </task>
-    <task id="LOCAL-00003" summary="first commit">
+    <task id="LOCAL-00003" summary="최초 커밋(2차리뷰 끝)">
       <option name="closed" value="true" />
-      <created>1723802804699</created>
+      <created>1723798748821</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1723802804699</updated>
+      <updated>1723798748821</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="최초 커밋(2차리뷰 끝)">
+      <option name="closed" value="true" />
+      <created>1723804453862</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723804453862</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,7 +501,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="cart" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -497,17 +516,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init : first commit" />
     <MESSAGE value="init : server test" />
-    <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.Exception" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="최초 커밋(2차리뷰 끝)" />
+    <option name="LAST_COMMIT_MESSAGE" value="최초 커밋(2차리뷰 끝)" />
   </component>
 </project>

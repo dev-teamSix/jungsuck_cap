@@ -3,6 +3,7 @@
 <html>
 <head>
 	<title>Home</title>
+	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 </head>
 <body>
 <h1>
@@ -10,5 +11,9 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
 </body>
 </html>
+<script>
+
+</script>
