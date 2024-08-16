@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.product-images {
+    width: 50%;
+    padding-right: 20px;
+}
+.product-images img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+.thumbnail-images {
+    display: flex;
+    margin-top: 10px;
+}
+.thumbnail-images img {
+    width: 60px;
+    height: auto;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+.product-details {
+    width: 50%;
+}
+.product-details h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.product-details .price {
+    font-size: 20px;
+    color: red;
+    margin-bottom: 10px;
+}
+.product-details .original-price {
+    text-decoration: line-through;
+    color: #777;
+    margin-left: 10px;
+}
+.product-details .discount {
+    font-size: 16px;
+    color: green;
+}
+.product-details select,
+.product-details input {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+}
+.product-details button {
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.product-details button:hover {
+    background-color: #444;}
