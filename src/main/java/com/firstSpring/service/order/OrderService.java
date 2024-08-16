@@ -18,4 +18,8 @@ public interface OrderService {
     List<OrderDto> getOrderPage(Map map) throws Exception;
 
     List<OrderDto> getOrder(String cust_id) throws Exception;
+
+    int maxOrdNo() throws Exception;
+
+    int maxOrdItemNo() throws Exception;
 }

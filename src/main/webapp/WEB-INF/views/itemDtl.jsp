@@ -27,6 +27,7 @@
     <div class="content" style="margin-left:25%;margin-right:25%">
 
         <input type="hidden" name="prod_num" id="prod_num" value="1">
+        <input type="hidden" id="from_cart" name="from_cart" value="${maxOrdNo} + 1">
 
         <div class="d-flex">
 
@@ -78,6 +79,20 @@
     $(document).ready(function () {
         calculateTotalPrice();
 
+        $("#qty").on("keyup change click", (e) => {
+            if (e.target.value >= 0) {
+                if (e.target.value.length > 5) {
+                    if (e.target.value > 10000) {
+                        alert("최대 9,999까지 입력가능");
+                    }
+                    e.target.value = e.target.value.slice(0, 5);
+                }
+            } else {
+                e.target.value = 0;
+                alert("음수값을 입력할 수 없습니다.");
+            }
+        });
+
         $("#qty").change( function(){
             calculateTotalPrice();
         });
@@ -86,6 +101,14 @@
             if(!confirm("정말로 주문하시겠습니까?")) return;
             let form = $('#form');
             form.attr("action", "<c:url value='/order/ordering?page=${page}&pageSize=${pageSize}'/>");
+            form.attr("method", "post");
+            form.submit();
+        });
+
+        $('#cartBtn').on("click", function () {
+            if(!confirm("카트에 넣으시겠습니까?")) return;
+            let form = $('#form');
+            form.attr("action", "<c:url value='/cart/insertCartItem'/>");
             form.attr("method", "post");
             form.submit();
         });

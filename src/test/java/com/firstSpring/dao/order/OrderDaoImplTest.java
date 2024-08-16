@@ -42,7 +42,7 @@ public class OrderDaoImplTest {
     public void selectProdName() throws Exception {
         assertTrue(orderDao != null);
         System.out.println("orderDao = " + orderDao);
-        String prodName = orderDao.selectProdName("P001");
+        String prodName = orderDao.selectProdName(1);
         System.out.println("prodName = " + prodName);
     }
 
@@ -56,7 +56,7 @@ public class OrderDaoImplTest {
 
     @Test
     public void selectOrder() throws Exception {
-        OrderDto orderDto = orderDao.selectOrder("cat").get(0);
+        OrderDto orderDto = orderDao.selectOrder("asdf").get(0);
         System.out.println("orderDto = " + orderDto);
         assertTrue(orderDto.getOrd_no().equals(1));
     }

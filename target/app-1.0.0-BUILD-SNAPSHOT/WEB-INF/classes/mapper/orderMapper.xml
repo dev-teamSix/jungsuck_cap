@@ -64,7 +64,7 @@
                last_mod_id)
         VALUES
             (
---                #{orderDto.ord_no_return},
+               #{orderDto.ord_no_return},
                #{orderItemDto.prod_num},
                #{orderItemDto.qty},
                #{orderItemDto.prod_name},
@@ -100,7 +100,7 @@
         </selectKey>
     </insert>
 
-    <select id="selectProdName" parameterType="String" resultType="String">
+    <select id="selectProdName" parameterType="int" resultType="String">
         SELECT prod_name
         FROM product
         WHERE prod_num = #{prod_num}
@@ -163,6 +163,16 @@
         SELECT count(*)
         FROM orders
         WHERE cust_id = #{cust_id}
+    </select>
+
+    <select id="maxOrdNo" resultType="int">
+        SELECT MAX(ord_no)
+        FROM orders
+    </select>
+
+    <select id="maxOrdItemNo" resultType="int">
+        SELECT MAX(ord_no)
+        FROM order_item
     </select>
 
 </mapper>

@@ -1020,7 +1020,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="296" parent="1" name="hatmall">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-08-13.01:47:33</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-08-14.07:59:18</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="297" parent="1" name="shop">
@@ -1082,6 +1082,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb3_general_ci</CollationName>
     </table>
     <column id="311" parent="302" name="cart_no">
+      <AutoIncrement>2</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1117,6 +1118,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="319" parent="303" name="cart_item_no">
+      <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1126,7 +1128,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>2</Position>
     </column>
     <column id="321" parent="303" name="prod_num">
-      <DasType>varchar(30)|0s</DasType>
+      <DasType>int|0s</DasType>
       <Position>3</Position>
     </column>
     <column id="322" parent="303" name="qty">
@@ -1216,7 +1218,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>1</Position>
     </column>
     <column id="342" parent="305" name="prod_num">
-      <DasType>varchar(30)|0s</DasType>
+      <DasType>int|0s</DasType>
       <Position>2</Position>
     </column>
     <column id="343" parent="305" name="img_nm">
@@ -1273,7 +1275,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="355" parent="307" name="ord_item_no">
-      <AutoIncrement>9</AutoIncrement>
+      <AutoIncrement>10</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1283,7 +1285,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>2</Position>
     </column>
     <column id="357" parent="307" name="prod_num">
-      <DasType>varchar(30)|0s</DasType>
+      <DasType>int|0s</DasType>
       <Position>3</Position>
     </column>
     <column id="358" parent="307" name="qty">
@@ -1325,7 +1327,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="367" parent="308" name="ord_no">
-      <AutoIncrement>6</AutoIncrement>
+      <AutoIncrement>7</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

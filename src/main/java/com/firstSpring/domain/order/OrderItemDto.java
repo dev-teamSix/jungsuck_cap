@@ -9,24 +9,27 @@ public class OrderItemDto {
     private Integer ord_item_no;
     private Integer ord_no;
     private Integer ord_no_return;
-    private String prod_num;
+    private Integer prod_num;
     private Integer qty;
     private String prod_name;
     private Integer price;
+    private Integer from_cart;
     private LocalDateTime frst_reg_dt;
     private String frst_reg_id;
     private LocalDateTime last_mod_dt;
     private String last_mod_id;
 
-    public OrderItemDto() {}
-
-    public OrderItemDto(Integer ord_item_no, Integer ord_no, String prod_num, Integer qty, String prod_name, Integer price, LocalDateTime frst_reg_dt, String frst_reg_id, LocalDateTime last_mod_dt, String last_mod_id) {
+    public OrderItemDto() {
+        this.from_cart = 0;
+    }
+    public OrderItemDto(Integer ord_item_no, Integer ord_no, Integer prod_num, Integer qty, String prod_name, Integer price, Integer from_cart, LocalDateTime frst_reg_dt, String frst_reg_id, LocalDateTime last_mod_dt, String last_mod_id) {
         this.ord_item_no = ord_item_no;
         this.ord_no = ord_no;
         this.prod_num = prod_num;
         this.qty = qty;
         this.prod_name = prod_name;
         this.price = price;
+        this.from_cart = from_cart;
         this.frst_reg_dt = frst_reg_dt;
         this.frst_reg_id = frst_reg_id;
         this.last_mod_dt = last_mod_dt;
@@ -49,11 +52,11 @@ public class OrderItemDto {
         this.ord_no = ord_no;
     }
 
-    public String getProd_num() {
+    public Integer getProd_num() {
         return prod_num;
     }
 
-    public void setProd_num(String prod_num) {
+    public void setProd_num(Integer prod_num) {
         this.prod_num = prod_num;
     }
 
@@ -148,5 +151,13 @@ public class OrderItemDto {
 
     public void setOrd_no_return(Integer ord_no_return) {
         this.ord_no_return = ord_no_return;
+    }
+
+    public Integer getFrom_cart() {
+        return from_cart;
+    }
+
+    public void setFrom_cart(Integer from_cart) {
+        this.from_cart = from_cart;
     }
 }

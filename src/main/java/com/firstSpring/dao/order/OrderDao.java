@@ -19,7 +19,7 @@ public interface OrderDao {
 
     int insertOrder(OrderDto dto) throws Exception;
 
-    String selectProdName(String prod_num) throws Exception;
+    String selectProdName(Integer prod_num) throws Exception;
 
     int selectPrice(String prod_num) throws Exception;
 
@@ -30,4 +30,8 @@ public interface OrderDao {
     List<OrderDto> selectOrderPage(Map map);
 
     int countOrder(String cust_id) throws Exception;
+
+    int maxOrdNo() throws Exception;
+
+    int maxOrdItemNo() throws Exception;
 }

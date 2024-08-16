@@ -26,6 +26,8 @@
     if(msg == "CANCEL_ERR") alert("주문 취소에 실패했습니다.");
     if(msg == "ORDER_OK") alert("주문 되었습니다.");
     if(msg == "ORDER_ERR") alert("주문에 실패했습니다.");
+    if(msg == "CART_ORDER_OK") alert("주문 되었습니다.");
+    if(msg == "CART_ORDER_ERR") alert("주문에 실패했습니다.");
 </script>
 <div  class="content-mg">
 
