@@ -14,7 +14,7 @@
     <ul>
         <li id="logo">fastcampus</li>
         <li><a href="<c:url value='/'/>">Home</a></li>
-        <li><a href="<c:url value='/board/list'/>">Board</a></li>
+        <li><a href="<c:url value='/cart/cartList'/>">Cart</a></li>
         <li><a href="<c:url value='/login/login'/>">login</a></li>
         <li><a href="<c:url value='/register/add'/>">Sign in</a></li>
         <li><a href=""><i class="fas fa-search small"></i></a></li>
@@ -137,38 +137,6 @@
         });
 
         $('#orderBtn').on("click", function () {
-            <%--let params = Test.--%>
-            <%--const query = 'input[name="cartChkBox"]:checked';--%>
-            <%--const selectedEls = document.querySelectorAll(query);--%>
-            <%--if(selectedEls == null) return;--%>
-            <%--if (!confirm("정말로 주문하시겠습니까?")) return;--%>
-            <%--let cnt = 0;--%>
-            <%--selectedEls.forEach((el) => {--%>
-            <%--    if ($("#from_cart_" + cnt).val() == 0) {--%>
-            <%--        let form = $('#form_' + el.value);--%>
-            <%--        form.attr("action", "<c:url value='/cart/ordering'/>");--%>
-            <%--        form.attr("method", "post");--%>
-            <%--        form.submit();--%>
-            <%--    }--%>
-            <%--    cnt = cnt + 1;--%>
-            <%--});--%>
-            <%--$("input[name=cartChkBox]:checked").each(function() {--%>
-            <%--    // var cartItemId = $(this).val();--%>
-            <%--    let form = $('#form_' + $(this).val());--%>
-            <%--    form.attr("action", "<c:url value='/cart/ordering'/>");--%>
-            <%--    form.attr("method", "post");--%>
-            <%--    form.submit();--%>
-            <%--});--%>
-            <%--var cartItemListSize = $("#cartItemListSize").val();--%>
-            <%--for(let i = 0; i < cartItemListSize; i++) { id="from_cart_${status.index}"--%>
-            <%--    let form = $('#form_' + $(this).val());--%>
-            <%--    form.attr("action", "<c:url value='/cart/ordering'/>");--%>
-            <%--    form.attr("method", "post");--%>
-            <%--    form.submit();--%>
-            <%--}--%>
-<%--            <c:forEach var="i" begin="0" end=>--%>
-<%--            ${i },--%>
-<%--            </c:forEach>--%>
             var url = "/cart/ordering";
 
             var dataList = new Array();
@@ -206,7 +174,6 @@
                 cache   : false,
                 success  : function(result, status){
                     alert("주문이 완료 되었습니다.");
-                    // location.href='/order/list';
                     location.replace('/order/list');
                 },
                 error : function(jqXHR, status, error){

@@ -3,6 +3,7 @@ package com.firstSpring.service.order;
 import com.firstSpring.dao.order.CartDao;
 import com.firstSpring.domain.order.CartDto;
 import com.firstSpring.domain.order.CartItemDto;
+import com.firstSpring.entity.LogException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +18,21 @@ public class CartServiceImpl implements CartService {
     private CartDao cartDao;
 
     @Override
-    public int insertCart(String cust_id) throws Exception {
+    public boolean insertCart(String cust_id) {
         CartDto cartDto = new CartDto();
         cartDto.setCust_id(cust_id);
         cartDto.setFrst_reg_dt(now());
         cartDto.setFrst_reg_id(cust_id);
         cartDto.setLast_mod_dt(now());
         cartDto.setLast_mod_id(cust_id);
-        return cartDao.insertCart(cartDto);
+
+        try {
+            cartDao.insertCart(cartDto);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

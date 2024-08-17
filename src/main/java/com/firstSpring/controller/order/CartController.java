@@ -38,20 +38,20 @@ public class CartController {
 //    HttpSession session = request.getSession();
 //    String cust_id = (String) session.getAttribute("id");
 
-    // 회원가입할 때 cart가 생긴다
-    @GetMapping("/tempSignUpPage")
-    public String tempCartPage() {
-        return "signUp";
-    }
-
-    @PostMapping("/createCart")
-    public String createCart() throws Exception {
-        // 현재 사용자
-//            String cust_id = (String) session.getAttribute("id");
-        String cust_id = "example";
-        cartService.insertCart(cust_id);
-        return "redirect:/order/tempItemPage";
-    }
+//    // 회원가입할 때 cart가 생긴다
+//    @GetMapping("/tempSignUpPage")
+//    public String tempCartPage() {
+//        return "signUp";
+//    }
+//
+//    @PostMapping("/createCart")
+//    public String createCart() throws Exception {
+//        // 현재 사용자
+////            String cust_id = (String) session.getAttribute("id");
+//        String cust_id = "example";
+//        cartService.insertCart(cust_id);
+//        return "redirect:/";
+//    }
 
     @GetMapping("/cartList")
     public String cartList(Model m, HttpServletRequest request) {

@@ -3,6 +3,7 @@ package com.firstSpring.controller.user;
 import com.firstSpring.controller.user.Validator.RegisterValidator;
 import com.firstSpring.domain.user.UserDto;
 import com.firstSpring.entity.LogException;
+import com.firstSpring.service.order.CartService;
 import com.firstSpring.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,8 @@ public class RegisterController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private CartService cartService;
 
     // response에 정보를 담을 map
     private final static Map<String, Object> response = new HashMap<>();
@@ -62,12 +65,14 @@ public class RegisterController {
         // saveCustJoinInfo 결과가
         // false -> fail
         // true -> success
-        if(!userService.saveCustJoinInfo(userDto)){
+        if(!(userService.saveCustJoinInfo(userDto) && cartService.insertCart(userDto.getId()))){
             // 회원가입 실패시 입력 데이터 값을 유지
             model.addAttribute("userDto",userDto);
             model.addAttribute("errorMsg", "회원가입에 실패하셨습니다.");
             return "register";
         }
+
+
 
         // 회원가입 성공시 로그인폼으로 이동
         return "/login/form";
