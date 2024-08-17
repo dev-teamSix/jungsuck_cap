@@ -1,10 +1,13 @@
 package com.firstSpring.controller.order;
 
+import com.firstSpring.domain.order.ActionCartOrderDto;
 import com.firstSpring.domain.order.CartItemDto;
 import com.firstSpring.domain.order.OrderItemDto;
 import com.firstSpring.service.order.CartService;
 import com.firstSpring.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -178,37 +181,43 @@ public class CartController {
     }
 
     @PostMapping("/ordering")
-    public String cartOrdering(@RequestBody CartItemDto cartItemDto, HttpServletRequest request, HttpSession session, RedirectAttributes rattr) {
+    @ResponseBody
+    public ResponseEntity<String> cartOrdering(@RequestBody ActionCartOrderDto actionCartOrderDto, HttpServletRequest request, HttpSession session) {
         try {
 //            if(!loginCheck(request))
 //            return "redirect:/login/login?toURL="+request.getRequestURL();  // 로그인을 안했으면 로그인 화면으로 이동
+
+            List<CartItemDto> cartItemDtoList = actionCartOrderDto.getCartItemDtoList();
 
             // 현재 사용자
 //            String cust_id = (String) session.getAttribute("id");
 //            String cust_id = (String) request.getSession().getAttribute("id");
             String cust_id = "asdf";
-            System.out.println("cartItemDto.getFrom_cart() = " + cartItemDto.getFrom_cart());
-            System.out.println("cartItemDto.getProd_name() = " + cartItemDto.getProd_name());
-            System.out.println("cartItemDto.getPrice() = " + cartItemDto.getPrice());
+            Integer cart_no = cartService.getCartNo(cust_id);
 
-            OrderItemDto orderItemDto = new OrderItemDto();
-            orderItemDto.setProd_num(cartItemDto.getProd_num());
-            orderItemDto.setQty(cartItemDto.getQty());
-            orderItemDto.setProd_name(cartItemDto.getProd_name());
-            orderItemDto.setPrice(cartItemDto.getPrice());
-            orderItemDto.setFrom_cart(cartItemDto.getFrom_cart());
-            int success = orderService.order(orderItemDto, cust_id);
+            for (CartItemDto cartItemDto : cartItemDtoList) {
+                cartItemDto.setCart_no(cart_no);
 
-            if(success == 0) {
-                throw new Exception("cart order error");
+                OrderItemDto orderItemDto = new OrderItemDto();
+                orderItemDto.setProd_num(cartItemDto.getProd_num());
+                orderItemDto.setQty(cartItemDto.getQty());
+                orderItemDto.setProd_name(cartItemDto.getProd_name());
+                orderItemDto.setPrice(cartItemDto.getPrice());
+                orderItemDto.setFrom_cart(cartItemDto.getFrom_cart());
+                int success = orderService.order(orderItemDto, cust_id);
+
+                System.out.println("cartItemDto.getFrom_cart() = " + cartItemDto.getFrom_cart());
+                System.out.println("success = " + success);
+
+                if(success == 0) {
+                    throw new Exception("cart order error");
+                }
             }
 
-            rattr.addFlashAttribute("msg", "CART_ORDER_OK");
+            return new ResponseEntity<String>("CART_ORDER_OK", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            rattr.addFlashAttribute("msg", "CART_ORDER_ERR");
+            return new ResponseEntity<String>("CART_ORDER_ERR", HttpStatus.BAD_REQUEST);
         }
-
-        return "redirect:/order/list";
     }
 }

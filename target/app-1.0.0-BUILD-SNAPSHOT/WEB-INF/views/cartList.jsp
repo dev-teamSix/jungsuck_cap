@@ -173,7 +173,6 @@
 
             var dataList = new Array();
             var paramData = new Object();
-            var data = new Object();
 
             $("input[name=cartChkBox]:checked").each(function() {
                 var cart_item_no = $(this).val();
@@ -183,6 +182,7 @@
                 var price = $("#price_" + cart_item_no).val();
                 var from_cart = $("#from_cart_" + cart_item_no).val();
 
+                var data = new Object();
                 data["cart_item_no"] = cart_item_no;
                 data["prod_num"] = prod_num;
                 data["qty"] = qty;
@@ -199,9 +199,10 @@
             $.ajax({
                 url      : url,
                 type     : "POST",
-                contentType : "application/json",
+                // contentType : "application/json",
+                headers : {"content-type" : "application/json"},
                 data     : param,
-                dataType : "json",
+                // dataType : "json",
                 cache   : false,
                 success  : function(result, status){
                     alert("주문이 완료 되었습니다.");
@@ -209,14 +210,7 @@
                     location.replace('/order/list');
                 },
                 error : function(jqXHR, status, error){
-
-                    if(jqXHR.status == '401'){
-                        alert('로그인 후 이용해주세요');
-                        location.href='/cart/tempSignUpPage';
-                    } else{
-                        alert(jqXHR.responseJSON.message);
-                    }
-
+                    alert("주문이 실패했습니다.");
                 }
             });
         });
