@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.firstSpring.dao.ProductCategoryMapper">
+
+    <!-- ProductCategoryDto 매핑 resultMap -->
+    <resultMap id="ProdCatgDtoResultMap" type="ProductCategoryDto">
+        <id property="catgNo" column="catg_no"/>
+        <result property="name" column="name" />
+        <result property="detail" column="detail" />
+        <result property="highCatgNo" column="high_catg_no" />
+        <result property="isUsed" column="is_used" />
+        <result property="isDisp" column="is_disp" />
+        <result property="firstRegDt" column="first_reg_dt" />
+        <result property="firstRegId" column="first_reg_id" />
+        <result property="lastModDt" column="last_mod_dt" />
+        <result property="lastModId" column="last_mod_id" />
+    </resultMap>
+
+    <!-- 상위 카테고리 목록 조회용 resultMap -->
+    <resultMap id="ProductHighCategoryDtoResultMap" type="ProductHighCategoryDto">
+        <id property = "highCatgNo" column="h_catg_no"/>
+        <result property = "highName" column="h_name"/>
+        <result property = "highIsUsed" column="h_is_used"/>
+        <result property = "highIsDisp" column="h_is_disp"/>
+        <collection property="lowCategoryList" ofType="ProductCategoryDto">
+            <id property = "catgNo" column="l_catg_no"/>
+            <result property = "name" column="l_name"/>
+            <result property = "isUsed" column="l_is_used"/>
+            <result property = "isDisp" column="l_is_disp"/>
+        </collection>
+    </resultMap>
+
+
+    <!-- 특정 카테고리 정보 읽어오기 -->
+    <select id="select" parameterType="int" resultMap="ProdCatgDtoResultMap">
+        SELECT catg_no,
+               name,
+               detail,
+               high_catg_no,
+               is_used,
+               is_disp,
+               first_reg_dt,
+               first_reg_id,
+               last_mod_dt,
+               last_mod_id
+        FROM prod_category
+        WHERE catg_no = #{catgNo};
+    </select>
+
+    <!-- 특정 상위 카테고리 조회 -->
+    <select id="selectHighCatg" parameterType="int" resultMap="ProdCatgDtoResultMap">
+        SELECT catg_no,
+               name,
+               detail,
+               high_catg_no,
+               is_used,
+               is_disp,
+               first_reg_dt,
+               first_reg_id,
+               last_mod_dt,
+               last_mod_id
+        FROM prod_category
+        WHERE catg_no = #{catgNo} AND high_catg_no IS NULL;
+    </select>
+
+    <!-- 같은 부모와 자식간 이름이 동일한 카테고리 조회 -->
+    <select id="selectListByName" parameterType="Map" resultMap="ProdCatgDtoResultMap">
+        SELECT catg_no, name, high_catg_no
+        FROM prod_category
+        WHERE name = #{name}
+        <choose>
+            <when test="highCatgNo != null and highCatgNo != ''">
+                AND high_catg_no = #{highCatgNo}
+                UNION ALL
+                SELECT catg_no, name, high_catg_no
+                FROM prod_category
+                WHERE name = #{name} AND catg_no = #{highCatgNo} AND high_catg_no IS NULL;
+            </when>
+            <otherwise>
+                AND high_catg_no IS NULL
+            </otherwise>
+        </choose>
+    </select>
+
+    <!-- 전체 카테고리 목록 조회 -->
+    <select id="selectAll" resultMap="ProdCatgDtoResultMap">
+        SELECT catg_no,
+               name,
+               detail,
+               high_catg_no,
+               is_used,
+               is_disp,
+               first_reg_dt,
+               first_reg_id,
+               last_mod_dt,
+               last_mod_id
+        FROM prod_category
+    </select>
+
+    <!-- 상위 카테고리 목록 조회 -->
+    <select id="selectHighCatgList" resultMap="ProdCatgDtoResultMap">
+        SELECT catg_no,
+               name,
+               detail,
+               high_catg_no,
+               is_used,
+               is_disp,
+               first_reg_dt,
+               first_reg_id,
+               last_mod_dt,
+               last_mod_id
+        FROM prod_category
+        WHERE high_catg_no IS NULL
+    </select>
+
+    <!-- 모든 상위 카테고리 목록(하위 카테고리 목록 포함) 조회 -->
+    <select id="selectHighLowList" resultMap="ProductHighCategoryDtoResultMap">
+        SELECT
+               h.catg_no as h_catg_no
+             , h.name as h_name
+             , h.is_used as h_is_used
+             , h.is_disp as h_is_disp
+             , l.catg_no as l_catg_no
+             , l.name as l_name
+             , l.is_used as l_is_usedㄱ5
+             , l.is_disp as l_is_disp
+        FROM prod_category h
+        LEFT JOIN prod_category l
+               ON h.catg_no = l.high_catg_no
+        WHERE h.high_catg_no IS NULL
+        ORDER BY h.catg_no, l.catg_no;
+    </select>
+
+    <!-- 특정 상위 카테고리의 하위 카테고리별 정보 및 상품 개수 조회 - 표시 가능한 것만 -->
+    <!-- Q. 상위 카테고리별로 모든 하위 카테고리 정보를 정제해서 보여주려면 어떻게?-->
+    <!--select id="selectLowCatgList" parameterType ="String" resultType="ProductCategoryDto">
+        SELECT pc.prod_catg_no, pc.name, IFNULL(cnt, 0)
+        FROM (SELECT prod_catg_no, count(prod_num) AS cnt
+              FROM product
+              GROUP BY prod_catg_no) p
+        RIGHT JOIN  prod_category pc ON pc.prod_catg_no = p.prod_catg_no
+        WHERE pc.high_catg_no = #{highCatgNo} AND pc.is_disp = 'Y'
+        ORDER BY pc.name asc;
+    </select-->
+
+    <!-- 카테고리 추가 -->
+    <insert id="insert" parameterType="ProductCategoryDto">
+        insert into prod_category
+            (name, detail, high_catg_no, is_used, is_disp,
+             first_reg_dt, first_reg_id,last_mod_dt, last_mod_id)
+        values (#{name}, #{detail}, #{highCatgNo}, #{isUsed}, #{isDisp},
+                DATE_FORMAT(NOW(), '%Y-%m-%d %T'), #{firstRegId}, DATE_FORMAT(NOW(), '%Y-%m-%d %T'), #{lastModId});
+    </insert>
+
+    <!-- 특정 카테고리 정보 변경 -->
+    <update id="update" parameterType="ProductCategoryDto">
+        update prod_category
+        set  name= #{name},
+             detail=#{detail},
+             high_catg_no = #{highCatgNo},
+             is_used = #{isUsed},
+             is_disp = #{isDisp}
+        where catg_no=#{catgNo};
+    </update>
+
+    <!-- 특정 카테고리 제거 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM prod_category
+        WHERE catg_no = #{catgNo}
+    </delete>
+
+    <!-- 모든 카테고리 제거 -->
+    <delete id="deleteAll">
+        DELETE FROM prod_category
+    </delete>
+
+
+</mapper>
+
+
