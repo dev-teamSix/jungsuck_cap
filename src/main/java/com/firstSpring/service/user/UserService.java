@@ -32,6 +32,10 @@ public interface UserService {
     @LogException
     boolean checkDuplicatedEmail(String id);
 
+    // 임시 비밀번호 메일전송
+    @LogException
+    String sendTempPassword(String id,String email);
+
     // 비밀번호 찾기
     // 새로운 비밀번호로 변경
     boolean modifyUserPwd(String id, String pwd);
