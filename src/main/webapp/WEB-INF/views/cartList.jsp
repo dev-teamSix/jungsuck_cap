@@ -1,34 +1,90 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>fastcampus</title>
-    <link rel="stylesheet" href="<c:url value='/resources/css/menu.css'/>">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/menu.css">
+
+    <script>
+        let msg = "${msg}"
+        if(msg == "CART_IN_OK") alert("카트에 넣었습니다.");
+        if(msg == "CART_IN_ERR") alert("카트에 넣는데 실패했습니다.");
+        if(msg == "CART_DEL_OK") alert("카트에서 삭제했습니다.");
+        if(msg == "CART_DEL_ERR") alert("카트에서 삭제하는데 실패했습니다.");
+        if(msg == "CART_QTY_OK") alert("수량을 변경했습니다.");
+        if(msg == "CART_QTY_ERR") alert("수량을 변경하는데 실패했습니다.");
+    </script>
 </head>
+
 <body>
-<div id="menu">
-    <ul>
-        <li id="logo">fastcampus</li>
-        <li><a href="<c:url value='/'/>">Home</a></li>
-        <li><a href="<c:url value='/cart/cartList'/>">Cart</a></li>
-        <li><a href="<c:url value='/login/login'/>">login</a></li>
-        <li><a href="<c:url value='/register/add'/>">Sign in</a></li>
-        <li><a href=""><i class="fas fa-search small"></i></a></li>
-    </ul>
-</div>
-<script>
-    let msg = "${msg}"
-    if(msg == "CART_IN_OK") alert("카트에 넣었습니다.");
-    if(msg == "CART_IN_ERR") alert("카트에 넣는데 실패했습니다.");
-    if(msg == "CART_DEL_OK") alert("카트에서 삭제했습니다.");
-    if(msg == "CART_DEL_ERR") alert("카트에서 삭제하는데 실패했습니다.");
-    if(msg == "CART_QTY_OK") alert("수량을 변경했습니다.");
-    if(msg == "CART_QTY_ERR") alert("수량을 변경하는데 실패했습니다.");
-</script>
+<header class="main-header">
+    <div class="container">
+        <a href="/" class="logo">
+            <span class="logo-lg"><b>모자의 정석</b></span>
+        </a>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a href="#" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <c:choose>
+                        <c:when test="${!empty sessionUser}">
+                            <button type="button" id="toCart" onclick="location.href='/cart/cartList'">장바구니</button>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        ${sessionUser.name}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <p class="dropdown-item">
+                                        가입일자 : <fmt:formatDate value="${sessionUser.regDt}" pattern="yyyy-MM-dd"/> <br>
+                                        최근 로그인일자 : <fmt:formatDate value="${sessionUser.recentLogin}" pattern="yyyy-MM-dd"/>
+                                    </p>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">게시글</a>
+                                    <a class="dropdown-item" href="#">공지사항</a>
+                                    <a class="dropdown-item" href="#">Q&A</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/login/out" id="logoutButton">
+                                        <i class="glyphicon glyphicon-log-out"></i> 로그아웃
+                                    </a>
+                                </div>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    회원가입 또는 로그인
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <p class="dropdown-item">회원가입 또는 로그인해주세요</p>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<c:url value='/user/register'/>">
+                                        <i class="fa fa-user-plus"></i> 회원가입
+                                    </a>
+                                    <a class="dropdown-item" href="<c:url value='/login/form'/>">
+                                        <i class="glyphicon glyphicon-log-in"></i> 로그인
+                                    </a>
+                                </div>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
 <div class="content" class="content-mg">
 
     <h3 name="experiment" id="experiment" class="font-weight-bold"></h3>
@@ -76,7 +132,7 @@
                                 <div class="fs18 font-weight-light">
                             <span class="input-group mt-2">
                                 <input type="hidden" id="price_${cartItem.cart_item_no}" name="price" value="${cartItem.price}"
-                                        data-price="${cartItem.price}" class="align-self-center mr-2">
+                                       data-price="${cartItem.price}" class="align-self-center mr-2">
                                     ${cartItem.price}원
                                 </input>
                                 <input type="number" name="qty" id="qty_${cartItem.cart_item_no}"
@@ -114,6 +170,7 @@
     </div>
 
 </div>
+
 <script>
     $(document).ready(function () {
 
@@ -160,26 +217,28 @@
                 dataList.push(data);
             });
 
-            paramData['cartItemDtoList'] = dataList;
+            if (dataList.length != 0) {
+                paramData['cartItemDtoList'] = dataList;
 
-            var param = JSON.stringify(paramData);
+                var param = JSON.stringify(paramData);
 
-            $.ajax({
-                url      : url,
-                type     : "POST",
-                // contentType : "application/json",
-                headers : {"content-type" : "application/json"},
-                data     : param,
-                // dataType : "json",
-                cache   : false,
-                success  : function(result, status){
-                    alert("주문이 완료 되었습니다.");
-                    location.replace('/order/list');
-                },
-                error : function(jqXHR, status, error){
-                    alert("주문이 실패했습니다.");
-                }
-            });
+                $.ajax({
+                    url      : url,
+                    type     : "POST",
+                    // contentType : "application/json",
+                    headers : {"content-type" : "application/json"},
+                    data     : param,
+                    // dataType : "json",
+                    cache   : false,
+                    success  : function(result, status){
+                        alert("주문이 완료 되었습니다.");
+                        location.replace('/order/list');
+                    },
+                    error : function(jqXHR, status, error){
+                        alert("주문이 실패했습니다.");
+                    }
+                });
+            }
         });
 
         $(".cartItemQty").on("keyup change click", (e) => {

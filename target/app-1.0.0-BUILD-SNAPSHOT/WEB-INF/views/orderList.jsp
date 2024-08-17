@@ -1,34 +1,90 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>fastcampus</title>
-    <link rel="stylesheet" href="<c:url value='/resources/css/menu.css'/>">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/menu.css">
+
+    <script>
+        let msg = "${msg}"
+        if(msg == "CANCEL_OK") alert("주문이 취소되었습니다.");
+        if(msg == "CANCEL_ERR") alert("주문 취소에 실패했습니다.");
+        if(msg == "ORDER_OK") alert("주문 되었습니다.");
+        if(msg == "ORDER_ERR") alert("주문에 실패했습니다.");
+        if(msg == "CART_ORDER_OK") alert("주문 되었습니다.");
+        if(msg == "CART_ORDER_ERR") alert("주문에 실패했습니다.");
+    </script>
 </head>
+
 <body>
-<div id="menu">
-    <ul>
-        <li id="logo">fastcampus</li>
-        <li><a href="<c:url value='/'/>">Home</a></li>
-        <li><a href="<c:url value='/cart/cartList'/>">Cart</a></li>
-        <li><a href="<c:url value='/login/login'/>">login</a></li>
-        <li><a href="<c:url value='/register/add'/>">Sign in</a></li>
-        <li><a href=""><i class="fas fa-search small"></i></a></li>
-    </ul>
-</div>
-<script>
-    let msg = "${msg}"
-    if(msg == "CANCEL_OK") alert("주문이 취소되었습니다.");
-    if(msg == "CANCEL_ERR") alert("주문 취소에 실패했습니다.");
-    if(msg == "ORDER_OK") alert("주문 되었습니다.");
-    if(msg == "ORDER_ERR") alert("주문에 실패했습니다.");
-    if(msg == "CART_ORDER_OK") alert("주문 되었습니다.");
-    if(msg == "CART_ORDER_ERR") alert("주문에 실패했습니다.");
-</script>
+<header class="main-header">
+    <div class="container">
+        <a href="/" class="logo">
+            <span class="logo-lg"><b>모자의 정석</b></span>
+        </a>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a href="#" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <c:choose>
+                        <c:when test="${!empty sessionUser}">
+                            <button type="button" id="toCart" onclick="location.href='/cart/cartList'">장바구니</button>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        ${sessionUser.name}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <p class="dropdown-item">
+                                        가입일자 : <fmt:formatDate value="${sessionUser.regDt}" pattern="yyyy-MM-dd"/> <br>
+                                        최근 로그인일자 : <fmt:formatDate value="${sessionUser.recentLogin}" pattern="yyyy-MM-dd"/>
+                                    </p>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">게시글</a>
+                                    <a class="dropdown-item" href="#">공지사항</a>
+                                    <a class="dropdown-item" href="#">Q&A</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/login/out" id="logoutButton">
+                                        <i class="glyphicon glyphicon-log-out"></i> 로그아웃
+                                    </a>
+                                </div>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    회원가입 또는 로그인
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <p class="dropdown-item">회원가입 또는 로그인해주세요</p>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<c:url value='/user/register'/>">
+                                        <i class="fa fa-user-plus"></i> 회원가입
+                                    </a>
+                                    <a class="dropdown-item" href="<c:url value='/login/form'/>">
+                                        <i class="glyphicon glyphicon-log-in"></i> 로그인
+                                    </a>
+                                </div>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
 <div  class="content-mg">
 
     <h2 class="mb-4">
@@ -78,6 +134,7 @@
         </c:if>
     </div>
 </div>
+
 <script>
     $(document).ready(function () {    // main()
         $('.cancelBtn').on("click", (e) => {

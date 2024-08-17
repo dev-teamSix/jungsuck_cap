@@ -19,8 +19,8 @@
     <update id="cancelOrder" parameterType="OrderDto">
         UPDATE orders
         SET ord_st_cd = 'C',
-            cnl_dt = now(),
-            last_mod_dt = now(),
+            cnl_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),
+            last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),
             last_mod_id = #{cust_id}
         WHERE ord_no = #{ord_no}
     </update>

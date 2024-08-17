@@ -11,15 +11,15 @@ public class CartItemDto {
     private String prod_name;
     private Integer price;
     private Integer from_cart;
-    private LocalDateTime frst_reg_dt;
+    private String frst_reg_dt;
     private String frst_reg_id;
-    private LocalDateTime last_mod_dt;
+    private String last_mod_dt;
     private String last_mod_id;
 
     public CartItemDto() {
         this.from_cart = 0;
     }
-    public CartItemDto(Integer cart_item_no, Integer cart_no, Integer prod_num, Integer qty, String prod_name, Integer price, Integer from_cart, LocalDateTime frst_reg_dt, String frst_reg_id, LocalDateTime last_mod_dt, String last_mod_id) {
+    public CartItemDto(Integer cart_item_no, Integer cart_no, Integer prod_num, Integer qty, String prod_name, Integer price, Integer from_cart, String frst_reg_dt, String frst_reg_id, String last_mod_dt, String last_mod_id) {
         this.cart_item_no = cart_item_no;
         this.cart_no = cart_no;
         this.prod_num = prod_num;
@@ -81,11 +81,11 @@ public class CartItemDto {
         this.price = price;
     }
 
-    public LocalDateTime getFrst_reg_dt() {
+    public String getFrst_reg_dt() {
         return frst_reg_dt;
     }
 
-    public void setFrst_reg_dt(LocalDateTime frst_reg_dt) {
+    public void setFrst_reg_dt(String frst_reg_dt) {
         this.frst_reg_dt = frst_reg_dt;
     }
 
@@ -97,11 +97,11 @@ public class CartItemDto {
         this.frst_reg_id = frst_reg_id;
     }
 
-    public LocalDateTime getLast_mod_dt() {
+    public String getLast_mod_dt() {
         return last_mod_dt;
     }
 
-    public void setLast_mod_dt(LocalDateTime last_mod_dt) {
+    public void setLast_mod_dt(String last_mod_dt) {
         this.last_mod_dt = last_mod_dt;
     }
 

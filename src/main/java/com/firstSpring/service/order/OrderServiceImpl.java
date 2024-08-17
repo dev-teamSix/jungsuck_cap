@@ -11,6 +11,8 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +27,7 @@ public class OrderServiceImpl implements OrderService {
     public OrderServiceImpl(PlatformTransactionManager transactionManager) {
         this.transactionManager = transactionManager;
     }
+    private final LocalDateTime localDateTimeNow = LocalDateTime.now();
 
     @Autowired
     private OrderDao orderDao;
@@ -69,9 +72,9 @@ public class OrderServiceImpl implements OrderService {
         try {
             if(orderItemDto.getFrom_cart() > 0) {
                 orderItemDto.setOrd_no(orderItemDto.getFrom_cart());
-                orderItemDto.setFrst_reg_dt(now());
+                orderItemDto.setFrst_reg_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderItemDto.setFrst_reg_id(cust_id);
-                orderItemDto.setLast_mod_dt(now());
+                orderItemDto.setLast_mod_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderItemDto.setLast_mod_id(cust_id);
 
                 orderDao.insertItem(orderItemDto);
@@ -84,16 +87,16 @@ public class OrderServiceImpl implements OrderService {
                 OrderDto orderDto = new OrderDto();
                 orderDto.setCust_id(cust_id);
                 orderDto.setOrd_st_cd("O");
-                orderDto.setOrd_dt(now());
+                orderDto.setOrd_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderDto.setCnl_dt(null);
-                orderDto.setFrst_reg_dt(now());
+                orderDto.setFrst_reg_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderDto.setFrst_reg_id(cust_id);
-                orderDto.setLast_mod_dt(now());
+                orderDto.setLast_mod_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderDto.setLast_mod_id(cust_id);
 
-                orderItemDto.setFrst_reg_dt(now());
+                orderItemDto.setFrst_reg_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderItemDto.setFrst_reg_id(cust_id);
-                orderItemDto.setLast_mod_dt(now());
+                orderItemDto.setLast_mod_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderItemDto.setLast_mod_id(cust_id);
 
                 orderDao.insertOrder(orderDto);

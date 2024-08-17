@@ -37,7 +37,10 @@ public class CartDaoImpl implements CartDao {
 
     @Override
     public int selectCartNo(String cust_id) throws Exception {
-        return session.selectOne(namespace+"selectCartNo", cust_id);
+        if (session.selectOne(namespace+"selectCartNo", cust_id) == null)
+            return 0;
+        else
+            return session.selectOne(namespace+"selectCartNo", cust_id);
     }
 
     @Override
