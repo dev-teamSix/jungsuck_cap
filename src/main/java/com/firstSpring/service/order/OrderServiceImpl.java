@@ -3,7 +3,7 @@ package com.firstSpring.service.order;
 import com.firstSpring.dao.order.OrderDao;
 import com.firstSpring.domain.order.OrderDto;
 import com.firstSpring.domain.order.OrderItemDto;
-import lombok.extern.slf4j.Slf4j;
+//import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 import static java.time.LocalDateTime.now;
 
-@Slf4j
+//@Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
     private final PlatformTransactionManager transactionManager;

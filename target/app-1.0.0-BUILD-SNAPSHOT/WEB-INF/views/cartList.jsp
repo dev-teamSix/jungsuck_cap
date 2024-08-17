@@ -173,7 +173,6 @@
 
             var dataList = new Array();
             var paramData = new Object();
-            var data = new Object();
 
             $("input[name=cartChkBox]:checked").each(function() {
                 var cart_item_no = $(this).val();

@@ -1,12 +1,12 @@
 package com.firstSpring.domain.order;
 
-import lombok.Getter;
-import lombok.Setter;
+//import lombok.Getter;
+//import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class CartOrderDto {
 
     private Long cartItemId;
