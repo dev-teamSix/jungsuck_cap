@@ -159,31 +159,6 @@ public class UserServiceImpl implements UserService{
     }
 
 
-    // 비밀번호 찾기
-    // 새로운 비밀번호로 변경
-    @Override
-    @LogException
-    public boolean modifyUserPwd(String id, String pwd) {
-        // 비밀번호 변경 성공여부
-        // 비밀번호 변경 성공 시 true 반환
-        // 비밀번호 변경 실패 시 false 반환
-
-        // 가입회원인지 확인 후 비밀번호 변경 시도
-        // 가입회원이 아닌 경우 비밀번호 변경 실패
-        if (checkExistOfId(id)) {
-            try {
-                String encodePassword = passwordEncoder.encode(pwd); // 비밀번호 암호화
-                userDao.updateUserPwd(id, encodePassword);
-                return true;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
     // 회원가입
     @Override
     @LogException
@@ -313,6 +288,90 @@ public class UserServiceImpl implements UserService{
             e.printStackTrace();
             return -1;
         }
+    }
+
+    // 임시 비밀번호 메일전송
+    // 임시 비밀번호로 회원 비밀번호를 업데이트
+    @Override
+    @LogException
+    @Transactional(rollbackFor = Exception.class)
+    public String sendTempPassword(String id,String email) {
+        String tempPassword = getTempPassword();
+
+        // 메일 제목, 내용
+        String subject = "임시 비밀번호 안내 이메일 입니다.";
+        String content = "홈페이지를 방문해주셔서 감사합니다. "+
+                "회원님의 임시 비밀번호는 "+ tempPassword + " 입니다." +
+                "\r\n" +
+                "로그인 후에 비밀번호를 변경해주세요!";
+
+        // 보내는 사람
+        String from = "0711kyungh@naver.com";
+
+        try {
+            // 메일 내용 넣을 객체와, 이를 도와주는 Helper 객체 생성
+            MimeMessage mail = javaMailSender.createMimeMessage();
+            MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
+
+            // 메일 내용을 채워줌
+            mailHelper.setFrom(from, "관리자"); // 보내는 사람
+            mailHelper.setTo(email); // 받는 사람
+            mailHelper.setSubject(subject); // 제목
+            mailHelper.setText(content); // 내용
+
+            // 메일 전송
+            javaMailSender.send(mail);
+
+            // 임시비밀번호로 회원 비밀번호 업데이트
+            modifyUserPwd(id,tempPassword);
+
+            // 임시비밀번호 반환
+            return tempPassword;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // 비밀번호 찾기
+    // 새로운 비밀번호로 변경
+    @Override
+    @LogException
+    public boolean modifyUserPwd(String id, String pwd) {
+        // 비밀번호 변경 성공여부
+        // 비밀번호 변경 성공 시 true 반환
+        // 비밀번호 변경 실패 시 false 반환
+
+        // 가입회원인지 확인 후 비밀번호 변경 시도
+        // 가입회원이 아닌 경우 비밀번호 변경 실패
+        if (checkExistOfId(id)) {
+            try {
+                String encodePassword = passwordEncoder.encode(pwd); // 비밀번호 암호화
+                userDao.updateUserPwd(id, encodePassword);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    // 임시 비밀번호 생성
+    public String getTempPassword(){
+        char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+        String str = "";
+
+        // 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
+        int idx = 0;
+        for (int i = 0; i < 10; i++) {
+            idx = (int) (charSet.length * Math.random());
+            str += charSet[idx];
+        }
+        return str;
     }
 
     // 암호화 전후 비밀번호 비교

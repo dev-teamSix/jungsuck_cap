@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firstSpring.dao.board.QnaMapper">
+    <!-- 상단공지글로 지정되지 않은 qna게시글 카운터-->
+    <select id="count" parameterType="map" resultType="int">
+        SELECT count(*)
+        FROM qna_board
+        WHERE is_notice ='0'
+        <include refid="searchCondition"/>
+    </select>
+    <!-- 전체 qna게시글 카운터-->
+    <select id="countAll" resultType="int">
+        SELECT count(*)
+        FROM qna_board
+    </select>
+    <!-- 상단공지글로 지정된 qna게시글 카운터-->
+    <select id="countIsNotice" resultType="int">
+        SELECT count(*)
+        FROM qna_board
+        WHERE is_notice ='1'
+    </select>
+    <!-- qna 게시글 insert-->
+    <insert id="insert" parameterType="QnaDto">
+        insert into qna_board(
+            id, group_no, title, content, reg_dt, writer, view_cnt, is_secret, pwd, is_notice, step, depth, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id)
+                values(#{id},#{group_no},#{title}, #{content} ,now(), #{writer}, 0, '0', #{pwd}, #{is_notice}, #{step}, #{depth}, now(), #{frst_reg_id}, now(), #{last_mode_id})
+    </insert>
+    <!-- qna 게시글 delete-->
+    <delete id="delete">
+        DELETE FROM qna_board
+        WHERE bno = #{bno} and writer = #{writer}
+    </delete>
+    <!-- qna 게시글 전체삭제 -->
+    <delete id="deleteAll">
+        DELETE FROM qna_board
+    </delete>
+    <!-- qna 게시글 상세조회 -->
+    <select id="select" parameterType="int" resultType="QnaDto">
+        SELECT bno, id, group_no, title, content, reg_dt, writer, view_cnt, is_secret, pwd, is_notice, step, depth, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM qna_board
+        WHERE bno= #{bno}
+    </select>
+
+    <select id="selectAll" resultType="QnaDto">
+        SELECT bno, id, group_no, title, content, reg_dt, writer, view_cnt, is_secret, pwd, is_notice, step, depth, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM qna_board
+    </select>
+
+    <update id="update" parameterType="QnaDto">
+        UPDATE qna_board
+        SET title = #{title}
+          ,content = #{content}
+          ,writer = #{writer}
+          ,is_notice = #{is_notice}
+          ,last_mode_dt = now()
+          ,last_mode_id = #{id}
+        WHERE bno = #{bno}
+    </update>
+
+    <update id="increaseViewCnt" parameterType="int">
+        UPDATE qna_board
+        SET view_cnt = view_cnt +1
+        WHERE bno = #{bno}
+    </update>
+
+    <select id="getNextKey" resultType="int">
+        SELECT
+            IFNULL(MAX(bno),0) + 1 AS bno
+        FROM
+            qna_board
+    </select>
+
+    <select id="selectQnaNotice" resultType="QnaDto">
+        SELECT bno, id, group_no, title, content, reg_dt, writer, view_cnt, is_secret, pwd, is_notice, step, depth, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM qna_board
+        WHERE TRUE
+          AND is_notice ='1'
+    </select>
+
+    <sql id="selectFromQna">
+        SELECT bno, id, group_no, title, content, reg_dt, writer, view_cnt, is_secret, pwd, is_notice, step, depth, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM qna_board
+        WHERE TRUE
+          AND is_notice ='0'
+    </sql>
+
+    <sql id="searchCondition">
+        <choose>
+            <when test="option_date=='week'">
+                AND reg_dt BETWEEN DATE_SUB(now(), INTERVAL 7 DAY) AND now()
+            </when>
+            <when test="option_date=='month'">
+                AND reg_dt BETWEEN DATE_SUB(now(), INTERVAL 1 MONTH) AND now()
+            </when>
+            <when test="option_date=='month3'">
+                AND reg_dt BETWEEN DATE_SUB(now(), INTERVAL 3 MONTH) AND now()
+            </when>
+        </choose>
+        <choose>
+            <when test="option_key=='title'">
+                AND title LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test="option_key=='writer'">
+                AND writer LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test="option_key=='content'">
+                AND content LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test="option_key=='titleContent'">
+                AND (title   LIKE concat('%', #{keyword}, '%')
+                OR   content LIKE concat('%', #{keyword}, '%'))
+            </when>
+        </choose>
+    </sql>
+
+    <select id="selectPage" parameterType="map" resultType="QnaDto">
+        <include refid="selectFromQna"/>
+        <include refid="searchCondition"/>
+        ORDER BY group_no DESC, bno
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+
+</mapper>

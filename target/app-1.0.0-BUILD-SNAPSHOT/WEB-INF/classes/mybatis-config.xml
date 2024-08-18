@@ -18,5 +18,9 @@
         <typeAlias alias="OrderItemDto" type="com.firstSpring.domain.order.OrderItemDto"/>
         <typeAlias alias="CartDto" type="com.firstSpring.domain.order.CartDto"/>
         <typeAlias alias="CartItemDto" type="com.firstSpring.domain.order.CartItemDto"/>
+        <typeAlias alias="NoticeDto" type="com.firstSpring.domain.board.NoticeDto"/>
+
+        <typeAlias alias="SearchCondition" type="com.firstSpring.domain.board.SearchCondition"/>
+        <typeAlias alias="QnaDto" type="com.firstSpring.domain.board.QnaDto"/>
     </typeAliases>
 </configuration>
