@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface CartService {
-    int insertCart(String cust_id) throws Exception;
+    boolean insertCart(String cust_id) throws Exception;
 
     int insertCartItem(String cust_id, CartItemDto cartItemDto) throws Exception;
 

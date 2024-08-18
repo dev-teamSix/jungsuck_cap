@@ -5,6 +5,7 @@ import com.firstSpring.controller.user.Validator.RegisterValidator;
 import com.firstSpring.domain.user.UserDto;
 import com.firstSpring.entity.LogException;
 import com.firstSpring.entity.ResponseHandler;
+import com.firstSpring.service.order.CartService;
 import com.firstSpring.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,10 +30,13 @@ public class RegisterController {
     private UserService userService;
     private ResponseHandler responseHandler;
 
+    private CartService cartService;
+
     @Autowired
-    public RegisterController(UserService userService,ResponseHandler responseHandler){
+    public RegisterController(UserService userService,ResponseHandler responseHandler,CartService cartService){
         this.userService = userService;
         this.responseHandler = responseHandler;
+        this.cartService = cartService;
     }
 
     // validator 등록
@@ -77,14 +81,14 @@ public class RegisterController {
     // 회원가입 (POST)
     @PostMapping("/save")
     @LogException
-    public String savaUserProcess(@Valid @ModelAttribute("userDto") UserDto userDto, Errors errors, Model model) {
+    public String savaUserProcess(@Valid @ModelAttribute("userDto") UserDto userDto, Errors errors, Model model) throws Exception {
         String register = getString(userDto, errors, model);
         if (register != null) return register;
 
         // saveCustJoinInfo 결과가
         // false -> fail
         // true -> success
-        if(!userService.saveCustJoinInfo(userDto)){
+        if(!userService.saveCustJoinInfo(userDto) && cartService.insertCart(userDto.getId())){
             // 회원가입 실패시 입력 데이터 값을 유지
             model.addAttribute("userDto",userDto);
             model.addAttribute("errorMsg", "회원가입에 실패하셨습니다.");
