@@ -49,7 +49,7 @@
             <th>상위 카테고리 번호</th>
         </tr>
         <c:forEach var="c" items="${categories}">
-            <tr onclick="window.location='<c:url value="/categorys/${c.catgNo}"/>';" style="cursor:pointer;">
+            <tr onclick="window.location='<c:url value="/categorys/read?catgNo=${c.catgNo}"/>';" style="cursor:pointer;">
                 <td>${c.catgNo}</td>
                 <td>${c.name}</td>
                 <td> <input type="checkbox" ${c.isUsed=='Y' || c.isUsed =='y' ? 'checked' : ''} onclick="return false"></td>

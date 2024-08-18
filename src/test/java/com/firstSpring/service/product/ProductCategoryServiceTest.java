@@ -72,7 +72,7 @@ public class ProductCategoryServiceTest {
         prodCatgDto.setHighCatgNo(null); // 상위 카테고리로 세팅
 
         // 1-2. 카테고리 등록
-        assertTrue(prodCatgService.register(prodCatgDto)== 1);
+        assertTrue(prodCatgService.register(prodCatgDto));
         assertTrue(prodCatgDao.selectAll().size() == 1);
 
         // 1-3. 상위 카테고리 여부 결과가 true로 나와야 함
@@ -90,7 +90,7 @@ public class ProductCategoryServiceTest {
         lowCatgDto.setHighCatgNo(highCatgNo);
 
         // 2-3. 하위 카테고리 등록
-        assertTrue(prodCatgService.register(lowCatgDto)== 1);
+        assertTrue(prodCatgService.register(lowCatgDto));
         assertTrue(prodCatgDao.selectAll().size() == 2);
 
         // 2-4. 하위 카테고리 번호 읽어오기
@@ -115,7 +115,7 @@ public class ProductCategoryServiceTest {
         // 1-1. 상위 카테고리 등록
         String name = "카테고리다";
         ProductCategoryDto prodCatgDto = new ProductCategoryDto(null, name);
-        assertTrue(prodCatgService.register(prodCatgDto) == 1);
+        assertTrue(prodCatgService.register(prodCatgDto));
         assertTrue(prodCatgDao.selectAll().size() == 1);
 
         // 1-2. 중복 확인
