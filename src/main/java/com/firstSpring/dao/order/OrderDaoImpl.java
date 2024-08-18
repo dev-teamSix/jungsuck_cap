@@ -46,13 +46,13 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public String selectProdName(Integer prod_num) throws Exception {
-        return session.selectOne(namespace+"selectProdName", prod_num);
+    public String selectProdName(Integer prod_no) throws Exception {
+        return session.selectOne(namespace+"selectProdName", prod_no);
     }
 
     @Override
-    public int selectPrice(String prod_num) throws Exception {
-        return session.selectOne(namespace+"selectPrice", prod_num);
+    public int selectPrice(String prod_no) throws Exception {
+        return session.selectOne(namespace+"selectPrice", prod_no);
     }
 
     @Override
@@ -77,7 +77,12 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public int maxOrdNo() throws Exception {
-        return session.selectOne(namespace+"maxOrdNo");
+        if (session.selectOne(namespace+"maxOrdNo") == null) {
+            return 0;
+        }
+        else {
+            return session.selectOne(namespace+"maxOrdNo");
+        }
     }
 
     @Override
