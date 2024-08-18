@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>fastcampus</title>
-    <link rel="stylesheet" href="<c:url value='/resources/css/menu.css'/>">
+    <link rel="stylesheet" href="<c:url value='/resources/css/order.css'/>">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <ul>
         <li id="logo">fastcampus</li>
         <li><a href="<c:url value='/'/>">Home</a></li>
-        <li><a href="<c:url value='/board/list'/>">Board</a></li>
+        <li><a href="<c:url value='/cart/cartList'/>">Cart</a></li>
         <li><a href="<c:url value='/login/login'/>">login</a></li>
         <li><a href="<c:url value='/register/add'/>">Sign in</a></li>
         <li><a href=""><i class="fas fa-search small"></i></a></li>
@@ -26,7 +26,7 @@
 <form action="" id="form">
     <div class="content" style="margin-left:25%;margin-right:25%">
 
-        <input type="hidden" name="prod_num" id="prod_num" value="1">
+        <input type="hidden" name="prod_no" id="prod_no" value="1">
         <input type="hidden" id="from_cart" name="from_cart" value="${maxOrdNo} + 1">
 
         <div class="d-flex">

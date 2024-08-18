@@ -6,13 +6,13 @@ import java.util.Objects;
 public class CartDto {
     private Integer cart_no;
     private String cust_id;
-    private LocalDateTime frst_reg_dt;
+    private String frst_reg_dt;
     private String frst_reg_id;
-    private LocalDateTime last_mod_dt;
+    private String last_mod_dt;
     private String last_mod_id;
 
     public CartDto() {}
-    public CartDto(Integer cart_no, String cust_id, LocalDateTime frst_reg_dt, String frst_reg_id, LocalDateTime last_mod_dt, String last_mod_id) {
+    public CartDto(Integer cart_no, String cust_id, String frst_reg_dt, String frst_reg_id, String last_mod_dt, String last_mod_id) {
         this.cart_no = cart_no;
         this.cust_id = cust_id;
         this.frst_reg_dt = frst_reg_dt;
@@ -37,11 +37,11 @@ public class CartDto {
         this.cust_id = cust_id;
     }
 
-    public LocalDateTime getFrst_reg_dt() {
+    public String getFrst_reg_dt() {
         return frst_reg_dt;
     }
 
-    public void setFrst_reg_dt(LocalDateTime frst_reg_dt) {
+    public void setFrst_reg_dt(String frst_reg_dt) {
         this.frst_reg_dt = frst_reg_dt;
     }
 
@@ -53,11 +53,11 @@ public class CartDto {
         this.frst_reg_id = frst_reg_id;
     }
 
-    public LocalDateTime getLast_mod_dt() {
+    public String getLast_mod_dt() {
         return last_mod_dt;
     }
 
-    public void setLast_mod_dt(LocalDateTime last_mod_dt) {
+    public void setLast_mod_dt(String last_mod_dt) {
         this.last_mod_dt = last_mod_dt;
     }
 

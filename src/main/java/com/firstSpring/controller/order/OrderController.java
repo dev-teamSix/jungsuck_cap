@@ -2,6 +2,7 @@ package com.firstSpring.controller.order;
 
 import com.firstSpring.domain.order.OrderDto;
 import com.firstSpring.domain.order.OrderItemDto;
+import com.firstSpring.domain.user.UserDto;
 import com.firstSpring.entity.PageHandler;
 import com.firstSpring.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,31 +30,29 @@ public class OrderController {
         // 1. 세션을 얻어서
         HttpSession session = request.getSession();
         // 2. 세션에 id가 있는지 확인, 있으면 true를 반환
-        return session.getAttribute("id")!=null;
+        return session.getAttribute("sessionUser")!=null;
     }
 
 //    HttpServletRequest request;
 //    HttpSession session = request.getSession();
 //    String cust_id = (String) session.getAttribute("id");
 
-    @GetMapping("/tempItemPage")
-    public String tempItemPage() {
-        return "itemDtl";
-    }
-
     @PostMapping("/ordering")
     public String ordering(OrderItemDto orderItemDto, Integer page, Integer pageSize, Model m, HttpServletRequest request, HttpSession session, RedirectAttributes rattr) {
         try {
-//            if(!loginCheck(request))
-//            return "redirect:/login/login?toURL="+request.getRequestURL();  // 로그인을 안했으면 로그인 화면으로 이동
+            if(!loginCheck(request))
+                return "redirect:/login/form";  // 로그인을 안했으면 로그인 화면으로 이동
 
             m.addAttribute("page", page);
             m.addAttribute("pageSize", pageSize);
 
             // 현재 사용자
 //            String cust_id = (String) session.getAttribute("id");
-//            String cust_id = (String) request.getSession().getAttribute("id");
-            String cust_id = "asdf";
+            String cust_id = ((UserDto) request.getSession().getAttribute("sessionUser")).getId();
+//            String cust_id = "asdf";
+
+            Integer col_no = Integer.valueOf(request.getParameter("color"));
+            orderItemDto.setCol_no(col_no);
 
             int success = orderService.order(orderItemDto, cust_id);
 
@@ -72,11 +71,13 @@ public class OrderController {
 
     @GetMapping("/list")
     public String orderList(Integer page, Integer pageSize, Model m, HttpServletRequest request) {
-//        if(!loginCheck(request))
-//            return "redirect:/login/login?toURL="+request.getRequestURL();  // 로그인을 안했으면 로그인 화면으로 이동
-        // 회원 기능 주석처리
-//        String cust_id = (String) request.getSession().getAttribute("id");
-        String cust_id = "asdf";
+        if(!loginCheck(request))
+            return "redirect:/login/form";  // 로그인을 안했으면 로그인 화면으로 이동
+
+//         회원 기능 주석처리
+//        String cust_id = (String) request.getSession().getAttribute("sessionUser");
+        String cust_id = ((UserDto) request.getSession().getAttribute("sessionUser")).getId();
+//        String cust_id = "asdf";
         if(page == null) page = 1;
         if(pageSize == null) pageSize = 5;
 
@@ -113,8 +114,8 @@ public class OrderController {
             m.addAttribute("pageSize", pageSize);
 
             // 현재 사용자
-//            String cust_id = (String) session.getAttribute("id");
-            String cust_id = "asdf";
+            String cust_id = ((UserDto) session.getAttribute("sessionUser")).getId();
+//            String cust_id = "asdf";
 
             orderDto.setCust_id(cust_id);
 

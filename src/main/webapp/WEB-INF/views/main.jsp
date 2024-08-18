@@ -92,8 +92,9 @@
             text-decoration: underline;
         }
     </style>
-<body>
+</head>
 
+<body>
 <header class="main-header">
     <div class="container">
         <a href="/" class="logo">
@@ -150,6 +151,5 @@
         </nav>
     </div>
 </header>
-
 </body>
 </html>
