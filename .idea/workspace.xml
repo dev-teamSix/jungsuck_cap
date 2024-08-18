@@ -9,10 +9,57 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="gitignore 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25511897-d6d8-4383-a184-56c52f3de22a.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25511897-d6d8-4383-a184-56c52f3de22a/storage_v2/_src_/schema/hatmall.L9OjKQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/CartOrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/CartOrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/CartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/CartDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/CartDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/CartDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/CartDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/OrderDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/OrderDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/OrderDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/OrderDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/CartDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/CartDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/CartItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/CartItemDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderItemDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/entity/PageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/entity/PageHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/exception/OutOfStockException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/exception/OutOfStockException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/CartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/CartService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/CartServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/CartServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/OrderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/OrderServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/cartList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/cartList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/CartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/CartDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/CartDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/CartDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/CartDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/OrderDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/OrderDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/OrderDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/OrderDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartItemDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderItemDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/entity/PageHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/entity/PageHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/exception/OutOfStockException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/exception/OutOfStockException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/CartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/CartService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/CartServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/CartServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/OrderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/OrderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/firstSpring/dao/order/CartDaoImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/firstSpring/dao/order/CartDaoImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/firstSpring/dao/order/OrderDaoImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/firstSpring/dao/order/OrderDaoImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/firstSpring/entity/PageHandlerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/firstSpring/entity/PageHandlerTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +70,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="CSS File" />
-        <option value="Interface" />
         <option value="JUnit4 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
         <option value="Jsp File" />
       </list>
@@ -39,9 +85,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6c75d2cc-a8ee-4624-89f5-112ce31362b5/console.sql" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -50,7 +93,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -62,80 +105,71 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.ProductCategoryDaoTest.deleteTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryDaoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryDaoTest.insertTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryDaoTest.selectHighCatg.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryDaoTest.selectHighLowListTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryDaoTest.selectListByNameTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryDaoTest.selectTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryDaoTest.updateTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryServiceTest.RegisterExTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryServiceTest.isDuplicatedName.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryServiceTest.isHighCatg.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductCategoryServiceTest.register.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductColorDaoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductColorDaoTest.selectListByProd.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.countAllTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.countTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.delete.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.increaseViewCnt.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.increaseViewCntExceptionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.insertExceptionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.insertFailTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.insertTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.selectExceptionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.selectListExceptionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.selectListTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.selectListWithJoinTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.selectTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.updateInfo.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.updateInfoExceptionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductDaoTest.updateInfoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductServiceTest.getList.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductServiceTest.modifyTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductServiceTest.read.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductServiceTest.readDetailTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductServiceTest.readTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProductServiceTest.removeTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.821.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/yunseo/toy-project/toy2/jungsuck_cap/src/main/webapp/resources/images/product&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DBConnectionTest.executor": "Run",
+    "JUnit.NoticeDaoImplTest.Test.executor": "Run",
+    "JUnit.NoticeDaoImplTest.count.executor": "Run",
+    "JUnit.NoticeDaoImplTest.delete.executor": "Run",
+    "JUnit.NoticeDaoImplTest.deleteAll.executor": "Run",
+    "JUnit.NoticeDaoImplTest.executor": "Run",
+    "JUnit.NoticeDaoImplTest.getNextKey.executor": "Run",
+    "JUnit.NoticeDaoImplTest.increaseViewCnt.executor": "Run",
+    "JUnit.NoticeDaoImplTest.insert.executor": "Run",
+    "JUnit.NoticeDaoImplTest.insert2.executor": "Run",
+    "JUnit.NoticeDaoImplTest.insert3.executor": "Run",
+    "JUnit.NoticeDaoImplTest.searchCountTest.executor": "Run",
+    "JUnit.NoticeDaoImplTest.searchSelectPageTest.executor": "Run",
+    "JUnit.NoticeDaoImplTest.select.executor": "Run",
+    "JUnit.NoticeDaoImplTest.selectAll.executor": "Debug",
+    "JUnit.NoticeDaoImplTest.selectPage.executor": "Run",
+    "JUnit.NoticeDaoImplTest.test.executor": "Run",
+    "JUnit.NoticeDaoImplTest.update.executor": "Run",
+    "JUnit.NoticeServiceImplTest.modify.executor": "Run",
+    "JUnit.NoticeServiceImplTest.read.executor": "Run",
+    "JUnit.NoticeServiceImplTest.remove.executor": "Run",
+    "JUnit.NoticeServiceImplTest.write.executor": "Run",
+    "JUnit.QnaDaoImplTest.count.executor": "Run",
+    "JUnit.QnaDaoImplTest.deleteTest.executor": "Run",
+    "JUnit.QnaDaoImplTest.insertTest.executor": "Run",
+    "JUnit.QnaDaoImplTest.selectTest.executor": "Run",
+    "JUnit.QnaDaoImplTest.updateTest.executor": "Run",
+    "JUnit.QnaDaoImplTest.viewCntTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "StatusDashboardGroupingRule": "true",
+    "Tomcat Server.Tomcat 9.0.821.executor": "Run",
+    "Tomcat Server.Tomcat 9.0.91.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "git-widget-placeholder": "dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/sukmo/IdeaProjects/jungsuck_cap/src/main/webapp/WEB-INF/views/board",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.30804598",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql_aurora_aws",
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\yunseo\toy-project\toy2\jungsuck_cap\src\main\webapp\resources\images\product" />
-      <recent name="C:\yunseo\toy-project\toy2\jungsuck_cap\src\main\resources\mapper" />
+      <recent name="C:\Users\sukmo\IdeaProjects\jungsuck_cap\src\main\webapp\WEB-INF\views\board" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\service" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\domain" />
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\dao" />
+      <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\controller\order" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\resources" />
@@ -143,100 +177,105 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="com.firstSpring.service.product" />
-      <recent name="com.firstSpring.dao.product" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.firstSpring.service.product" />
-      <recent name="com.firstSpring.dao.product" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.firstSpring.domain.product" />
+      <recent name="com.firstSpring.dao.board" />
+      <recent name="com.firstSpring.service.board" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.821">
-    <configuration name="ProductCategoryDaoTest.selectHighCatg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="logging.level.jdbc.sqltiming=DEBUG logging.level.jdbc.resultsettable=DEBUG logging.level.jdbc.connection=DEBUG" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.91">
+    <configuration name="QnaDaoImplTest.count" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.dao.product.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.dao.product" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.product.ProductCategoryDaoTest" />
-      <option name="METHOD_NAME" value="selectHighCatg" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="count" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductCategoryDaoTest.selectListByNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QnaDaoImplTest.deleteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.dao.product.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.dao.product" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.product.ProductCategoryDaoTest" />
-      <option name="METHOD_NAME" value="selectListByNameTest" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="deleteTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductCategoryServiceTest.isDuplicatedName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QnaDaoImplTest.selectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.service.product.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.service.product" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.service.product.ProductCategoryServiceTest" />
-      <option name="METHOD_NAME" value="isDuplicatedName" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="selectTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductCategoryServiceTest.isHighCatg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QnaDaoImplTest.updateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.service.product.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.service.product" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.service.product.ProductCategoryServiceTest" />
-      <option name="METHOD_NAME" value="isHighCatg" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="updateTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductServiceTest.readTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="QnaDaoImplTest.viewCntTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.firstSpring.service.product.*" />
+          <option name="PATTERN" value="com.firstSpring.dao.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.firstSpring.service.product" />
-      <option name="MAIN_CLASS_NAME" value="com.firstSpring.service.product.ProductServiceTest" />
-      <option name="METHOD_NAME" value="readTest" />
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.board" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.board.QnaDaoImplTest" />
+      <option name="METHOD_NAME" value="viewCntTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.821" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.91" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$PROJECT_DIR$/../../../../jdk-11.0.23">
+    <configuration name="Tomcat 9.0.91" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.822" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -245,16 +284,21 @@
             <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
+        <file path="$PROJECT_DIR$">
+          <settings>
+            <option name="CONTEXT_PATH" value="/jungsuck_cap" />
+          </settings>
+        </file>
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="b40ab88a-25ca-456e-a4b2-411e51c18cec" />
-        <option name="HTTP_PORT" value="8020" />
+        <option name="HTTP_PORT" value="80" />
       </server-settings>
+      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
+      <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
+      <log_file alias="Tomcat Localhost Access Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*" />
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="50869" />
       </RunnerSettings>
@@ -412,20 +456,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ProductServiceTest.readTest" />
-      <item itemvalue="JUnit.ProductCategoryDaoTest.selectHighCatg" />
-      <item itemvalue="JUnit.ProductCategoryDaoTest.selectListByNameTest" />
-      <item itemvalue="JUnit.ProductCategoryServiceTest.isDuplicatedName" />
-      <item itemvalue="JUnit.ProductCategoryServiceTest.isHighCatg" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.821" />
+      <item itemvalue="JUnit.QnaDaoImplTest.count" />
+      <item itemvalue="JUnit.QnaDaoImplTest.deleteTest" />
+      <item itemvalue="JUnit.QnaDaoImplTest.selectTest" />
+      <item itemvalue="JUnit.QnaDaoImplTest.updateTest" />
+      <item itemvalue="JUnit.QnaDaoImplTest.viewCntTest" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.91" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductServiceTest.readTest" />
-        <item itemvalue="JUnit.ProductCategoryServiceTest.isDuplicatedName" />
-        <item itemvalue="JUnit.ProductCategoryDaoTest.selectListByNameTest" />
-        <item itemvalue="JUnit.ProductCategoryServiceTest.isHighCatg" />
-        <item itemvalue="JUnit.ProductCategoryDaoTest.selectHighCatg" />
+        <item itemvalue="JUnit.QnaDaoImplTest.count" />
+        <item itemvalue="JUnit.QnaDaoImplTest.deleteTest" />
+        <item itemvalue="JUnit.QnaDaoImplTest.updateTest" />
+        <item itemvalue="JUnit.QnaDaoImplTest.viewCntTest" />
+        <item itemvalue="JUnit.QnaDaoImplTest.selectTest" />
       </list>
     </recent_temporary>
   </component>
@@ -446,19 +490,18 @@
       <option name="presentableId" value="Default" />
       <updated>1722951440047</updated>
       <workItem from="1722951441084" duration="5883000" />
-      <workItem from="1723077484948" duration="43978000" />
-      <workItem from="1723133992831" duration="12647000" />
-      <workItem from="1723163660031" duration="24741000" />
-      <workItem from="1723268312703" duration="17547000" />
-      <workItem from="1723424283603" duration="4193000" />
-      <workItem from="1723433336909" duration="28998000" />
-      <workItem from="1723511416348" duration="1677000" />
-      <workItem from="1723513139327" duration="27396000" />
-      <workItem from="1723598245891" duration="35889000" />
-      <workItem from="1723684100795" duration="30836000" />
-      <workItem from="1723759149039" duration="7074000" />
-      <workItem from="1723770437540" duration="23780000" />
-      <workItem from="1723942634920" duration="3491000" />
+      <workItem from="1723000627898" duration="24475000" />
+      <workItem from="1723079491417" duration="14900000" />
+      <workItem from="1723102245024" duration="16883000" />
+      <workItem from="1723164276142" duration="24131000" />
+      <workItem from="1723271223840" duration="10692000" />
+      <workItem from="1723284938089" duration="7401000" />
+      <workItem from="1723424333185" duration="35004000" />
+      <workItem from="1723510330538" duration="35975000" />
+      <workItem from="1723596460481" duration="36214000" />
+      <workItem from="1723684991957" duration="34589000" />
+      <workItem from="1723770240726" duration="18504000" />
+      <workItem from="1723799356663" duration="1871000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
@@ -476,21 +519,21 @@
       <option name="project" value="LOCAL" />
       <updated>1722994961898</updated>
     </task>
-    <task id="LOCAL-00003" summary="병합 후 문제 해결">
+    <task id="LOCAL-00003" summary="최초 커밋(2차리뷰 끝)">
       <option name="closed" value="true" />
-      <created>1723802375708</created>
+      <created>1723798748821</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1723802375708</updated>
+      <updated>1723798748821</updated>
     </task>
-    <task id="LOCAL-00004" summary="gitignore 수정">
+    <task id="LOCAL-00004" summary="최초 커밋(2차리뷰 끝)">
       <option name="closed" value="true" />
-      <created>1723946715461</created>
+      <created>1723804453862</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1723946715462</updated>
+      <updated>1723804453862</updated>
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
@@ -509,7 +552,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="product" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -524,12 +567,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init : first commit" />
     <MESSAGE value="init : server test" />
-    <MESSAGE value="병합 후 문제 해결" />
-    <MESSAGE value="gitignore 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore 수정" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <MESSAGE value="최초 커밋(2차리뷰 끝)" />
+    <option name="LAST_COMMIT_MESSAGE" value="최초 커밋(2차리뷰 끝)" />
   </component>
 </project>

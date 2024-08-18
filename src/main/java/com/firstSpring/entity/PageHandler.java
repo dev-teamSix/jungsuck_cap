@@ -1,8 +1,11 @@
 package com.firstSpring.entity;
 
+import com.firstSpring.domain.board.SearchCondition;
+
 import java.util.Objects;
 
 public class PageHandler {
+    private SearchCondition sc;
     private int navSize = 10; // 내비게이션 크기
     private int totalCnt; // 총 게시물 갯수
     private Integer page; // 현재 페이지
@@ -24,9 +27,6 @@ public class PageHandler {
 
     public PageHandler(){} // 기본 생성자
 
-    public PageHandler(Integer totalCnt,Integer page) {
-        this(totalCnt,page,10);
-    }
 
     public PageHandler(Integer totalCnt,Integer page,Integer pageSize) {
         this.totalCnt = totalCnt;
@@ -38,6 +38,15 @@ public class PageHandler {
         this.prevPage = beginPage != 1;
         this.nextPage = endPage != totalPage;
         this.offset = (this.page-1)*this.pageSize;
+    }
+
+    void print() {
+        System.out.println("page = " + page);
+        System.out.print(prevPage ? "[PREV] " : "");
+        for (int i = beginPage; i <= endPage; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println(nextPage ? " [NEXT]" : "");
     }
 
     @Override
