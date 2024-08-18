@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-<head>
+ <head>
     <title>Title</title>
     <link rel="stylesheet" href="<c:url value='/resources/css/product.css'/>"/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

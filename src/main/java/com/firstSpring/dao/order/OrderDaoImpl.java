@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class OrderDaoImpl implements OrderDao {
+public class  OrderDaoImpl implements OrderDao {
     @Autowired
     private SqlSession session;
     private static String namespace = "com.firstSpring.dao.order.OrderMapper.";

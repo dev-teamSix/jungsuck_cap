@@ -5,7 +5,7 @@ import com.firstSpring.domain.board.QnaDto;
 import java.util.List;
 import java.util.Map;
 
-public interface QnaDao {
+public interface  QnaDao {
 
     //상단 미지정(미공지) 게시글카운터 조회
     int count(Map map) throws Exception;

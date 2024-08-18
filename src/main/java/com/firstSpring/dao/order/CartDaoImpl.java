@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class CartDaoImpl implements CartDao {
+public class  CartDaoImpl implements CartDao {
     @Autowired
     private SqlSession session;
     private static String namespace="com.firstSpring.dao.order.CartMapper.";

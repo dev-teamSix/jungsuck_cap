@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class UserDaoImpl implements UserDao {
+public class  UserDaoImpl implements UserDao {
 
     @Autowired
     private SqlSession session;

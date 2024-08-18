@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("/categorys")
-public class ProdCatgController {
+public class  ProdCatgController {
     @Autowired
     ProductCategoryService prodCatgService;
 

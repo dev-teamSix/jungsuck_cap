@@ -104,7 +104,7 @@ public class RegisterController {
     // ID 중복확인 (POST)
     @PostMapping("/checkDuplicatedId")
     @ResponseBody
-    @LogException
+     @LogException
     public ResponseEntity<Map<String, Object>> checkDuplicatedId(@RequestParam("id") String id) {
         // 아이디 중복이면 -> fail
         // 아이디 중복이 아니면 -> success

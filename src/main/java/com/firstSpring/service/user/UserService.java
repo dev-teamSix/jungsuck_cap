@@ -6,7 +6,7 @@ import org.springframework.validation.Errors;
 
 import java.util.Map;
 
-public interface UserService {
+public interface  UserService {
     // 로그인 시 최근 로그인 일시 업데이트
     int updateRecentLoginHist(String id) throws Exception;
 

@@ -5,7 +5,7 @@ import com.firstSpring.domain.board.FaqDto;
 import java.util.List;
 import java.util.Map;
 
-public class FaqDaoImpl implements FaqDao {
+public class  FaqDaoImpl implements FaqDao {
     @Override
     public int count(Map map) throws Exception {
         return 0;

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class QnaServiceImpl implements QnaService {
+public class  QnaServiceImpl implements QnaService {
 
     @Autowired
     private QnaDao qnaDao;

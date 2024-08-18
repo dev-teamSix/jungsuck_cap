@@ -32,7 +32,7 @@ public class LoginController {
         binder.setValidator(new LoginValidator());
     }
 
-    // 에러 메세지 반환 메서드
+     // 에러 메세지 반환 메서드
     private String getString(UserDto userDto, Errors errors, RedirectAttributes ra) {
         if (errors.hasErrors()) {
             ra.addFlashAttribute("userDto", userDto); // 입력했던 기존 ID,PWD 전달

@@ -5,7 +5,7 @@ import com.firstSpring.domain.board.NoticeDto;
 import java.util.List;
 import java.util.Map;
 
-public interface NoticeService {
+public interface  NoticeService {
 
     //공지사항 전체 (all)
     int getAllCount() throws Exception;

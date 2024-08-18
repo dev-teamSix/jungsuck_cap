@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class ProductDaoImpl implements ProductDao {
+public class  ProductDaoImpl implements ProductDao {
     @Autowired
     SqlSession session;
 

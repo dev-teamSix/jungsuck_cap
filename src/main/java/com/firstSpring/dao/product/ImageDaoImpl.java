@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ImageDaoImpl implements ImageDao {
+public class  ImageDaoImpl implements ImageDao {
     @Autowired
     SqlSession session;
 

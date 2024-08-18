@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/cart")
-public class CartController {
+public class  CartController {
     @Autowired
     CartService cartService;
     @Autowired

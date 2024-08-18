@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/qna")
-public class QnaController {
+public class  QnaController {
     @Autowired
     QnaService qnaService;
 

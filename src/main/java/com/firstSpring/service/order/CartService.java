@@ -5,7 +5,7 @@ import com.firstSpring.domain.order.CartItemDto;
 import java.util.List;
 import java.util.Map;
 
-public interface CartService {
+public interface  CartService {
     boolean insertCart(String cust_id) throws Exception;
 
     int insertCartItem(String cust_id, CartItemDto cartItemDto) throws Exception;

@@ -6,7 +6,7 @@ import com.firstSpring.domain.order.CartItemDto;
 import java.util.List;
 import java.util.Map;
 
-public interface CartDao {
+public interface  CartDao {
     int insertCart(CartDto cartDto) throws Exception;
 
     int insertCartItem(CartItemDto cartItemDto) throws Exception;

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class NoticeDaoImpl implements NoticeDao{
+public class  NoticeDaoImpl implements NoticeDao{
     @Autowired
     private SqlSession session;
     private static String namespace = "com.firstSpring.dao.board.NoticeMapper.";

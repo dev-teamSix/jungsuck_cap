@@ -6,7 +6,7 @@ import com.firstSpring.domain.order.OrderItemDto;
 import java.util.List;
 import java.util.Map;
 
-public interface OrderDao {
+public interface  OrderDao {
     int increaseInvAmnt(Map map) throws Exception;
 
     int decreaseInvAmnt(Map map) throws Exception;
