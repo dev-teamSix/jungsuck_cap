@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--<mapper namespace="com.firstSpring.dao.NoticeMapper">-->
+ <mapper namespace="com.firstSpring.dao.board.NoticeMapper">
+
+    <!-- 상단공지글로 지정되지 않은 공지글 카운터-->
+    <select id="count" parameterType="map" resultType="int">
+        SELECT count(*)
+        FROM notice_board
+        WHERE is_notice ='0'
+        <include refid="searchCondition"/>
+    </select>
+
+    <!-- 상단공지글로 지정된 공지글 카운터-->
+    <select id="countIsNotice" parameterType="map" resultType="int">
+        SELECT count(*)
+        FROM notice_board
+        WHERE is_notice ='1'
+    </select>
+    <!--공지사항에 등록된 공지글 전체 카운터-->
+    <select id="allCount" resultType="int">
+        SELECT count(*)
+        FROM notice_board
+    </select>
+
+
+    <select id="selectAll" resultType="NoticeDto">
+        SELECT bno, id, title, content, writer, reg_dt, view_cnt, is_notice, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM notice_board
+        ORDER BY reg_dt, bno DESC
+    </select>
+
+    <insert id="insert" parameterType="NoticeDto">
+        INSERT INTO notice_board
+            (id, title, content, writer,reg_dt,view_cnt,is_notice,frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id)
+        VALUES
+            (#{id},#{title},#{content},#{writer},now(),0,#{is_notice},now(),#{id},now(),#{id})
+    </insert>
+
+    <insert id="insert2" parameterType="NoticeDto">
+        INSERT INTO notice_board
+            (id, title, content, writer,reg_dt)
+        VALUES
+            (#{id},#{title},#{content},#{writer},now())
+    </insert>
+
+    <insert id="insert3" parameterType="NoticeDto">
+        INSERT INTO notice_board
+        (id, title, content, writer,reg_dt,view_cnt,is_notice,frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id)
+        VALUES
+            (#{id},#{title},#{content},#{writer},DATE_SUB(now(), INTERVAL 3 DAY),#{view_cnt},#{is_notice},DATE_SUB(now(), INTERVAL 3 DAY),#{id},DATE_SUB(now(), INTERVAL 3 DAY),#{id})
+    </insert>
+
+    <delete id="deleteAll">
+        DELETE FROM notice_board
+    </delete>
+
+    <delete id="deleteForAdmin">
+        DELETE FROM notice_board WHERE bno = #{bno}
+    </delete>
+
+    <delete id="delete">
+        DELETE FROM notice_board WHERE bno = #{bno} and writer = #{writer}
+    </delete>
+
+    <sql id="selectFromNotice">
+        select bno, id, title, content, reg_dt, writer, view_cnt, is_notice, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM notice_board
+        WHERE TRUE
+        AND is_notice ='0'
+    </sql>
+
+    <select id="selectFromNotNoticeList" resultType="NoticeDto">
+        select bno, id, title, content, reg_dt, writer, view_cnt, is_notice, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM notice_board
+        WHERE is_notice ='0'
+    </select>
+
+    <select id="selectNoticeList" resultType="NoticeDto">
+        select bno, id, title, content, reg_dt, writer, view_cnt, is_notice, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM notice_board
+        WHERE is_notice ='1'
+
+    </select>
+    <select id="select" parameterType="int" resultType="NoticeDto">
+        select bno, id, title, content, reg_dt, writer, view_cnt, is_notice, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM notice_board
+        WHERE bno = #{bno}
+    </select>
+
+    <select id="selectPage" parameterType="map" resultType="NoticeDto">
+        <include refid="selectFromNotice"/>
+        <include refid="searchCondition"/>
+            ORDER BY reg_dt DESC, bno DESC
+            LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <update id="update" parameterType="NoticeDto">
+        UPDATE notice_board
+        SET title =#{title}
+            ,content = #{content}
+            ,writer = #{writer}
+            ,is_notice = #{is_notice}
+            ,last_mode_dt = now()
+            ,last_mode_id = #{id}
+        WHERE bno = #{bno}
+    </update>
+
+    <update id="increaseViewCnt" parameterType="int">
+        UPDATE notice_board
+        SET view_cnt = view_cnt +1
+        WHERE bno = #{bno}
+    </update>
+
+    <select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+        SELECT count(*)
+        FROM  notice_board
+        WHERE true
+        AND is_notice='0'
+        <include refid="searchCondition"/>
+        </select>
+
+    <select id="selectNoticeSearch" parameterType="SearchCondition" resultType="NoticeDto">
+        select bno, id, title, content, reg_dt, writer, view_cnt, is_notice, frst_reg_dt, frst_reg_id, last_mode_dt, last_mode_id
+        FROM  notice_board
+        WHERE true
+        AND is_notice='0'
+        <include refid="searchCondition"/>
+        ORDER BY reg_dt DESC, bno DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <sql id="searchCondition">
+        <choose>
+            <when test="option_date=='week'">
+                AND reg_dt BETWEEN DATE_SUB(now(), INTERVAL 7 DAY) AND now()
+            </when>
+            <when test="option_date=='month'">
+                AND reg_dt BETWEEN DATE_SUB(now(), INTERVAL 1 MONTH) AND now()
+            </when>
+            <when test="option_date=='month3'">
+                AND reg_dt BETWEEN DATE_SUB(now(), INTERVAL 3 MONTH) AND now()
+            </when>
+        </choose>
+        <choose>
+            <when test="option_key=='title'">
+                AND title LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test="option_key=='writer'">
+                AND writer LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test="option_key=='content'">
+                AND content LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test="option_key=='titleContent'">
+                AND (title   LIKE concat('%', #{keyword}, '%')
+                OR   content LIKE concat('%', #{keyword}, '%'))
+            </when>
+        </choose>
+    </sql>
+
+    <select id="getNextKey" resultType="int">
+        SELECT
+            IFNULL(MAX(bno),0) + 1 AS bno
+        FROM
+            notice_board
+    </select>
+
+
+</mapper>
