@@ -210,15 +210,15 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="email" id="findEmailInput" placeholder="이메일을 입력해주세요.">
-                        <button type="button" id="checkEmailButton" class="btn btn-primary mt-2">인증번호 발송</button>
+                        <button type="button" id="checkEmailButton" class="btn btn-primary mt-2">임시 비밀번호 발송</button>
                     </div>
 
                     <!-- AJAX 성공 시 표시되는 부분 -->
                     <div class="form-group" id="emailInfo" style="display: none;">
-                        <span class="text-info">인증번호 발송은 서버 상황에 따라 5초에서 10초 정도 시간이 걸릴 수 있습니다.</span>
+                        <span class="text-info">임시 비밀번호 발송은 서버 상황에 따라 5초에서 10초 정도 시간이 걸릴 수 있습니다.</span>
                     </div>
                     <div class="form-group" id="emailCodeInput" style="display: none;">
-                        <input class="form-control" id="checkEmail" type="text" placeholder="인증번호를 입력해주세요." aria-label="default input example">
+                        <input class="form-control" id="checkEmail" type="text" placeholder="임시 비밀번호를 입력해주세요." aria-label="default input example">
                         <div class="error-message" id="alertCertified"></div>
                     </div>
                     <!-- AJAX 실패 시 표시되는 부분 -->
@@ -226,15 +226,15 @@
                         <span class="error-message">가입 시 입력하신 회원 정보가 맞는지 다시 한번 확인해 주세요.</span>
                     </div>
 
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="password" id="findPwInput" placeholder="새 비밀번호를 입력해주세요." disabled="disabled">
-                        <div class="error-message" id="alertPassword"></div>
-                    </div>
+<%--                    <div class="form-group">--%>
+<%--                        <input type="password" class="form-control" name="password" id="findPwInput" placeholder="새 비밀번호를 입력해주세요." disabled="disabled">--%>
+<%--                        <div class="error-message" id="alertPassword"></div>--%>
+<%--                    </div>--%>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary" id="updatePW" disabled="disabled">수정</button>
+                <button type="button" class="btn btn-primary" id="updatePW" disabled="disabled">확인</button>
             </div>
         </div>
     </div>
@@ -303,7 +303,7 @@
             // 본인인증 (id, email 전달)
             $.ajax({
                 type: 'POST',
-                url: '/find/authentication',
+                url: '/find/pwd',
                 data: { email: email, id: id },
                 success: function(data) {
                     if (data.result == 'fail') {
@@ -317,7 +317,7 @@
                         $('#emailInfo').show();
                         $('#emailCodeInput').show();
                         $('#alertEmail').hide(); // 오류 메시지 숨김
-                        $("#alertCertified").text("! 인증번호를 입력해주세요.");
+                        $("#alertCertified").text("! 비밀번호를 입력해주세요.");
                         $("#alertCertified").css({
                             "color": "red",
                             "font-size": "15px"
@@ -326,7 +326,6 @@
                         code = data.code; // 인증번호 저장
 
                         $('#checkEmail').prop('disabled', false);
-                        $('#findPwInput').prop('disabled', true); // 인증 완료 전까지 비밀번호 입력 비활성화
                     }
                 },
                 error: function(xhr, status, error) {
@@ -352,110 +351,36 @@
         });
 
         $("#checkEmail").keyup(function () {
-            if ($("#checkEmail").val().length != 6) {
-                $("#alertCertified").text("! 인증번호가 일치하지 않습니다. 다시 확인해주시기 바랍니다.")
+            if ($("#checkEmail").val().length != 10) {
+                $("#alertCertified").text("! 비밀번호가 일치하지 않습니다. 다시 확인해주시기 바랍니다.")
                 $("#alertCertified").css({
                     "color": "red",
                     "font-size": "15px"
                 });
-                // 비밀번호 입력창 비활성화
-                $('#findPwInput').prop('disabled', true);
             } else if ($("#checkEmail").val() == code) {
-                $("#alertCertified").text("✔️ 메일인증이 완료되었습니다.")
+                $("#alertCertified").text("✔️ 비밀번호가 일치합니다")
                 $("#alertCertified").css({
                     "color": "green",
                     "font-size": "15px"
                 });
-                // 비밀번호 입력창 활성화
-                $('#findPwInput').prop('disabled', false);
-            }
-        });
-
-        // 비밀번호 유효성 검사
-        $("#findPwInput").keyup(function (event) {
-            let value = $(event.target).val();
-            let id = $('#findIdInput').val(); // id 가져오기
-
-            let num = value.search(/[0-9]/g);
-            let eng = value.search(/[a-z]/ig);
-            let spe = value.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-
-            // 연속적인 4자리 숫자 제한 검사 함수
-            function hasSequentialNumbers(value) {
-                for (let i = 0; i < value.length - 3; i++) {
-                    let a = parseInt(value.charAt(i));
-                    let b = parseInt(value.charAt(i + 1));
-                    let c = parseInt(value.charAt(i + 2));
-                    let d = parseInt(value.charAt(i + 3));
-
-                    if (!isNaN(a) && !isNaN(b) && !isNaN(c) && !isNaN(d)) {
-                        if (a + 1 === b && b + 1 === c && c + 1 === d) {
-                            return true;
-                        }
-                    }
-                }
-                return false;
-            }
-
-            // ID 포함 여부 검사
-            if (value.includes(id)) {
-                $("#alertPassword").css({
-                    "color": "red",
-                    "font-size": "15px"
-                });
-                $("#alertPassword").text("! 비밀번호에 ID를 포함할 수 없습니다.");
-                $('#updatePW').prop('disabled', true);
-            } else if (value.length < 8 || value.length > 30) {
-                $("#alertPassword").css({
-                    "color": "red",
-                    "font-size": "15px"
-                });
-                $("#alertPassword").text("! 비밀번호는 8자리 이상 30자리 이하여야 합니다.");
-                $('#updatePW').prop('disabled', true);
-            } else if (value.replace(/\s| /gi, "").length == 0) {
-                $("#alertPassword").css({
-                    "color": "red",
-                    "font-size": "15px"
-                });
-                $("#alertPassword").text("! 비밀번호에 공백은 사용할 수 없습니다.");
-                $('#updatePW').prop('disabled', true);
-            } else if (num < 0 || eng < 0 || spe < 0) {
-                $("#alertPassword").css({
-                    "color": "red",
-                    "font-size": "15px"
-                });
-                $("#alertPassword").text("! 비밀번호는 영어+숫자+특수문자로 이루어져야 합니다.");
-                $('#updatePW').prop('disabled', true);
-            } else if (hasSequentialNumbers(value)) {
-                $("#alertPassword").css({
-                    "color": "red",
-                    "font-size": "15px"
-                });
-                $("#alertPassword").text("! 비밀번호에 4자리 이상의 연속적인 숫자를 사용할 수 없습니다.");
-                $('#updatePW').prop('disabled', true);
-            } else {
-                $("#alertPassword").css({
-                    "color": "black",
-                    "font-size": "15px"
-                });
-                $("#alertPassword").text("✔️ 사용 가능한 비밀번호입니다.");
                 $('#updatePW').prop('disabled', false);
             }
         });
+
 
         // 비밀번호 업데이트
         $("#updatePW").click(function () {
             $.ajax({
                 type: "post",
-                url: "/find/pwd",
+                url: "/find/updatePw",
                 data: {
-                    id: $('#findIdInput').val(),
-                    pwd: $("#findPwInput").val()
+                    id : $('#findIdInput').val(),
+                    pwd: $("#checkEmail").val()
                 },
                 dataType: "json",
                 success: function (data) {
                     if (data.result == 'fail') {
-                        alert("해당하는 아이디가 존재하지 않습니다");
+                        alert(data.message);
                     } else {
                         alert(data.message);
                         location.reload();

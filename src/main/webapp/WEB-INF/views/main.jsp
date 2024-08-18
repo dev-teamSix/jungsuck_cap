@@ -121,7 +121,7 @@
                                     <a class="dropdown-item" href="#">공지사항</a>
                                     <a class="dropdown-item" href="#">Q&A</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" id="logoutButton">
+                                    <a class="dropdown-item" href="/login/out" id="logoutButton">
                                         <i class="glyphicon glyphicon-log-out"></i> 로그아웃
                                     </a>
                                 </div>
