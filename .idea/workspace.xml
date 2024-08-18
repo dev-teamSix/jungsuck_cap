@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test" />
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -224,7 +226,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.91" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.822" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 9.0.91" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.91" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -241,7 +243,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="b40ab88a-25ca-456e-a4b2-411e51c18cec" />
-        <option name="HTTP_PORT" value="80" />
+        <option name="HTTP_PORT" value="8020" />
       </server-settings>
       <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
       <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
