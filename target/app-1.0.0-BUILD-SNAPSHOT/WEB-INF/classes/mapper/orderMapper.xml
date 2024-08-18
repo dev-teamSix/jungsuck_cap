@@ -5,15 +5,15 @@
 <mapper namespace="com.firstSpring.dao.order.OrderMapper">
     
     <update id="increaseInvAmnt" parameterType="map">
-        UPDATE product
+        UPDATE prod_col
         SET inv_amnt = inv_amnt + #{qty}
-        WHERE prod_num = #{prod_num}
+        WHERE prod_no = #{prod_no} and col_no = #{col_no}
     </update>
 
     <update id="decreaseInvAmnt" parameterType="map">
-        UPDATE product
+        UPDATE prod_col
         SET inv_amnt = inv_amnt - #{qty}
-        WHERE prod_num = #{prod_num}
+        WHERE prod_no = #{prod_no} and col_no = #{col_no}
     </update>
 
     <update id="cancelOrder" parameterType="OrderDto">
@@ -29,7 +29,8 @@
         INSERT INTO order_item
         (
             ord_no,
-            prod_num,
+            prod_no,
+            col_no,
             qty,
             prod_name,
             price,
@@ -40,7 +41,8 @@
         VALUES
             (
                 #{ord_no},
-                #{prod_num},
+                #{prod_no},
+                #{col_no},
                 #{qty},
                 #{prod_name},
                 #{price},
@@ -53,26 +55,28 @@
     <insert id="insertItemReturn" parameterType="java.util.HashMap">
         INSERT INTO order_item
             (
-             ord_no,
-             prod_num,
-             qty,
-             prod_name,
-             price,
-               frst_reg_dt,
-               frst_reg_id,
-               last_mod_dt,
-               last_mod_id)
+            ord_no,
+            prod_no,
+            col_no,
+            qty,
+            prod_name,
+            price,
+            frst_reg_dt,
+            frst_reg_id,
+            last_mod_dt,
+            last_mod_id)
         VALUES
             (
-               #{orderDto.ord_no_return},
-               #{orderItemDto.prod_num},
-               #{orderItemDto.qty},
-               #{orderItemDto.prod_name},
-               #{orderItemDto.price},
-               #{orderItemDto.frst_reg_dt},
-               #{orderItemDto.frst_reg_id},
-               #{orderItemDto.last_mod_dt},
-               #{orderItemDto.last_mod_id})
+            #{orderDto.ord_no_return},
+            #{orderItemDto.prod_no},
+            #{orderItemDto.col_no},
+            #{orderItemDto.qty},
+            #{orderItemDto.prod_name},
+            #{orderItemDto.price},
+            #{orderItemDto.frst_reg_dt},
+            #{orderItemDto.frst_reg_id},
+            #{orderItemDto.last_mod_dt},
+            #{orderItemDto.last_mod_id})
     </insert>
 
     <insert id="insertOrder" parameterType="OrderDto">
@@ -101,30 +105,34 @@
     </insert>
 
     <select id="selectProdName" parameterType="int" resultType="String">
-        SELECT prod_name
+        SELECT name
         FROM product
-        WHERE prod_num = #{prod_num}
+        WHERE prod_no = #{prod_no}
     </select>
 
     <select id="selectPrice" parameterType="String" resultType="int">
         SELECT price
         FROM product
-        WHERE prod_num = #{prod_num}
+        WHERE prod_no = #{prod_no}
     </select>
 
     <select id="selectItem" parameterType="int" resultType="OrderItemDto">
-        SELECT ord_item_no,
-               ord_no,
-               prod_num,
-               qty,
-               prod_name,
-               price,
-               frst_reg_dt,
-               frst_reg_id,
-               last_mod_dt,
-               last_mod_id
-        FROM order_item
-        WHERE ord_no = #{ord_no}
+        SELECT o.ord_item_no,
+               o.ord_no,
+               o.prod_no,
+               o.col_no,
+               o.qty,
+               o.prod_name,
+               o.price,
+               c.col_name,
+               o.frst_reg_dt,
+               o.frst_reg_id,
+               o.last_mod_dt,
+               o.last_mod_id
+        FROM order_item AS o
+        INNER JOIN prod_col AS c
+        ON o.prod_no = c.prod_no and o.col_no = c.col_no
+        WHERE o.ord_no = #{ord_no}
         ORDER BY ord_item_no ASC
     </select>
 

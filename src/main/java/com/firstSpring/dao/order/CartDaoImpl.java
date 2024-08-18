@@ -17,12 +17,12 @@ public class CartDaoImpl implements CartDao {
 
     @Override
     public int insertCart(CartDto cartDto) throws Exception {
-        return session.update(namespace+"insertCart", cartDto);
+        return session.insert(namespace+"insertCart", cartDto);
     }
 
     @Override
     public int insertCartItem(CartItemDto cartItemDto) throws Exception {
-        return session.update(namespace+"insertCartItem", cartItemDto);
+        return session.insert(namespace+"insertCartItem", cartItemDto);
     }
 
     @Override

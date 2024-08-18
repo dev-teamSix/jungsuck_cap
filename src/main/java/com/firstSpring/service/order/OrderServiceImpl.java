@@ -19,7 +19,6 @@ import java.util.Map;
 
 import static java.time.LocalDateTime.now;
 
-//@Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
     private final PlatformTransactionManager transactionManager;
@@ -27,7 +26,6 @@ public class OrderServiceImpl implements OrderService {
     public OrderServiceImpl(PlatformTransactionManager transactionManager) {
         this.transactionManager = transactionManager;
     }
-    private final LocalDateTime localDateTimeNow = LocalDateTime.now();
 
     @Autowired
     private OrderDao orderDao;
@@ -43,13 +41,12 @@ public class OrderServiceImpl implements OrderService {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
 
         try {
-            boolean isTxActive = TransactionSynchronizationManager.isActualTransactionActive();
-            System.out.println("cancel() TxActive = " + isTxActive);
             List<OrderItemDto> listOrderItemDto = orderDao.selectItem(orderDto.getOrd_no());
             for (OrderItemDto orderItemDto : listOrderItemDto) {
                 Map map = new HashMap();
                 map.put("qty", orderItemDto.getQty());
-                map.put("prod_num", orderItemDto.getProd_num());
+                map.put("prod_no", orderItemDto.getProd_no());
+                map.put("col_no", orderItemDto.getCol_no());
                 orderDao.increaseInvAmnt(map);
             }
 //            throw new Exception("test");
@@ -72,31 +69,32 @@ public class OrderServiceImpl implements OrderService {
         try {
             if(orderItemDto.getFrom_cart() > 0) {
                 orderItemDto.setOrd_no(orderItemDto.getFrom_cart());
-                orderItemDto.setFrst_reg_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                orderItemDto.setFrst_reg_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderItemDto.setFrst_reg_id(cust_id);
-                orderItemDto.setLast_mod_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                orderItemDto.setLast_mod_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderItemDto.setLast_mod_id(cust_id);
 
                 orderDao.insertItem(orderItemDto);
 
                 Map map = new HashMap();
                 map.put("qty", orderItemDto.getQty());
-                map.put("prod_num", orderItemDto.getProd_num());
+                map.put("prod_no", orderItemDto.getProd_no());
+                map.put("col_no", orderItemDto.getCol_no());
                 orderDao.decreaseInvAmnt(map);
             } else {
                 OrderDto orderDto = new OrderDto();
                 orderDto.setCust_id(cust_id);
                 orderDto.setOrd_st_cd("O");
-                orderDto.setOrd_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                orderDto.setOrd_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderDto.setCnl_dt(null);
-                orderDto.setFrst_reg_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                orderDto.setFrst_reg_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderDto.setFrst_reg_id(cust_id);
-                orderDto.setLast_mod_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                orderDto.setLast_mod_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderDto.setLast_mod_id(cust_id);
 
-                orderItemDto.setFrst_reg_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                orderItemDto.setFrst_reg_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderItemDto.setFrst_reg_id(cust_id);
-                orderItemDto.setLast_mod_dt(localDateTimeNow.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                orderItemDto.setLast_mod_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 orderItemDto.setLast_mod_id(cust_id);
 
                 orderDao.insertOrder(orderDto);
@@ -108,7 +106,8 @@ public class OrderServiceImpl implements OrderService {
 
                 Map map2 = new HashMap();
                 map2.put("qty", orderItemDto.getQty());
-                map2.put("prod_num", orderItemDto.getProd_num());
+                map2.put("prod_no", orderItemDto.getProd_no());
+                map2.put("col_no", orderItemDto.getCol_no());
                 orderDao.decreaseInvAmnt(map2);
             }
 

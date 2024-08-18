@@ -5,6 +5,7 @@ import com.firstSpring.domain.product.ProductDto;
 import com.firstSpring.domain.product.ProductListDto;
 import com.firstSpring.domain.product.ProductRequest;
 import com.firstSpring.entity.PageHandler;
+import com.firstSpring.service.order.OrderService;
 import com.firstSpring.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ import java.util.Map;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private OrderService orderService;
 
     // 상품 목록 페이지 조회
     @GetMapping

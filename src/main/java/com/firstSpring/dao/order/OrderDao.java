@@ -19,9 +19,9 @@ public interface OrderDao {
 
     int insertOrder(OrderDto dto) throws Exception;
 
-    String selectProdName(Integer prod_num) throws Exception;
+    String selectProdName(Integer prod_no) throws Exception;
 
-    int selectPrice(String prod_num) throws Exception;
+    int selectPrice(String prod_no) throws Exception;
 
     List<OrderItemDto> selectItem(Integer ord_no) throws Exception;
 

@@ -85,10 +85,9 @@
     </div>
 </header>
 
-<div class="content" class="content-mg">
+<div class="content-mg">
 
-    <h3 name="experiment" id="experiment" class="font-weight-bold"></h3>
-
+    <br>
     <h2 class="mb-4">
         장바구니 목록
     </h2>
@@ -96,9 +95,9 @@
     <div>
         <table class="table">
             <colgroup>
-                <col width="15%"/>
-                <col width="70%"/>
-                <col width="15%"/>
+                <col width="12%"/>
+                <col width="76%"/>
+                <col width="12%"/>
             </colgroup>
             <thead>
             <tr class="text-center">
@@ -113,43 +112,48 @@
             <c:forEach var="cartItem" items="${cartItemList}" varStatus="status">
                 <form action="" id="form_${cartItem.cart_item_no}">
                     <tr>
-                        <input type="hidden" id="prod_num_${cartItem.cart_item_no}" name="prod_num" value="${cartItem.prod_num}">
+                        <input type="hidden" id="prod_no_${cartItem.cart_item_no}" name="prod_no" value="${cartItem.prod_no}">
                         <c:if test="${status.index == 0}">
-                            <input type="hidden" id="from_cart_${status.index}" name="from_cart" value="0">
+                            <input type="hidden" id="from_cart_${cartItem.cart_item_no}" name="from_cart" value="0">
                         </c:if>
                         <c:if test="${status.index > 0}">
-                            <input type="hidden" id="from_cart_${status.index}" name="from_cart" value="${maxOrdNo}">
+                            <input type="hidden" id="from_cart_${cartItem.cart_item_no}" name="from_cart" value="${maxOrdNo}">
                         </c:if>
                         <td class="text-center align-middle">
-
                             <input type="checkbox" id="cartChkBox_${cartItem.cart_item_no}" name="cartChkBox" value="${cartItem.cart_item_no}">
                         </td>
-                        <td class="d-flex">
-                            <div class="align-self-center">
-                                <input type="hidden" id="prod_name_${cartItem.cart_item_no}" name="prod_name" value="${cartItem.prod_name}">
-                                        ${cartItem.prod_name}
-                                </input>
-                                <div class="fs18 font-weight-light">
-                            <span class="input-group mt-2">
-                                <input type="hidden" id="price_${cartItem.cart_item_no}" name="price" value="${cartItem.price}"
-                                       data-price="${cartItem.price}" class="align-self-center mr-2">
-                                    ${cartItem.price}원
-                                </input>
-                                <input type="number" name="qty" id="qty_${cartItem.cart_item_no}"
-                                       value="${cartItem.qty}" min="1"
-                                       onchange="changeQty(this)"
-                                       class="cartItemQty form-control mr-2" >
-                                <button type="button" id="changeQtyBtn_${cartItem.cart_item_no}" class="btn btn-outline-secondary changeQtyBtn" value="${cartItem.cart_item_no}">변경하기</button>
-                                <button type="button" id="delBtn_${cartItem.cart_item_no}" class="btn btn-outline-secondary itemDeleteBtn" value="${cartItem.cart_item_no}"> &times; </button>
-                            </span>
+                        <td class="card d-flex">
+                            <div class="d-flex mb-3">
+                                <div class="align-self-center w-75">
+                                    <input type="hidden" id="prod_name_${cartItem.cart_item_no}"
+                                           name="prod_name" value="${cartItem.prod_name}">
+                                    <span class="fs24 font-weight-bold">${cartItem.prod_name}</span>
+                                    <input type="hidden" id="col_no_${cartItem.cart_item_no}" name="col_no" value="${cartItem.col_no}">
+                                    <input type="hidden" id="col_name_${cartItem.cart_item_no}" name="col_name" value="${cartItem.col_name}">
+                                    <br>
+                                    <span class="fs18 font-weight-bold">${cartItem.col_name}</span>
+                                    <div class="fs18 font-weight-light">
+                                        <span class="input-group mt-2">
+                                            <input type="hidden" id="price_${cartItem.cart_item_no}" name="price" value="${cartItem.price}"
+                                                   data-price="${cartItem.price}" class="align-self-center mr-2">
+                                                ${cartItem.price}원 &nbsp&nbsp
+                                            <input type="number" name="qty" id="qty_${cartItem.cart_item_no}"
+                                                   value="${cartItem.qty}" min="1"
+                                                   onchange="changeQty(this)"
+                                                   class="cartItemQty form-control mr-2" >
+                                            <button type="button" id="changeQtyBtn_${cartItem.cart_item_no}" class="btn btn-outline-secondary changeQtyBtn" value="${cartItem.cart_item_no}">변경하기</button>
+                                            &nbsp
+                                            <button type="button" id="delBtn_${cartItem.cart_item_no}" class="btn btn-outline-secondary itemDeleteBtn" value="${cartItem.cart_item_no}"> &times; </button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </td>
                         <td class="text-center align-middle">
-                    <span id="totalPrice_${cartItem.cart_item_no}"
-                          name="totalPrice">
-                            ${cartItem.price * cartItem.qty}원
-                    </span>
+                            <span id="totalPrice_${cartItem.cart_item_no}"
+                                  name="totalPrice">
+                                    ${cartItem.price * cartItem.qty}원
+                            </span>
                         </td>
                     </tr>
                 </form>
@@ -201,18 +205,22 @@
 
             $("input[name=cartChkBox]:checked").each(function() {
                 var cart_item_no = $(this).val();
-                var prod_num = $("#prod_num_" + cart_item_no).val();
+                var prod_no = $("#prod_no_" + cart_item_no).val();
+                var col_no = $("#col_no_" + cart_item_no).val();
                 var qty = $("#qty_" + cart_item_no).val();
                 var prod_name = $("#prod_name_" + cart_item_no).val();
                 var price = $("#price_" + cart_item_no).val();
+                var col_name = $("#col_name_" + cart_item_no).val();
                 var from_cart = $("#from_cart_" + cart_item_no).val();
 
                 var data = new Object();
                 data["cart_item_no"] = cart_item_no;
-                data["prod_num"] = prod_num;
+                data["prod_no"] = prod_no;
+                data["col_no"] = col_no;
                 data["qty"] = qty;
                 data["prod_name"] = prod_name;
                 data["price"] = price;
+                data["col_name"] = col_name;
                 data["from_cart"] = from_cart;
                 dataList.push(data);
             });
@@ -235,14 +243,19 @@
                         location.replace('/order/list');
                     },
                     error : function(jqXHR, status, error){
-                        alert("주문이 실패했습니다.");
+                        if(jqXHR.status == '401'){
+                            alert('로그인 후 이용해주세요');
+                            location.href='/login/form';
+                        } else{
+                            // alert(jqXHR.responseJSON.message);
+                            alert("주문이 실패했습니다.");
+                        }
                     }
                 });
             }
         });
 
         $(".cartItemQty").on("keyup change click", (e) => {
-            // $("#experiment").html(e.target.value + '개');
             if (e.target.value >= 0) {
                 if (e.target.value.length > 5) {
                     if (e.target.value > 10000) {
@@ -274,7 +287,6 @@
         var cart_item_no = obj.id.split('_')[1];
         var price = $("#price_" + cart_item_no).data("price");
         var totalPrice = qty*price;
-        // $("#experiment").html(qty + '원');
         $("#totalPrice_" + cart_item_no).html(totalPrice+"원");
         getOrderTotalPrice();
     }

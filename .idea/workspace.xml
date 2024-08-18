@@ -11,38 +11,44 @@
   <component name="ChangeListManager">
     <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="first commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/product/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/CartDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/CartDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/CartDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/CartDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/CartItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/CartItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/OrderDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/OrderItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/OrderItemDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/CartServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/cartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/cartMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/orderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/orderMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/cartList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/cartList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/itemDtl.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/itemDtl.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/orderList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/orderList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/signUp.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/product.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/CartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/product/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/product/ProductController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/CartDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/CartDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/CartDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/CartDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/OrderDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/dao/order/OrderDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/CartItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/CartItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/CartOrderDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/OrderItemDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/CartServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/CartServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/service/order/OrderServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/orderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/orderMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/cartList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/cartList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/itemDtl.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/itemDtl.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/orderList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/orderList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/signUp.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/resources/css/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/resources/css/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/CartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/product/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/product/ProductController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/CartDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/CartDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/OrderDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/OrderDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderItemDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/CartServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/CartServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/OrderServiceImpl.class" afterDir="false" />
@@ -437,10 +443,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderDaoImplTest.selectProdName" />
         <item itemvalue="JUnit.OrderDaoImplTest.selectOrder" />
         <item itemvalue="JUnit.CartDaoImplTest.selectCartNo" />
         <item itemvalue="JUnit.CartDaoImplTest.insertCart" />
-        <item itemvalue="JUnit.OrderDaoImplTest.selectProdName" />
         <item itemvalue="JUnit.OrderDaoImplTest.insertOrder" />
       </list>
     </recent_temporary>

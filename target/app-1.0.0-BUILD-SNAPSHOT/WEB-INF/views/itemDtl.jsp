@@ -26,7 +26,7 @@
 <form action="" id="form">
     <div class="content" style="margin-left:25%;margin-right:25%">
 
-        <input type="hidden" name="prod_num" id="prod_num" value="1">
+        <input type="hidden" name="prod_no" id="prod_no" value="1">
         <input type="hidden" id="from_cart" name="from_cart" value="${maxOrdNo} + 1">
 
         <div class="d-flex">

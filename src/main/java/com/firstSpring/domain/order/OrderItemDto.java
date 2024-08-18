@@ -7,10 +7,12 @@ public class OrderItemDto {
     private Integer ord_item_no;
     private Integer ord_no;
     private Integer ord_no_return;
-    private Integer prod_num;
+    private Integer prod_no;
+    private Integer col_no;
     private Integer qty;
     private String prod_name;
     private Integer price;
+    private String col_name;
     private Integer from_cart;
     private String frst_reg_dt;
     private String frst_reg_id;
@@ -20,13 +22,17 @@ public class OrderItemDto {
     public OrderItemDto() {
         this.from_cart = 0;
     }
-    public OrderItemDto(Integer ord_item_no, Integer ord_no, Integer prod_num, Integer qty, String prod_name, Integer price, Integer from_cart, String frst_reg_dt, String frst_reg_id, String last_mod_dt, String last_mod_id) {
+
+    public OrderItemDto(Integer ord_item_no, Integer ord_no, Integer ord_no_return, Integer prod_no, Integer col_no, Integer qty, String prod_name, Integer price, String col_name, Integer from_cart, String frst_reg_dt, String frst_reg_id, String last_mod_dt, String last_mod_id) {
         this.ord_item_no = ord_item_no;
         this.ord_no = ord_no;
-        this.prod_num = prod_num;
+        this.ord_no_return = ord_no_return;
+        this.prod_no = prod_no;
+        this.col_no = col_no;
         this.qty = qty;
         this.prod_name = prod_name;
         this.price = price;
+        this.col_name = col_name;
         this.from_cart = from_cart;
         this.frst_reg_dt = frst_reg_dt;
         this.frst_reg_id = frst_reg_id;
@@ -50,12 +56,20 @@ public class OrderItemDto {
         this.ord_no = ord_no;
     }
 
-    public Integer getProd_num() {
-        return prod_num;
+    public Integer getProd_no() {
+        return prod_no;
     }
 
-    public void setProd_num(Integer prod_num) {
-        this.prod_num = prod_num;
+    public void setProd_no(Integer prod_no) {
+        this.prod_no = prod_no;
+    }
+
+    public Integer getCol_no() {
+        return col_no;
+    }
+
+    public void setCol_no(Integer col_no) {
+        this.col_no = col_no;
     }
 
     public Integer getQty() {
@@ -80,6 +94,14 @@ public class OrderItemDto {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public String getCol_name() {
+        return col_name;
+    }
+
+    public void setCol_name(String col_name) {
+        this.col_name = col_name;
     }
 
     public String getFrst_reg_dt() {
@@ -119,12 +141,12 @@ public class OrderItemDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderItemDto that = (OrderItemDto) o;
-        return Objects.equals(ord_item_no, that.ord_item_no) && Objects.equals(ord_no, that.ord_no) && Objects.equals(prod_num, that.prod_num) && Objects.equals(qty, that.qty) && Objects.equals(prod_name, that.prod_name) && Objects.equals(price, that.price);
+        return Objects.equals(ord_item_no, that.ord_item_no) && Objects.equals(ord_no, that.ord_no) && Objects.equals(ord_no_return, that.ord_no_return) && Objects.equals(prod_no, that.prod_no) && Objects.equals(col_no, that.col_no) && Objects.equals(qty, that.qty) && Objects.equals(prod_name, that.prod_name) && Objects.equals(price, that.price) && Objects.equals(col_name, that.col_name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ord_item_no, ord_no, prod_num, qty, prod_name, price);
+        return Objects.hash(ord_item_no, ord_no, ord_no_return, prod_no, col_no, qty, prod_name, price, col_name);
     }
 
     @Override
@@ -132,13 +154,17 @@ public class OrderItemDto {
         return "OrderItemDto{" +
                 "ord_item_no=" + ord_item_no +
                 ", ord_no=" + ord_no +
-                ", prod_num='" + prod_num + '\'' +
+                ", ord_no_return=" + ord_no_return +
+                ", prod_no=" + prod_no +
+                ", col_no=" + col_no +
                 ", qty=" + qty +
                 ", prod_name='" + prod_name + '\'' +
                 ", price=" + price +
-                ", frst_reg_dt=" + frst_reg_dt +
+                ", col_name='" + col_name + '\'' +
+                ", from_cart=" + from_cart +
+                ", frst_reg_dt='" + frst_reg_dt + '\'' +
                 ", frst_reg_id='" + frst_reg_id + '\'' +
-                ", last_mod_dt=" + last_mod_dt +
+                ", last_mod_dt='" + last_mod_dt + '\'' +
                 ", last_mod_id='" + last_mod_id + '\'' +
                 '}';
     }

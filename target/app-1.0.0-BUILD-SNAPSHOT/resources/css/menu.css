@@ -75,7 +75,6 @@ body {
     text-decoration: underline;
 }
 
-
 #toCart {
     background-color: #343a40;
     color: #ffffff;
@@ -83,112 +82,37 @@ body {
     width: 80px
 }
 
+#one-order {
+    margin-bottom:55px;
+}
+
 /* 위에 추가 */
+
 .content-mg{
-    margin-left:25%;
-    margin-right:25%;
+    margin-left:12%;
+    margin-right:12%;
     margin-top:2%;
     margin-bottom:100px;
 }
-.repImgDiv{
-    margin-right:15px;
-    margin-left:15px;
-    height:auto;
-}
-.repImg{
-    height:100px;
-    width:100px;
-}
-.fs18{
-    font-size:18px
-}
-.fs24{
-    font-size:24px
-}
 
-.mgb-15{
-    margin-bottom:15px;
-}
-.mgt-30{
-    margin-top:30px;
-}
-.mgt-50{
-    margin-top:50px;
-}
-.repImgDiv{
-    margin-right:15px;
-    height:auto;
-    width:50%;
-}
-.repImg{
-    width:100%;
-    height:400px;
-}
-.wd50{
-    height:auto;
-    width:50%;
-}
-
-.carousel-inner > .item {
-    height: 350px;
-}
-.margin{
-    margin-bottom:30px;
-}
-.banner{
-    height: 300px;
-    position: absolute; top:0; left: 0;
-    width: 100%;
-    height: 100%;
-}
-.card-text{
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-a:hover{
-    text-decoration:none;
-}
-.center{
-    text-align:center;
-}
-
-.footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 15px 0;
-    text-align: center;
-}
-.content{
-    margin-bottom:100px;
-    margin-top: 50px;
-    margin-left: 200px;
-    margin-right: 200px;
-}
-
-.content-mg{
-    margin-left:30%;
-    margin-right:30%;
-    margin-top:2%;
-    margin-bottom:100px;
-}
-.repImgDiv{
-    margin-right:15px;
-    margin-left:15px;
-    height:auto;
-}
-.repImg{
-    height:100px;
-    width:100px;
-}
 .card{
-    width:750px;
+    /*width:750px;*/
+    margin-left:5%;
+    margin-right:5%;
     height:100%;
     padding:30px;
-    margin-bottom:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.repImgDiv{
+    margin-right:15px;
+    margin-left:15px;
+    height:auto;
+}
+.repImg{
+    height:100px;
+    width:100px;
 }
 .fs18{
     font-size:18px

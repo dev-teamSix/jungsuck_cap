@@ -87,10 +87,10 @@
 
 <div  class="content-mg">
 
+    <br>
     <h2 class="mb-4">
         주문 이력
     </h2>
-    <br>
 
     <form action="" id="form">
         <c:forEach var="orderDto" items="${orders}" varStatus="status">
@@ -106,20 +106,25 @@
                     </c:if>
                 </div>
             </div>
-            <c:forEach var="orderItem" items="${orderItemsList[status.index]}">
-                <div class="card d-flex">
-                    <div class="d-flex mb-3">
-                        <div class="align-self-center w-75">
-                            <span class="fs24 font-weight-bold">${orderItem.prod_name}</span>
-                            <div class="fs18 font-weight-light">
-                                <span>${orderItem.price}원</span>
-                                <span>${orderItem.qty}개</span>
+            <div id="one-order">
+                <c:forEach var="orderItem" items="${orderItemsList[status.index]}">
+                    <div class="card d-flex">
+                        <div class="d-flex mb-3">
+                            <div class="align-self-center w-75">
+                                <span class="fs24 font-weight-bold">${orderItem.prod_name}</span>
+                                <br>
+                                <span class="fs18 font-weight-bold">${orderItem.col_name}</span>
+                                <div class="fs18 font-weight-light">
+                                    <span>${orderItem.price}원</span>
+                                    <span>${orderItem.qty}개</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </div>
         </c:forEach>
+        <br><br><br>
     </form>
     <br>
     <div style="text-align:center">
