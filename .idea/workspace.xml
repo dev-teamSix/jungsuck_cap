@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test">
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="gitignore 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/Hello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,73 +62,73 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.ProductCategoryDaoTest.deleteTest.executor": "Run",
-    "JUnit.ProductCategoryDaoTest.executor": "Run",
-    "JUnit.ProductCategoryDaoTest.insertTest.executor": "Run",
-    "JUnit.ProductCategoryDaoTest.selectHighCatg.executor": "Run",
-    "JUnit.ProductCategoryDaoTest.selectHighLowListTest.executor": "Run",
-    "JUnit.ProductCategoryDaoTest.selectListByNameTest.executor": "Run",
-    "JUnit.ProductCategoryDaoTest.selectTest.executor": "Run",
-    "JUnit.ProductCategoryDaoTest.updateTest.executor": "Run",
-    "JUnit.ProductCategoryServiceTest.RegisterExTest.executor": "Run",
-    "JUnit.ProductCategoryServiceTest.isDuplicatedName.executor": "Run",
-    "JUnit.ProductCategoryServiceTest.isHighCatg.executor": "Run",
-    "JUnit.ProductCategoryServiceTest.register.executor": "Run",
-    "JUnit.ProductColorDaoTest.executor": "Run",
-    "JUnit.ProductColorDaoTest.selectListByProd.executor": "Run",
-    "JUnit.ProductDaoTest.countAllTest.executor": "Run",
-    "JUnit.ProductDaoTest.countTest.executor": "Run",
-    "JUnit.ProductDaoTest.delete.executor": "Run",
-    "JUnit.ProductDaoTest.executor": "Run",
-    "JUnit.ProductDaoTest.increaseViewCnt.executor": "Run",
-    "JUnit.ProductDaoTest.increaseViewCntExceptionTest.executor": "Run",
-    "JUnit.ProductDaoTest.insertExceptionTest.executor": "Run",
-    "JUnit.ProductDaoTest.insertFailTest.executor": "Run",
-    "JUnit.ProductDaoTest.insertTest.executor": "Run",
-    "JUnit.ProductDaoTest.selectExceptionTest.executor": "Run",
-    "JUnit.ProductDaoTest.selectListExceptionTest.executor": "Run",
-    "JUnit.ProductDaoTest.selectListTest.executor": "Run",
-    "JUnit.ProductDaoTest.selectListWithJoinTest.executor": "Run",
-    "JUnit.ProductDaoTest.selectTest.executor": "Run",
-    "JUnit.ProductDaoTest.updateInfo.executor": "Run",
-    "JUnit.ProductDaoTest.updateInfoExceptionTest.executor": "Run",
-    "JUnit.ProductDaoTest.updateInfoTest.executor": "Run",
-    "JUnit.ProductServiceTest.executor": "Run",
-    "JUnit.ProductServiceTest.getList.executor": "Run",
-    "JUnit.ProductServiceTest.modifyTest.executor": "Run",
-    "JUnit.ProductServiceTest.read.executor": "Run",
-    "JUnit.ProductServiceTest.readDetailTest.executor": "Run",
-    "JUnit.ProductServiceTest.readTest.executor": "Run",
-    "JUnit.ProductServiceTest.removeTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 9.0.821.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "git-widget-placeholder": "dev",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/yunseo/toy-project/toy2/jungsuck_cap/src/main/webapp/resources/images/product",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.30804598",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.ProductCategoryDaoTest.deleteTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.insertTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.selectHighCatg.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.selectHighLowListTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.selectListByNameTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.selectTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryDaoTest.updateTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryServiceTest.RegisterExTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryServiceTest.isDuplicatedName.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryServiceTest.isHighCatg.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductCategoryServiceTest.register.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductColorDaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductColorDaoTest.selectListByProd.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.countAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.countTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.delete.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.increaseViewCnt.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.increaseViewCntExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.insertExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.insertFailTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.insertTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectListExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectListTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectListWithJoinTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.selectTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.updateInfo.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.updateInfoExceptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductDaoTest.updateInfoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.getList.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.modifyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.readDetailTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.readTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceTest.removeTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.821.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/yunseo/toy-project/toy2/jungsuck_cap/src/main/webapp/resources/images/product&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\yunseo\toy-project\toy2\jungsuck_cap\src\main\webapp\resources\images\product" />
@@ -458,6 +458,7 @@
       <workItem from="1723684100795" duration="30836000" />
       <workItem from="1723759149039" duration="7074000" />
       <workItem from="1723770437540" duration="23780000" />
+      <workItem from="1723942634920" duration="3491000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
@@ -475,7 +476,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722994961898</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="병합 후 문제 해결">
+      <option name="closed" value="true" />
+      <created>1723802375708</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723802375708</updated>
+    </task>
+    <task id="LOCAL-00004" summary="gitignore 수정">
+      <option name="closed" value="true" />
+      <created>1723946715461</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723946715462</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +524,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init : first commit" />
     <MESSAGE value="init : server test" />
-    <option name="LAST_COMMIT_MESSAGE" value="init : server test" />
+    <MESSAGE value="병합 후 문제 해결" />
+    <MESSAGE value="gitignore 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore 수정" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
