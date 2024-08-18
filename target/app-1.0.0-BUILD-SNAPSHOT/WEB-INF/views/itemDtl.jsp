@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>fastcampus</title>
-    <link rel="stylesheet" href="<c:url value='/resources/css/menu.css'/>">
+    <link rel="stylesheet" href="<c:url value='/resources/css/order.css'/>">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
