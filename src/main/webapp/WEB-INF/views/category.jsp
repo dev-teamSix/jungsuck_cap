@@ -16,8 +16,11 @@
 <script>
     let msg = "${msg}";
 
+    if(msg == "NOT_EXIST") {
+        alert("필수 데이터를 입력해주세요.")
+    }
     if(msg == "ERR_REG") {
-        alert("등록 실패하였습니다. ");
+        alert("이름 중복 등의 이유로 등록 실패하였습니다.");
     }
 
     if(msg == "ERR_MOD") {
@@ -92,7 +95,7 @@
         $('#registerBtn').on("click", function() {
 
             let form = $('#form'); // form id를 가진 엘리먼트의 참조를 얻어옴
-            form.attr("action", "<c:url value='/categorys'/>");
+            form.attr("action", "<c:url value='/categorys/register'/>");
             form.attr("method", "post");
             form.submit();  // form에 있는 input, textarea 태그의 각종 value값들이 body에 담겨 전송됨
         })
