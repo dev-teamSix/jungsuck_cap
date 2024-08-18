@@ -73,8 +73,8 @@ public class ProductController {
     }
 
     // 상품 상세 조회
-    @GetMapping("/{prodNo}")
-    public String read(@PathVariable Integer prodNo, Model m) throws Exception {
+    @GetMapping("/read")
+    public String read(Integer prodNo, Model m) throws Exception {
         // prodNo(상품번호) null 체크
         if(prodNo == null) {
             throw new Exception("ERR_VALID");
@@ -83,7 +83,6 @@ public class ProductController {
 
         try {
             // 상품 상세 정보(상품 기본 정보+ 옵션 목록 + 메인 이미지 ) 조회 결과 전달
-//            ProductDto product = productService.read(prodNo);
             ProductRequest pr = productService.readDetail(prodNo);
             m.addAttribute("pr", pr);
 
