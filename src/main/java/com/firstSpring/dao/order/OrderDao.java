@@ -6,7 +6,7 @@ import com.firstSpring.domain.order.OrderItemDto;
 import java.util.List;
 import java.util.Map;
 
-public interface  OrderDao {
+public interface OrderDao {
     int increaseInvAmnt(Map map) throws Exception;
 
     int decreaseInvAmnt(Map map) throws Exception;
@@ -19,9 +19,9 @@ public interface  OrderDao {
 
     int insertOrder(OrderDto dto) throws Exception;
 
-    String selectProdName(Integer prod_num) throws Exception;
+    String selectProdName(Integer prod_no) throws Exception;
 
-    int selectPrice(String prod_num) throws Exception;
+    int selectPrice(String prod_no) throws Exception;
 
     List<OrderItemDto> selectItem(Integer ord_no) throws Exception;
 
