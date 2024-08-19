@@ -10,19 +10,19 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class  CartDaoImpl implements CartDao {
+public class CartDaoImpl implements CartDao {
     @Autowired
     private SqlSession session;
     private static String namespace="com.firstSpring.dao.order.CartMapper.";
 
     @Override
     public int insertCart(CartDto cartDto) throws Exception {
-        return session.update(namespace+"insertCart", cartDto);
+        return session.insert(namespace+"insertCart", cartDto);
     }
 
     @Override
     public int insertCartItem(CartItemDto cartItemDto) throws Exception {
-        return session.update(namespace+"insertCartItem", cartItemDto);
+        return session.insert(namespace+"insertCartItem", cartItemDto);
     }
 
     @Override
@@ -37,7 +37,10 @@ public class  CartDaoImpl implements CartDao {
 
     @Override
     public int selectCartNo(String cust_id) throws Exception {
-        return session.selectOne(namespace+"selectCartNo", cust_id);
+        if (session.selectOne(namespace+"selectCartNo", cust_id) == null)
+            return 0;
+        else
+            return session.selectOne(namespace+"selectCartNo", cust_id);
     }
 
     @Override
