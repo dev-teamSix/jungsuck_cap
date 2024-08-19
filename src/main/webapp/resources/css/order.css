@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+.main-header {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 1rem 0;
+}
+.logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.logo-mini {
+    font-size: 1rem;
+}
+.navbar {
+    padding: 0;
+    margin: 0;
+}
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+}
+.navbar-nav .nav-item .nav-link:hover {
+    color: #dddddd;
+}
+.login-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+.login-container h1 {
+    margin-bottom: 1.5rem;
+}
+.form-control {
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.075);
+}
+.form-check-inline {
+    margin-right: 1rem;
+}
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+.login-footer {
+    margin-top: 1rem;
+    text-align: center;
+}
+.login-footer a {
+    margin: 0 0.5rem;
+    color: #007bff;
+}
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+#toCart {
+    background-color: #343a40;
+    color: #ffffff;
+    border: none;
+    width: 80px
+}
+
+#one-order {
+    margin-bottom:55px;
+}
+
+/* 위에 추가 */
+
+.content-mg{
+    margin-left:12%;
+    margin-right:12%;
+    margin-top:2%;
+    margin-bottom:100px;
+}
+
+.card{
+    /*width:750px;*/
+    margin-left:5%;
+    margin-right:5%;
+    height:100%;
+    padding:30px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.repImgDiv{
+    margin-right:15px;
+    margin-left:15px;
+    height:auto;
+}
+.repImg{
+    height:100px;
+    width:100px;
+}
+.fs18{
+    font-size:18px
+}
+.fs24{
+    font-size:24px
+}
+
+/* 기본 */
+/** {*/
+/*    box-sizing: border-box;*/
+/*    margin : 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*a { text-decoration: none;  }*/
+
+/*ul {*/
+/*    list-style-type: none;*/
+/*    height: 48px;*/
+/*    width: 100%;*/
+/*    background-color: #30426E;*/
+/*    display: flex;*/
+/*}*/
+
+/*ul > li {*/
+/*    color: lightgray;*/
+/*    height : 100%;*/
+/*    width:90px;*/
+/*    display:flex;*/
+/*    align-items: center;*/
+/*}*/
+
+/*ul > li > a {*/
+/*    color: lightgray;*/
+/*    margin:auto;*/
+/*    padding: 10px;*/
+/*    font-size:20px;*/
+/*    align-items: center;*/
+/*}*/
+
+/*ul > li > a:hover {*/
+/*    color :white;*/
+/*    border-bottom: 3px solid rgb(209, 209, 209);*/
+/*}*/
