@@ -113,12 +113,7 @@
                 <form action="" id="form_${cartItem.cart_item_no}">
                     <tr>
                         <input type="hidden" id="prod_no_${cartItem.cart_item_no}" name="prod_no" value="${cartItem.prod_no}">
-                        <c:if test="${status.index == 0}">
-                            <input type="hidden" id="from_cart_${cartItem.cart_item_no}" name="from_cart" value="0">
-                        </c:if>
-                        <c:if test="${status.index > 0}">
-                            <input type="hidden" id="from_cart_${cartItem.cart_item_no}" name="from_cart" value="${maxOrdNo}">
-                        </c:if>
+                        <input type="hidden" id="from_cart_${cartItem.cart_item_no}" name="from_cart" value="${maxOrdNo}">
                         <td class="text-center align-middle">
                             <input type="checkbox" id="cartChkBox_${cartItem.cart_item_no}" name="cartChkBox" value="${cartItem.cart_item_no}">
                         </td>
