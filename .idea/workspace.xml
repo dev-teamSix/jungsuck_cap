@@ -4,77 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fe45727-f76b-45b4-8fc3-fb0460e33ace" name="Changes" comment="&quot;2차 통합&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/board/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/board/NoticeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/board/QnaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/board/QnaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/product/ProdCatgController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/product/ProdCatgController.java" afterDir="false" />
+    <list default="true" id="4fe45727-f76b-45b4-8fc3-fb0460e33ace" name="Changes" comment="임시 비밀번호 전송 기능 완료">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/CustException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/CustException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/FindIdPwdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/FindIdPwdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/UserInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/message/ValidatorMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/message/ValidatorMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/FaqDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/FaqDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/FaqDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/FaqDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/NoticeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/NoticeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/NoticeDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/NoticeDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/QnaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/QnaDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/QnaDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/board/QnaDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/CartDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/CartDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/CartDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/CartDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/OrderDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ImageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ImageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ImageDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ImageDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductCategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductCategoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductCategoryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductCategoryDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductColorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductColorDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductColorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductColorDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/product/ProductDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/board/FaqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/board/FaqDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/PageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/PageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ProdSearchCondtion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ProdSearchCondtion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/board/NoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/board/NoticeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/board/NoticeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/board/NoticeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/board/QnaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/board/QnaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/board/QnaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/board/QnaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/CartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/OrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/product/ProductCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/product/ProductCategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/product/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="kyungsik" />
+      </map>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "dev"
+    "git-widget-placeholder": "dev",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="TaskManager">
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;2차 통합&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;2차 통합&quot;" />
+    <MESSAGE value="임시 비밀번호 전송 기능 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="임시 비밀번호 전송 기능 완료" />
   </component>
 </project>

@@ -59,7 +59,7 @@
             <th>등록날짜</th>
         </tr>
         <c:forEach var="p" items="${productList}">
-                <tr onclick="window.location='<c:url value="/products/${p.prodNo}"/>';" style="cursor:pointer;">
+            <tr onclick="window.location='<c:url value="/products/read?prodNo=${p.prodNo}"/>';" style="cursor:pointer;">
                     <td class="no">${p.prodNo}</td>
                     <td class="no">${p.product.prodCatgNo}</td>
                     <td class="main_img">
