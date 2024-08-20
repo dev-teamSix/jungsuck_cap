@@ -6,7 +6,7 @@ import com.firstSpring.domain.product.ProductListDto;
 import java.util.List;
 import java.util.Map;
 
-public interface ProductDao {
+public interface  ProductDao {
     // 전체 or 특정 카테고리의 상품 목록 조회
     // map에는 카테고리 코드, 정렬 기준이 전달되어야 한다.
     List<ProductDto> selectList(Map map) throws Exception;

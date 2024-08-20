@@ -16,8 +16,11 @@
 <script>
     let msg = "${msg}";
 
+    if(msg == "NOT_EXIST") {
+        alert("필수 데이터를 입력해주세요.")
+    }
     if(msg == "ERR_REG") {
-        alert("등록 실패하였습니다. ");
+        alert("이름 중복 등의 이유로 등록 실패하였습니다.");
     }
 
     if(msg == "ERR_MOD") {
@@ -47,19 +50,19 @@
     </div>
 
     <div>
-      <label>카테고리 설명</label>
-      <textarea name="detail" cols="30" rows="10"  ${mode == "new"? '' : 'readonly'}>${category.detail}</textarea>
+        <label>카테고리 설명</label>
+        <textarea name="detail" cols="30" rows="10"  ${mode == "new"? '' : 'readonly'}>${category.detail}</textarea>
     </div>
     <div>
-       <label>사용 여부</label>
+        <label>사용 여부</label>
         <input type="radio" name="isUsed" value="Y" ${category.isUsed == 'Y' || category.isUsed == 'y' ? 'checked': ''} ${mode == "new"? '' : 'onclick="return false"'} /> Y
         <input type="radio" name="isUsed" value="N" ${category.isUsed == 'N' || category.isUsed == 'n' ? 'checked': ''} ${mode == "new"? '' : 'onclick="return false"'} /> N
     </div>
     <div>
         <label>표시 여부</label>
-       <input type="radio" name="isDisp" value="Y" ${category.isDisp == 'Y' || category.isDisp == 'y' ? 'checked': ''}  ${mode == "new"? '' : 'onclick="return false"'} /> Y
-       <input type="radio" name="isDisp"  value="N" ${category.isDisp == 'N' || category.isDisp == 'n' ? 'checked': ''}  ${mode == "new"? '' : 'onclick="return false"'} /> N
-     </div>
+        <input type="radio" name="isDisp" value="Y" ${category.isDisp == 'Y' || category.isDisp == 'y' ? 'checked': ''}  ${mode == "new"? '' : 'onclick="return false"'} /> Y
+        <input type="radio" name="isDisp"  value="N" ${category.isDisp == 'N' || category.isDisp == 'n' ? 'checked': ''}  ${mode == "new"? '' : 'onclick="return false"'} /> N
+    </div>
     ${mode != "new" ? '<button type="button" id="modifyBtn" class="btn">수정</button>' : null}
     ${mode != "new" ? ' <button type="button" id="removeBtn" class="btn">삭제</button>' :null}
     ${mode != "new" ? ' <button type="button" id="listBtn" class="btn">목록</button>' : null}
@@ -92,7 +95,7 @@
         $('#registerBtn').on("click", function() {
 
             let form = $('#form'); // form id를 가진 엘리먼트의 참조를 얻어옴
-            form.attr("action", "<c:url value='/categorys'/>");
+            form.attr("action", "<c:url value='/categorys/register'/>");
             form.attr("method", "post");
             form.submit();  // form에 있는 input, textarea 태그의 각종 value값들이 body에 담겨 전송됨
         })

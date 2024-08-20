@@ -6,7 +6,7 @@ import org.springframework.validation.Errors;
 
 import java.util.Map;
 
-public interface UserService {
+public interface  UserService {
     // 로그인 시 최근 로그인 일시 업데이트
     int updateRecentLoginHist(String id) throws Exception;
 
@@ -31,6 +31,10 @@ public interface UserService {
     // 전체 가입고객(탈퇴회원 포함)의 이메일 조회하여 이메일 중복여부 확인
     @LogException
     boolean checkDuplicatedEmail(String id);
+
+    // 임시 비밀번호 메일전송
+    @LogException
+    String sendTempPassword(String id,String email);
 
     // 비밀번호 찾기
     // 새로운 비밀번호로 변경

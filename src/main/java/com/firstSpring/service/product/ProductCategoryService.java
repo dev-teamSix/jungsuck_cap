@@ -54,12 +54,12 @@ public class ProductCategoryService {
     // 상위 카테고리 목록 조회
     @Transactional(rollbackFor = Exception.class)
     public List<ProductCategoryDto> getHighCatgList() throws Exception{
-          try{
-              return productCategoryDao.selectHighCatgList();
-          } catch (Exception e) {
-              e.printStackTrace();
-              throw new Exception("상위 카테고리 목록 조회 중 예외 발생");
-          }
+        try{
+            return productCategoryDao.selectHighCatgList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("상위 카테고리 목록 조회 중 예외 발생");
+        }
     }
 
     // 모든 상/하위 카테고리 조회
@@ -86,20 +86,26 @@ public class ProductCategoryService {
 
     // 카테고리 등록
     @Transactional(rollbackFor = Exception.class)
-    public Integer register(ProductCategoryDto productCategoryDto) throws Exception{
+    public boolean register(ProductCategoryDto productCategoryDto) throws Exception{
         try {
-            return productCategoryDao.insert(productCategoryDto);
+            if (!validate(productCategoryDto)) {
+                return false;
+            }
+            return productCategoryDao.insert(productCategoryDto) == 1 ? true : false;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new Exception("카테고리 등록 중 예외 발생");
+            return false;
         }
     }
 
     // 카테고리 변경
     @Transactional(rollbackFor = Exception.class)
-    public Integer modify(ProductCategoryDto productCategoryDto) throws Exception{
+    public boolean modify(ProductCategoryDto productCategoryDto) throws Exception{
         try {
-            return productCategoryDao.update(productCategoryDto);
+            if (!validate(productCategoryDto)) {
+                return false;
+            }
+            return productCategoryDao.update(productCategoryDto) == 1 ? true: false;
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("카테고리 정보 수정 중 예외 발생");
@@ -109,4 +115,22 @@ public class ProductCategoryService {
     // 카테고리 제거
     // Q. 해당 카테고리의 상품들은 어떻게? -> 일정 값으로 세팅 or null로 두기?
 
+    // 수정&등록 전 유효성 검사
+    public boolean validate(ProductCategoryDto prodCatgDto) throws Exception{
+        // 상위 카테고리가 유효한지 확인
+        if(prodCatgDto.getHighCatgNo() != null) {
+            Boolean isHighCatg = isHighCatg(prodCatgDto.getHighCatgNo());
+            if(!isHighCatg) {
+                return false;
+            }
+        }
+
+        // 이름 중복 여부 확인
+        Boolean isDuplicatedName = isDuplicatedName(prodCatgDto.getName(), prodCatgDto.getHighCatgNo());
+        if(isDuplicatedName) {
+            return false;
+        }
+
+        return true;
+    }
 }

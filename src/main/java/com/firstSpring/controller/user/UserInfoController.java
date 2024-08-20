@@ -6,4 +6,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/userInfo")
 public class UserInfoController {
-}
+ }

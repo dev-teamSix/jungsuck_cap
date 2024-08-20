@@ -32,6 +32,19 @@ public class LoginController {
         binder.setValidator(new LoginValidator());
     }
 
+     // 에러 메세지 반환 메서드
+    private String getString(UserDto userDto, Errors errors, RedirectAttributes ra) {
+        if (errors.hasErrors()) {
+            ra.addFlashAttribute("userDto", userDto); // 입력했던 기존 ID,PWD 전달
+            Map<String,String> validatorResult = userService.validateHandling(errors);
+            for(String key: validatorResult.keySet()) {
+                ra.addFlashAttribute(key,validatorResult.get(key));
+            }
+            return "redirect:/login/form";
+        }
+        return null;
+    }
+
 
     // 로그인 폼을 요청 (GET)
     @GetMapping("/form")
@@ -45,14 +58,8 @@ public class LoginController {
     public String save(@Valid @ModelAttribute("userDto") UserDto userDto, Errors errors, boolean rememberId, HttpServletResponse response, HttpServletRequest request, RedirectAttributes ra) {
         // ID 및 PWD 유효성 검사
         //  유효성 검사 불일치 ->  login/form으로 리다이렉트
-        if (errors.hasErrors()) {
-            ra.addFlashAttribute("userDto",userDto); // 입력했던 기존 ID,PWD 전달
-            Map<String,String> validatorResult = userService.validateHandling(errors);
-            for(String key: validatorResult.keySet()) {
-                ra.addFlashAttribute(key,validatorResult.get(key));
-            }
-            return "redirect:/login/form";
-        }
+        String x = getString(userDto, errors, ra);
+        if (x != null) return x;
 
         String id = userDto.getId();
         String pwd = userDto.getPwd();

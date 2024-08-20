@@ -4,7 +4,7 @@ import com.firstSpring.domain.board.SearchCondition;
 
 import java.util.Objects;
 
-public class PageHandler {
+public class  PageHandler {
     private SearchCondition sc;
     private int navSize = 10; // 내비게이션 크기
     private int totalCnt; // 총 게시물 갯수

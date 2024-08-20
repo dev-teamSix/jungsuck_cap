@@ -1,6 +1,6 @@
 package com.firstSpring.domain.board;
 
-public class FaqDto {
+public class  FaqDto {
     private Integer bno;
     private String id;
     private String title;
