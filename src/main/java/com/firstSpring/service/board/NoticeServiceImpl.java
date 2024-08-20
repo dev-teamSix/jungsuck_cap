@@ -10,7 +10,7 @@ import java.util.Map;
 
 
 @Service
-public class NoticeServiceImpl implements NoticeService{
+public class  NoticeServiceImpl implements NoticeService{
     @Autowired
     private NoticeDao noticeDao;
 

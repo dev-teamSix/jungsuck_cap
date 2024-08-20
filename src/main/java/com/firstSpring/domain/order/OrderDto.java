@@ -8,15 +8,15 @@ public class OrderDto {
     private Integer ord_no_return;
     private String cust_id;
     private String ord_st_cd;
-    private LocalDateTime ord_dt;
-    private LocalDateTime cnl_dt;
-    private LocalDateTime frst_reg_dt;
+    private String ord_dt;
+    private String cnl_dt;
+    private String frst_reg_dt;
     private String frst_reg_id;
-    private LocalDateTime last_mod_dt;
+    private String last_mod_dt;
     private String last_mod_id;
 
     public OrderDto() {}
-    public OrderDto(Integer ord_no, String cust_id, String ord_st_cd, LocalDateTime ord_dt, LocalDateTime cnl_dt, LocalDateTime frst_reg_dt, String frst_reg_id, LocalDateTime last_mod_dt, String last_mod_id) {
+    public OrderDto(Integer ord_no, String cust_id, String ord_st_cd, String ord_dt, String cnl_dt, String frst_reg_dt, String frst_reg_id, String last_mod_dt, String last_mod_id) {
         this.ord_no = ord_no;
         this.cust_id = cust_id;
         this.ord_st_cd = ord_st_cd;
@@ -52,27 +52,27 @@ public class OrderDto {
         this.ord_st_cd = ord_st_cd;
     }
 
-    public LocalDateTime getOrd_dt() {
+    public String getOrd_dt() {
         return ord_dt;
     }
 
-    public void setOrd_dt(LocalDateTime ord_dt) {
+    public void setOrd_dt(String ord_dt) {
         this.ord_dt = ord_dt;
     }
 
-    public LocalDateTime getCnl_dt() {
+    public String getCnl_dt() {
         return cnl_dt;
     }
 
-    public void setCnl_dt(LocalDateTime cnl_dt) {
+    public void setCnl_dt(String cnl_dt) {
         this.cnl_dt = cnl_dt;
     }
 
-    public LocalDateTime getFrst_reg_dt() {
+    public String getFrst_reg_dt() {
         return frst_reg_dt;
     }
 
-    public void setFrst_reg_dt(LocalDateTime frst_reg_dt) {
+    public void setFrst_reg_dt(String frst_reg_dt) {
         this.frst_reg_dt = frst_reg_dt;
     }
 
@@ -84,11 +84,11 @@ public class OrderDto {
         this.frst_reg_id = frst_reg_id;
     }
 
-    public LocalDateTime getLast_mod_dt() {
+    public String getLast_mod_dt() {
         return last_mod_dt;
     }
 
-    public void setLast_mod_dt(LocalDateTime last_mod_dt) {
+    public void setLast_mod_dt(String last_mod_dt) {
         this.last_mod_dt = last_mod_dt;
     }
 

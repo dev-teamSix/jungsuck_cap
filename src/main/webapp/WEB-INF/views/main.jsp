@@ -92,8 +92,9 @@
             text-decoration: underline;
         }
     </style>
-<body>
+</head>
 
+<body>
 <header class="main-header">
     <div class="container">
         <a href="/" class="logo">
@@ -107,6 +108,7 @@
                 <ul class="navbar-nav ml-auto">
                     <c:choose>
                         <c:when test="${!empty sessionUser}">
+                            <button type="button" style="background-color: #343a40; color: #ffffff; border: none; width: 80px" onclick="location.href='/cart/cartList'">장바구니</button>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         ${sessionUser.name}
@@ -150,6 +152,5 @@
         </nav>
     </div>
 </header>
-
 </body>
 </html>

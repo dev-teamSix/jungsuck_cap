@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class ProductColorDaoImpl implements ProductColorDao {
+public class  ProductColorDaoImpl implements ProductColorDao {
     @Autowired
     SqlSession session;
 

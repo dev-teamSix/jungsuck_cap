@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 @Component
 @Aspect
-public class LogAdvice {
+public class  LogAdvice {
 
     private static final Logger logger = LoggerFactory.getLogger(LogAdvice.class);
 

@@ -5,7 +5,7 @@ import com.firstSpring.domain.board.FaqDto;
 import java.util.List;
 import java.util.Map;
 
-public interface FaqDao {
+public interface  FaqDao {
     //FAQ게시판 공지 미지정 게시글 카운터 조회
     int count(Map map) throws Exception;
     //공지로 지정된 게시글 카운터 조회

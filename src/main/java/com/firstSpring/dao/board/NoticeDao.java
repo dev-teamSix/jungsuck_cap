@@ -6,7 +6,7 @@ import com.firstSpring.domain.board.SearchCondition;
 import java.util.*;
 
 
-public interface NoticeDao {
+public interface  NoticeDao {
     //게시판 상세
     //게시판 삭제
     //게시판 등록

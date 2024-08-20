@@ -5,7 +5,7 @@ import com.firstSpring.domain.board.QnaDto;
 import java.util.List;
 import java.util.Map;
 
-public interface QnaService {
+public interface  QnaService {
     //카운터 조회
     int getCount(Map map) throws Exception;
     //상단고정(공지) 카운터 조회

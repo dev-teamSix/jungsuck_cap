@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>로그인</title>
+	 <title>로그인</title>
 	<!-- Bootstrap CSS -->
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 	<!-- jQuery, Popper.js, and Bootstrap JS -->
@@ -107,6 +107,7 @@
 				<ul class="navbar-nav ml-auto">
 					<c:choose>
 						<c:when test="${!empty sessionUser}">
+							<button type="button" style="background-color: #343a40; color: #ffffff; border: none; width: 80px" onclick="location.href='/cart/cartList'">장바구니</button>
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										${sessionUser.name}

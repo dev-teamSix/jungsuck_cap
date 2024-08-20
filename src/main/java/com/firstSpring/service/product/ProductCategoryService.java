@@ -54,12 +54,12 @@ public class ProductCategoryService {
     // 상위 카테고리 목록 조회
     @Transactional(rollbackFor = Exception.class)
     public List<ProductCategoryDto> getHighCatgList() throws Exception{
-          try{
-              return productCategoryDao.selectHighCatgList();
-          } catch (Exception e) {
-              e.printStackTrace();
-              throw new Exception("상위 카테고리 목록 조회 중 예외 발생");
-          }
+        try{
+            return productCategoryDao.selectHighCatgList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("상위 카테고리 목록 조회 중 예외 발생");
+        }
     }
 
     // 모든 상/하위 카테고리 조회

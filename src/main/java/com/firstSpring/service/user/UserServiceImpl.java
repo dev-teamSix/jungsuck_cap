@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Random;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class  UserServiceImpl implements UserService{
     private final UserDao userDao;
     private final BCryptPasswordEncoder passwordEncoder;
     private final JavaMailSender javaMailSender;
