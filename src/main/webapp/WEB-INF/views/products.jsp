@@ -59,37 +59,31 @@
             <th>등록날짜</th>
         </tr>
         <c:forEach var="p" items="${productList}">
-                <tr onclick="window.location='<c:url value="/products/read?prodNo=${p.prodNo}"/>';" style="cursor:pointer;">
-                    <td class="no">${p.prodNo}</td>
-                    <td class="no">${p.product.prodCatgNo}</td>
-                    <td class="main_img">
-                        <img src="<c:url value='${p.mainImg.url}${p.mainImg.fileName}.${p.mainImg.fileExt}'/>">
-                    </td>
-                    <td class="name">${p.product.name}</td>
-                    <td>${p.product.price}</td>
-                    <td>
-                        <c:forEach var="color" items="${p.prodColList}">
-                            <span class="color" style="background-color: ${color.colRgbCd}; border-style: solid;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        </c:forEach>
-                    </td>
-                    <td>${p.product.avgRatg}</td>
-                    <td>${p.product.totalSales}</td>
-                    <td>${p.product.viewCnt}</td>
-                    <td>${p.product.firstRegDt}</td>
-                </tr>
+            <tr onclick="window.location='<c:url value="/products/read?prodNo=${p.prodNo}"/>';" style="cursor:pointer;">
+                <td class="no">${p.prodNo}</td>
+                <td class="no">${p.product.prodCatgNo}</td>
+                <td class="main_img">
+                    <img src="<c:url value='${p.mainImg.url}${p.mainImg.fileName}.${p.mainImg.fileExt}'/>">
+                </td>
+                <td class="name">${p.product.name}</td>
+                <td>${p.product.price}</td>
+                <td>
+                    <c:forEach var="color" items="${p.prodColList}">
+                        <span class="color" style="background-color: ${color.colRgbCd}; border-style: solid;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </c:forEach>
+                </td>
+                <td>${p.product.avgRatg}</td>
+                <td>${p.product.totalSales}</td>
+                <td>${p.product.viewCnt}</td>
+                <td>${p.product.firstRegDt}</td>
+            </tr>
 
         </c:forEach>
     </table>
-    <c:if test="${ph.prevPage}">p\]-0
 
 
-
-
-
-
-
-
-        <a href="<c:url value='/products?pageNo=${ph.beginPage-1}&pageSize=${ph.pageSize}&prodCatgNo=${prodCatgNo}&sortBy=${sortBy}'/>"+>&lt;</a>
+    <c:if test="${ph.prevPage}">
+        <a href="<c:url value='/products?pageNo=${ph.beginPage-1}&pageSize=${ph.pageSize}&prodCatgNo=${prodCatgNo}&sortBy=${sortBy}'/>"+>&lt</a>
     </c:if>
     <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
         <a href="<c:url value='/products?pageNo=${i}&pageSize=${ph.pageSize}&prodCatgNo=${prodCatgNo}&sortBy=${sortBy}'/>">${i}</a>
