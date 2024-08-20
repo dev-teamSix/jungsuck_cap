@@ -9,7 +9,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server test" />
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="init : server testgit">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25511897-d6d8-4383-a184-56c52f3de22a.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25511897-d6d8-4383-a184-56c52f3de22a/storage_v2/_src_/schema/hatmall.L9OjKQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/Hello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/CartController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/OrderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/CartDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/CartDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/OrderDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/dao/order/OrderDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/CartItemDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/domain/order/OrderItemDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/entity/PageHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/exception/OutOfStockException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/CartService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/CartServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/OrderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/service/order/OrderServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/firstSpring/dao/order/CartDaoImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/firstSpring/dao/order/OrderDaoImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/firstSpring/entity/PageHandlerTest.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +62,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sukmo88&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/sukmo88/jungsuck_cap.git&quot;,
+    &quot;accountId&quot;: &quot;03300e3b-c3d3-4ca9-b4b6-dc19f5805483&quot;
+  }
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -92,7 +132,7 @@
     &quot;Tomcat Server.Tomcat 9.0.91.executor&quot;: &quot;Run&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;sukmo&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/sukmo/IdeaProjects/jungsuck_cap/src/main/webapp/WEB-INF/views/board&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -103,6 +143,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -451,6 +492,7 @@
       <workItem from="1723684991957" duration="34589000" />
       <workItem from="1723770240726" duration="18504000" />
       <workItem from="1723799356663" duration="1871000" />
+      <workItem from="1724144808108" duration="390000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
@@ -490,24 +532,23 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -518,5 +559,9 @@
     <MESSAGE value="init : server test" />
     <MESSAGE value="최초 커밋(2차리뷰 끝)" />
     <option name="LAST_COMMIT_MESSAGE" value="최초 커밋(2차리뷰 끝)" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
