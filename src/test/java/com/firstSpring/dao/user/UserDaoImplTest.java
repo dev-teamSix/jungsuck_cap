@@ -183,7 +183,7 @@ public class UserDaoImplTest {
 
         // 2. 동일한 id 값을 가진 고객 정보 추가하려고 하나, 중복 PK 임에 따라 추가될 수 없어 예외 발생함.
         // 동일한 id 값을 가진 고객에 대한 정보 추가 시, 중복 PK 값 추가이기 때문에 insert 문 실행 불가하여 DuplicateKeyException 예외 던짐.
-        Assertions.assertThrows(DuplicateKeyException.class, () -> userDao.insertUser(testDto2));
+        Assertions.assertThrows(DataIntegrityViolationException.class, () -> userDao.insertUser(testDto2));
 
         // 중복된 id 값 추가 시도 이후의 전체 row 수
         postTotalCnt2 = userDao.countUser();

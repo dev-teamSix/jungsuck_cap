@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface UserService {
     // 로그인 시 최근 로그인 일시 업데이트
-    int updateRecentLoginHist(String id) throws Exception;
+    int updateRecentLoginHist(String id) ;
 
     // 아이디 찾기
     UserDto findUserId(String name,String email);
@@ -46,7 +46,7 @@ public interface UserService {
     // 이메일 인증
     // 매 인증 시 랜덤 문자 및 숫자로 구성된 인증코드 업데이트
     // 본인인증 시 부여된 인증코드 업데이트
-    int saveCustMailKey(UserDto userDto) throws Exception;
+    int saveCustMailKey(UserDto userDto) ;
 
 
     // 회원 정보 수정

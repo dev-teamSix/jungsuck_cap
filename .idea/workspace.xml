@@ -9,7 +9,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="임시 비밀번호 전송 기능 완료" />
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="임시 비밀번호 전송 기능 완료">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/AuthenticateInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/DuplicateUserEmailException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ValidationCheckAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/user/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/user/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/user/UserDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/user/UserDaoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +62,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -52,47 +75,49 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.DBConnectionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.NOT_NULL_제약조건_위반_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.PK_중복_불가능_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.insertUserDaoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.userDao_주입상태_확인_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.가입한_회원_생년월일_변경_성공_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.고객정보_삭제_테스트_메서드_기능_확인.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.고객정보_추가_테스트_메서드_기능_확인.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.탈퇴한_회원_생년월일_변경_실패_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.회원가입한_고객수_확인테스트.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.821.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;kyungsik&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/IdeaProjects/jungsuk_cap/src/main/webapp/resources/css&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.DBConnectionTest.executor": "Run",
+    "JUnit.UserDaoImplTest.NOT_NULL_제약조건_위반_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.PK_제약조건_위반_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.PK_중복_불가능_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.executor": "Run",
+    "JUnit.UserDaoImplTest.insertUserDaoTest.executor": "Run",
+    "JUnit.UserDaoImplTest.userDao_주입상태_확인_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.가입한_회원_생년월일_변경_성공_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.고객정보_삭제_테스트_메서드_기능_확인.executor": "Run",
+    "JUnit.UserDaoImplTest.고객정보_추가_테스트_메서드_기능_확인.executor": "Run",
+    "JUnit.UserDaoImplTest.탈퇴한_회원_생년월일_변경_실패_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.회원가입한_고객수_확인테스트.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 9.0.821.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "kyungsik",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/user/IdeaProjects/jungsuk_cap/src/main/webapp/resources/css",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.30804598",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.firstSpring.service.user" />
@@ -127,6 +152,22 @@
       <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
       <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoImplTest.PK_제약조건_위반_테스트" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.firstSpring.dao.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.firstSpring.dao.user" />
+      <option name="MAIN_CLASS_NAME" value="com.firstSpring.dao.user.UserDaoImplTest" />
+      <option name="METHOD_NAME" value="PK_제약조건_위반_테스트" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -387,6 +428,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.UserDaoImplTest.PK_제약조건_위반_테스트" />
       <item itemvalue="JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트" />
       <item itemvalue="JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트" />
       <item itemvalue="JUnit.UserDaoImplTest" />
@@ -394,6 +436,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserDaoImplTest.PK_제약조건_위반_테스트" />
         <item itemvalue="JUnit.UserDaoImplTest" />
         <item itemvalue="JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트" />
         <item itemvalue="JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트" />
@@ -428,6 +471,21 @@
       <workItem from="1723600448848" duration="37271000" />
       <workItem from="1723699588680" duration="27773000" />
       <workItem from="1723772598628" duration="19242000" />
+      <workItem from="1724116619945" duration="19000" />
+      <workItem from="1724303400564" duration="1129000" />
+      <workItem from="1724491306047" duration="1104000" />
+      <workItem from="1724693137244" duration="809000" />
+      <workItem from="1724694549142" duration="18000" />
+      <workItem from="1724724440743" duration="111000" />
+      <workItem from="1724727890326" duration="594000" />
+      <workItem from="1724816137255" duration="3389000" />
+      <workItem from="1724895562064" duration="782000" />
+      <workItem from="1724897477909" duration="791000" />
+      <workItem from="1724913096430" duration="81000" />
+      <workItem from="1724934713134" duration="1013000" />
+      <workItem from="1724936126384" duration="11000" />
+      <workItem from="1725246082596" duration="5576000" />
+      <workItem from="1725260773700" duration="19574000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />

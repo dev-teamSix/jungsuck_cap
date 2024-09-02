@@ -113,18 +113,14 @@
             <label for="inputId">아이디</label>
             <input type="text" class="form-control" id="inputId" name="id" value="${cookie['id'] != null ? cookie['id'].value : userDto.id}"  maxlength="20" placeholder="아이디를 입력해주세요">
             <div class="alert-container">
-                <c:if test="${not empty valid_id}">
-                    <span class="error-message">${valid_id}</span>
-                </c:if>
+                <span style="color: red; font-size: 10px;">${valid_id}</span>
             </div>
         </div>
         <div class="form-group">
             <label for="inputPw">비밀번호</label>
             <input type="password" class="form-control" id="inputPw" name="pwd" value="${userDto.pwd}" placeholder="비밀번호를 입력해주세요">
             <div class="alert-container">
-                <c:if test="${not empty valid_pwd}">
-                    <span class="error-message">${valid_pwd}</span>
-                </c:if>
+                <c:if test="${not empty valid_pwd}"><span style="color: red; font-size: 10px;">${valid_pwd}</span></c:if>
             </div>
         </div>
         <div class="form-check">

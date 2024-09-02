@@ -229,13 +229,13 @@
         alert("${errorMsg}");
         </c:if>
         // 모든 필드가 초기값으로 설정되도록 유지
-        if ($("#joinIdInput").val()) {
-            $("#alertId").css({
-                "color":"black",
-                "font-size" : "10px"
-            });
-            $("#alertId").text("✔️ 사용 가능한 아이디입니다.");
-        }
+        // if ($("#joinIdInput").val()) {
+        //     $("#alertId").css({
+        //         "color":"black",
+        //         "font-size" : "10px"
+        //     });
+        //     $("#alertId").text("✔️ 사용 가능한 아이디입니다.");
+        // }
 
         if ($("#changePassword").val()) {
             $("#alertPassword").css({
@@ -731,10 +731,10 @@
         }
 
         $("#joinButton").click(function () {
-            if($("#alertId").text() != "✔️ 사용 가능한 아이디입니다.") {
-                alert("아이디 중복 확인을 해주세요.");
-                return;
-            }
+            // if($("#alertId").text() != "✔️ 사용 가능한 아이디입니다.") {
+            //     alert("아이디 중복 확인을 해주세요.");
+            //     return;
+            // }
 
             if($("#alertName").text() != "✔️ 사용 가능한 이름입니다.") {
                 alert("이름을 다시 작성해주세요.");

@@ -53,19 +53,19 @@ public class RegisterController {
 
 
     // 에러 메세지 반환 메서드
-    private String getString(UserDto userDto, Errors errors, Model model) {
-        if (errors.hasErrors()) {
-            // 회원가입 실패시 입력 데이터 값을 유지
-            model.addAttribute("userDto", userDto);
-            // 유효성 통과 못한 필드와 메시지를 핸들링
-            Map<String,String> validatorResult = userService.validateHandling(errors);
-            for(String key: validatorResult.keySet()) {
-                model.addAttribute(key,validatorResult.get(key));
-            }
-            return "register";
-        }
-        return null;
-    }
+//    private String getString(UserDto userDto, Errors errors, Model model) {
+//        if (errors.hasErrors()) {
+//            // 회원가입 실패시 입력 데이터 값을 유지
+//            model.addAttribute("userDto", userDto);
+//            // 유효성 통과 못한 필드와 메시지를 핸들링
+//            Map<String,String> validatorResult = userService.validateHandling(errors);
+//            for(String key: validatorResult.keySet()) {
+//                model.addAttribute(key,validatorResult.get(key));
+//            }
+//            return "register";
+//        }
+//        return null;
+//    }
 
     // 회원가입 (GET)
     @GetMapping("/register")
@@ -78,9 +78,6 @@ public class RegisterController {
     @PostMapping("/save")
     @LogException
     public String savaUserProcess(@Valid @ModelAttribute("userDto") UserDto userDto, Errors errors, Model model) {
-        String register = getString(userDto, errors, model);
-        if (register != null) return register;
-
         // saveCustJoinInfo 결과가
         // false -> fail
         // true -> success
@@ -92,7 +89,7 @@ public class RegisterController {
         }
 
         // 회원가입 성공시 로그인폼으로 이동
-        return "/login/form";
+        return "redirect:/login/form";
     }
 
 
