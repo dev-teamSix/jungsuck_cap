@@ -262,30 +262,30 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    if (data.result === 'fail') {
-                        $("#answerLine").css({
-                            "color": "red",
-                            "text-align": "center",
-                            "text-size": "10px"
-                        });
-                        $("#answerLine").text("일치하는 아이디가 없습니다. 다시 확인해주세요.");
-                    } else {
+                    if (data.header.message === 'SUCCESS') {
                         $("#answerLine").css({
                             "color": "green",
                             "text-align": "center",
                             "text-size": "10px"
                         });
-                        $("#answerLine").text(data.message); // 서버에서 반환한 메시지를 사용
+                        $("#answerLine").text(data.msg); // 서버에서 반환한 메시지를 사용
                     }
                 },
                 error: function (xhr, status, error) {
                     const response = xhr.responseJSON;
+
+                    // 예외 메시지를 표시
+                    let errorMessage = "알 수 없는 오류가 발생했습니다.";
+                    if (response && response.message) {
+                        errorMessage = response.message;
+                    }
+
                     $("#answerLine").css({
                         "color": "red",
                         "text-align": "center",
-                        "text-size": "10px"
+                        "font-size": "10px"
                     });
-                    $("#answerLine").text(response.message);
+                    $("#answerLine").text(errorMessage);
                 }
             });
         });
@@ -302,13 +302,8 @@
                 url: '/find/pwd',
                 data: { email: email, id: id },
                 success: function(data) {
-                    if (data.result == 'fail') {
-                        // 오류 메시지 표시
-                        $('#alertEmail').show();
-                        $('#emailInfo').hide();
-                        $('#emailCodeInput').hide();
-                    } else {
-                        alert(data.message);
+                    if (data.header.message === 'SUCCESS') {
+                        alert(data.msg);
                         // 인증번호 입력 필드 및 정보 메시지 표시
                         $('#emailInfo').show();
                         $('#emailCodeInput').show();
@@ -319,28 +314,24 @@
                             "font-size": "15px"
                         });
 
-                        code = data.code; // 인증번호 저장
+                        code = data.data; // 인증번호 저장
 
                         $('#checkEmail').prop('disabled', false);
                     }
                 },
                 error: function(xhr, status, error) {
-                    // 서버 응답에서 result 값을 확인하여 처리
-                    let response = xhr.responseJSON;
-                    let result = response && response.result;
-                    let message = response && response.message ? response.message : "서버와의 통신 중 에러가 발생했습니다.";
+                    // JSON 응답을 파싱하여 오류 메시지를 추출
+                    const response = xhr.responseJSON;
 
-                    if (result === 'fail') {
-                        // 'fail' 응답 처리
+                    if (response && response.header && response.header.message) {
+                        // 서버에서 전달된 메시지를 #alertEmail 요소에 표시
                         $('#alertEmail').show();
+                        $('#alertEmail').text(response.header.message);
                         $('#emailInfo').hide();
                         $('#emailCodeInput').hide();
-                    } else if (result === 'error') {
-                        // 'error' 응답 처리
-                        alert(message);
                     } else {
-                        // 예기치 않은 오류 처리
-                        alert(message);
+                        // JSON 응답이 예상대로 오지 않았을 경우 기본 오류 메시지 표시
+                        alert("알 수 없는 오류가 발생했습니다.");
                     }
                 }
             });
@@ -375,17 +366,19 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    if (data.result == 'fail') {
-                        alert(data.message);
-                    } else {
-                        alert(data.message);
+                    if (data.header.message === 'SUCCESS') {
+                        alert(data.msg);
                         location.reload();
                     }
                 },
                 error: function(xhr, status, error) {
                     const response = xhr.responseJSON;
                     // AJAX 요청 실패 시
-                    alert(response.message);
+                    if (response && response.header && response.header.message) {
+                        alert(response.header.message);
+                    } else {
+                        alert("알 수 없는 오류가 발생했습니다.");
+                    }
                 }
             });
         });

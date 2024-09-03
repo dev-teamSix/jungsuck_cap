@@ -18,19 +18,21 @@ public interface UserService {
     UserDto findUserIdAndEmail(String name, String email);
 
     // 전체 가입고객(탈퇴회원 포함)의 아이디 조회하여 아이디 중복여부 확인
-    boolean checkDuplicatedId(String id);
+    UserDto checkDuplicatedId(String id);
 
     // 아이디 조회여부 확인
     boolean checkExistOfId(String id);
 
     UserDto getCustLoginInfo(String id);
 
+    void matchPwd(String pwd, String target);
+
     // 암호화 전후 비밀번호 비교
     boolean checkPwdMatch(String id, String pwd);
 
     // 전체 가입고객(탈퇴회원 포함)의 이메일 조회하여 이메일 중복여부 확인
     @LogException
-    boolean checkDuplicatedEmail(String id);
+    UserDto checkDuplicatedEmail(String id);
 
     // 임시 비밀번호 메일전송
     @LogException
@@ -41,7 +43,7 @@ public interface UserService {
     boolean modifyUserPwd(String id, String pwd);
 
     // 회원가입
-    boolean saveCustJoinInfo(UserDto userDto);
+    void saveCustJoinInfo(UserDto userDto);
 
     // 이메일 인증
     // 매 인증 시 랜덤 문자 및 숫자로 구성된 인증코드 업데이트

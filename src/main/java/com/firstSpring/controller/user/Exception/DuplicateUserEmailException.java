@@ -1,7 +1,10 @@
 package com.firstSpring.controller.user.Exception;
 
-public class DuplicateUserEmailException extends RuntimeException {
-    public DuplicateUserEmailException(Throwable cause) {
-        super(cause);
+import lombok.Getter;
+
+@Getter
+public class DuplicateUserEmailException extends UserCustomException {
+    public DuplicateUserEmailException(ResponseCode errorCode) {
+        super(errorCode);
     }
 }

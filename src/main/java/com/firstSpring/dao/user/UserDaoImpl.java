@@ -1,11 +1,9 @@
 package com.firstSpring.dao.user;
 
-import com.firstSpring.controller.user.Exception.DuplicateUserEmailException;
 import com.firstSpring.domain.user.UserDto;
 import com.firstSpring.entity.LogException;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -107,11 +105,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     @LogException
     public int insertUser(UserDto userDto)  {
-        try {
             return session.insert(namespace + "insertUser", userDto);
-        }catch (DuplicateKeyException e) {
-            throw new DuplicateUserEmailException(e);
-        }
     }
 
 
@@ -153,26 +147,6 @@ public class UserDaoImpl implements UserDao {
     public int updateUserInfo(UserDto userDto)  {
         return session.update(namespace + "updateUserInfo", userDto);
     }
-
-//    // 생년월일 변경 (UPDATE)
-//    @Override
-//    @LogException
-//    public int updateUserBefBirth(String id, String birth) throws Exception {
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("id", id); // 변경될 회원 ID
-//        map.put("birth", birth);
-//        return session.update(namespace + "updateUserBefBirth", map);
-//    }
-//
-//    // 핸드폰 번호 변경 (UPDATE)
-//    @Override
-//    @LogException
-//    public int updateUserMobileNum(String id, String ph_num) throws Exception {
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("id", id); // 변경될 회원 ID
-//        map.put("ph_num", ph_num); // 변경할 핸드폰 번호
-//        return session.update(namespace + "updateUserMobileNum", map);
-//    }
 
     // 회원탈퇴 (UPDATE)
     // > 회원 상태를 'O' -> 'L' 으로 변경

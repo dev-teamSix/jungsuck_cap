@@ -33,20 +33,6 @@ public class LoginController {
         binder.setValidator(new LoginValidator());
     }
 
-    // 에러 메세지 반환 메서드
-//    private String getString(UserDto userDto, Errors errors, RedirectAttributes ra) {
-//        if (errors.hasErrors()) {
-//            ra.addFlashAttribute("userDto", userDto); // 입력했던 기존 ID,PWD 전달
-//            Map<String,String> validatorResult = userService.validateHandling(errors);
-//            for(String key: validatorResult.keySet()) {
-//                ra.addFlashAttribute(key,validatorResult.get(key));
-//            }
-//            return "redirect:/login/form";
-//        }
-//        return null;
-//    }
-
-
     // 로그인 폼을 요청 (GET)
     @GetMapping("/form")
     @LogException
@@ -59,14 +45,6 @@ public class LoginController {
     public String save(@Valid @ModelAttribute("userDto") UserDto userDto, Errors errors, boolean rememberId, HttpServletResponse response, HttpServletRequest request, RedirectAttributes ra) {
         String id = userDto.getId();
         String pwd = userDto.getPwd();
-        
-        // ID 존재 유무 확인
-        //  존재 X ->  login/form으로 리다이렉트
-        if (!userService.checkExistOfId(id)) {
-            ra.addFlashAttribute("userDto",userDto); // 입력했던 기존 ID,PWD 전달
-            ra.addFlashAttribute("errorMsg", "존재하지 않는 아이디입니다.");
-            return "redirect:/login/form";
-        }
 
         // PWD 일치 여부 확인
         //  일치 X ->  login/form으로 리다이렉트

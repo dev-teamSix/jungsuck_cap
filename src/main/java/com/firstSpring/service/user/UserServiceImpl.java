@@ -1,12 +1,11 @@
 package com.firstSpring.service.user;
 
-import com.firstSpring.controller.user.Exception.DuplicateUserEmailException;
+import com.firstSpring.controller.user.Exception.*;
 import com.firstSpring.dao.user.UserDao;
 import com.firstSpring.domain.user.UserDto;
 import com.firstSpring.entity.LogException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,6 +18,8 @@ import javax.mail.internet.MimeMessage;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
+import static com.firstSpring.controller.user.Exception.UserErrorCode.*;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService{
         this.javaMailSender = javaMailSender;
     }
 
-
+    // 특수한 값으로 반환 X, void로 바꿀 것, 예외는 예외로 처리할 것
     // 가입 회원 아이디 조회여부 확인
     @Override
     @LogException
@@ -49,8 +50,22 @@ public class UserServiceImpl implements UserService{
     public UserDto getCustLoginInfo(String id) {
         // 아이디 조회 성공 -> 매개변수로 받은 아이디로 조회한 고객 정보를 userDto 에 저장
         // 예외 발생 시 null 처리
-        return userDao.selectUser(id);
+        UserDto userDto = userDao.selectUser(id);
+
+        if(userDto==null) {
+            throw new NotFindUserIdException(NOT_MATCH_ID);
+        }
+        return userDto;
     }
+
+    // 임시 비밀번호와 매개변수로 들어온 비밀번호가 일치하는지 확인
+    @Override
+    public void matchPwd(String pwd, String target) {
+        if(!authenticatePwd(pwd,target))
+            throw new NotFindPwdException(NOT_MATCH_PWD);
+    }
+
+
 
     // PWD 일치여부 확인
     @Override
@@ -87,68 +102,42 @@ public class UserServiceImpl implements UserService{
     @Override
     @LogException
     public UserDto findUserId(String name,String email) {
-        // 1. 아이디 조회 성공 -> 특정 고객의 아이디가 저장되어 있는 userDto 반환
-        // 2. 아이디 조회 실패 -> userDto = null
-        UserDto userDto = null;
-        try {
-            userDto = userDao.selectUserId(name,email);
-            return userDto;
+        UserDto userDto = userDao.selectUserId(name, email);
+        if(userDto==null) {
+            throw new NotFindUserIdException(NOT_MATCH_ID);
         }
-        catch (Exception e) {
-            return userDto;
-        }
+        return userDto;
     }
 
     // 전체 가입고객(탈퇴회원 포함) 중 특정 이메일과 특정 아이디를 가진 고객 정보 확인
     @Override
     @LogException
     public UserDto findUserIdAndEmail(String id, String email) {
-        // 1. 아이디&이메일 조회 성공 -> userDto 반환
-        // 2. 아이디&이메일 조회 실패 -> null
-        UserDto userDto = null;
-        try {
-            userDto = userDao.selectAllUserIdEmail(id,email);
-            return userDto;
+        UserDto userDto = userDao.selectAllUserIdEmail(id,email);
+        if(userDto==null) {
+            throw new NotFindUserIdEmailException(NOT_MATCH_ID_EMAIL);
         }
-        catch (Exception e) {
-            return userDto;
-        }
+        return userDto;
     }
 
     // 전체 가입고객(탈퇴회원 포함)의 아이디 조회하여 아이디 중복여부 확인
     @Override
     @LogException
-    public boolean checkDuplicatedId(String id) {
-        // 1. 중복되는 아이디가 없으면 true
-        // 2. 중복되는 아이디가 있으면 false
-        try {
-             if(userDao.selectAllUserId(id)==null) {
-                 return true;
-             }else {
-                 return false;
-             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public UserDto checkDuplicatedId(String id) {
+        UserDto userDto = userDao.selectAllUserId(id);
+        if(userDto == null)
+            throw new DuplicateUserIdException(DUPLICATED_ID);
+        return userDto;
     }
 
     // 전체 가입고객(탈퇴회원 포함)의 이메일 조회하여 이메일 중복여부 확인
     @Override
     @LogException
-    public boolean checkDuplicatedEmail(String email) {
-        // 1. 중복되는 이메일이 없으면 true
-        // 2. 중복되는 이메일이 있으면 false
-        try {
-            if(userDao.selectAllUserEmail(email)==null) {
-                return true;
-            }else {
-                return false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public UserDto checkDuplicatedEmail(String email) {
+        UserDto userDto = userDao.selectAllUserEmail(email);
+        if(userDto ==null)
+            throw new DuplicateUserEmailException(DUPLICATED_EMAIL);
+        return userDto;
     }
 
 
@@ -161,7 +150,7 @@ public class UserServiceImpl implements UserService{
     // split() 메서드로 , 기준으로 나눠서 저장
     @Override
     @LogException
-    public boolean saveCustJoinInfo(UserDto userDto) {
+    public void saveCustJoinInfo(UserDto userDto) {
 
         String pwd1 = userDto.getPwd().split(",")[0];
 
@@ -170,10 +159,8 @@ public class UserServiceImpl implements UserService{
 
         try {
             userDao.insertUser(userDto);
-            return true;
-        } catch (DuplicateUserEmailException e) {
-            // 어떻게 처리할지
-            return false;
+        } catch (DataAccessException e) {
+            throw new UserDBException(e,USER_REGISTRATION_FAILED);
         }
     }
 
