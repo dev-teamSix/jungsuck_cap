@@ -14,7 +14,8 @@ public enum UserErrorCode implements ResponseCode {
     NOT_MATCH_ID(HttpStatus.BAD_REQUEST,"! 일치하는 아이디가 없습니다. 다시 확인해주세요."),
     NOT_MATCH_ID_EMAIL(HttpStatus.BAD_REQUEST, "! 입력하신 회원 정보가 맞는지 다시 한번 확인해 주세요."),
     NOT_MATCH_PWD(HttpStatus.BAD_REQUEST,"비밀번호를 확인해주세요."),
-    USER_REGISTRATION_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "회원가입을 실패하였습니다.");
+    USER_REGISTRATION_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "회원가입을 실패하였습니다."),
+    USER_DB_ERROR(HttpStatus.INTERNAL_SERVER_ERROR,"시스템 오류 입니다. 홈페이지에 다시 접속해주세요.");
 
     private final HttpStatus httpStatus;
     private final String message;

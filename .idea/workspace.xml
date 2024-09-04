@@ -9,32 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="[refactor] 로그인 인터셉터, 중복코드 AOP처리">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/CommonErrorCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/DuplicateUserIdException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalControllerExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalRestControllerExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/NotFindPwdException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/NotFindUserIdEmailException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/NotFindUserIdException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/ResponseCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserCustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserDBException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserErrorCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserSuccessCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/response/ApiHeader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/response/ApiResponse.java" afterDir="false" />
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="[refactor] Api응답객체 create, 예외처리">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/aop/DataAccessExceptionAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/CustException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/DuplicateUserEmailException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/DuplicateUserEmailException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalControllerExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalControllerExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalRestControllerExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalRestControllerExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserErrorCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/FindIdPwdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/FindIdPwdController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/aop/LogAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/aop/LogException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ValidationCheckAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/aop/ValidationCheckAdvice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/user/UserDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/user/UserDaoImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,9 +41,9 @@
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="CSS File" />
-        <option value="Jsp File" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -83,49 +75,49 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.DBConnectionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.NOT_NULL_제약조건_위반_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.PK_제약조건_위반_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.PK_중복_불가능_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.insertUserDaoTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.userDao_주입상태_확인_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.가입한_회원_생년월일_변경_성공_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.고객정보_삭제_테스트_메서드_기능_확인.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.고객정보_추가_테스트_메서드_기능_확인.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.탈퇴한_회원_생년월일_변경_실패_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserDaoImplTest.회원가입한_고객수_확인테스트.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.821.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;kyungsik&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/IdeaProjects/jungsuk_cap/src/main/webapp/resources/css&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.DBConnectionTest.executor": "Run",
+    "JUnit.UserDaoImplTest.NOT_NULL_제약조건_위반_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.PK_제약조건_위반_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.PK_중복_불가능_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.executor": "Run",
+    "JUnit.UserDaoImplTest.insertUserDaoTest.executor": "Run",
+    "JUnit.UserDaoImplTest.userDao_주입상태_확인_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.가입한_회원_생년월일_변경_성공_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.고객정보_삭제_테스트_메서드_기능_확인.executor": "Run",
+    "JUnit.UserDaoImplTest.고객정보_추가_테스트_메서드_기능_확인.executor": "Run",
+    "JUnit.UserDaoImplTest.탈퇴한_회원_생년월일_변경_실패_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.탈퇴한_회원_이메일_인증_실패_테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.활성화_상태_고객수_확인테스트.executor": "Run",
+    "JUnit.UserDaoImplTest.회원가입한_고객수_확인테스트.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 9.0.821.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "kyungsik",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/user/IdeaProjects/jungsuk_cap/src/main/webapp/resources/css",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.30804598",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.firstSpring.controller.user.Exception" />
@@ -501,7 +493,8 @@
       <workItem from="1725283236534" duration="254000" />
       <workItem from="1725327675778" duration="7113000" />
       <workItem from="1725342859159" duration="16398000" />
-      <workItem from="1725362487759" duration="6407000" />
+      <workItem from="1725362487759" duration="6734000" />
+      <workItem from="1725415569107" duration="8484000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
@@ -615,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725281147079</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="[refactor] Api응답객체 create, 예외처리">
+      <option name="closed" value="true" />
+      <created>1725369233269</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1725369233269</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,6 +668,7 @@
     <MESSAGE value="Controller 리팩터링" />
     <MESSAGE value="임시 비밀번호 전송 기능 완료" />
     <MESSAGE value="[refactor] 로그인 인터셉터, 중복코드 AOP처리" />
-    <option name="LAST_COMMIT_MESSAGE" value="[refactor] 로그인 인터셉터, 중복코드 AOP처리" />
+    <MESSAGE value="[refactor] Api응답객체 create, 예외처리" />
+    <option name="LAST_COMMIT_MESSAGE" value="[refactor] Api응답객체 create, 예외처리" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 package com.firstSpring.service.user;
 
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.entity.LogException;
+import com.firstSpring.controller.user.aop.LogException;
 import org.springframework.validation.Errors;
 
 import java.util.Map;
@@ -25,7 +25,7 @@ public interface UserService {
 
     UserDto getCustLoginInfo(String id);
 
-    void matchPwd(String pwd, String target);
+    String matchPwd(String pwd, String target);
 
     // 암호화 전후 비밀번호 비교
     boolean checkPwdMatch(String id, String pwd);
@@ -52,7 +52,7 @@ public interface UserService {
 
 
     // 회원 정보 수정
-    boolean modifyUserInfo(UserDto userDto);
+    UserDto modifyUserInfo(UserDto userDto);
 
 
     // 이메일 인증번호 전송

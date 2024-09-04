@@ -3,9 +3,8 @@ package com.firstSpring.service.user;
 import com.firstSpring.controller.user.Exception.*;
 import com.firstSpring.dao.user.UserDao;
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.entity.LogException;
+import com.firstSpring.controller.user.aop.LogException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,8 +23,8 @@ import static com.firstSpring.controller.user.Exception.UserErrorCode.*;
 @Service
 public class UserServiceImpl implements UserService{
     private final UserDao userDao;
-    private final BCryptPasswordEncoder passwordEncoder;
-    private final JavaMailSender javaMailSender;
+    private final BCryptPasswordEncoder passwordEncoder; // 분리 해야함
+    private final JavaMailSender javaMailSender; // 분리 해야함
 
     @Autowired
     private UserServiceImpl(UserDao userDao, BCryptPasswordEncoder passwordEncoder,JavaMailSender javaMailSender) {
@@ -60,9 +59,10 @@ public class UserServiceImpl implements UserService{
 
     // 임시 비밀번호와 매개변수로 들어온 비밀번호가 일치하는지 확인
     @Override
-    public void matchPwd(String pwd, String target) {
+    public String matchPwd(String pwd, String target) {
         if(!authenticatePwd(pwd,target))
             throw new NotFindPwdException(NOT_MATCH_PWD);
+        return target;
     }
 
 
@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService{
     @LogException
     public UserDto checkDuplicatedId(String id) {
         UserDto userDto = userDao.selectAllUserId(id);
-        if(userDto == null)
+        if(userDto != null)
             throw new DuplicateUserIdException(DUPLICATED_ID);
         return userDto;
     }
@@ -135,7 +135,7 @@ public class UserServiceImpl implements UserService{
     @LogException
     public UserDto checkDuplicatedEmail(String email) {
         UserDto userDto = userDao.selectAllUserEmail(email);
-        if(userDto ==null)
+        if(userDto !=null)
             throw new DuplicateUserEmailException(DUPLICATED_EMAIL);
         return userDto;
     }
@@ -151,17 +151,11 @@ public class UserServiceImpl implements UserService{
     @Override
     @LogException
     public void saveCustJoinInfo(UserDto userDto) {
-
         String pwd1 = userDto.getPwd().split(",")[0];
-
         String password = passwordEncoder.encode(pwd1);
         userDto.setPwd(password);
 
-        try {
-            userDao.insertUser(userDto);
-        } catch (DataAccessException e) {
-            throw new UserDBException(e,USER_REGISTRATION_FAILED);
-        }
+        userDao.insertUser(userDto);
     }
 
     // 회원가입 시, 유효성 체크
@@ -191,7 +185,7 @@ public class UserServiceImpl implements UserService{
     // 회원 정보 수정
     @Override
     @LogException
-    public boolean modifyUserInfo(UserDto userDto) {
+    public UserDto modifyUserInfo(UserDto userDto) {
         // 1. 매개변수로 들어온 userDto의 값으로 새로운 dto객체에 값 세팅
         // 2. 수정 성공 시 true 반환
         // 3. 수정 실패 시 false 반환
@@ -202,13 +196,8 @@ public class UserServiceImpl implements UserService{
         modifyUserDto.setBirth(userDto.getBirth());
         modifyUserDto.setPhNum(userDto.getPhNum());
 
-        try {
-            userDao.updateUserInfo(modifyUserDto);
-            return true;
-        }catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+        userDao.updateUserInfo(modifyUserDto);
+        return modifyUserDto;
     }
 
     // 회원탈퇴
@@ -275,43 +264,47 @@ public class UserServiceImpl implements UserService{
     // 임시 비밀번호로 회원 비밀번호를 업데이트
     @Override
     @LogException
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public String sendTempPassword(String id,String email) {
-        String tempPassword = getTempPassword();
 
-        // 메일 제목, 내용
-        String subject = "임시 비밀번호 안내 이메일 입니다.";
-        String content = "홈페이지를 방문해주셔서 감사합니다. "+
-                "회원님의 임시 비밀번호는 "+ tempPassword + " 입니다." +
-                "\r\n" +
-                "로그인 후에 비밀번호를 변경해주세요!";
+        if(findUserIdAndEmail(id,email)!=null) {
+            String tempPassword = getTempPassword();
 
-        // 보내는 사람
-        String from = "0711kyungh@naver.com";
+            // 메일 제목, 내용
+            String subject = "임시 비밀번호 안내 이메일 입니다.";
+            String content = "홈페이지를 방문해주셔서 감사합니다. " +
+                    "회원님의 임시 비밀번호는 " + tempPassword + " 입니다." +
+                    "\r\n" +
+                    "로그인 후에 비밀번호를 변경해주세요!";
 
-        try {
-            // 메일 내용 넣을 객체와, 이를 도와주는 Helper 객체 생성
-            MimeMessage mail = javaMailSender.createMimeMessage();
-            MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
+            // 보내는 사람
+            String from = "0711kyungh@naver.com";
 
-            // 메일 내용을 채워줌
-            mailHelper.setFrom(from, "관리자"); // 보내는 사람
-            mailHelper.setTo(email); // 받는 사람
-            mailHelper.setSubject(subject); // 제목
-            mailHelper.setText(content); // 내용
+            try {
+                // 메일 내용 넣을 객체와, 이를 도와주는 Helper 객체 생성
+                MimeMessage mail = javaMailSender.createMimeMessage();
+                MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
 
-            // 메일 전송
-            javaMailSender.send(mail);
+                // 메일 내용을 채워줌
+                mailHelper.setFrom(from, "관리자"); // 보내는 사람
+                mailHelper.setTo(email); // 받는 사람
+                mailHelper.setSubject(subject); // 제목
+                mailHelper.setText(content); // 내용
 
-            // 임시비밀번호로 회원 비밀번호 업데이트
-            modifyUserPwd(id,tempPassword);
+                // 메일 전송
+                javaMailSender.send(mail);
 
-            // 임시비밀번호 반환
-            return tempPassword;
-        }catch (Exception e) {
-            e.printStackTrace();
-            return null;
+                // 임시비밀번호로 회원 비밀번호 업데이트
+                modifyUserPwd(id, tempPassword);
+
+                // 임시비밀번호 반환
+                return tempPassword;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
+        return null;
     }
 
     // 비밀번호 찾기

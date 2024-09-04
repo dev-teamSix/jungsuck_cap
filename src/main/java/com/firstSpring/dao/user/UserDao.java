@@ -1,7 +1,7 @@
 package com.firstSpring.dao.user;
 
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.entity.LogException;
+import com.firstSpring.controller.user.aop.LogException;
 
 import java.util.List;
 

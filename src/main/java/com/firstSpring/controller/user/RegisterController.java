@@ -3,8 +3,7 @@ package com.firstSpring.controller.user;
 import com.firstSpring.controller.user.Validator.RegisterValidator;
 import com.firstSpring.controller.user.response.ApiResponse;
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.entity.LogException;
-import com.firstSpring.entity.ResponseHandler;
+import com.firstSpring.controller.user.aop.LogException;
 import com.firstSpring.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,15 +72,16 @@ public class RegisterController {
     @ResponseBody
     @LogException
     public ApiResponse<Integer> checkEmail(String email) {
-//        Integer checkNum = userService.sendMail(email); // 메일 인증번호 전송
+        return ApiResponse.success(userService.sendMail(email),AUTH_NUM_SEND_SUCCESS.getMessage());
 
+//        Integer checkNum = userService.sendMail(email); // 메일 인증번호 전송
         // 인증번호가 null -> fail
         // null이 아니면 -> 인증번호 전달
 //        if (checkNum == null) {
 //            throw new CustException("서버와 통신 중 에러가 발생했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
 //        } else {
 //            responseHandler.add("code", checkNum);
-        return ApiResponse.success(userService.sendMail(email),AUTH_NUM_SEND_SUCCESS.getMessage());
 //        }
     }
 }
+

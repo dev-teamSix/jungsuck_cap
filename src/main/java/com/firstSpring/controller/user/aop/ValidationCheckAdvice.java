@@ -1,4 +1,4 @@
-package com.firstSpring.entity;
+package com.firstSpring.controller.user.aop;
 
 import com.firstSpring.domain.user.UserDto;
 import com.firstSpring.service.user.UserService;

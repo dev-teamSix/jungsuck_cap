@@ -12,14 +12,14 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class GlobalRestControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
-//    @ExceptionHandler({DataAccessException.class})
-//    public ResponseEntity<ApiResponse<Object>> handleAllException(DataAccessException ex) {
-//        log.info("UserException: {}", ex.getMessage());
-//        return handleExceptionInternal(ex.getErrorCode());
-//    }
-
     @ExceptionHandler({UserCustomException.class})
     public ResponseEntity<ApiResponse<Object>> handleAllException(UserCustomException ex) {
+        log.info("UserException: {}", ex.getMessage());
+        return handleExceptionInternal(ex.getErrorCode());
+    }
+
+    @ExceptionHandler({UserDBException.class})
+    public ResponseEntity<ApiResponse<Object>> handleAllException(UserDBException ex) {
         log.info("UserException: {}", ex.getMessage());
         return handleExceptionInternal(ex.getErrorCode());
     }

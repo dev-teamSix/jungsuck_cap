@@ -2,7 +2,7 @@ package com.firstSpring.controller.user;
 
 import com.firstSpring.controller.user.response.ApiResponse;
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.entity.LogException;
+import com.firstSpring.controller.user.aop.LogException;
 import com.firstSpring.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,10 +33,9 @@ public class FindIdPwdController {
     @PostMapping("/pwd")
     @LogException
     public ApiResponse<String> getUserUpdatePwd(String id, String email) {
-        userService.findUserIdAndEmail(id,email);
-
+        return ApiResponse.success(userService.sendTempPassword(id,email), TEMP_PWD_SEND_SUCCESS.getMessage());
         // 임시비밀번호 이메일 발송
-        String tempPassword = userService.sendTempPassword(id,email);
+//        String tempPassword = userService.sendTempPassword(id,email);
 
         // 메일 서비스 추상화 할때 수정할 부분
 //        if (tempPassword == null) {
@@ -44,17 +43,13 @@ public class FindIdPwdController {
 //            response.put("result", "error"); // login.jsp 인증번호 (ajax) 수정 필요할듯
 //            throw new CustException("서버와 통신 중 에러가 발생했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
-
-        // 성공 응답
-        return ApiResponse.success(tempPassword, TEMP_PWD_SEND_SUCCESS.getMessage());
     }
 
 
     // 임시 비밀번호와 매개변수로 들어온 비밀번호가 일치하는지 확인
     @PostMapping("/updatePw")
     @LogException
-    public ApiResponse getUserUpdatePw(String id, String pwd) {
-        userService.matchPwd(pwd,userService.getCustLoginInfo(id).getPwd());
-        return ApiResponse.success(CHANGE_PWD_SUCCESS.getMessage());
+    public ApiResponse<String> getUserUpdatePw(String id, String pwd) {
+        return ApiResponse.success(userService.matchPwd(pwd,userService.getCustLoginInfo(id).getPwd()),CHANGE_PWD_SUCCESS.getMessage());
     }
 }
