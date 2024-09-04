@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Slf4j
 @ControllerAdvice
 public class GlobalControllerExceptionHandler {
     @ExceptionHandler({UserDBException.class})
-    public ModelAndView handleAllException(UserDBException ex, Model model) {
+    public ModelAndView handleAllException(UserDBException ex, Model model,HttpServletResponse response) {
         log.info("UserDBException: {}", ex.getMessage());
+        response.setStatus(ex.getErrorCode().getHttpStatus().value());
         model.addAttribute("errorMessage", ex.getMessage());
         return new ModelAndView("error");
     }

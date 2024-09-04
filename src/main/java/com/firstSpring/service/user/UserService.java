@@ -40,7 +40,7 @@ public interface UserService {
 
     // 비밀번호 찾기
     // 새로운 비밀번호로 변경
-    boolean modifyUserPwd(String id, String pwd);
+    void modifyUserPwd(String id, String pwd);
 
     // 회원가입
     void saveCustJoinInfo(UserDto userDto);

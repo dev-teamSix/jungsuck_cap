@@ -73,15 +73,6 @@ public class RegisterController {
     @LogException
     public ApiResponse<Integer> checkEmail(String email) {
         return ApiResponse.success(userService.sendMail(email),AUTH_NUM_SEND_SUCCESS.getMessage());
-
-//        Integer checkNum = userService.sendMail(email); // 메일 인증번호 전송
-        // 인증번호가 null -> fail
-        // null이 아니면 -> 인증번호 전달
-//        if (checkNum == null) {
-//            throw new CustException("서버와 통신 중 에러가 발생했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
-//        } else {
-//            responseHandler.add("code", checkNum);
-//        }
     }
 }
 

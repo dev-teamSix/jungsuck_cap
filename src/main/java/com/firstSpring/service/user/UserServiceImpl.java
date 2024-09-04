@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -23,11 +26,11 @@ import static com.firstSpring.controller.user.Exception.UserErrorCode.*;
 @Service
 public class UserServiceImpl implements UserService{
     private final UserDao userDao;
-    private final BCryptPasswordEncoder passwordEncoder; // 분리 해야함
-    private final JavaMailSender javaMailSender; // 분리 해야함
+    private final PasswordEncoder passwordEncoder;
+    private final JavaMailSender javaMailSender;
 
     @Autowired
-    private UserServiceImpl(UserDao userDao, BCryptPasswordEncoder passwordEncoder,JavaMailSender javaMailSender) {
+    private UserServiceImpl(UserDao userDao, PasswordEncoder passwordEncoder,JavaMailSender javaMailSender) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.javaMailSender = javaMailSender;
@@ -224,20 +227,60 @@ public class UserServiceImpl implements UserService{
     // 메일 인증번호 전송
     @Override
     @LogException
+    @Transactional
     public int sendMail(String email) {
-        Random random = new Random();
-        int checkNum = random.nextInt(888888) + 111111;
+        checkDuplicatedEmail(email);
 
+        int checkNum = getCheckNum();
         // 메일 제목, 내용
         String subject = "본인인증 메일입니다.";
         String content = "홈페이지를 방문해주셔서 감사합니다. "+
                 "인증 번호는 "+ checkNum + " 입니다." +
                 "\r\n" +
                 "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-
         // 보내는 사람
         String from = "0711kyungh@naver.com";
+        extracted(email, from, subject, content);
+        // 인증번호를 반환
+        return checkNum;
+    }
 
+    // 임시 비밀번호 메일전송
+    // 임시 비밀번호로 회원 비밀번호를 업데이트
+    @Override
+    @LogException
+    @Transactional
+    public String sendTempPassword(String id,String email) {
+        findUserIdAndEmail(id, email);
+
+        String tempPassword = getTempPassword();
+
+        // 메일 제목, 내용
+        String subject = "임시 비밀번호 안내 이메일 입니다.";
+        String content = "홈페이지를 방문해주셔서 감사합니다. " +
+                "회원님의 임시 비밀번호는 " + tempPassword + " 입니다." +
+                "\r\n" +
+                "로그인 후에 비밀번호를 변경해주세요!";
+        // 보내는 사람
+        String from = "0711kyungh@naver.com";
+        // 메일 전송
+        extracted(email, from, subject, content);
+        // 임시비밀번호로 회원 비밀번호 업데이트
+        modifyUserPwd(id, tempPassword);
+        // 임시비밀번호 반환
+        return tempPassword;
+    }
+
+    // 비밀번호 찾기
+    // 새로운 비밀번호로 변경
+    @Override
+    @LogException
+    public void modifyUserPwd(String id, String pwd) {
+        String encodePassword = passwordEncoder.encode(pwd); // 비밀번호 암호화
+        userDao.updateUserPwd(id, encodePassword);
+    }
+
+    private void extracted(String email, String from, String subject, String content) {
         try {
             // 메일 내용 넣을 객체와, 이를 도와주는 Helper 객체 생성
             MimeMessage mail = javaMailSender.createMimeMessage();
@@ -251,84 +294,8 @@ public class UserServiceImpl implements UserService{
 
             // 메일 전송
             javaMailSender.send(mail);
-
-            // 인증번호를 반환
-            return checkNum;
-        }catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
-
-    // 임시 비밀번호 메일전송
-    // 임시 비밀번호로 회원 비밀번호를 업데이트
-    @Override
-    @LogException
-    @Transactional
-    public String sendTempPassword(String id,String email) {
-
-        if(findUserIdAndEmail(id,email)!=null) {
-            String tempPassword = getTempPassword();
-
-            // 메일 제목, 내용
-            String subject = "임시 비밀번호 안내 이메일 입니다.";
-            String content = "홈페이지를 방문해주셔서 감사합니다. " +
-                    "회원님의 임시 비밀번호는 " + tempPassword + " 입니다." +
-                    "\r\n" +
-                    "로그인 후에 비밀번호를 변경해주세요!";
-
-            // 보내는 사람
-            String from = "0711kyungh@naver.com";
-
-            try {
-                // 메일 내용 넣을 객체와, 이를 도와주는 Helper 객체 생성
-                MimeMessage mail = javaMailSender.createMimeMessage();
-                MimeMessageHelper mailHelper = new MimeMessageHelper(mail, "UTF-8");
-
-                // 메일 내용을 채워줌
-                mailHelper.setFrom(from, "관리자"); // 보내는 사람
-                mailHelper.setTo(email); // 받는 사람
-                mailHelper.setSubject(subject); // 제목
-                mailHelper.setText(content); // 내용
-
-                // 메일 전송
-                javaMailSender.send(mail);
-
-                // 임시비밀번호로 회원 비밀번호 업데이트
-                modifyUserPwd(id, tempPassword);
-
-                // 임시비밀번호 반환
-                return tempPassword;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-        return null;
-    }
-
-    // 비밀번호 찾기
-    // 새로운 비밀번호로 변경
-    @Override
-    @LogException
-    public boolean modifyUserPwd(String id, String pwd) {
-        // 비밀번호 변경 성공여부
-        // 비밀번호 변경 성공 시 true 반환
-        // 비밀번호 변경 실패 시 false 반환
-
-        // 가입회원인지 확인 후 비밀번호 변경 시도
-        // 가입회원이 아닌 경우 비밀번호 변경 실패
-        if (checkExistOfId(id)) {
-            try {
-                String encodePassword = passwordEncoder.encode(pwd); // 비밀번호 암호화
-                userDao.updateUserPwd(id, encodePassword);
-                return true;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return false;
-            }
-        } else {
-            return false;
+        } catch (Exception e) {
+            throw new MailSendException(e, MAIL_SEND_FAIL);
         }
     }
 
@@ -346,6 +313,12 @@ public class UserServiceImpl implements UserService{
             str += charSet[idx];
         }
         return str;
+    }
+
+    private static int getCheckNum() {
+        Random random = new Random();
+        int checkNum = random.nextInt(888888) + 111111;
+        return checkNum;
     }
 
     // 암호화 전후 비밀번호 비교

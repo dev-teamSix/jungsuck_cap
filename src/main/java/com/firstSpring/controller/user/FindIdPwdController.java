@@ -34,15 +34,6 @@ public class FindIdPwdController {
     @LogException
     public ApiResponse<String> getUserUpdatePwd(String id, String email) {
         return ApiResponse.success(userService.sendTempPassword(id,email), TEMP_PWD_SEND_SUCCESS.getMessage());
-        // 임시비밀번호 이메일 발송
-//        String tempPassword = userService.sendTempPassword(id,email);
-
-        // 메일 서비스 추상화 할때 수정할 부분
-//        if (tempPassword == null) {
-//            // 임시비밀번호 발송 실패 시
-//            response.put("result", "error"); // login.jsp 인증번호 (ajax) 수정 필요할듯
-//            throw new CustException("서버와 통신 중 에러가 발생했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
     }
 
 

@@ -9,25 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="[refactor] Api응답객체 create, 예외처리">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/aop/DataAccessExceptionAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error.jsp" afterDir="false" />
+    <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="[refactor] 예외처리 추가작업">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/MailSendException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalControllerExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalControllerExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalRestControllerExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/GlobalRestControllerExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserCustomException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserCustomException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/Exception/UserErrorCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/FindIdPwdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/FindIdPwdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/user/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/aop/LogAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/LogException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/aop/LogException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/entity/ValidationCheckAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/user/aop/ValidationCheckAdvice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/user/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/user/UserDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/firstSpring/dao/user/UserDaoImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +45,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HierarchyBrowserManager">
+    <option name="SCOPE" value="All" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -494,7 +488,7 @@
       <workItem from="1725327675778" duration="7113000" />
       <workItem from="1725342859159" duration="16398000" />
       <workItem from="1725362487759" duration="6734000" />
-      <workItem from="1725415569107" duration="8484000" />
+      <workItem from="1725415569107" duration="19184000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
@@ -616,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725369233269</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="[refactor] 예외처리 추가작업">
+      <option name="closed" value="true" />
+      <created>1725431356081</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1725431356081</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,6 +671,7 @@
     <MESSAGE value="임시 비밀번호 전송 기능 완료" />
     <MESSAGE value="[refactor] 로그인 인터셉터, 중복코드 AOP처리" />
     <MESSAGE value="[refactor] Api응답객체 create, 예외처리" />
-    <option name="LAST_COMMIT_MESSAGE" value="[refactor] Api응답객체 create, 예외처리" />
+    <MESSAGE value="[refactor] 예외처리 추가작업" />
+    <option name="LAST_COMMIT_MESSAGE" value="[refactor] 예외처리 추가작업" />
   </component>
 </project>
