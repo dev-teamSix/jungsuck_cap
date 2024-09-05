@@ -29,6 +29,7 @@ public class  ProductService {
         try {
             return productDao.selectList(map);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 목록 조회 서비스 예외 발생");
         }
 
@@ -39,6 +40,7 @@ public class  ProductService {
         try{
             return productDao.selectPageWithJoin(map);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 목록 페이징 조회 서비스 예외 발생");
         }
     }
@@ -55,6 +57,7 @@ public class  ProductService {
             }
             return productDao.select(prodNo);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 조회 서비스 예외 발생 -"+e.getMessage());
         }
 
@@ -96,6 +99,7 @@ public class  ProductService {
             pr.setProdColList(prodColDto);
 
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 상세 조회 서비스 예외 발생");
         }
 
@@ -110,6 +114,7 @@ public class  ProductService {
         try{
             return productDao.insert(productDto);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 등록 서비스 예외 발생");
         }
 
@@ -121,6 +126,7 @@ public class  ProductService {
         try {
             return productDao.updateInfo(productDto);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 수정 서비스 예외 발생");
         }
 
@@ -133,6 +139,7 @@ public class  ProductService {
         try{
             return productDao.delete(prodNo);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 삭제 서비스 예외 발생");
         }
     }

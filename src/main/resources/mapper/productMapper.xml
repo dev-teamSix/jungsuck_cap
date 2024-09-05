@@ -250,11 +250,9 @@
     </update>
 
     <!-- 상품 판매량 증가-->
-    <update id="increaseTotalSales" parameterType="Map">
+    <update id="increaseTotalSales" parameterType="int">
         UPDATE product
-        SET  total_sales= total_sales + 1,
-             last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %T'),
-             last_mod_id = #{lastModId}
+        SET  total_sales= total_sales + 1
         where prod_no = #{prodNo};
     </update>
 

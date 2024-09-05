@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Title</title>
@@ -34,6 +35,14 @@
     </style>
 </head>
 <body>
+<script>
+    let msg = "${msg}";
+    if(msg) {
+        alert(msg);
+    }
+</script>
+<h1>상품 목록</h1>
+<a href="<c:url value="/products/register"/>"><button type="button">등록</button> </a>
 <div style="text-align:center">
     <p>총 ${totalCnt}개의 상품이 있습니다.</p>
     <div id="sortOptions">
@@ -76,8 +85,11 @@
                 <td>${p.product.totalSales}</td>
                 <td>${p.product.viewCnt}</td>
                 <td>${p.product.firstRegDt}</td>
-            </tr>
 
+            </tr>
+            <td>
+                <button type="button" onclick="window.location='<c:url value="/products/admin/read?prodNo=${p.prodNo}"/>'">관리</button>
+            </td>
         </c:forEach>
     </table>
 
@@ -96,9 +108,9 @@
     function onChangeSort() {
         var selectElement = document.getElementById("sort");
         var selectedValue = selectElement.value;
-        console.log(selectedValue);
         window.location='<c:url value="/products?pageNo=${ph.page}&pageSize=${pageSize}&prodCatgNo=${prodCatgNo}"/>'+"&sortBy="+selectedValue;
     }
+
 </script>
 </body>
 </html>
