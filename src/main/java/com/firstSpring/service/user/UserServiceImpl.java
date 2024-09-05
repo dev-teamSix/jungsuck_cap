@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService{
     private final JavaMailSender javaMailSender;
 
     @Autowired
-    private UserServiceImpl(UserDao userDao, PasswordEncoder passwordEncoder,JavaMailSender javaMailSender) {
+    public UserServiceImpl(UserDao userDao, PasswordEncoder passwordEncoder,JavaMailSender javaMailSender) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.javaMailSender = javaMailSender;
