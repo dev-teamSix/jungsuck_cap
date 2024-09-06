@@ -2,6 +2,7 @@ package com.firstSpring.dao.product;
 
 import com.firstSpring.domain.product.ProductDto;
 import com.firstSpring.domain.product.ProductListDto;
+import com.firstSpring.domain.product.SearchCondition;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +24,11 @@ public class  ProductDaoImpl implements ProductDao {
         return session.selectList(namespace+"selectList", map);
     }
 
+    @Override
+    public List<ProductDto> selectSearchList(SearchCondition sc) throws Exception {
+        return session.selectList(namespace+"selectSearchList", sc);
+    }
+
     // 상품 페이지 조회
     @Override
     public List<ProductDto> selectPage(Map map) throws Exception {
@@ -33,6 +39,11 @@ public class  ProductDaoImpl implements ProductDao {
     @Override
     public List<ProductListDto> selectPageWithJoin(Map map) throws Exception {
         return session.selectList(namespace+"selectPageWithJoin", map);
+    }
+
+    @Override
+    public List<ProductListDto> selectSearchPage(SearchCondition sc) throws Exception {
+        return session.selectList(namespace+"selectSearchPage", sc);
     }
 
     // 특정 상품 정보 읽기

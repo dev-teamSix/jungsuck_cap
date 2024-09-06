@@ -42,8 +42,13 @@
     }
 </script>
 <h1>상품 목록</h1>
-<a href="<c:url value="/products/register"/>"><button type="button">등록</button> </a>
+<a href="<c:url value="/product/register"/>"><button type="button">등록</button> </a>
 <div style="text-align:center">
+    <form action="<c:url value="/product/list"/>" class="search-form" method="get">
+        <input type="text" name="keyword" class="search-input" type="text" value="${sc.keyword}" placeholder="검색어를 입력해주세요">
+        <input type="submit" class="search-button" value="검색">
+    </form>
+
     <p>총 ${totalCnt}개의 상품이 있습니다.</p>
     <div id="sortOptions">
         <select id="sort" onchange="onChangeSort();">
@@ -68,7 +73,7 @@
             <th>등록날짜</th>
         </tr>
         <c:forEach var="p" items="${productList}">
-            <tr onclick="window.location='<c:url value="/products/read?prodNo=${p.prodNo}"/>';" style="cursor:pointer;">
+            <tr onclick="window.location='<c:url value="/product/read?prodNo=${p.prodNo}"/>';" style="cursor:pointer;">
                 <td class="no">${p.prodNo}</td>
                 <td class="no">${p.product.prodCatgNo}</td>
                 <td class="main_img">
@@ -88,27 +93,27 @@
 
             </tr>
             <td>
-                <button type="button" onclick="window.location='<c:url value="/products/admin/read?prodNo=${p.prodNo}"/>'">관리</button>
+                <button type="button" onclick="window.location='<c:url value="/product/admin/read${sc.queryString}&prodNo=${p.prodNo}"/>'">관리</button>
             </td>
         </c:forEach>
     </table>
 
 
     <c:if test="${ph.prevPage}">
-        <a href="<c:url value='/products?pageNo=${ph.beginPage-1}&pageSize=${ph.pageSize}&prodCatgNo=${prodCatgNo}&sortBy=${sortBy}'/>"+>&lt</a>
+        <a href="<c:url value='/product/list${sc.getQueryString(ph.beginPage-1)}'/>"+>&lt</a>
     </c:if>
     <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
-        <a href="<c:url value='/products?pageNo=${i}&pageSize=${ph.pageSize}&prodCatgNo=${prodCatgNo}&sortBy=${sortBy}'/>">${i}</a>
+        <a href="<c:url value='/product/list${sc.getQueryString(i)}'/>">${i}</a>
     </c:forEach>
     <c:if test="${ph.nextPage}">
-        <a href="<c:url value='/products?pageNo=${ph.endPage+1}&pageSize=${ph.pageSize}&prodCatgNo=${prodCatgNo}&sortBy=${sortBy}'/>">&gt;</a>
+        <a href="<c:url value='/product/list${sc.getQueryString(ph.endPage+1)}'/>">&gt;</a>
     </c:if>
 </div>
 <script>
     function onChangeSort() {
         var selectElement = document.getElementById("sort");
         var selectedValue = selectElement.value;
-        window.location='<c:url value="/products?pageNo=${ph.page}&pageSize=${pageSize}&prodCatgNo=${prodCatgNo}"/>'+"&sortBy="+selectedValue;
+        window.location='<c:url value="/product/list${sc.queryString}"/>'+"&sortBy="+selectedValue;
     }
 
 </script>

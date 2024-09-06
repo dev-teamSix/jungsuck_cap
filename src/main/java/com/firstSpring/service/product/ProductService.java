@@ -23,6 +23,7 @@ public class  ProductService {
     @Autowired
     ImageDao imageDao;
 
+
     // 상품 목록 조회
     @Transactional(rollbackFor = Exception.class)
     public List<ProductDto> getList(Map map) throws Exception {
@@ -35,6 +36,16 @@ public class  ProductService {
 
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    public Integer getSearchResultCnt(SearchCondition sc) throws Exception {
+        try{
+            return productDao.selectSearchList(sc).size();
+        } catch(Exception e){
+            e.printStackTrace();
+            throw new Exception("상품 검색 결과 개수 조회 서비스 중 예외 발생");
+        }
+    }
+
     // 상품 목록 페이지 단위로 조회
     public List<ProductListDto> getPageWithJoin(Map map) throws Exception {
         try{
@@ -42,6 +53,15 @@ public class  ProductService {
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("상품 목록 페이징 조회 서비스 예외 발생");
+        }
+    }
+
+    public List<ProductListDto> getSearchPage(SearchCondition sc) throws Exception {
+        try{
+            return productDao.selectSearchPage(sc);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("상품 검색 결과 페이지 조회 서비스 예외 발생");
         }
     }
 

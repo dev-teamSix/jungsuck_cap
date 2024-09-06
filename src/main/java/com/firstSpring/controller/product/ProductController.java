@@ -1,18 +1,12 @@
 package com.firstSpring.controller.product;
 
-import com.firstSpring.domain.product.ProductColorDto;
-import com.firstSpring.domain.product.ProductDto;
-import com.firstSpring.domain.product.ProductListDto;
-import com.firstSpring.domain.product.ProductRequest;
+import com.firstSpring.domain.product.*;
 import com.firstSpring.entity.PageHandler;
 import com.firstSpring.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,61 +16,37 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/products")
+@RequestMapping("/product")
 public class ProductController {
     @Autowired
     private ProductService productService;
 
     // 상품 목록 페이지 조회
-    @GetMapping
-    public String getList(Integer pageSize, Integer pageNo, Integer prodCatgNo, String sortBy, Model m) {
-        // 페이징 정보 입력값 확인
-        if(pageSize == null || pageSize <= 0) {
-            pageSize = 10;
-        }
-        if(pageNo == null || pageNo <= 0) {
-            pageNo = 1;
-        }
-
-        // 정렬 기준 값 확인
-        if(sortBy == null || "".equals(sortBy)) {
-            sortBy = "firstRegDt";
-        }
-
-        // 카테고리 번호, 정렬 기준 세팅
-        Map cond = new HashMap();
-        cond.put("prodCatgNo", prodCatgNo);
-        cond.put("sortBy", sortBy);
-        m.addAttribute("prodCatgNo", prodCatgNo); // 카테고리 번호 모델에 전달
-        m.addAttribute("sortBy", sortBy); // 정렬 기준 모델에 전달
+    @GetMapping("/list")
+    public String getList(SearchCondition sc,  Model m) {
 
         try {
             // 상품 수 전달
-            int totalCnt = productService.getList(cond).size();
+            int totalCnt = productService.getSearchResultCnt(sc);
             m.addAttribute("totalCnt", totalCnt);
 
             // 페이징 정보 읽어서 전달
-            PageHandler ph = new PageHandler(totalCnt, pageNo, pageSize);
-            cond.put("offset", ph.getOffset());
-            cond.put("rowCnt", ph.getPageSize());
-
+            PageHandler ph = new PageHandler(totalCnt, sc.getPageNo(), sc.getPageSize());
             m.addAttribute("ph", ph);
 
             // 상품 목록 조회 서비스 로직 수행 -> 조회한 목록 모델로 전달
-//            List<ProductDto> productList = productService.getPage(cond);
-            List<ProductListDto> productList = productService.getPageWithJoin(cond);
+            List<ProductListDto> productList = productService.getSearchPage(sc);
             m.addAttribute("productList", productList);
-
+            m.addAttribute("sc", sc);
         } catch (Exception e ) {
             e.printStackTrace();
         }
-
-        return "/products";
+        return "/productList";
     }
 
     // 상품 상세 조회
     @GetMapping("/read")
-    public String read(Integer prodNo, Model m) throws Exception {
+    public String read(Integer prodNo, SearchCondition sc,  Model m) throws Exception {
 
         try {
             // prodNo(상품번호) null 체크
@@ -92,13 +62,13 @@ public class ProductController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/products";
+            return "redirect:/product/list"+sc.getQueryString();
         }
     }
 
     /* 상품 관리 - 상세 조회 */
     @GetMapping("/admin/read")
-    public String adminRead(Integer prodNo, Model m, RedirectAttributes rattr) {
+    public String adminRead(Integer prodNo, SearchCondition sc, Model m, RedirectAttributes rattr) {
         try {
             // prodNo(상품번호) null 체크
             if(prodNo == null) {
@@ -109,12 +79,13 @@ public class ProductController {
             ProductDto productDto = productService.read(prodNo);
             m.addAttribute("product", productDto);
 
+            System.out.println(productDto);
             return "/productForm";
 
         } catch (Exception e) {
             e.printStackTrace();
             rattr.addFlashAttribute("msg", e.getMessage());
-            return "redirect:/products";
+            return "redirect:/product/list"+sc.getQueryString();
         }
     }
 
@@ -140,9 +111,10 @@ public class ProductController {
             // 상품 등록
             productService.register(productDto);
 
+
             // 등록 성공 시 상품 목록 페이지로 redirect
             rattr.addFlashAttribute("msg", "상품 등록에 성공 했습니다!");
-            return "redirect:/products";
+            return "redirect:/product/list";
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -155,11 +127,11 @@ public class ProductController {
 
     /* 상품 변경 */
     @PostMapping("/modify")
-    public String modify(ProductDto productDto, Model m, RedirectAttributes rattr) {
+    public String modify(SearchCondition sc, @ModelAttribute ProductDto productDto, Model m, RedirectAttributes rattr) {
         try {
             // 필수 데이터 입력
             productDto.setLastModId("manager2");
-
+            System.out.println(productDto);
             // 유효성 검사
             if(!isExisted(productDto)) {
                 throw new Exception("필수 정보가 입력되지 않았습니다.");
@@ -170,7 +142,7 @@ public class ProductController {
 
             // 수정 성공 시 상품 목록 페이지로 redirect
             rattr.addFlashAttribute("msg", "상품 수정에 성공 했습니다!");
-            return "redirect:/products";
+            return "redirect:/product/list"+sc.getQueryString();
         }catch(Exception e) {
             e.printStackTrace();
             // 수정 실패시 에러 메세지 전달하며 폼 화면으로 다시 이동
@@ -182,7 +154,7 @@ public class ProductController {
 
     /* 상품 제거 */
     @PostMapping("/remove")
-    public String remove(Integer prodNo, RedirectAttributes rattr) {
+    public String remove(Integer prodNo, SearchCondition sc, RedirectAttributes rattr) {
         try {
 
             if(prodNo == null) {
@@ -194,12 +166,12 @@ public class ProductController {
 
             // 상품 제거 성공시 목록으로 redirect
             rattr.addFlashAttribute("msg", "상품 삭제에 성공했습니다!");
-            return "redirect:/products";
+            return "redirect:/product/list"+sc.getQueryString();
 
         } catch(Exception e) {
             e.printStackTrace();
             rattr.addFlashAttribute("msg", e.getMessage());
-            return "redirect:/products/admin/read?prodNo="+prodNo;
+            return "redirect:/product/admin/read?prodNo="+prodNo;
         }
     }
 

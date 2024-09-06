@@ -48,7 +48,7 @@
         </div>
         <div>
             <label>상품 설명</label>
-            <textarea type="number" name="longDet" value="${product.longDet}"  ${mode != "new" ? 'readonly': ''}></textarea>
+            <textarea rows=20 name="longDet"  ${mode != "new" ? 'readonly': ''}>${product.longDet}</textarea>
         </div>
         <div>
             <button type="button" id="registerBtn"  ${mode != "new" ? 'hidden' : ''}>등록</button>
@@ -62,7 +62,7 @@
     $(document).ready(function () {
         $('#registerBtn').on("click", function () {
             let form = $('#form');
-            form.attr("action", "<c:url value='/products/register'/>");
+            form.attr("action", "<c:url value='/product/register${searchCondition.queryString}'/>");
             form.attr("method", "post");
             form.submit();
         })
@@ -86,7 +86,7 @@
             }
 
             // 2. 수정 상태면 수정된 내용을 서버에 전송
-            form.attr("action", "<c:url value='/products/modify'/>");
+            form.attr("action", "<c:url value='/product/modify${searchCondition.queryString}'/>");
             form.attr("method", "post");
             form.submit();
         })
@@ -94,7 +94,7 @@
         $('#removeBtn').on("click", function() {
             let form = $('#form');
 
-            form.attr("action", "<c:url value='/products/remove'/>");
+            form.attr("action", "<c:url value='/product/remove${searchCondition.queryString}'/>");
             form.attr("method", "post");
             form.submit();
         })
