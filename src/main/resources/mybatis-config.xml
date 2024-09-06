@@ -13,6 +13,7 @@
         <typeAlias type="com.firstSpring.domain.product.ProductColorDto" alias="ProductColorDto"/>
         <typeAlias type="com.firstSpring.domain.product.ProdColJoinDto" alias="ProdColJoinDto"/>
         <typeAlias type="com.firstSpring.domain.product.ImageDto" alias="ImageDto"/>
+        <typeAlias type="com.firstSpring.domain.product.SearchCondition" alias="ProdSearchCondition"/>
 
         <typeAlias alias="OrderDto" type="com.firstSpring.domain.order.OrderDto"/>
         <typeAlias alias="OrderItemDto" type="com.firstSpring.domain.order.OrderItemDto"/>
