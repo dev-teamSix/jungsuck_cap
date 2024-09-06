@@ -2,6 +2,7 @@ package com.firstSpring.controller.product;
 
 import com.firstSpring.domain.product.*;
 import com.firstSpring.entity.PageHandler;
+import com.firstSpring.service.product.ProductCategoryService;
 import com.firstSpring.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +21,17 @@ import java.util.Map;
 public class ProductController {
     @Autowired
     private ProductService productService;
-
+    @Autowired
+    private ProductCategoryService prodCatgService;
     // 상품 목록 페이지 조회
     @GetMapping("/list")
     public String getList(SearchCondition sc,  Model m) {
 
         try {
+            // 상품 카테고리 목록 조회
+            List<ProductHighCategoryDto> catgList = prodCatgService.getHighLowCatgList();
+            m.addAttribute("catgList", catgList);
+
             // 상품 수 전달
             int totalCnt = productService.getSearchResultCnt(sc);
             m.addAttribute("totalCnt", totalCnt);
