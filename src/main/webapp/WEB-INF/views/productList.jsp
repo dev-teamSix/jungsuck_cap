@@ -179,7 +179,12 @@
     </style>
 </head>
 <body>
-
+<script>
+    let msg = "${msg}"
+    if(msg) {
+        alert(msg);
+    }
+</script>
 <div class="container">
     <!-- 왼쪽 카테고리 메뉴 -->
     <div class="category-menu">
