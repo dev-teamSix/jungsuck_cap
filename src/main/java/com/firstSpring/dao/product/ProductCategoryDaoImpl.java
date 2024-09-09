@@ -56,6 +56,12 @@ public class  ProductCategoryDaoImpl implements ProductCategoryDao {
         return session.selectList(namespace+"selectHighLowList");
     }
 
+    // 특정 상위 카테고리의 하위 카테고리 목록 조회(상위 카테고리 정보 포함)
+    @Override
+    public List<ProductHighCategoryDto> selectListByHigh(Integer highCatgNo) throws Exception {
+        return session.selectList(namespace+"selectListByHigh", highCatgNo);
+    }
+
     // 카테고리 추가
     @Override
     public Integer insert(ProductCategoryDto productCategoryDto) throws Exception {

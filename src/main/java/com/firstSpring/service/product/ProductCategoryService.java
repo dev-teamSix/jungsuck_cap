@@ -73,6 +73,17 @@ public class ProductCategoryService {
         }
     }
 
+    // 특정 상위 카테고리의 하위 카테고리 목록 조회
+    @Transactional(rollbackFor = Exception.class)
+    public List<ProductHighCategoryDto> getListByHigh(Integer highCatgNo) throws Exception{
+        try {
+            return productCategoryDao.selectListByHigh(highCatgNo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("특정 상위 카테고리의 하위 카테고리 목록 조회 서비스 중 예외 발생");
+        }
+    }
+
     // 카테고리 상세 조회
     @Transactional(rollbackFor = Exception.class)
     public ProductCategoryDto read(Integer catgNo) throws Exception{

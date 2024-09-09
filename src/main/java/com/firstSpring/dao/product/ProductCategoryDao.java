@@ -24,6 +24,9 @@ public interface  ProductCategoryDao {
     // 모든 카테고리의 하위 카테고리 정보 목록 조회
     List<ProductHighCategoryDto> selectHighLowList() throws Exception;
 
+    // 특정 상위 카테고리의 하위 카테고리 목록 조회(상위 카테고리 정보 포함)
+    List<ProductHighCategoryDto> selectListByHigh(Integer highCatgNo) throws Exception;
+
     // 카테고리 추가
     Integer insert(ProductCategoryDto productCategoryDto) throws Exception;
 
