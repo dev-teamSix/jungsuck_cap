@@ -3,7 +3,7 @@ package com.firstSpring.controller.user;
 import com.firstSpring.controller.user.Validator.RegisterValidator;
 import com.firstSpring.controller.user.response.ApiResponse;
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.controller.user.aop.LogException;
+import com.firstSpring.entity.LogException;
 import com.firstSpring.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

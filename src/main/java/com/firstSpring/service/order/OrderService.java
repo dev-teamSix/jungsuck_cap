@@ -6,7 +6,7 @@ import com.firstSpring.domain.order.OrderItemDto;
 import java.util.List;
 import java.util.Map;
 
-public interface  OrderService {
+public interface OrderService {
     int getOrderCount(String cust_id) throws Exception;
 
     int cancel(OrderDto orderDto) throws Exception;

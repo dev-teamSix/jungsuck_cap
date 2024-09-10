@@ -43,4 +43,3 @@
         <p>Copyright © 아이엠캡. All Rights Reserved. Hosting by Cafe24 Corp.</p>
     </div>
 </footer>
-

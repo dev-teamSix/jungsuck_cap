@@ -22,5 +22,6 @@
 
         <typeAlias alias="SearchCondition" type="com.firstSpring.domain.board.SearchCondition"/>
         <typeAlias alias="QnaDto" type="com.firstSpring.domain.board.QnaDto"/>
+        <typeAlias alias="FaqDto" type="com.firstSpring.domain.board.FaqDto"/>
     </typeAliases>
 </configuration>

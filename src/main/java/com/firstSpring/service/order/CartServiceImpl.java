@@ -5,6 +5,7 @@ import com.firstSpring.domain.order.CartDto;
 import com.firstSpring.domain.order.CartItemDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +15,7 @@ import java.util.Map;
 import static java.time.LocalDateTime.now;
 
 @Service
-public class  CartServiceImpl implements CartService {
+public class CartServiceImpl implements CartService {
     @Autowired
     private CartDao cartDao;
 
@@ -22,9 +23,9 @@ public class  CartServiceImpl implements CartService {
     public boolean insertCart(String cust_id) {
         CartDto cartDto = new CartDto();
         cartDto.setCust_id(cust_id);
-        cartDto.setFrst_reg_dt(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))));
+        cartDto.setFrst_reg_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         cartDto.setFrst_reg_id(cust_id);
-        cartDto.setLast_mod_dt(LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))));
+        cartDto.setLast_mod_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         cartDto.setLast_mod_id(cust_id);
 
         try {
@@ -37,12 +38,13 @@ public class  CartServiceImpl implements CartService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int insertCartItem(String cust_id, CartItemDto cartItemDto) throws Exception {
         Integer cart_no = cartDao.selectCartNo(cust_id);
         cartItemDto.setCart_no(cart_no);
-        cartItemDto.setFrst_reg_dt(now());
+        cartItemDto.setFrst_reg_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         cartItemDto.setFrst_reg_id(cust_id);
-        cartItemDto.setLast_mod_dt(now());
+        cartItemDto.setLast_mod_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         cartItemDto.setLast_mod_id(cust_id);
         return cartDao.insertCartItem(cartItemDto);
     }
@@ -58,12 +60,13 @@ public class  CartServiceImpl implements CartService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int updateQty(String cust_id, CartItemDto cartItemDto) throws Exception {
         Integer cart_no = cartDao.selectCartNo(cust_id);
         cartItemDto.setCart_no(cart_no);
-        cartItemDto.setFrst_reg_dt(now());
+        cartItemDto.setFrst_reg_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         cartItemDto.setFrst_reg_id(cust_id);
-        cartItemDto.setLast_mod_dt(now());
+        cartItemDto.setLast_mod_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         cartItemDto.setLast_mod_id(cust_id);
         return cartDao.updateQty(cartItemDto);
     }
@@ -77,4 +80,5 @@ public class  CartServiceImpl implements CartService {
     public int deleteCartItem(Map map) throws Exception {
         return cartDao.deleteCartItem(map);
     }
+
 }

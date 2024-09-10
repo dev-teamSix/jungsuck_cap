@@ -15,15 +15,79 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        margin: 20px;
-        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
     }
-    .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .logo {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .logo-mini {
+        font-size: 1rem;
+    }
+    .navbar {
+        padding: 0;
+        margin: 0;
+    }
+    .navbar-nav .nav-item .nav-link {
+        color: #ffffff;
+    }
+    .navbar-nav .nav-item .nav-link:hover {
+        color: #dddddd;
+    }
+    .login-container {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        padding: 2rem;
+        width: 100%;
+        max-width: 400px;
+        margin: 2rem auto;
+    }
+    .login-container h1 {
+        margin-bottom: 1.5rem;
+    }
+    .form-control {
+        border-radius: 5px;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,.075);
+    }
+    .form-check-inline {
+        margin-right: 1rem;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+    .login-footer {
+        margin-top: 1rem;
+        text-align: center;
+    }
+    .login-footer a {
+        margin: 0 0.5rem;
+        color: #007bff;
+    }
+    .login-footer a:hover {
+        text-decoration: underline;
+    }
+    .main-header {
+        background-color: #343a40;
+        color: #ffffff;
+        padding: 1rem 0;
     }
     table {
         width: 100%;
@@ -94,8 +158,11 @@
     if(msg=="DEL_OK") alert("게시글이 정상적으로 삭제되었습니다.");
     if(msg=="WRT_ERR") alert("게시물 등록에 실패하였습니다. 다시 시도해 주세요.");
     if(msg=="MOD_ERR") alert("게시물 수정에 실패하였습니다. 다시 시도해 주세요.");
+    if(msg=="ADMIN_NO") alert("관리자가 아니면 공지사항 작성이 불가능 합니다.");
 </script>
+
 <body>
+<jsp:include page="../header.jsp" flush="true" />
     <table>
     <tr>
         <th class="bno">번호</th>
@@ -164,5 +231,6 @@
         </form>
         <button id="writeBtn" class="btn-write" onclick="location.href='<c:url value="/notice/write"/>'"><i class="fa fa-pencil"></i> 글쓰기</button>
     </div>
+<jsp:include page="../footer.jsp" flush="true" />
 </body>
 </html>

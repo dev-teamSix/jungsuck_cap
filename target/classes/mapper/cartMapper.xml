@@ -25,7 +25,8 @@
         INSERT INTO cart_item
             (
              cart_no,
-             prod_num,
+             prod_no,
+             col_no,
              qty,
              frst_reg_dt,
              frst_reg_id,
@@ -34,7 +35,8 @@
         VALUES
             (
              #{cart_no},
-             #{prod_num},
+             #{prod_no},
+             #{col_no},
              #{qty},
              #{frst_reg_dt},
              #{frst_reg_id},
@@ -56,16 +58,21 @@
     <select id="selectCartItem" parameterType="int" resultType="CartItemDto">
         SELECT  i.cart_item_no,
                 i.cart_no,
-                i.prod_num,
+                i.prod_no,
+                i.col_no,
                 i.qty,
-                p.prod_name,
+                p.name prod_name,
                 p.price,
+                c.col_name,
                 i.frst_reg_dt,
                 i.frst_reg_id,
                 i.last_mod_dt,
                 i.last_mod_id
-        FROM cart_item AS i INNER JOIN product AS p
-            ON i.prod_num = p.prod_num
+        FROM cart_item AS i
+            LEFT JOIN prod_col AS c
+            ON i.prod_no = c.prod_no and i.col_no = c.col_no
+            LEFT JOIN product AS p
+            ON i.prod_no = p.prod_no
         WHERE i.cart_no = #{cart_no}
         ORDER BY cart_item_no DESC;
     </select>
@@ -79,13 +86,13 @@
     <select id="selectQty" parameterType="map" resultType="int">
         SELECT qty
         FROM cart_item
-        WHERE prod_num = #{prod_num} AND cart_no = #{cart_no}
+        WHERE prod_no = #{col_no} AND prod_no = #{prod_no} AND cart_no = #{cart_no}
     </select>
 
     <update id="updateQty" parameterType="CartItemDto">
         UPDATE cart_item
         SET qty = #{qty}
-        WHERE prod_num = #{prod_num} AND cart_no = #{cart_no}
+        WHERE col_no = #{col_no} AND prod_no = #{prod_no} AND cart_no = #{cart_no}
     </update>
 
     <delete id="deleteCart" parameterType="String">
@@ -95,7 +102,7 @@
 
     <delete id="deleteCartItem" parameterType="map">
         DELETE from cart_item
-        WHERE prod_num = #{prod_num} AND cart_no = #{cart_no}
+        WHERE col_no = #{col_no} AND prod_no = #{prod_no} AND cart_no = #{cart_no}
     </delete>
 
 </mapper>

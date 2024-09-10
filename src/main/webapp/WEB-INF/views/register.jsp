@@ -73,9 +73,9 @@
                                 </div>
                             </div>
 
-                            <div class="row mt-1">
+                                      <div class="row mt-1">
                                 <input type="text" id="userName" value="${userDto.name}" class="form-control" name="name" placeholder="이름을 입력해주세요">
-                            </div>
+                  </div>
 
                             <div class="row mt-1">
                                 <div class="col-ls-5" id="alertName"><c:if test="${not empty valid_name}"><span style="color: red; font-size: 10px;">${valid_name}</span></c:if></div>
