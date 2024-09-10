@@ -24,6 +24,8 @@ public interface  FaqDao {
     int delete(Integer bno,String writer) throws Exception;
     //조회수 증가
     int increaseViewCnt(Integer bno) throws Exception;
-    //
 
+    List<FaqDto> selectNoticeList() throws Exception;
+    List<FaqDto> selectNotNoticeList() throws Exception;
+    List<FaqDto> getChatSearch(Map map) throws Exception;
 }

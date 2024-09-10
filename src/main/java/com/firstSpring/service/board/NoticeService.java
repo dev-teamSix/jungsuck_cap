@@ -21,6 +21,7 @@ public interface  NoticeService {
     int write(NoticeDto noticeDto) throws Exception;
     List<NoticeDto> getNoticeList() throws Exception;
     List<NoticeDto> getNotNoticeList() throws Exception;
+    //공지사항 목록조회
     List<NoticeDto> getPage(Map map) throws Exception;
     //공지사항 목록조회
     List<NoticeDto> getList() throws Exception;

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,7 +14,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -119,7 +119,7 @@
 									</p>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#">게시글</a>
-									<a class="dropdown-item" href="#">공지사항</a>
+									<a class="dropdown-item" href="/notice/list">공지사항</a>
 									<a class="dropdown-item" href="#">Q&A</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/login/out" id="logoutButton">
@@ -151,6 +151,6 @@
 		</nav>
 	</div>
 </header>
-
+<jsp:include page="./footer.jsp" flush="true" />
 </body>
 </html>

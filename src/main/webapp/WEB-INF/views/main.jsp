@@ -119,8 +119,8 @@
                                         최근 로그인일자 : <fmt:formatDate value="${sessionUser.recentLogin}" pattern="yyyy-MM-dd"/>
                                     </p>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">게시글</a>
-                                    <a class="dropdown-item" href="#">공지사항</a>
+                                    <a class="dropdown-item" href="">게시글</a>
+                                    <a class="dropdown-item" href="/notice/list">공지사항</a>
                                     <a class="dropdown-item" href="#">Q&A</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/login/out" id="logoutButton">
