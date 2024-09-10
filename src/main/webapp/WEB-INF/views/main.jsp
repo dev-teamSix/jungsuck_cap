@@ -23,8 +23,7 @@
         .row {
             display: flex;
             flex-wrap: wrap;
-            margin-right: -268px;
-            margin-left: 60px;
+            margin-right: -217px;
         }
         /* 상단 네비게이션 */
         .top-nav {
