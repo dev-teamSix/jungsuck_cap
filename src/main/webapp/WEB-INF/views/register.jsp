@@ -229,13 +229,13 @@
         alert("${errorMsg}");
         </c:if>
         // 모든 필드가 초기값으로 설정되도록 유지
-        if ($("#joinIdInput").val()) {
-            $("#alertId").css({
-                "color":"black",
-                "font-size" : "10px"
-            });
-            $("#alertId").text("✔️ 사용 가능한 아이디입니다.");
-        }
+        // if ($("#joinIdInput").val()) {
+        //     $("#alertId").css({
+        //         "color":"black",
+        //         "font-size" : "10px"
+        //     });
+        //     $("#alertId").text("✔️ 사용 가능한 아이디입니다.");
+        // }
 
         if ($("#changePassword").val()) {
             $("#alertPassword").css({
@@ -341,18 +341,12 @@
                     },
                     dataType: "json",
                     success: function(data) {
-                        if(data.result === "fail") {
+                        if(data.header.message === "SUCCESS") {
                             $("#alertId").css({
-                                "color": "red",
+                                "color": "green",
                                 "font-size": "10px"
                             });
-                            $("#alertId").text(data.message);
-                        } else {
-                            $("#alertId").css({
-                                "color": "black",
-                                "font-size": "10px"
-                            });
-                            $("#alertId").text("✔️ 사용 가능한 아이디입니다.");
+                            $("#alertId").text(data.msg || "✔️ 사용 가능한 아이디입니다.");
                         }
                     },
                     error: function(xhr) {
@@ -361,7 +355,7 @@
                             "color": "red",
                             "font-size": "10px"
                         });
-                        $("#alertId").text(response.message);
+                        $("#alertId").text(response.msg);
                     }
                 });
 
@@ -554,12 +548,14 @@
                     },
                     dataType: "json",
                     success: function(data) {
-                        $("#alertEmail").css({
-                            "color": "black",
-                            "font-size": "10px"
-                        });
-                        $("#alertEmail").text("✔️ 사용 가능한 이메일주소입니다.");
-                        $("#checkEmailButton").attr("disabled", false);
+                        if(data.header.message === "SUCCESS") {
+                            $("#alertEmail").css({
+                                "color": "green",
+                                "font-size": "10px"
+                            });
+                            $("#alertEmail").text(data.msg || "✔️ 사용 가능한 이메일주소입니다.");
+                            $("#checkEmailButton").attr("disabled", false);
+                        }
                     },
                     error: function(xhr) {
                         const response = xhr.responseJSON;
@@ -567,7 +563,7 @@
                             "color": "red",
                             "font-size": "10px"
                         });
-                        $("#alertEmail").text(response.message);
+                        $("#alertEmail").text(response.msg);
                     }
                 });
             }
@@ -583,14 +579,14 @@
                 dataType: "json",
                 success: function (data) {
                     // 성공적으로 인증번호가 발송된 경우
-                    if (data.result === "success") {
-                        alert(data.message);
+                    if (data.header.message === "SUCCESS") {
+                        alert(data.msg);
                         $("#alertCertified").text("! 인증번호를 입력해주세요.");
                         $("#alertCertified").css({
                             "color": "red",
                             "font-size": "10px"
                         });
-                        code = data.code;
+                        code = data.data;
                         $("#checkEmail").attr("disabled", false);
                         $("#checkEmailButton").attr("disabled", true);
 
@@ -603,12 +599,12 @@
                 error: function(xhr) {
                     // 서버 오류 발생 시 처리
                     const response = xhr.responseJSON;
-                    alert(response.message);
+                    alert(response.header.message);
                     $("#alertCertified").css({
                         "color": "red",
                         "font-size": "10px"
                     });
-                    $("#alertCertified").text(response.result || "! 서버와 통신 중 에러가 발생했습니다.");
+                    $("#alertCertified").text(response.msg || "! 서버와 통신 중 에러가 발생했습니다.");
                 }
             });
         });
@@ -731,10 +727,10 @@
         }
 
         $("#joinButton").click(function () {
-            if($("#alertId").text() != "✔️ 사용 가능한 아이디입니다.") {
-                alert("아이디 중복 확인을 해주세요.");
-                return;
-            }
+            // if($("#alertId").text() != "✔️ 사용 가능한 아이디입니다.") {
+            //     alert("아이디 중복 확인을 해주세요.");
+            //     return;
+            // }
 
             if($("#alertName").text() != "✔️ 사용 가능한 이름입니다.") {
                 alert("이름을 다시 작성해주세요.");
@@ -746,10 +742,10 @@
                 return;
             }
 
-            if($("#alertEmail").text() != "✔️ 사용 가능한 이메일주소입니다.") {
-                alert("이메일 중복 확인을 해주세요.");
-                return;
-            }
+            // if($("#alertEmail").text() != "✔️ 사용 가능한 이메일주소입니다.") {
+            //     alert("이메일 중복 확인을 해주세요.");
+            //     return;
+            // }
 
             if($("#alertCertified").text() != "✔️ 메일인증이 완료되었습니다.") {
                 alert("메일 인증을 해주세요.");
