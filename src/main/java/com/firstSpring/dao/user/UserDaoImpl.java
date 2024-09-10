@@ -1,7 +1,7 @@
 package com.firstSpring.dao.user;
 
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.controller.user.aop.LogException;
+import com.firstSpring.entity.LogException;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

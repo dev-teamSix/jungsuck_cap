@@ -30,16 +30,17 @@
 	</beans:bean>
 
 	<!-- interceptor -->
-	<interceptors>
-		<interceptor>
-			<mapping path="/*"/>
-			<exclude-mapping path="/"/>
-			<beans:bean class="com.firstSpring.controller.user.AuthenticateInterceptor" />
-		</interceptor>
-	</interceptors>
+<!--	<interceptors>-->
+<!--		<interceptor>-->
+<!--			<mapping path="/*"/>-->
+<!--			<exclude-mapping path="/"/>-->
+<!--			<beans:bean class="com.firstSpring.controller.user.AuthenticateInterceptor" />-->
+<!--		</interceptor>-->
+<!--	</interceptors>-->
 
 
 	<view-controller path="/" view-name="main"/>
+
 
 	<aop:aspectj-autoproxy/>
 	<context:component-scan base-package="com.firstSpring.dao"/>

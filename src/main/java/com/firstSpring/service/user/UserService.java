@@ -1,7 +1,7 @@
 package com.firstSpring.service.user;
 
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.controller.user.aop.LogException;
+import com.firstSpring.entity.LogException;
 import org.springframework.validation.Errors;
 
 import java.util.Map;

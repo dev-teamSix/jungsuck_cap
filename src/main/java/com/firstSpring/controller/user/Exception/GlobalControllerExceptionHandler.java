@@ -16,11 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 @ControllerAdvice
 public class GlobalControllerExceptionHandler {
     @ExceptionHandler({UserDBException.class})
-    public ModelAndView handleAllException(UserDBException ex, RuntimeException ex2, Model model,HttpServletResponse response) {
+    public ModelAndView handleAllException(UserDBException ex, Model model,HttpServletResponse response) {
         log.info("UserDBException: {}", ex.getMessage());
         response.setStatus(ex.getErrorCode().getHttpStatus().value());
         model.addAttribute("errorMessage", ex.getMessage());
-        model.addAttribute("errorMessage", ex2.getMessage());
         return new ModelAndView("error");
     }
 }

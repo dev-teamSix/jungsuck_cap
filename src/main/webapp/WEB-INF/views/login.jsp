@@ -14,7 +14,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <script>
         let errorMsg = "${errorMsg}";
 
@@ -48,64 +53,7 @@
     </script>
 </head>
 <body>
-
-<header class="main-header">
-    <div class="container">
-        <a href="/login/form" class="logo">
-            <span class="logo-lg"><b>모자의 정석</b></span>
-        </a>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <a href="#" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <c:choose>
-                        <c:when test="${!empty sessionUser}">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        ${sessionUser.name}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <p class="dropdown-item">
-                                        가입일자 : <fmt:formatDate value="${sessionUser.regDt}" pattern="yyyy-MM-dd"/> <br>
-                                        최근 로그인일자 : <fmt:formatDate value="${sessionUser.recentLogin}" pattern="yyyy-MM-dd"/>
-                                    </p>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">게시글</a>
-                                    <a class="dropdown-item" href="/notice/list">공지사항</a>
-                                    <a class="dropdown-item" href="#">Q&A</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/login/out" id="logoutButton">
-                                        <i class="glyphicon glyphicon-log-out"></i> 로그아웃
-                                    </a>
-                                </div>
-                            </li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    회원가입 또는 로그인
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <p class="dropdown-item">회원가입 또는 로그인해주세요</p>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<c:url value='/user/register'/>">
-                                        <i class="fa fa-user-plus"></i> 회원가입
-                                    </a>
-                                    <a class="dropdown-item" href="<c:url value='/login/form'/>">
-                                        <i class="glyphicon glyphicon-log-in"></i> 로그인
-                                    </a>
-                                </div>
-                            </li>
-                        </c:otherwise>
-                    </c:choose>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
-
+<jsp:include page="/WEB-INF/views/header.jsp" />
 <div class="login-container">
     <h1 class="text-center">로그인</h1>
     <form action="/login/in" method="POST" id="loginForm">
@@ -113,18 +61,14 @@
             <label for="inputId">아이디</label>
             <input type="text" class="form-control" id="inputId" name="id" value="${cookie['id'] != null ? cookie['id'].value : userDto.id}"  maxlength="20" placeholder="아이디를 입력해주세요">
             <div class="alert-container">
-                <c:if test="${not empty valid_id}">
-                    <span class="error-message">${valid_id}</span>
-                </c:if>
+                <span style="color: red; font-size: 10px;">${valid_id}</span>
             </div>
         </div>
         <div class="form-group">
             <label for="inputPw">비밀번호</label>
             <input type="password" class="form-control" id="inputPw" name="pwd" value="${userDto.pwd}" placeholder="비밀번호를 입력해주세요">
             <div class="alert-container">
-                <c:if test="${not empty valid_pwd}">
-                    <span class="error-message">${valid_pwd}</span>
-                </c:if>
+                <c:if test="${not empty valid_pwd}"><span style="color: red; font-size: 10px;">${valid_pwd}</span></c:if>
             </div>
         </div>
         <div class="form-check">
@@ -138,7 +82,7 @@
         <a href="#" data-toggle="modal" data-target="#userPwFindModel">비밀번호 찾기</a>
     </div>
 </div>
-
+<jsp:include page="/WEB-INF/views/footer.jsp" />
 <!-- 경고 모달 -->
 <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -226,10 +170,10 @@
                         <span class="error-message">가입 시 입력하신 회원 정보가 맞는지 다시 한번 확인해 주세요.</span>
                     </div>
 
-<%--                    <div class="form-group">--%>
-<%--                        <input type="password" class="form-control" name="password" id="findPwInput" placeholder="새 비밀번호를 입력해주세요." disabled="disabled">--%>
-<%--                        <div class="error-message" id="alertPassword"></div>--%>
-<%--                    </div>--%>
+                    <%--                    <div class="form-group">--%>
+                    <%--                        <input type="password" class="form-control" name="password" id="findPwInput" placeholder="새 비밀번호를 입력해주세요." disabled="disabled">--%>
+                    <%--                        <div class="error-message" id="alertPassword"></div>--%>
+                    <%--                    </div>--%>
                 </form>
             </div>
             <div class="modal-footer">
@@ -266,30 +210,30 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    if (data.result === 'fail') {
-                        $("#answerLine").css({
-                            "color": "red",
-                            "text-align": "center",
-                            "text-size": "10px"
-                        });
-                        $("#answerLine").text("일치하는 아이디가 없습니다. 다시 확인해주세요.");
-                    } else {
+                    if (data.header.message === 'SUCCESS') {
                         $("#answerLine").css({
                             "color": "green",
                             "text-align": "center",
                             "text-size": "10px"
                         });
-                        $("#answerLine").text(data.message); // 서버에서 반환한 메시지를 사용
+                        $("#answerLine").text(data.msg); // 서버에서 반환한 메시지를 사용
                     }
                 },
                 error: function (xhr, status, error) {
                     const response = xhr.responseJSON;
+
+                    // 예외 메시지를 표시
+                    let errorMessage = "알 수 없는 오류가 발생했습니다.";
+                    if (response && response.message) {
+                        errorMessage = response.message;
+                    }
+
                     $("#answerLine").css({
                         "color": "red",
                         "text-align": "center",
-                        "text-size": "10px"
+                        "font-size": "10px"
                     });
-                    $("#answerLine").text(response.message);
+                    $("#answerLine").text(errorMessage);
                 }
             });
         });
@@ -306,13 +250,8 @@
                 url: '/find/pwd',
                 data: { email: email, id: id },
                 success: function(data) {
-                    if (data.result == 'fail') {
-                        // 오류 메시지 표시
-                        $('#alertEmail').show();
-                        $('#emailInfo').hide();
-                        $('#emailCodeInput').hide();
-                    } else {
-                        alert(data.message);
+                    if (data.header.message === 'SUCCESS') {
+                        alert(data.msg);
                         // 인증번호 입력 필드 및 정보 메시지 표시
                         $('#emailInfo').show();
                         $('#emailCodeInput').show();
@@ -323,28 +262,24 @@
                             "font-size": "15px"
                         });
 
-                        code = data.code; // 인증번호 저장
+                        code = data.data; // 인증번호 저장
 
                         $('#checkEmail').prop('disabled', false);
                     }
                 },
                 error: function(xhr, status, error) {
-                    // 서버 응답에서 result 값을 확인하여 처리
-                    let response = xhr.responseJSON;
-                    let result = response && response.result;
-                    let message = response && response.message ? response.message : "서버와의 통신 중 에러가 발생했습니다.";
+                    // JSON 응답을 파싱하여 오류 메시지를 추출
+                    const response = xhr.responseJSON;
 
-                    if (result === 'fail') {
-                        // 'fail' 응답 처리
+                    if (response && response.header && response.header.message) {
+                        // 서버에서 전달된 메시지를 #alertEmail 요소에 표시
                         $('#alertEmail').show();
+                        $('#alertEmail').text(response.header.message);
                         $('#emailInfo').hide();
                         $('#emailCodeInput').hide();
-                    } else if (result === 'error') {
-                        // 'error' 응답 처리
-                        alert(message);
                     } else {
-                        // 예기치 않은 오류 처리
-                        alert(message);
+                        // JSON 응답이 예상대로 오지 않았을 경우 기본 오류 메시지 표시
+                        alert("알 수 없는 오류가 발생했습니다.");
                     }
                 }
             });
@@ -379,17 +314,19 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    if (data.result == 'fail') {
-                        alert(data.message);
-                    } else {
-                        alert(data.message);
+                    if (data.header.message === 'SUCCESS') {
+                        alert(data.msg);
                         location.reload();
                     }
                 },
                 error: function(xhr, status, error) {
                     const response = xhr.responseJSON;
                     // AJAX 요청 실패 시
-                    alert(response.message);
+                    if (response && response.header && response.header.message) {
+                        alert(response.header.message);
+                    } else {
+                        alert("알 수 없는 오류가 발생했습니다.");
+                    }
                 }
             });
         });

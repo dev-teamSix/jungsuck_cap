@@ -3,7 +3,6 @@ package com.firstSpring.service.order;
 import com.firstSpring.dao.order.CartDao;
 import com.firstSpring.domain.order.CartDto;
 import com.firstSpring.domain.order.CartItemDto;
-import com.firstSpring.entity.LogException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

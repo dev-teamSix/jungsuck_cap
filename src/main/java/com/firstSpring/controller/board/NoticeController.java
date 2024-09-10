@@ -54,7 +54,7 @@ import java.util.Map;
         System.out.println("modify 호출");
         String id = ((UserDto) request.getSession().getAttribute("sessionUser")).getId();
         String writer = ((UserDto) request.getSession().getAttribute("sessionUser")).getName();
-        String is_admin = ((UserDto) request.getSession().getAttribute("sessionUser")).getIs_adm();
+        String is_admin = ((UserDto) request.getSession().getAttribute("sessionUser")).getIsAdm();
         //해당 부분은 cust 테이블 접근해서 is_admin인지 체크해야하나 그냥 이렇게 하자..
         //수정시 아래 컬럼 미변경으로 수정
         //noticeDto.setLast_mode_dt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
@@ -101,7 +101,7 @@ import java.util.Map;
         System.out.println("wirte: post 호출");
         String id = ((UserDto) request.getSession().getAttribute("sessionUser")).getId();
         String writer = ((UserDto) request.getSession().getAttribute("sessionUser")).getName();
-        String is_admin = ((UserDto) request.getSession().getAttribute("sessionUser")).getIs_adm();
+        String is_admin = ((UserDto) request.getSession().getAttribute("sessionUser")).getIsAdm();
         System.out.println("id:"+id);
         System.out.println("writer:"+writer);
         System.out.println("is_admin:"+is_admin);
@@ -140,7 +140,7 @@ import java.util.Map;
 
         String id = ((UserDto) request.getSession().getAttribute("sessionUser")).getId();
         String writer = ((UserDto) request.getSession().getAttribute("sessionUser")).getName();
-        String is_admin = ((UserDto) request.getSession().getAttribute("sessionUser")).getIs_adm();
+        String is_admin = ((UserDto) request.getSession().getAttribute("sessionUser")).getIsAdm();
 
         if(id==null || id.equals("")) {
             id="test";

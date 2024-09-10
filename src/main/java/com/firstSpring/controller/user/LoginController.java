@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/login")
@@ -32,20 +31,6 @@ public class LoginController {
         binder.setValidator(new LoginValidator());
     }
 
-     // 에러 메세지 반환 메서드
-    private String getString(UserDto userDto, Errors errors, RedirectAttributes ra) {
-        if (errors.hasErrors()) {
-            ra.addFlashAttribute("userDto", userDto); // 입력했던 기존 ID,PWD 전달
-            Map<String,String> validatorResult = userService.validateHandling(errors);
-            for(String key: validatorResult.keySet()) {
-                ra.addFlashAttribute(key,validatorResult.get(key));
-            }
-            return "redirect:/login/form";
-        }
-        return null;
-    }
-
-
     // 로그인 폼을 요청 (GET)
     @GetMapping("/form")
     @LogException
@@ -56,21 +41,8 @@ public class LoginController {
     @PostMapping("/in")
     @LogException
     public String save(@Valid @ModelAttribute("userDto") UserDto userDto, Errors errors, boolean rememberId, HttpServletResponse response, HttpServletRequest request, RedirectAttributes ra) {
-        // ID 및 PWD 유효성 검사
-        //  유효성 검사 불일치 ->  login/form으로 리다이렉트
-        String x = getString(userDto, errors, ra);
-        if (x != null) return x;
-
         String id = userDto.getId();
         String pwd = userDto.getPwd();
-
-        // ID 존재 유무 확인
-        //  존재 X ->  login/form으로 리다이렉트
-        if (!userService.checkExistOfId(id)) {
-            ra.addFlashAttribute("userDto",userDto); // 입력했던 기존 ID,PWD 전달
-            ra.addFlashAttribute("errorMsg", "존재하지 않는 아이디입니다.");
-            return "redirect:/login/form";
-        }
 
         // PWD 일치 여부 확인
         //  일치 X ->  login/form으로 리다이렉트
@@ -94,6 +66,9 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute("sessionUser", userService.getCustLoginInfo(id)); // 세션 객체에 userDto 저장
 
+        String priorUrl = getPriorUrl(session);
+        if (priorUrl != null) return priorUrl;
+
         // 메인 페이지로 리다이렉트
         return "redirect:/";
     }
@@ -109,5 +84,14 @@ public class LoginController {
         }
 
         return "redirect:/";
+    }
+    private String getPriorUrl(HttpSession session) {
+        String priorUrl = (String) session.getAttribute("url_prior_login");
+        System.out.println(priorUrl);
+        if(priorUrl != null) {
+            session.removeAttribute("url_prior_login");
+            return "redirect:" + priorUrl;
+        }
+        return null;
     }
 }

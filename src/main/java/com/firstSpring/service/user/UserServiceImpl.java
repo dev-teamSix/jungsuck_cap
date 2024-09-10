@@ -3,20 +3,17 @@ package com.firstSpring.service.user;
 import com.firstSpring.controller.user.Exception.*;
 import com.firstSpring.dao.user.UserDao;
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.controller.user.aop.LogException;
+import com.firstSpring.entity.LogException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -197,7 +194,7 @@ public class UserServiceImpl implements UserService{
 
         modifyUserDto.setEmail(userDto.getEmail());
         modifyUserDto.setBirth(userDto.getBirth());
-        modifyUserDto.setPh_num(userDto.getPh_num());
+        modifyUserDto.setPhNum(userDto.getPhNum());
 
         userDao.updateUserInfo(modifyUserDto);
         return modifyUserDto;

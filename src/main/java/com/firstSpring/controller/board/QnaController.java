@@ -49,7 +49,7 @@ public class  QnaController {
         System.out.println("write get호출");
         String id = ((UserDto) request.getSession().getAttribute("sessionUser")).getId();
         String writer = ((UserDto) request.getSession().getAttribute("sessionUser")).getName();
-        String is_admin = ((UserDto) request.getSession().getAttribute("sessionUser")).getIs_adm();
+        String is_admin = ((UserDto) request.getSession().getAttribute("sessionUser")).getIsAdm();
 
         return "board/qnaWrite";
     }
