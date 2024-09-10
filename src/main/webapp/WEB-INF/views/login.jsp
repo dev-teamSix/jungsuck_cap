@@ -14,7 +14,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <script>
         let errorMsg = "${errorMsg}";
 
@@ -48,64 +53,7 @@
     </script>
 </head>
 <body>
-
-<header class="main-header">
-    <div class="container">
-        <a href="/login/form" class="logo">
-            <span class="logo-lg"><b>모자의 정석</b></span>
-        </a>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <a href="#" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <c:choose>
-                        <c:when test="${!empty sessionUser}">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        ${sessionUser.name}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <p class="dropdown-item">
-                                        가입일자 : <fmt:formatDate value="${sessionUser.regDt}" pattern="yyyy-MM-dd"/> <br>
-                                        최근 로그인일자 : <fmt:formatDate value="${sessionUser.recentLogin}" pattern="yyyy-MM-dd"/>
-                                    </p>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">게시글</a>
-                                    <a class="dropdown-item" href="#">공지사항</a>
-                                    <a class="dropdown-item" href="#">Q&A</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/login/out" id="logoutButton">
-                                        <i class="glyphicon glyphicon-log-out"></i> 로그아웃
-                                    </a>
-                                </div>
-                            </li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    회원가입 또는 로그인
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <p class="dropdown-item">회원가입 또는 로그인해주세요</p>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<c:url value='/user/register'/>">
-                                        <i class="fa fa-user-plus"></i> 회원가입
-                                    </a>
-                                    <a class="dropdown-item" href="<c:url value='/login/form'/>">
-                                        <i class="glyphicon glyphicon-log-in"></i> 로그인
-                                    </a>
-                                </div>
-                            </li>
-                        </c:otherwise>
-                    </c:choose>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
-
+<jsp:include page="/WEB-INF/views/header.jsp" />
 <div class="login-container">
     <h1 class="text-center">로그인</h1>
     <form action="/login/in" method="POST" id="loginForm">
@@ -134,7 +82,7 @@
         <a href="#" data-toggle="modal" data-target="#userPwFindModel">비밀번호 찾기</a>
     </div>
 </div>
-
+<jsp:include page="/WEB-INF/views/footer.jsp" />
 <!-- 경고 모달 -->
 <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

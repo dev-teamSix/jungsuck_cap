@@ -22,7 +22,6 @@ public class AuthenticateInterceptor implements HandlerInterceptor {
             request.getSession().setAttribute("url_prior_login",urlPrior); // 직전 url을 session에 담기
 
             response.sendRedirect("/login/form");
-            return false;
         }
         return true;
     }
