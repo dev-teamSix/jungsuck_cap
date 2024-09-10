@@ -10,10 +10,10 @@ public class UserDto {
     private String id; // 회원ID
 
     @JsonProperty("grd_cd")
-    private String grdCd; // 회원등급코드
+    private String grd_cd; // 회원등급코드
 
     @JsonProperty("st_cd")
-    private String stCd; // 회원상태코드
+    private String st_cd; // 회원상태코드
 
     @JsonProperty("email")
     private String email; // 이메일
@@ -31,13 +31,13 @@ public class UserDto {
     private String gender; // 성별
 
     @JsonProperty("ph_num")
-    private String phNum; // 전화번호
+    private String ph_num; // 전화번호
 
     @JsonProperty("zip")
     private String zip; // 우편번호
 
     @JsonProperty("road_adr")
-    private String roadAdr; // 도로명주소
+    private String road_adr; // 도로명주소
 
     @JsonProperty("jibun_adr")
     private String jibunAdr; // 지번주소
@@ -46,13 +46,13 @@ public class UserDto {
     private String detAdr; // 상세주소
 
     @JsonProperty("is_mail_auth")
-    private String isMailAuth; // 메일 인증 여부
+    private String is_mail_auth; // 메일 인증 여부
 
     @JsonProperty("mail_key")
     private String mailKey; // 메일 인증 번호
 
     @JsonProperty("is_adm")
-    private String isAdm; // 관리자여부
+    private String is_adm; // 관리자여부
 
     @JsonProperty("reg_dt")
     private String regDt; // 가입일
@@ -112,22 +112,22 @@ public class UserDto {
     }
 
     // 회원 정보 조회시 사용할 생성자
-    public UserDto(String id, String stCd, String email, String pwd, String name, String birth, String gender, String phNum, String mailKey, String regDt) {
+    public UserDto(String id, String st_cd, String email, String pwd, String name, String birth, String gender, String ph_num, String mailKey, String regDt) {
         this.id = id;
-        this.stCd = stCd;
+        this.st_cd = st_cd;
         this.email = email;
         this.pwd = pwd;
         this.name = name;
         this.birth = birth;
         this.gender = gender;
-        this.phNum = phNum;
+        this.ph_num = ph_num;
         this.mailKey = mailKey;
         this.regDt = regDt;
     }
 
     // 회원가입시 사용할 생성자
     public UserDto(String id, String email, String pwd, String name, String birth,
-                   String gender, String phNum, String zip, String roadAdr, String jibunAdr, String detAdr,
+                   String gender, String ph_num, String zip, String road_adr, String jibunAdr, String detAdr,
                    String mailKey) {
         this.id = id;
         this.email = email;
@@ -135,40 +135,51 @@ public class UserDto {
         this.name = name;
         this.birth = birth;
         this.gender = gender;
-        this.phNum = phNum;
+        this.ph_num = ph_num;
         this.zip = zip;
-        this.roadAdr = roadAdr;
+        this.road_adr = road_adr;
         this.jibunAdr = jibunAdr;
         this.detAdr = detAdr;
         this.mailKey = mailKey;
     }
 
-    public void setBirth(String birthYear, String birthMonth, String birthDay) {
-        this.birth = birthYear + "-" + birthMonth + "-" + birthDay;
-    }
-    public void setBirthYear(String birthYear) {
-        this.birthYear = birthYear;
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "id='" + id + '\'' +
+                ", grd_cd='" + grd_cd + '\'' +
+                ", st_cd='" + st_cd + '\'' +
+                ", email='" + email + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", name='" + name + '\'' +
+                ", birth='" + birth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", ph_num='" + ph_num + '\'' +
+                ", zip='" + zip + '\'' +
+                ", road_adr='" + road_adr + '\'' +
+                ", jibunAdr='" + jibunAdr + '\'' +
+                ", detAdr='" + detAdr + '\'' +
+                ", is_mail_auth='" + is_mail_auth + '\'' +
+                ", mailKey='" + mailKey + '\'' +
+                ", is_adm='" + is_adm + '\'' +
+                ", regDt='" + regDt + '\'' +
+                ", quitDt='" + quitDt + '\'' +
+                ", isQuit='" + isQuit + '\'' +
+                ", isBlok='" + isBlok + '\'' +
+                ", blokRes='" + blokRes + '\'' +
+                ", blokDt='" + blokDt + '\'' +
+                ", unBlokDt='" + unBlokDt + '\'' +
+                ", frstRegDt='" + frstRegDt + '\'' +
+                ", frstRegId='" + frstRegId + '\'' +
+                ", lastModDt='" + lastModDt + '\'' +
+                ", lastModId='" + lastModId + '\'' +
+                ", birthYear='" + birthYear + '\'' +
+                ", birthMonth='" + birthMonth + '\'' +
+                ", birthDay='" + birthDay + '\'' +
+                ", recentLogin='" + recentLogin + '\'' +
+                '}';
     }
 
-    public void setBirthMonth(String birthMonth) {
-        this.birthMonth = birthMonth;
-    }
-
-    public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
-    }
-
-    public String getBirthYear() {
-        return birthYear;
-    }
-
-    public String getBirthMonth() {
-        return birthMonth;
-    }
-
-    public String getBirthDay() {
-        return birthDay;
-    }
     public String getId() {
         return id;
     }
@@ -177,20 +188,20 @@ public class UserDto {
         this.id = id;
     }
 
-    public String getGrdCd() {
-        return grdCd;
+    public String getGrd_cd() {
+        return grd_cd;
     }
 
-    public void setGrdCd(String grdCd) {
-        this.grdCd = grdCd;
+    public void setGrd_cd(String grd_cd) {
+        this.grd_cd = grd_cd;
     }
 
-    public String getStCd() {
-        return stCd;
+    public String getSt_cd() {
+        return st_cd;
     }
 
-    public void setStCd(String stCd) {
-        this.stCd = stCd;
+    public void setSt_cd(String st_cd) {
+        this.st_cd = st_cd;
     }
 
     public String getEmail() {
@@ -233,12 +244,12 @@ public class UserDto {
         this.gender = gender;
     }
 
-    public String getPhNum() {
-        return phNum;
+    public String getPh_num() {
+        return ph_num;
     }
 
-    public void setPhNum(String phNum) {
-        this.phNum = phNum;
+    public void setPh_num(String ph_num) {
+        this.ph_num = ph_num;
     }
 
     public String getZip() {
@@ -249,12 +260,12 @@ public class UserDto {
         this.zip = zip;
     }
 
-    public String getRoadAdr() {
-        return roadAdr;
+    public String getRoad_adr() {
+        return road_adr;
     }
 
-    public void setRoadAdr(String roadAdr) {
-        this.roadAdr = roadAdr;
+    public void setRoad_adr(String road_adr) {
+        this.road_adr = road_adr;
     }
 
     public String getJibunAdr() {
@@ -273,12 +284,12 @@ public class UserDto {
         this.detAdr = detAdr;
     }
 
-    public String getIsMailAuth() {
-        return isMailAuth;
+    public String getIs_mail_auth() {
+        return is_mail_auth;
     }
 
-    public void setIsMailAuth(String isMailAuth) {
-        this.isMailAuth = isMailAuth;
+    public void setIs_mail_auth(String is_mail_auth) {
+        this.is_mail_auth = is_mail_auth;
     }
 
     public String getMailKey() {
@@ -289,12 +300,12 @@ public class UserDto {
         this.mailKey = mailKey;
     }
 
-    public String getIsAdm() {
-        return isAdm;
+    public String getIs_adm() {
+        return is_adm;
     }
 
-    public void setIsAdm(String isAdm) {
-        this.isAdm = isAdm;
+    public void setIs_adm(String is_adm) {
+        this.is_adm = is_adm;
     }
 
     public String getRegDt() {
@@ -385,36 +396,27 @@ public class UserDto {
         this.lastModId = lastModId;
     }
 
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "id='" + id + '\'' +
-                ", grdCd='" + grdCd + '\'' +
-                ", stCd='" + stCd + '\'' +
-                ", email='" + email + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", name='" + name + '\'' +
-                ", birth='" + birth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", phNum='" + phNum + '\'' +
-                ", zip='" + zip + '\'' +
-                ", roadAdr='" + roadAdr + '\'' +
-                ", jibunAdr='" + jibunAdr + '\'' +
-                ", detAdr='" + detAdr + '\'' +
-                ", isMailAuth='" + isMailAuth + '\'' +
-                ", mailKey='" + mailKey + '\'' +
-                ", isAdm='" + isAdm + '\'' +
-                ", regDt='" + regDt + '\'' +
-                ", quitDt='" + quitDt + '\'' +
-                ", isQuit='" + isQuit + '\'' +
-                ", isBlok='" + isBlok + '\'' +
-                ", blokRes='" + blokRes + '\'' +
-                ", blokDt='" + blokDt + '\'' +
-                ", unBlokDt='" + unBlokDt + '\'' +
-                ", frstRegDt='" + frstRegDt + '\'' +
-                ", frstRegId='" + frstRegId + '\'' +
-                ", lastModDt='" + lastModDt + '\'' +
-                ", lastModId='" + lastModId + '\'' +
-                '}';
+    public String getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(String birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public String getBirthMonth() {
+        return birthMonth;
+    }
+
+    public void setBirthMonth(String birthMonth) {
+        this.birthMonth = birthMonth;
+    }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
     }
 }

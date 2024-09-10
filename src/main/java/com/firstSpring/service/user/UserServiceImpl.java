@@ -219,7 +219,7 @@ public class  UserServiceImpl implements UserService{
 
         modifyUserDto.setEmail(userDto.getEmail());
         modifyUserDto.setBirth(userDto.getBirth());
-        modifyUserDto.setPhNum(userDto.getPhNum());
+        modifyUserDto.setPh_num(userDto.getPh_num());
 
         try {
             userDao.updateUserInfo(modifyUserDto);

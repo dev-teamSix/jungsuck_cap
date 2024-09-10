@@ -96,7 +96,7 @@ public class RegisterController {
         }
 
         // 회원가입 성공시 로그인폼으로 이동
-        return "/login/form";
+        return "redirect:/login/form";
     }
 
 

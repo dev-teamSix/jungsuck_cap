@@ -1,75 +1,86 @@
 package com.firstSpring.service.board;
 
-import com.firstSpring.dao.board.NoticeDao;
-import com.firstSpring.domain.board.NoticeDto;
+
+import com.firstSpring.dao.board.FaqDao;
+import com.firstSpring.domain.board.FaqDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 @Service
-public class  NoticeServiceImpl implements NoticeService{
+public class FaqServiceImpl implements FaqService{
     @Autowired
-    private NoticeDao noticeDao;
+    private FaqDao faqDao;
 
     @Override
     public int getAllCount() throws Exception {
-        return noticeDao.allCount();
+        return faqDao.countAll();
     }
 
     @Override
     public int getCount(Map map) throws Exception {
-        return noticeDao.count(map);
+        return faqDao.count(map);
     }
 
     @Override
-    public int getNoticeCount() throws Exception {
-        return noticeDao.countIsNotice();
+    public int getNoticeCount(Map map) throws Exception {
+        return faqDao.countNotice(map);
     }
 
     @Override
     public int remove(Integer bno, String writer) throws Exception {
-        return noticeDao.delete(bno,writer);
+        return faqDao.delete(bno,writer);
     }
 
     @Override
-    public int modify(NoticeDto noticeDto) throws Exception {
-        return noticeDao.update(noticeDto);
+    public int modify(FaqDto faqDto) throws Exception {
+        return faqDao.update(faqDto);
     }
 
     @Override
-    public int write(NoticeDto noticeDto) throws Exception {
-        return noticeDao.insert(noticeDto);
+    public int write(FaqDto faqDto) throws Exception {
+        return faqDao.insert(faqDto);
     }
 
     @Override
-    public List<NoticeDto> getNoticeList() throws Exception {
-        return noticeDao.selectNoticeList();
-    }
-    @Override
-    public List<NoticeDto> getNotNoticeList() throws Exception {
-        return noticeDao.selectNotNoticeList();
+    public List<FaqDto> getNoticeList() throws Exception {
+        return faqDao.selectNoticeList();
     }
 
     @Override
-    public List<NoticeDto> getPage(Map map) throws Exception {
-        return noticeDao.selectPage(map);
+    public List<FaqDto> getNotNoticeList() throws Exception {
+        return faqDao.selectNotNoticeList();
     }
 
-    //검색어 적용해야될듯 체크할것
+    //페이지 가져오기
     @Override
-    public List<NoticeDto> getList() throws Exception {
-        return noticeDao.selectAll();
+    public List<FaqDto> getPage(Map map) throws Exception {
+        return faqDao.selectPage(map);
     }
-
+    
     @Override
-    public NoticeDto read(Integer bno) throws Exception {
-        //공지사항 상세정보
-        NoticeDto noticeDto = noticeDao.select(bno);
+    public FaqDto read(Integer bno) throws Exception {
+        //faq 상세정보
+        FaqDto faqDto = faqDao.selectOne(bno);
         //조회수 증가
-        noticeDao.increaseViewCnt(bno);
-        return noticeDto;
+        faqDao.increaseViewCnt(bno);
+        return faqDto;
+    }
+
+    //챗봇에 의해 호출 예정
+    @Override
+    public List<FaqDto> getChatSearch(Map map) throws Exception {
+        return faqDao.getChatSearch(map);
+    }
+
+    public List<FaqDto> test() throws Exception{
+        Map map = new HashMap();
+        map.put("keyword","환불");
+        List<FaqDto> list = faqDao.getChatSearch(map);
+        return list;
     }
 }

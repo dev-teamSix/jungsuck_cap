@@ -1,29 +1,35 @@
 package com.firstSpring.service.board;
 
+import com.firstSpring.domain.board.FaqDto;
+import com.firstSpring.domain.board.NoticeDto;
 import com.firstSpring.domain.board.QnaDto;
 
 import java.util.List;
 import java.util.Map;
 
-public interface  QnaService {
-    //카운터 조회
+public interface FaqService {
+    //FAQ 전체 (all)
+    int getAllCount() throws Exception;
+    //FAQ 공지글 지정 카운터(is_notice:1)
+    int getNoticeCount(Map map) throws Exception;
+    //FAQ 카운터 공지 미지정 카운터(is_notice:0)
     int getCount(Map map) throws Exception;
-    //상단고정(공지) 카운터 조회
-    int getNoticeCount() throws Exception;
-    //게시판 작성
-    int write(QnaDto qnaDto) throws Exception;
-    //게시판 수정
-    int modify(QnaDto qnaDto) throws Exception;
-    //게시판 삭제
-    int remove(Integer bno,String writer) throws Exception;
-    //게시판 조회(상세+viewCnt증가)
-    QnaDto read(Integer bno) throws Exception;
+    //FAQ 삭제
+    int remove(Integer bno, String writer) throws Exception;
+    //FAQ 수정
+    int modify(FaqDto faqDto) throws Exception;
+    //FAQ 등록
+    int write(FaqDto faqDto) throws Exception;
 
-    //게시판 상단고정(공지글) 가져오기
-    List<QnaDto> getNoticeList() throws Exception;
+    List<FaqDto> getNoticeList() throws Exception;
 
-    //게시판 상단미지정(일반글) 가져오기  //게시판 목록조회
-    List<QnaDto> getQnaList(Map map) throws Exception;
+    List<FaqDto> getNotNoticeList() throws Exception;
+    //FAQ 목록조회
+    List<FaqDto> getPage(Map map) throws Exception;
+    //FAQ 상세조회
+    FaqDto read(Integer bno) throws Exception;
 
+    List<FaqDto> getChatSearch(Map map) throws Exception;
 
+    List<FaqDto> test() throws Exception;
 }

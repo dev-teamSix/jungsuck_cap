@@ -52,6 +52,8 @@
     </style>
     <script>
         $(document).ready(function() {
+            //원글의 정보를 가져와서 렌더링 시킨다.
+
             let page = "${page}";
             let pageSize="${pageSize}";
             let option_key ="${option_key}";
@@ -80,15 +82,6 @@
                 return true;
             }
 
-            $("#reg_btn").on("click", function(){
-                let form = $("#form");
-                let action = "/qna/write";
-                form.attr("action", action);
-                form.attr("method","post");
-                if(formCheck()){
-                    form.submit();
-                }
-            });
 
             $("#reply_btn").on("click", function(){
                 let form = $("#form");
@@ -100,27 +93,6 @@
                 }
             });
 
-            $("#mod_btn").on("click", function(){
-                let form = $("#form");
-                let action = "/qna/modify";
-                form.attr("action", action);
-                form.attr("method","post");
-                if(formCheck()){
-                    form.submit();
-                }
-            })
-
-            $("#del_btn").on("click", function(){
-                if(!confirm("정말로 삭제하시겠습니까?")) return;
-                let form = $("#form");
-                let action = "/qna/remove";
-
-                form.attr("action", action);
-                form.attr("method","post");
-
-                form.submit();
-            });
-
             $("#can_btn").on("click", function(){
                 location.href = "/qna/list?page="+page+"&pageSize="+pageSize+"&option_date="+option_date+"&option_key="+option_key+"&keyword="+keyword;
             })
@@ -129,15 +101,6 @@
                 location.href = "/qna/list?page="+page+"&pageSize="+pageSize+"&option_date="+option_date+"&option_key="+option_key+"&keyword="+keyword;
             })
 
-            let is_notice = "${qnaDto.is_notice}";
-            console.log("is_notice:"+is_notice);
-            if(is_notice =='0'){
-                console.log("0이냐");
-                $("#radioFalse").prop("checked",true);
-            }else{
-                $("#radioTrue").prop("checked",true);
-
-            }
         });
 
     </script>
@@ -172,26 +135,16 @@
         <tr>
             <th>제목</th>
             <td>
-                <input type="text" name="title" value="${qnaDto.title}" style="width:100%;">
+                <input type="text" name="title" value="Re:${qnaDto.title}" style="width:100%;">
             </td>
         </tr>
         <tr>
             <th>내용</th>
             <td>
-                <textarea name="content">${qnaDto.content}</textarea>
-            </td>
-        </tr>
-        <tr>
-            <th>상단고정(공지글)</th>
-            <td>
-                <div>
-                    <input type="radio" name="is_notice" id="radioTrue" value="1">
-                    <label for="radioTrue">지정</label>
-                </div>
-                <div>
-                    <input type="radio" name="is_notice" id="radioFalse" value="0">
-                    <label for="radioFalse">미지정</label>
-                </div>
+                <textarea name="content">
+                -----------------------------원글----------------------------
+                    ${qnaDto.content}
+                </textarea>
             </td>
         </tr>
         </tbody>
@@ -203,10 +156,8 @@
             <button type="button" id="list_btn" name="list_btn">목록</button>
         </div>
         <div class="button-group-right">
-            <button type="button" id="reply_btn" name="reply_btn">답변</button>
-            <button type="button" id="mod_btn" name="mod_btn">수정</button>
+            <button type="button" id="mod_btn" name="mod_btn">답변등록</button>
             <button type="button" id="can_btn" name="can_btn">취소</button>
-            <button type="button" id="del_btn" name="del_btn">삭제</button>
         </div>
     </div>
 </form>

@@ -4,6 +4,7 @@ import com.firstSpring.domain.board.NoticeDto;
 import com.firstSpring.domain.board.PageHandler;
 import com.firstSpring.domain.board.QnaDto;
 import com.firstSpring.domain.board.SearchCondition;
+import com.firstSpring.domain.user.UserDto;
 import com.firstSpring.service.board.QnaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -24,8 +26,15 @@ public class  QnaController {
     QnaService qnaService;
 
     @GetMapping("/read")
-    public String read(SearchCondition sc, Model model, HttpSession session) {
+    public String read(Integer bno, SearchCondition sc, Model model, HttpSession session) {
         System.out.println("read호출");
+        try{
+            QnaDto qnadto = qnaService.read(bno);
+            model.addAttribute(qnadto);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return "board/qna";
     }
 
@@ -36,17 +45,27 @@ public class  QnaController {
     }
 
     @GetMapping("/write")
-    public String write(SearchCondition sc, Model model) {
+    public String write(SearchCondition sc, Model model, HttpServletRequest request) {
         System.out.println("write get호출");
+        String id = ((UserDto) request.getSession().getAttribute("sessionUser")).getId();
+        String writer = ((UserDto) request.getSession().getAttribute("sessionUser")).getName();
+        String is_admin = ((UserDto) request.getSession().getAttribute("sessionUser")).getIs_adm();
 
         return "board/qnaWrite";
     }
 
-    @PostMapping("/writer")
+    @PostMapping("/write")
     public String writer(SearchCondition sc, Model model) {
         System.out.println("write post호출");
         return "board/qnaList";
     }
+    @GetMapping("/reply")
+    public String reply(SearchCondition sc, Model model) {
+        System.out.println("reply get호출");
+        return "board/reply";
+    }
+
+
     @PostMapping("/remove")
     public String remove(SearchCondition sc, Model model) {
         System.out.println("remove 호출");
@@ -55,13 +74,22 @@ public class  QnaController {
     @GetMapping("/list")
     public String list(SearchCondition sc, Model model, HttpSession session) {
         try{
+            System.out.println("list 호출");
+            System.out.println("SearchConditon:"+sc.toString());
             Integer page = sc.getPage();
             Integer pageSize = sc.getPageSize();
             String keyword = sc.getKeyword();
             String option_date = sc.getOption_date();
             String option_key = sc.getOption_key();
 
+            System.out.println("page"+page);
+            System.out.println("pageSize"+pageSize);
+            System.out.println("keyword"+keyword);
+            System.out.println("option_date"+option_date);
+            System.out.println("option_key"+option_key);
+
             Map map = new HashMap();
+
             map.put("offset",(page-1)*pageSize);
             map.put("pageSize",pageSize);
             map.put("keyword",sc.getKeyword());

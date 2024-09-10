@@ -29,7 +29,7 @@ public class RegisterValidator implements Validator {
         validateName(userDto.getName(), errors);
         validateEmail(userDto.getEmail(), errors);
         validateBirth(userDto.getBirth(), errors);
-        validateMobileNum(userDto.getPhNum(), errors);
+        validateMobileNum(userDto.getPh_num(), errors);
         validateGender(userDto.getGender(), errors);
         validateMailKey(userDto.getMailKey(), errors);
         validateAddr(userDto.getZip(),errors);

@@ -14,6 +14,82 @@
     <title>공지사항</title>
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .main-header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 1rem 0;
+        }
+        .logo {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .logo-mini {
+            font-size: 1rem;
+        }
+        .navbar {
+            padding: 0;
+            margin: 0;
+        }
+        .navbar-nav .nav-item .nav-link {
+            color: #ffffff;
+        }
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #dddddd;
+        }
+        .login-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem auto;
+        }
+        .login-container h1 {
+            margin-bottom: 1.5rem;
+        }
+        .form-control {
+            border-radius: 5px;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,.075);
+        }
+        .form-check-inline {
+            margin-right: 1rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+        .login-footer {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .login-footer a {
+            margin: 0 0.5rem;
+            color: #007bff;
+        }
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -192,7 +268,6 @@
             <button type="button" id="list_btn" name="list_btn">목록</button>
         </div>
         <div class="button-group-right">
-            <button type="button" id="reg_btn" name="reg_btn">등록</button>
             <button type="button" id="mod_btn" name="mod_btn">수정</button>
             <button type="button" id="can_btn" name="can_btn">취소</button>
             <button type="button" id="del_btn" name="del_btn">삭제</button>
