@@ -1,4 +1,4 @@
-package com.firstSpring.entity;
+package com.firstSpring.controller.user.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

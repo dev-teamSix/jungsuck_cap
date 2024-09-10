@@ -1,0 +1,101 @@
+/* header.jsp 고유 영역을 위한 ID를 추가 */
+/* header.jsp 고유 영역을 위한 ID를 추가 */
+#header-section header {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+/* 상단 네비게이션 */
+#header-section .top-nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background-color: #f7f7f7;
+}
+#header-section .top-nav a {
+    margin-left: 15px;
+    color: #333;
+    text-decoration: none;
+}
+#header-section .top-nav a:hover {
+    text-decoration: underline;
+}
+
+/* 메인 헤더 */
+#header-section .main-header {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+#header-section .main-header img {
+    max-width: 296px;
+}
+
+/* 네비게이션 바 */
+#header-section .navbar {
+    justify-content: center;
+    padding: 0.5rem 0;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+#header-section .navbar-nav .nav-item .nav-link {
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    color: #000;
+}
+#header-section .navbar-nav .nav-item .nav-link:hover {
+    color: #555;
+}
+#header-section .navbar-icons {
+    font-size: 1.2rem;
+    margin-left: 15px;
+}
+
+/* 기타 스타일 */
+#header-section .product-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#header-section .best10-container {
+    padding: 2rem;
+    background-color: #fff;
+}
+
+#header-section .best10-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 131px;
+}
+
+#header-section .best10-item {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#header-section .best10-item img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+#header-section .best10-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#header-section .best10-item p {
+    color: #666;
+    font-size: 1rem;
+}
+
+#header-section .best10-item .price {
+    color: #000;
+    font-weight: bold;
+}

@@ -29,6 +29,16 @@
 		<beans:property name="cacheSeconds" value="60"/>
 	</beans:bean>
 
+	<!-- interceptor -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/*"/>
+			<exclude-mapping path="/"/>
+			<beans:bean class="com.firstSpring.controller.user.AuthenticateInterceptor" />
+		</interceptor>
+	</interceptors>
+
+
 	<view-controller path="/" view-name="main"/>
 
 	<aop:aspectj-autoproxy/>
