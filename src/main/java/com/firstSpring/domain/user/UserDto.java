@@ -385,36 +385,10 @@ public class UserDto {
         this.lastModId = lastModId;
     }
 
+    // UserDto.java
     @Override
     public String toString() {
-        return "UserDto{" +
-                "id='" + id + '\'' +
-                ", grdCd='" + grdCd + '\'' +
-                ", stCd='" + stCd + '\'' +
-                ", email='" + email + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", name='" + name + '\'' +
-                ", birth='" + birth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", phNum='" + phNum + '\'' +
-                ", zip='" + zip + '\'' +
-                ", roadAdr='" + roadAdr + '\'' +
-                ", jibunAdr='" + jibunAdr + '\'' +
-                ", detAdr='" + detAdr + '\'' +
-                ", isMailAuth='" + isMailAuth + '\'' +
-                ", mailKey='" + mailKey + '\'' +
-                ", isAdm='" + isAdm + '\'' +
-                ", regDt='" + regDt + '\'' +
-                ", quitDt='" + quitDt + '\'' +
-                ", isQuit='" + isQuit + '\'' +
-                ", isBlok='" + isBlok + '\'' +
-                ", blokRes='" + blokRes + '\'' +
-                ", blokDt='" + blokDt + '\'' +
-                ", unBlokDt='" + unBlokDt + '\'' +
-                ", frstRegDt='" + frstRegDt + '\'' +
-                ", frstRegId='" + frstRegId + '\'' +
-                ", lastModDt='" + lastModDt + '\'' +
-                ", lastModId='" + lastModId + '\'' +
-                '}';
+        return "UserDto{id='" + id + "', pwd='" + pwd + "'}";
     }
+
 }

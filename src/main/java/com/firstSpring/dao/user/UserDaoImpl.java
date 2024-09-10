@@ -21,14 +21,14 @@ public class  UserDaoImpl implements UserDao {
     // 테스트용 delete 문
     @Override
     @LogException
-    public int deleteTestUser(String id) throws Exception {
+    public int deleteTestUser(String id)  {
         return session.delete(namespace + "deleteTestUser", id);
     }
 
     // 테스트용 deleteAll 문
     @Override
     @LogException
-    public int deleteAllTestUser() throws Exception {
+    public int deleteAllTestUser()  {
         return session.delete(namespace + "deleteAllTestUser");
     }
 
@@ -36,49 +36,49 @@ public class  UserDaoImpl implements UserDao {
     // 회원가입한 전체 고객의 수 (모든 상태의 회원)
     @Override
     @LogException
-    public int countUser() throws Exception {
+    public int countUser()  {
         return session.selectOne(namespace + "countUser");
     }
 
     // 활성화('O') 상태인 전체 고객의 수
     @Override
     @LogException
-    public int countActiveUser() throws Exception {
+    public int countActiveUser()  {
         return session.selectOne(namespace + "countActiveUser");
     }
 
     // 회원가입한 전체 고객 정보 조회 (최근 가입한 고객부터 나열)
     @Override
     @LogException
-    public List<UserDto> selectUserAll() throws Exception {
+    public List<UserDto> selectUserAll()  {
         return session.selectList(namespace + "selectUserAll");
     }
 
     // 탈퇴 회원을 제외한, 활성화('O') 상태인 모든 고객 정보 조회 (최근 가입한 고객부터 나열)
     @Override
     @LogException
-    public List<UserDto> selectActiveUserAll() throws Exception {
+    public List<UserDto> selectActiveUserAll()  {
         return session.selectList(namespace + "selectActiveUserAll");
     }
 
     // 전체 가입고객(탈퇴회원 포함) 중 특정 아이디를 가진 고객 정보 확인
     @Override
     @LogException
-    public UserDto selectAllUserId(String id) throws Exception {
+    public UserDto selectAllUserId(String id)  {
         return session.selectOne(namespace + "selectAllUserId", id);
     }
 
     // 전체 가입고객(탈퇴회원 포함) 중 특정 이메일을 가진 고객 정보 확인
     @Override
     @LogException
-    public UserDto selectAllUserEmail(String email) throws Exception {
-        return session.selectOne(namespace + "selectAllUserEmail", email);
+    public UserDto selectAllUserEmail(String email)  {
+            return session.selectOne(namespace + "selectAllUserEmail", email);
     }
 
     // 전체 가입고객(탈퇴회원 포함) 중 특정 이메일과 특정 아이디를 가진 고객 정보 확인
     @Override
     @LogException
-    public UserDto selectAllUserIdEmail(String id, String email) throws Exception {
+    public UserDto selectAllUserIdEmail(String id, String email)  {
         Map map = new HashMap();
         map.put("id",id);
         map.put("email",email);
@@ -89,13 +89,13 @@ public class  UserDaoImpl implements UserDao {
     // > 회원상태가 활성화('O') & 메일 인증 여부가 'Y' & 특정 id를 가진 회원
     @Override
     @LogException
-    public UserDto selectUser(String id) throws Exception {
+    public UserDto selectUser(String id)  {
         return session.selectOne(namespace + "selectUser", id);
     }
 
     // 최근 로그인 일시 업데이트 (UPDATE)
     @Override
-    public int updateRecentLoginDatetime(String id) throws Exception {
+    public int updateRecentLoginDatetime(String id)  {
         return session.update(namespace + "updateRecentLoginDatetime", id);
     }
 
@@ -104,8 +104,8 @@ public class  UserDaoImpl implements UserDao {
     // > 회원상태 활성화('O') & 메일인증 여부('Y')
     @Override
     @LogException
-    public int insertUser(UserDto userDto) throws Exception {
-        return session.insert(namespace + "insertUser", userDto);
+    public int insertUser(UserDto userDto)  {
+            return session.insert(namespace + "insertUser", userDto);
     }
 
 
@@ -114,7 +114,7 @@ public class  UserDaoImpl implements UserDao {
     // > 아이디/비밀번호 찾기 본인 인증 시 사용
     @Override
     @LogException
-    public int updateMailKey(UserDto userDto) throws Exception {
+    public int updateMailKey(UserDto userDto)  {
         return session.update(namespace + "updateMailKey", userDto);
     }
 
@@ -123,7 +123,7 @@ public class  UserDaoImpl implements UserDao {
     // > 이름 및 이메일로 식별된 특정 회원의 아이디 조회
     @Override
     @LogException
-    public UserDto selectUserId(String name, String email) throws Exception {
+    public UserDto selectUserId(String name, String email)  {
         Map map = new HashMap();
         map.put("name",name);
         map.put("email",email);
@@ -134,7 +134,7 @@ public class  UserDaoImpl implements UserDao {
     // > 비밀번호 찾기 시 새로운 비밀번호로 변경
     @Override
     @LogException
-    public int updateUserPwd(String id, String pwd) throws Exception {
+    public int updateUserPwd(String id, String pwd)  {
         Map<String, String> map = new HashMap<>();
         map.put("id", id); // 변경될 회원 ID
         map.put("pwd", pwd); // 변경할 비밀번호
@@ -144,35 +144,15 @@ public class  UserDaoImpl implements UserDao {
     // 회원 정보 수정 (UPDATE)
     @Override
     @LogException
-    public int updateUserInfo(UserDto userDto) throws Exception {
+    public int updateUserInfo(UserDto userDto)  {
         return session.update(namespace + "updateUserInfo", userDto);
     }
-
-//    // 생년월일 변경 (UPDATE)
-//    @Override
-//    @LogException
-//    public int updateUserBefBirth(String id, String birth) throws Exception {
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("id", id); // 변경될 회원 ID
-//        map.put("birth", birth);
-//        return session.update(namespace + "updateUserBefBirth", map);
-//    }
-//
-//    // 핸드폰 번호 변경 (UPDATE)
-//    @Override
-//    @LogException
-//    public int updateUserMobileNum(String id, String ph_num) throws Exception {
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("id", id); // 변경될 회원 ID
-//        map.put("ph_num", ph_num); // 변경할 핸드폰 번호
-//        return session.update(namespace + "updateUserMobileNum", map);
-//    }
 
     // 회원탈퇴 (UPDATE)
     // > 회원 상태를 'O' -> 'L' 으로 변경
     @Override
     @LogException
-    public int updateUserState(String id) throws Exception {
+    public int updateUserState(String id)  {
         return session.update(namespace + "updateUserState", id);
     }
 }

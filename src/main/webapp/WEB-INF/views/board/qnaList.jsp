@@ -17,13 +17,6 @@
         margin: 20px;
         background-color: #f4f4f4;
     }
-    .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
     table {
         width: 100%;
         border-collapse: collapse;
@@ -97,6 +90,7 @@
     if(msg=="MOD_ERR") alert("게시물 수정에 실패하였습니다. 다시 시도해 주세요.");*/
 </script>
 <body>
+<jsp:include page="../header.jsp" flush="true" />
 <table>
     <tr>
         <th class="bno">번호</th>
@@ -169,5 +163,6 @@
     </form>
     <button id="writeBtn" class="btn-write" onclick="location.href='<c:url value="/qna/write"/>'"><i class="fa fa-pencil"></i> 글쓰기</button>
 </div>
+<jsp:include page="../footer.jsp" flush="true" />
 </body>
 </html>

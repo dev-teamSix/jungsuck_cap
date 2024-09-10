@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.firstSpring.dao.order.CartMapper">
+
+    <insert id="insertCart" parameterType="CartDto">
+        INSERT INTO cart
+            (
+             cust_id,
+             frst_reg_dt,
+             frst_reg_id,
+             last_mod_dt,
+             last_mod_id)
+        VALUES
+            (
+             #{cust_id},
+            #{frst_reg_dt},
+            #{frst_reg_id},
+            #{last_mod_dt},
+            #{last_mod_id})
+    </insert>
+
+    <insert id="insertCartItem" parameterType="CartItemDto">
+        INSERT INTO cart_item
+            (
+             cart_no,
+             prod_no,
+             col_no,
+             qty,
+             frst_reg_dt,
+             frst_reg_id,
+             last_mod_dt,
+             last_mod_id)
+        VALUES
+            (
+             #{cart_no},
+             #{prod_no},
+             #{col_no},
+             #{qty},
+             #{frst_reg_dt},
+             #{frst_reg_id},
+             #{last_mod_dt},
+             #{last_mod_id})
+    </insert>
+
+    <select id="selectCart" parameterType="String" resultType="CartDto">
+        SELECT cart_no,
+               cust_id,
+               frst_reg_dt,
+               frst_reg_id,
+               last_mod_dt,
+               last_mod_id
+        FROM orders
+        WHERE cust_id = #{cust_id}
+    </select>
+
+    <select id="selectCartItem" parameterType="int" resultType="CartItemDto">
+        SELECT  i.cart_item_no,
+                i.cart_no,
+                i.prod_no,
+                i.col_no,
+                i.qty,
+                p.name prod_name,
+                p.price,
+                c.col_name,
+                i.frst_reg_dt,
+                i.frst_reg_id,
+                i.last_mod_dt,
+                i.last_mod_id
+        FROM cart_item AS i
+            LEFT JOIN prod_col AS c
+            ON i.prod_no = c.prod_no and i.col_no = c.col_no
+            LEFT JOIN product AS p
+            ON i.prod_no = p.prod_no
+        WHERE i.cart_no = #{cart_no}
+        ORDER BY cart_item_no DESC;
+    </select>
+
+    <select id="selectCartNo" parameterType="String" resultType="int">
+        SELECT cart_no
+        FROM cart
+        WHERE cust_id = #{cust_id}
+    </select>
+
+    <select id="selectQty" parameterType="map" resultType="int">
+        SELECT qty
+        FROM cart_item
+        WHERE prod_no = #{col_no} AND prod_no = #{prod_no} AND cart_no = #{cart_no}
+    </select>
+
+    <update id="updateQty" parameterType="CartItemDto">
+        UPDATE cart_item
+        SET qty = #{qty}
+        WHERE col_no = #{col_no} AND prod_no = #{prod_no} AND cart_no = #{cart_no}
+    </update>
+
+    <delete id="deleteCart" parameterType="String">
+        DELETE from cart
+        WHERE cust_id = #{cust_id}
+    </delete>
+
+    <delete id="deleteCartItem" parameterType="map">
+        DELETE from cart_item
+        WHERE col_no = #{col_no} AND prod_no = #{prod_no} AND cart_no = #{cart_no}
+    </delete>
+
+</mapper>
