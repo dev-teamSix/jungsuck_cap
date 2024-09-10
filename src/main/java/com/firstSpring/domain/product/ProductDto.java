@@ -44,14 +44,15 @@ public class ProductDto {
 
     public ProductDto() {}
     public ProductDto( String prodName) {
-        this(null, 0 , prodName, "0123456789123", "manger1", "manger1");
+        this(null, 0 , prodName, "0123456789123", 0, "manger1", "manger1");
     }
 
-    public ProductDto(Integer prodNo, Integer prodCatgNo, String name, String barc, String firstRegId, String lastModId) {
+    public ProductDto(Integer prodNo, Integer prodCatgNo, String name, String barc, Integer price, String firstRegId, String lastModId) {
         this.prodNo = prodNo;
         this.prodCatgNo = prodCatgNo;
         this.name = name;
         this.barc = barc;
+        this.price = price;
         this.firstRegId = firstRegId;
         this.lastModId = lastModId;
     }

@@ -2,6 +2,7 @@ package com.firstSpring.dao.product;
 
 import com.firstSpring.domain.product.ProductDto;
 import com.firstSpring.domain.product.ProductListDto;
+import com.firstSpring.domain.product.SearchCondition;
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.junit.Rule;
@@ -256,7 +257,29 @@ public class ProductDaoTest {
 
     }
 
+    /* [ 상품 검색 테스트 ]
+    *
+    * */
+    @Test
+    public void selectSearchList() throws Exception {
+        productDao.deleteAll();
+        assertTrue(productDao.selectAll().size() == 0);
 
+        assertTrue(productDao.insert(new ProductDto("product")) == 1);
+        SearchCondition sc = new SearchCondition(1, 10, null, "", "product1");
+        List<ProductListDto> list =  productDao.selectSearchPage(sc);
+        assertTrue(list.size() == 0);
+
+
+        productDao.deleteAll();
+        assertTrue(productDao.selectAll().size() == 0);
+        for(int i=0; i<20; i++) {
+            assertTrue(productDao.insert(new ProductDto("product"+(i%5))) == 1);
+        }
+        List<ProductDto> prdList =  productDao.selectSearchList(sc);
+        assertTrue(prdList.size() == 4);
+
+    }
 
     /* [ 상품 상세 조회 테스트 ]
     *   1. 한개의 상품을 추가한 후 해당 번호로 조회한 결과와 추가한 데이터가 같아야함.
@@ -271,7 +294,7 @@ public class ProductDaoTest {
 
         //  1. 한개의 상품을 추가한 후 해당 번호로 조회한 결과와 추가한 데이터가 같아야함.
         // 1-1. 상품 추가
-        ProductDto productDto1 = new ProductDto(null, 1, "not-cap", "012031202301", "manager1", "manager1");
+        ProductDto productDto1 = new ProductDto(null, 1, "not-cap", "012031202301", 0, "manager1", "manager1");
         assertTrue(productDao.insert(productDto1) == 1);
         // 1-2. 추가한 데이터의 상품 번호로 상세 조회
         ProductDto selectedProduct1 = productDao.selectAll().get(0);
@@ -282,7 +305,7 @@ public class ProductDaoTest {
         // 2. 1번과 동일한 내용을 가지는 상품을 한 개 더 추가한 후 조회한 각각의 데이터가 달라야함.
         // 2-1. 번호만 다른 동일한 내용의 상품 추가]
 
-        ProductDto productDto2 =  new ProductDto(null, 1, "not-cap", "012031202301", "manager1", "manager1");
+        ProductDto productDto2 =  new ProductDto(null, 1, "not-cap", "012031202301", 0, "manager1", "manager1");
         assertTrue(productDao.insert(productDto2) == 1);
         assertTrue(productDao.selectAll().size() == 2);
         // 2-2. 추가한 데이터의 상품 번호로 상세 조회

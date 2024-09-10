@@ -23,15 +23,27 @@ public class  ProductService {
     @Autowired
     ImageDao imageDao;
 
+
     // 상품 목록 조회
     @Transactional(rollbackFor = Exception.class)
     public List<ProductDto> getList(Map map) throws Exception {
         try {
             return productDao.selectList(map);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 목록 조회 서비스 예외 발생");
         }
 
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public Integer getSearchResultCnt(SearchCondition sc) throws Exception {
+        try{
+            return productDao.selectSearchList(sc).size();
+        } catch(Exception e){
+            e.printStackTrace();
+            throw new Exception("상품 검색 결과 개수 조회 서비스 중 예외 발생");
+        }
     }
 
     // 상품 목록 페이지 단위로 조회
@@ -39,7 +51,17 @@ public class  ProductService {
         try{
             return productDao.selectPageWithJoin(map);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 목록 페이징 조회 서비스 예외 발생");
+        }
+    }
+
+    public List<ProductListDto> getSearchPage(SearchCondition sc) throws Exception {
+        try{
+            return productDao.selectSearchPage(sc);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("상품 검색 결과 페이지 조회 서비스 예외 발생");
         }
     }
 
@@ -55,6 +77,7 @@ public class  ProductService {
             }
             return productDao.select(prodNo);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 조회 서비스 예외 발생 -"+e.getMessage());
         }
 
@@ -96,6 +119,7 @@ public class  ProductService {
             pr.setProdColList(prodColDto);
 
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 상세 조회 서비스 예외 발생");
         }
 
@@ -110,6 +134,7 @@ public class  ProductService {
         try{
             return productDao.insert(productDto);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 등록 서비스 예외 발생");
         }
 
@@ -121,6 +146,7 @@ public class  ProductService {
         try {
             return productDao.updateInfo(productDto);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 수정 서비스 예외 발생");
         }
 
@@ -133,6 +159,7 @@ public class  ProductService {
         try{
             return productDao.delete(prodNo);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("상품 삭제 서비스 예외 발생");
         }
     }

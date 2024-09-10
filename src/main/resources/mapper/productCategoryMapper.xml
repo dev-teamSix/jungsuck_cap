@@ -123,7 +123,7 @@
              , h.is_disp as h_is_disp
              , l.catg_no as l_catg_no
              , l.name as l_name
-             , l.is_used as l_is_usedㄱ5
+             , l.is_used as l_is_used
              , l.is_disp as l_is_disp
         FROM prod_category h
         LEFT JOIN prod_category l
@@ -133,16 +133,21 @@
     </select>
 
     <!-- 특정 상위 카테고리의 하위 카테고리별 정보 및 상품 개수 조회 - 표시 가능한 것만 -->
-    <!-- Q. 상위 카테고리별로 모든 하위 카테고리 정보를 정제해서 보여주려면 어떻게?-->
-    <!--select id="selectLowCatgList" parameterType ="String" resultType="ProductCategoryDto">
-        SELECT pc.prod_catg_no, pc.name, IFNULL(cnt, 0)
-        FROM (SELECT prod_catg_no, count(prod_num) AS cnt
-              FROM product
-              GROUP BY prod_catg_no) p
-        RIGHT JOIN  prod_category pc ON pc.prod_catg_no = p.prod_catg_no
-        WHERE pc.high_catg_no = #{highCatgNo} AND pc.is_disp = 'Y'
-        ORDER BY pc.name asc;
-    </select-->
+    <select id="selectListByHigh" parameterType ="int" resultMap="ProductHighCategoryDtoResultMap">
+        SELECT
+               h.catg_no as h_catg_no
+             , h.name as h_name
+             , h.is_used as h_is_used
+             , h.is_disp as h_is_disp
+             , l.catg_no as l_catg_no
+             , l.name as l_name
+             , l.is_used as l_is_used
+             , l.is_disp as l_is_disp
+        FROM prod_category h
+        LEFT JOIN prod_category l ON h.catg_no = l.high_catg_no
+        WHERE h.catg_no = #{highCatgNo} AND pc.is_disp = 'Y'
+        ORDER BY h_name asc, l_name asc;
+    </select>
 
     <!-- 카테고리 추가 -->
     <insert id="insert" parameterType="ProductCategoryDto">
