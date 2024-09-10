@@ -71,7 +71,7 @@
         }
 
         .category-menu li a:hover {
-            background-color: #3498db;
+            background-color: rgba(14, 5, 5, 0.62);
             color: white;
         }
 
@@ -81,7 +81,7 @@
 
         .category-menu .separator {
             height: 1px;
-            background-color: #e74c3c;
+            background-color: #000000;
             width: 100%;
             margin: 10px 0;
         }
@@ -129,14 +129,14 @@
         }
 
         .search-input:focus {
-            border-color: #3498db;
+            border-color: rgba(0, 0, 0, 0.62);
         }
 
         .search-button {
             padding: 12px 20px;
             font-size: 16px;
             border: none;
-            background-color: #3498db;
+            background-color: #000000;
             color: white;
             cursor: pointer;
             border-radius: 25px;
@@ -144,7 +144,7 @@
         }
 
         .search-button:hover {
-            background-color: #2980b9;
+            background-color: rgba(0, 0, 0, 0.68);
         }
 
         /* 상품 목록 스타일 */
@@ -202,7 +202,7 @@
             padding: 10px 10px;
             font-size: 10px;
             border: none;
-            background-color: #86bee3;
+            background-color: rgba(0, 0, 0, 0.22);
             color: white;
             cursor: pointer;
             border-radius: 25px;
@@ -230,17 +230,17 @@
         }
 
         .pagination a {
-            color: #3498db;
+            color: #000000;
             padding: 10px 15px;
             text-decoration: none;
             border-radius: 5px;
-            border: 1px solid #3498db;
+            border: 1px solid #000000;
             margin: 0 5px;
             transition: background-color 0.3s;
         }
 
         .pagination a:hover {
-            background-color: #3498db;
+            background-color: #000000;
             color: white;
         }
     </style>
