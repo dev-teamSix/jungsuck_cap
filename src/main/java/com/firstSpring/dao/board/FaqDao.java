@@ -1,6 +1,7 @@
 package com.firstSpring.dao.board;
 
 import com.firstSpring.domain.board.FaqDto;
+import com.firstSpring.domain.board.NoticeDto;
 
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,7 @@ public interface  FaqDao {
     int delete(Integer bno,String writer) throws Exception;
     //조회수 증가
     int increaseViewCnt(Integer bno) throws Exception;
+    List<FaqDto> selectAll() throws Exception;
 
     List<FaqDto> selectNoticeList() throws Exception;
     List<FaqDto> selectNotNoticeList() throws Exception;

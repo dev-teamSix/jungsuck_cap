@@ -10,8 +10,8 @@
 			display: none;
 		}
 		.bot-profile {
-			width: 35px; /* 원하는 크기로 조정 */
-			height: 35px; /* 원하는 크기로 조정 */
+			width: 40px; /* 원하는 크기로 조정 */
+			height: 40px; /* 원하는 크기로 조정 */
 			border-radius: 50%;
 			overflow: hidden;
 			display: inline-block;
@@ -110,8 +110,8 @@
 		}
 
 		.chatbot-buttons img {
-			height: 30px;
-			width: 30px;
+			height: 50px;
+			width: 50px;
 		}
 
 		.chatbot-input-area {
@@ -220,16 +220,33 @@
 			background-color: #f57c20;
 			color: white;
 		}
+
 		.inline-div {
-			display: inline-block;
-			background-color: lightblue;
+			/*display: inline-block;
+			padding: 5px;
+			margin-right: 10px;
+			vertical-align: middle;*/ /* 이미지와 텍스트가 중앙에 맞도록 */
+			display: flex;
+			align-items: center;  /* 이미지와 텍스트를 수직 중앙 정렬 */
 			padding: 5px;
 			margin-right: 10px;
 		}
+
+		.inline-div img {
+			margin-right: 10px;  /* 이미지와 텍스트 간격 */
+			width: 50px;
+			height: 50px;
+		}
+
 	</style>
 	<script>
-		const messages='';
+		const messages = [{
+			"role":"system",
+			"content":"You are a very kindful and helpful shopping mall C/S assistant",
+		}];
+
 		$(window).on('load', function(){
+			console.log(messages);
 			//init22();
 			//init();
 			init2();
@@ -344,10 +361,12 @@
 				messageContainer.classList.add('user-message');
 				messageContainer.textContent = message;
 				document.getElementById('chatbot-messages').appendChild(messageContainer);
+				//messages에 저장
+				userMessageData(message);
 				//유저메시지 시간 입력
 				appendTime("user-time");
 				//Openapi실행
-				openApi2(message);
+				openApi3(message,messages);
 				// 메시지 전송 후 입력 필드 초기화
 				userInput.value = '';
 				userInput.focus();
@@ -373,9 +392,9 @@
 					})
 		}
 
-		async function openApi2(message){
+		async function openApi2(message,messages){
 			try{
-				const url = 'http://localhost:8080/chat/sendMessage?user_input='+message;
+				const url = 'http://localhost:8080/chat/sendMessage?user_input='+message+"&messages="+messages;
 
 				const response = await fetch(url);
 				if(!response.ok){
@@ -389,9 +408,48 @@
 				},3000);*/
 				//console.log(data);
 				appendMessage(data);
+				chatMessageData("bot-message",data);
 
 			}catch (error){
 				appendTime();
+				console.log('Fetch error:',error);
+			}
+		}
+
+		async function openApi3(message,messages){
+			console.log("function:openApi3");
+			try{
+				const url = 'http://localhost:8080/chat/sendMessage';
+				const requestData = {
+					user_input:message,
+					messages:messages
+					//user_input:encodeURIComponent(message),
+					//messages:encodeURIComponent(messages)
+				};
+				const response = await fetch(url,{
+					method:'POST',
+					headers:{
+						'Content-Type':'application/json'//JSON 형식임을 명시
+					},
+					body: JSON.stringify(requestData) //데이터를 JSON 문자열로 변환하여 전송
+				});
+				console.log("body:"+JSON.stringify(requestData));
+				if(!response.ok){
+					throw new Error('Network response was not ok');
+				}
+
+				const data = await response.text();
+				//const dataJson = JSON.parse(data);
+				//const dataText = JSON.stringify(data);
+				//appendMessage(data);
+				//appendMessage(dataText);
+				console.log("data:"+data);
+				//console.log("dataJson:"+dataJson);
+				//console.log("dataText:"+dataText);
+				appendMessage(data);
+				chatMessageData("bot-message",data);
+
+			}catch (error){
 				console.log('Fetch error:',error);
 			}
 		}
@@ -400,6 +458,7 @@
 			console.log("appendMessage");
 			if (message !== '') {
 				console.log(message);
+				//console.log(message.list[0].title);
 				const messageContainer = document.createElement('div');
 				messageContainer.classList.add('bot-message');
 				messageContainer.textContent = message;
@@ -432,15 +491,34 @@
 		}
 
 		//봇과 유저 대화내용 전달하는 함수
+		//(메세지)전송버튼 눌렀을때 api응답 받았을때 실행되서 저장되도록
 		function chatMessageData(type,value){
-			const map = new Map();
-			if(type.equals("bot-message")){
-				map.set('role','assistant');
+			console.log("chatMessageData");
+			console.log("type:"+type);
+
+			console.log("value:"+value);
+			let role="";
+			if("bot-message"===type){
+				role = "assistant";
 			}else{
-				map.set('role','user');
+				role = "user";
 			}
-			map.set('content',value)
-			console.log(map);
+			const message = {
+				role:role,
+				content:value
+			};
+			//console.log(message);
+			messages.push(message);
+			console.log(messages);
+		}
+		//메시지 전송시 해당 메시지 기존 messages에 추가
+		function userMessageData(input){
+			const message = {
+				role:'user',
+				content:input
+			};
+			messages.push(message);
+			console.log(messages);
 		}
 
 	</script>
@@ -459,42 +537,23 @@
 				<%--<a id="aTag" href="http://localhost:8080/login/form">로그인</a>--%>
 				<div class="chatbot-buttons">
 					<div>
-						<a href="#">
+						<a href="https://docs.google.com/presentation/d/1hC5yF-o6QYz64e7l_PfIDPDmqF4gVZEGDgTCFSSnS5s/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
 							<div class="inline-div">
-								<img src="/resources/images/chatBot/botIcon.png" alt="회사 소개">
-								회사 소개
+								<img src="/resources/images/chatBot/presentation.png" alt="발표 자료링크">
+								<span>발표자료 링크</span>
 							</div>
 						</a>
 						<a href="#">
 							<div class="inline-div">
-								<img src="/resources/images/chatBot/botIcon.png" alt="회사 소개">
-								회사 소개
+								<img src="/resources/images/chatBot/user-guide.png" alt="회사 소개">
+								<span>[6ragon]챗봇 사용방법:/사용방법 or /help를 통해 안내 받을 수 있습니다.</span>
 							</div>
 						</a>
-					</div>
-					<div>
-						<a href="#">
-							<div class="inline-div">
-								<img src="/resources/images/chatBot/botIcon.png" alt="회사 소개">
-								회사 소개
-							</div>
-						</a>
-						<a href="#">
-							<div class="inline-div">
-								<img src="/resources/images/chatBot/botIcon.png" alt="회사 소개">
-								회사 소개
-							</div>
-						</a>
+
 					</div>
 				</div>
 			</div>
 			<div id="mTime" class="bot-time"></div>
-			<div class="user-message">
-				<p>솔루션 도입 문의하기</p>
-			</div>
-			<div class="user-message">
-				<p>6ragon팀의 구성원이 궁금해요.</p>
-			</div>
 		</div>
 		<div class="chatbot-input-area">
 			<input type="text" id="user-input" placeholder="메시지를 입력해주세요.">
@@ -504,7 +563,7 @@
 </div>
 <div class="chat-6ragon">
 	<a id="toggle-chatbot" target="_blank">
-		<img src="/resources/images/chatBot/botIcon.png" class="chatbot-icon"/>
+		<img src="/resources/images/chatBot/botIcon2.png" class="chatbot-icon"/>
 	</a>
 </div>
 </body>

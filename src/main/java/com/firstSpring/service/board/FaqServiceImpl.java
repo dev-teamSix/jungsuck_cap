@@ -83,4 +83,9 @@ public class FaqServiceImpl implements FaqService{
         List<FaqDto> list = faqDao.getChatSearch(map);
         return list;
     }
+
+    @Override
+    public List<FaqDto> getList() throws Exception {
+        return faqDao.selectAll();
+    }
 }
