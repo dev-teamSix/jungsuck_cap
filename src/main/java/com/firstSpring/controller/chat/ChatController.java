@@ -1,12 +1,20 @@
 package com.firstSpring.controller.chat;
 
+import com.firstSpring.domain.product.ProductListDto;
+import com.firstSpring.domain.product.ResponseDto;
+import com.firstSpring.domain.product.SearchCondition;
 import com.firstSpring.domain.user.UserDto;
+import com.firstSpring.service.product.ProductCategoryService;
+import com.firstSpring.service.product.ProductService;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
@@ -17,11 +25,15 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @RestController
 @RequestMapping("/chat")
 public class ChatController{
+    @Autowired
+    ProductService productService;
 
     @GetMapping("/init")
     public ResponseEntity<String> chatInit(HttpServletRequest request){
@@ -121,7 +133,11 @@ public class ChatController{
                 System.out.println(2);
                 return ttt2;
 
+            } else if(user_input.contains("/상품검색")) {
+                Object res = productSearch(user_input);
+                return new ResponseEntity<>(res, headers, HttpStatus.OK);
             }
+
             String encodedInput = URLEncoder.encode(user_input, StandardCharsets.UTF_8.toString());
             String urlStr = "http://127.0.0.1:5000/openAPI?user_input="+encodedInput;
             System.out.println(urlStr);
@@ -146,11 +162,41 @@ public class ChatController{
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
             System.out.println(result.toString());
            ResponseEntity<?> ttt= new ResponseEntity<>(result.toString(),headers, HttpStatus.OK);
         System.out.println(ttt);
         return ttt;
+    }
+
+    private Object productSearch(String userInput) throws Exception{
+        Map map = new HashMap();
+        try {
+            // 패턴 지정
+            Pattern p = Pattern.compile("/상품검색 ([가-힣a-zA-Z0-9._%+-])"); // 가-힣a-zA-Z0-9._%+-
+            Matcher m = p.matcher(userInput);
+            if(m.find()) {
+                // 패턴과 일치하는 문자열을 찾았을 경우 키워드를 추출해 상품 검색 결과 리스트 얻기
+                String keyword = m.group(1);
+
+                SearchCondition sc = new SearchCondition();
+                sc.setKeyword(keyword);
+
+                List<ProductListDto> searchResults = productService.getSearchPage(sc);
+                map.put("prodList", searchResults);
+                map.put("url", "http://localhost:8080/product/read?prodNo=");
+
+                return map;
+            } else { // 찾지 못한 경우 요구 양식 텍스트 반환
+                return "상품 검색을 원하시면 '/상품검색 XXX' 양식으로 입력해주세요🙏";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("챗봇 - 상품 검색 처리 중 에러 발생");
+        }
     }
 
     @GetMapping("/test2")
