@@ -32,6 +32,11 @@ public class  FaqDaoImpl implements FaqDao {
     }
 
     @Override
+    public List<FaqDto> selectAll() throws Exception {
+        return session.selectList(namespace+"selectAll");
+    }
+
+    @Override
     public List<FaqDto> selectPage(Map map) throws Exception {
         return session.selectList(namespace+"selectPage",map);
     }
