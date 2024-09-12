@@ -194,7 +194,7 @@
 <div class="product-banner">
     <img src="/resources/image/img.png" alt="모자 배너 이미지">
 </div>
-
+<jsp:include page="./chat.jsp" flush="true" />
 <!-- Best 10 상품 -->
 <div class="best10-container">
     <h2>Best 10</h2>

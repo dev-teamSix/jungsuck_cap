@@ -26,6 +26,8 @@ public interface FaqService {
     List<FaqDto> getNotNoticeList() throws Exception;
     //FAQ 목록조회
     List<FaqDto> getPage(Map map) throws Exception;
+    //FAQ 전체조회
+    List<FaqDto> getList() throws Exception;
     //FAQ 상세조회
     FaqDto read(Integer bno) throws Exception;
 
