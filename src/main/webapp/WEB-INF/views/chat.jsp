@@ -510,20 +510,20 @@
 
 
 				const data = await response.text();
-				try {
-					const jsonData = JSON.parse(data);
-					console.log('json data',jsonData);
-					if(jsonData.prodList != null) {
-						rendering_product_list(jsonData.prodList, jsonData.url);
-					} else {
-						appendMessage(data);
-					}
-				} catch(error) {
-					appendMessage(data);
-				}
+				// try {
+				// 	const jsonData = JSON.parse(data);
+				// 	console.log('json data',jsonData);
+				// 	if(jsonData.prodList != null) {
+				// 		rendering_product_list(jsonData.prodList, jsonData.url);
+				// 	} else {
+				// 		appendMessage(data);
+				// 	}
+				// } catch(error) {
+				// 	appendMessage(data);
+				// }
 
-				// appendMessage(data);
-				// chatMessageData("bot-message",data);
+				appendMessage(data);
+				chatMessageData("bot-message",data);
 
 
 			}catch (error){
@@ -555,15 +555,24 @@
 				}
 
 				const data = await response.text();
-				//const dataJson = JSON.parse(data);
-				//const dataText = JSON.stringify(data);
-				//appendMessage(data);
-				//appendMessage(dataText);
 				console.log("data:"+data);
-				//console.log("dataJson:"+dataJson);
-				//console.log("dataText:"+dataText);
-				appendMessage(data);
-				chatMessageData("bot-message",data);
+
+				try {
+					const jsonData = JSON.parse(data);
+					console.log('json data',jsonData);
+					if(jsonData.prodList != null) {
+						rendering_product_list(jsonData.prodList, jsonData.url);
+					} else {
+						appendMessage(data);
+						chatMessageData("bot-message",data);
+					}
+				} catch(error) {
+					appendMessage(data);
+					chatMessageData("bot-message",data);
+				}
+
+				// appendMessage(data);
+				// chatMessageData("bot-message",data);
 
 			}catch (error){
 				console.log('Fetch error:',error);

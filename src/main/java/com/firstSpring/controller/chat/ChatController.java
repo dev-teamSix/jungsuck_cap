@@ -303,6 +303,9 @@ public class ChatController{
 
                 return new ResponseEntity<>(response.getBody(),headers,response.getStatusCode());
 
+            } else if(user_input.contains("/상품검색")) {
+                Object res = productSearch(user_input);
+                return new ResponseEntity<>(res, headers, HttpStatus.OK);
             } else{
                 System.out.println("openAPI 호출");
                 //위에 걸리는 텍스트가 없다면 챗봇 api 호출해야함
