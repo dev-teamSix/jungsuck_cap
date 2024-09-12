@@ -33,26 +33,61 @@
 
     <!-- 네비게이션 바 -->
     <nav class="navbar navbar-expand-lg">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">BEST</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">신상품</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">CAP</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">HAT</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">비니/와치캡</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">빅사이즈</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">SALE</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">BRAND</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">COLOR</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">기타</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Season</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">올마켓</a></li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-search navbar-icons"></i>
-                    <i class="fa fa-user navbar-icons"></i>
-                    <i class="fa fa-shopping-cart navbar-icons"></i>
-                </a>
-            </li>
+        <ul class="navbar-nav" id="navbar">
+            <li class="nav-item"><a class="nav-link" href="<c:url value="/product/list?sortBy=totalSales"/>">BEST</a></li>
+            <li class="nav-item"><a class="nav-link" href="<c:url value="/product/list?sortBy=firstRegDt"/>">신상품</a></li>
+<%--            <li class="nav-item"><a class="nav-link" href="#">CAP</a></li>--%>
+<%--            <li class="nav-item"><a class="nav-link" href="#">HAT</a></li>--%>
+<%--            <li class="nav-item"><a class="nav-link" href="#">비니/와치캡</a></li>--%>
+<%--            <li class="nav-item"><a class="nav-link" href="#">빅사이즈</a></li>--%>
+<%--            <li class="nav-item"><a class="nav-link" href="#">SALE</a></li>--%>
+<%--            <li class="nav-item"><a class="nav-link" href="#">BRAND</a></li>--%>
+<%--            <li class="nav-item"><a class="nav-link" href="#">COLOR</a></li>--%>
+<%--            <li class="nav-item"><a class="nav-link" href="#">기타</a></li>--%>
+<%--            <li class="nav-item"><a class="nav-link" href="#">Season</a></li>--%>
+<%--            <li class="nav-item"><a class="nav-link" href="#">올마켓</a></li>--%>
+<%--            <li class="nav-item">--%>
+<%--                <a class="nav-link" href="#">--%>
+<%--                    <i class="fa fa-search navbar-icons"></i>--%>
+<%--                    <i class="fa fa-user navbar-icons"></i>--%>
+<%--                    <i class="fa fa-shopping-cart navbar-icons"></i>--%>
+<%--                </a>--%>
+<%--            </li>--%>
         </ul>
     </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function (){
+            fetch('<c:url value="/products/catgs/high"/>')
+                .then(res => {
+                    if(!res.ok) {
+                        throw new Error(res.json().msg);
+                    }
+                    return res.json();
+                })
+                .then(res => {
+                    console.log("json데이터:", res)
+                    // 상위 카테고리 목록 동적 렌더링
+                    render_high_catg_list(res.res, res.url);
+                })
+        })
+
+        function render_high_catg_list(catgList, url) {
+            const navbar = document.getElementById('navbar');
+
+            catgList.forEach(catg => {
+                // <li className="nav-item"><a className="nav-link" href="#">올마켓</a></li>
+                const item = document.createElement('li');
+                item.classList.add('nav-item');
+
+                const link = document.createElement('a');
+                link.classList.add('nav-link');
+                link.href = url+catg.catgNo;
+                link.textContent = catg.name;
+
+                item.appendChild(link);
+                navbar.appendChild(item);
+            })
+        }
+    </script>
 </header>
