@@ -238,6 +238,62 @@
 			height: 50px;
 		}
 
+
+		/* 상품 카드 스타일 */
+		.product-card {
+			display: flex;
+			flex-direction: row;
+			background-color: #f9f9f9;
+			border-radius: 10px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			margin-bottom: 15px;
+			padding: 10px;
+			align-items: center;
+		}
+
+		.product-card img {
+			width: 80px;
+			height: 80px;
+			border-radius: 10px;
+			object-fit: cover;
+			margin-right: 10px;
+		}
+
+		.product-info {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.product-info h3 {
+			margin: 0;
+			font-size: 16px;
+			color: #333;
+			font-weight: bold;
+		}
+
+		.product-info p {
+			margin: 3px 0;
+			font-size: 14px;
+			color: #666;
+		}
+
+		.product-info span {
+			display: inline-block;
+			margin-top: 5px;
+			font-size: 13px;
+			color: #888;
+		}
+
+		/* 링크 스타일 */
+		.product-card a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.product-card a:hover {
+			text-decoration: underline;
+		}
+
 	</style>
 	<script>
 		const messages = [{
@@ -392,6 +448,57 @@
 					})
 		}
 
+		<!-- 상품 검색 결과 동적 렌더링 -->
+		function rendering_product_list(prodList, url) {
+			prodList.forEach(p => {
+				// 상품 카드 요소
+				const prodCardDiv = document.createElement('div');
+				prodCardDiv.classList.add('product-card');
+
+				// 이미지 링크
+				const prodUrlImg = document.createElement('a');
+				prodUrlImg.href = url+p.prodNo;
+
+				const prodImg = document.createElement('img');
+				prodImg.src = p.mainImg.url+p.mainImg.fileName+'.'+p.mainImg.fileExt;
+				prodImg.alt = 'Product Image';
+
+				prodUrlImg.appendChild(prodImg);
+
+				// 상품 정보 요소
+				const prodInfoDiv = document.createElement('div');
+				prodInfoDiv.classList.add('product-info');
+
+				const prodName = document.createElement('h3');
+				prodName.textContent = p.product.name;
+
+				const prodPrice = document.createElement('p');
+				prodPrice.textContent = '가격: '+p.product.price;
+
+				const prodAvgRtg = document.createElement('p');
+				prodPrice.textContent = '별점: '+p.product.avgRatg;
+
+				const prodTotalSales = document.createElement('p');
+				prodTotalSales.textContent ='판매량'+p.product.totalSales;
+
+				// 상품 정보 요소에 각 정보 추가
+				prodInfoDiv.appendChild(prodName);
+				prodInfoDiv.appendChild(prodPrice);
+				prodInfoDiv.appendChild(prodAvgRtg);
+				prodInfoDiv.appendChild(prodTotalSales);
+
+				// 상품 카드 요소에 정보, 이미지 요소 추가
+				prodCardDiv.appendChild(prodUrlImg)
+				prodCardDiv.appendChild(prodInfoDiv);
+
+				document.getElementById('chatbot-messages').appendChild(prodCardDiv);
+			})
+
+			appendTime("bot-time");
+			//챗봇 스크롤을 가장 아래로 이동
+			chatbotScrollDown();
+		}
+
 		async function openApi2(message,messages){
 			try{
 				const url = 'http://localhost:8080/chat/sendMessage?user_input='+message+"&messages="+messages;
@@ -401,14 +508,23 @@
 					throw new Error('Network response was not ok');
 				}
 
+
 				const data = await response.text();
-				/*setTimeout(()=>{
-					console.log(data);
-					appendMessage(data);
-				},3000);*/
-				//console.log(data);
+				// try {
+				// 	const jsonData = JSON.parse(data);
+				// 	console.log('json data',jsonData);
+				// 	if(jsonData.prodList != null) {
+				// 		rendering_product_list(jsonData.prodList, jsonData.url);
+				// 	} else {
+				// 		appendMessage(data);
+				// 	}
+				// } catch(error) {
+				// 	appendMessage(data);
+				// }
+
 				appendMessage(data);
 				chatMessageData("bot-message",data);
+
 
 			}catch (error){
 				appendTime();
@@ -439,15 +555,24 @@
 				}
 
 				const data = await response.text();
-				//const dataJson = JSON.parse(data);
-				//const dataText = JSON.stringify(data);
-				//appendMessage(data);
-				//appendMessage(dataText);
 				console.log("data:"+data);
-				//console.log("dataJson:"+dataJson);
-				//console.log("dataText:"+dataText);
-				appendMessage(data);
-				chatMessageData("bot-message",data);
+
+				try {
+					const jsonData = JSON.parse(data);
+					console.log('json data',jsonData);
+					if(jsonData.prodList != null) {
+						rendering_product_list(jsonData.prodList, jsonData.url);
+					} else {
+						appendMessage(data);
+						chatMessageData("bot-message",data);
+					}
+				} catch(error) {
+					appendMessage(data);
+					chatMessageData("bot-message",data);
+				}
+
+				// appendMessage(data);
+				// chatMessageData("bot-message",data);
 
 			}catch (error){
 				console.log('Fetch error:',error);
@@ -458,7 +583,6 @@
 			console.log("appendMessage");
 			if (message !== '') {
 				console.log(message);
-				//console.log(message.list[0].title);
 				const messageContainer = document.createElement('div');
 				messageContainer.classList.add('bot-message');
 				messageContainer.textContent = message;

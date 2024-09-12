@@ -4,6 +4,10 @@
 <html>
 <head>
     <title>상품 목록</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -252,7 +256,7 @@
         alert(msg);
     }
 </script>
-
+<jsp:include page="./header.jsp" flush="true" />
 <div class="container">
     <!-- 왼쪽 카테고리 메뉴 -->
     <div class="category-menu">
@@ -350,7 +354,7 @@
         </div>
     </div>
 </div>
-
+<jsp:include page="./footer.jsp" flush="true" />
 <script>
     function onChangeSort() {
         var selectElement = document.getElementById("sort");
