@@ -10,24 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/ChatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/dao/order/ChatDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/ChatDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/domain/order/RequestSendToFlaskDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/service/order/ChatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/chatMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/chatbot.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/domain/order/ActionOrderDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2024-08-17T10-28-20_522.dumpstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.firstSpring.dao.order.CartDaoImplTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.firstSpring.dao.order.OrderDaoImplTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.firstSpring.entity.PageHandlerTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.firstSpring.dao.order.CartDaoImplTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.firstSpring.dao.order.OrderDaoImplTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.firstSpring.entity.PageHandlerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/ChatController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +85,7 @@
     "Tomcat Server.Tomcat 9.0.90.executor": "Run",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "git-widget-placeholder": "cart__copy3",
+    "git-widget-placeholder": "cart__copy4",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Mydata/Code_Study/java/devcamp/toyproject/jungsuck_cap",
     "node.js.detected.package.eslint": "true",
