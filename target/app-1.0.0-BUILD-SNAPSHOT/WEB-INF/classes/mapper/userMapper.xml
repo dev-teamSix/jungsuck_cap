@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.firstSpring.dao.user.UserDao">
+
+    <!-- 특정 아이디를 가진 고객 데이터 삭제 -->
+    <delete id="deleteTestUser" parameterType="string">
+        DELETE FROM cust
+        WHERE id = #{id}
+    </delete>
+
+    <!-- 전체 고객 데이터 삭제 -->
+    <delete id="deleteAllTestUser">
+        DELETE FROM cust
+    </delete>
+
+
+    <!-- 회원가입한 전체 고객의 수 -->
+    <select id="countUser" resultType="int">
+        SELECT count(*) FROM cust
+    </select>
+
+    <!-- 회원가입한 전체 고객 정보 조회(최근 가입한 고객부터) -->
+    <select id="selectUserAll" resultType="UserDto">
+        SELECT * FROM cust
+        ORDER BY reg_dt DESC
+    </select>
+
+    <!-- 전체 가입고객(탈퇴회원 포함) 중 특정 아이디를 가진 고객 정보 확인 -->
+    <select id="selectAllUserId" parameterType="string" resultType="UserDto">
+        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt,recent_login
+        FROM cust
+        WHERE id = #{id}
+          AND is_mail_auth = 'Y'
+    </select>
+
+    <!-- 전체 가입고객(탈퇴회원 포함) 중 특정 이메일을 가진 고객 정보 확인 -->
+    <select id="selectAllUserEmail" parameterType="string" resultType="UserDto">
+        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt,recent_login
+        FROM cust
+        WHERE email = #{email}
+          AND is_mail_auth = 'Y'
+    </select>
+
+    <!-- 전체 가입고객(탈퇴회원 포함) 중 특정 이메일과 특정 아이디를 가진 고객 정보 확인 -->
+    <select id="selectAllUserIdEmail" parameterType="map" resultType="UserDto">
+        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt,recent_login
+        FROM cust
+        WHERE id = #{id}
+          AND  email = #{email}
+          AND is_mail_auth = 'Y'
+    </select>
+
+
+    <!-- 활성화 상태인 전체 고객의 수 -->
+    <select id="countActiveUser" resultType="int">
+        SELECT count(*)
+        FROM cust
+        WHERE st_cd = 'O'
+    </select>
+
+    <!-- 활성화 상태인 전체 고객 정보 조회(최근 가입한 고객부터) -->
+    <select id="selectActiveUserAll" resultType="UserDto">
+        SELECT * FROM cust
+        WHERE st_cd = 'O'
+        ORDER BY reg_dt DESC
+    </select>
+
+    <!-- Login -->
+    <!-- 특정 id를 가진 회원 & 활성화인 상태 & 이메일 인증 여부가 Y 인 회원을 select-->
+    <!-- stCd(회원상태)가 비활성화,탈퇴상태는 조회 불가 -->
+    <select id="selectUser" parameterType="string" resultType="UserDto">
+        SELECT id,
+               grd_cd,
+               st_cd,
+               email,
+               pwd,
+               name,
+               birth,
+               gender,
+               ph_num,
+               zip,
+               road_adr,
+               jibun_adr,
+               det_adr,
+               is_mail_auth,
+               mail_key,
+               is_adm,
+               reg_dt,
+               quit_dt,
+               is_quit,
+               is_blok,
+               blok_res,
+               blok_dt,
+               un_blok_dt,
+               frst_reg_dt,
+               frst_reg_id,
+               last_mod_dt,
+               last_mod_id,
+               recent_login
+        FROM cust
+        WHERE id = #{id}
+          AND st_cd = 'O'
+          AND is_mail_auth = 'Y'
+    </select>
+
+    <!-- Sign Up -->
+    <!-- 회원가입 완료 시점에 메일 인증 상태 Y 됨 -->
+    <insert id="insertUser" parameterType="UserDto">
+        INSERT INTO cust (
+            id, st_cd, email, pwd, name, birth, gender, ph_num, zip, road_adr, jibun_adr, det_adr, is_mail_auth, mail_key, reg_dt, frst_reg_dt, frst_reg_id, last_mod_dt, last_mod_id, recent_login
+        ) VALUES (
+                     #{id},
+                     'O',
+                     #{email},
+                     #{pwd},
+                     #{name},
+                     #{birth},
+                     #{gender},
+                     #{phNum},
+                     #{zip},
+                     #{roadAdr},
+                     #{jibunAdr},
+                     #{detAdr},
+                     'Y',
+                     #{mailKey},
+                     DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), -- 가입일
+                     DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), -- 최초등록일시
+                     #{id},
+                     DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), -- 최종수정일시
+                     #{id},
+                     DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s')
+                 )
+    </insert>
+
+
+    <!-- 아이디 찾기 : 이메일 인증 시 작성하는 고객명 및 이메일을 조회하여 특정 고객의 아이디 및 인증번호 조회 -->
+    <select id="selectUserId" parameterType="map" resultType="UserDto">
+        SELECT id, mail_key
+        FROM cust
+        WHERE email = #{email}
+          AND name = #{name}
+          AND st_cd = 'O'
+    </select>
+
+
+    <!-- 비밀번호 찾기 : 새로운 비밀번호 업데이트하고 최종 수정일시 및 수정자 업데이트 -->
+    <update id="updateUserPwd" parameterType="map">
+        UPDATE cust
+        SET pwd = #{pwd}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
+        WHERE id = #{id}
+          AND st_cd = 'O'
+    </update>
+
+    <!-- 이메일 인증 : 특정 사용자 식별하여 인증번호 업데이트 -->
+    <update id="updateMailKey" parameterType="UserDto">
+        UPDATE cust
+        SET mail_key = #{mailKey}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
+        WHERE email = #{email}
+    </update>
+
+    <!-- 회원정보 수정 -->
+    <update id="updateUserInfo" parameterType="UserDto">
+        UPDATE cust
+        SET ph_num = #{phNum},
+            birth = #{birth},
+            email = #{email},
+            last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),
+            last_mod_id = #{id}
+        WHERE id = #{id}
+          AND st_cd = 'O'
+    </update>
+
+    <!-- 로그인 성공 시 최근 접속일시 업데이트 -->
+    <update id="updateRecentLoginDatetime" parameterType="string">
+        UPDATE cust
+        SET recent_login =DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),
+            last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),
+            last_mod_id = #{id}
+        WHERE id = #{id}
+          AND st_cd = 'O'
+    </update>
+
+
+<!--    &lt;!&ndash; 생년월일 변경 &ndash;&gt;-->
+<!--    <update id="updateUserBefBirth" parameterType="map">-->
+<!--        UPDATE cust-->
+<!--        SET birth = #{birth},last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}-->
+<!--        WHERE id = #{id}-->
+<!--          AND st_cd = 'O'-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash; 핸드폰 번호 변경 &ndash;&gt;-->
+<!--    <update id="updateUserPhoneNum" parameterType="map">-->
+<!--        UPDATE cust-->
+<!--        SET ph_num = #{phNum}, last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}-->
+<!--        WHERE id = #{id}-->
+<!--          AND st_cd = 'O'-->
+<!--    </update>-->
+
+    <!-- 회원탈퇴 : 회원상태를 L으로 업데이트하고 최종 수정일시 및 수정자 업데이트 -->
+    <update id="updateUserState" parameterType="string">
+        UPDATE cust
+        SET st_cd = 'L', quit_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),  last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), last_mod_id = #{id}
+        WHERE id = #{id};
+    </update>
+</mapper>

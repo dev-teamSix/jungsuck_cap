@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.firstSpring.dao.ProductMapper">
+
+
+    <!-- 전체 상품 개수 읽어오기 - 카테고리값이 null이 아니면 해당 카테고리의 상품 개수 읽어옴-->
+    <!-- 목록을 읽어서 size()하면 되기 때문에 필요 없음! -->
+<!--    <select id="count" resultType="int">-->
+<!--        SELECT COUNT(prod_no)-->
+<!--        FROM product-->
+<!--        <if test='value != null and "".equals(value) '>-->
+<!--            WHERE prod_catg_no = #{value}-->
+<!--        </if>-->
+<!--    </select>-->
+
+    <!-- 상품 상세 정보 Result Map -->
+    <resultMap id="productDtoResultMap" type="ProductDto">
+        <id property="prodNo" column="prod_no"/>
+        <result property="prodCatgNo" column="prod_catg_no"/>
+        <result property="name" column="name"/>
+        <result property="barc" column="barc"/>
+        <result property="price" column="price"/>
+        <result property="avgRatg" column="avg_ratg"/>
+        <result property="totalSales" column="total_sales"/>
+        <result property="viewCnt" column="view_cnt"/>
+        <result property="reviewCnt" column="review_cnt"/>
+        <result property="mainImgNo" column="main_img_no"/>
+        <result property="explImgNo" column="expl_img_no"/>
+        <result property="shortDet" column="short_det"/>
+        <result property="longDet" column="long_det"/>
+        <result property="material" column="material"/>
+        <result property="sizeBrimLen" column="size_brim_len"/>
+        <result property="sizeHairCm" column="size_hair_cm"/>
+        <result property="sizeDepth" column="size_depth"/>
+        <result property="mfgCountry" column="mfg_country"/>
+        <result property="mfgDt" column="mfg_dt"/>
+        <result property="mfgr" column="mfgr"/>
+        <result property="brand" column="brand"/>
+        <result property="handlePrinc" column="handle_princ"/>
+        <result property="washWay" column="wash_way"/>
+        <result property="qualStd" column="qual_std"/>
+        <result property="asMangNum" column="as_mang_num"/>
+        <result property="exchInfo" column="exch_info"/>
+        <result property="payInfo" column="pay_info"/>
+        <result property="deliInfo" column="deli_info"/>
+        <result property="minOrdCnt" column="min_ord_cnt"/>
+        <result property="maxOrdCnt" column="max_ord_cnt"/>
+        <result property="firstRegDt" column="first_reg_dt"/>
+        <result property="firstRegId" column="first_reg_id"/>
+        <result property="lastModDt" column="last_mod_dt"/>
+        <result property="lastModId" column="last_mod_id"/>
+    </resultMap>
+
+    <!-- 이미지 상세 정보 Result Map -->
+    <resultMap id="imageDtoResultMap" type="ImageDto">
+        <id property="imgNo" column="img_no"/>
+        <result property="url" column="url"/>
+        <result property="fileName" column="file_name"/>
+        <result property="fileExt" column="file_ext"/>
+        <result property="fileSize" column="file_size"/>
+        <result property="asptRatio" column="aspt_ratio"/>
+        <result property="horzLen" column="horz_len"/>
+        <result property="vertLen" column="vert_len"/>
+        <result property="detail" column="detail"/>
+        <result property="firstRegDt" column="first_reg_dt"/>
+        <result property="firstRegId" column="first_reg_id"/>
+        <result property="lastModDt" column="last_mod_dt"/>
+        <result property="lastModId" column="last_mod_id"/>
+    </resultMap>
+
+
+    <!-- 상품 컬러 상세 정보 Result Map -->
+    <resultMap id="productColorDtoResultMap" type="ProductColorDto">
+        <id property="colNo" column="col_no" />
+        <result property="prodNo" column="prod_no"/>
+        <result property="colName" column="col_name"/>
+        <result property="imgNo" column="img_no"/>
+        <result property="colRgbCd" column="col_rgb_cd"/>
+        <result property="addPric" column="add_pric"/>
+        <result property="invAmnt" column="inv_amnt"/>
+        <result property="stCd" column="st_cd"/>
+        <result property="isDisp" column="is_disp"/>
+        <result property="dispOrd" column="disp_ord"/>
+        <result property="firstRegDt" column="first_reg_dt"/>
+        <result property="firstRegId" column="first_reg_id"/>
+        <result property="lastModDt" column="last_mod_dt"/>
+        <result property="lastModId" column="last_mod_id"/>
+    </resultMap>
+
+
+    <!-- 상품 목록 조회용 Result Map -->
+    <resultMap id="productListResultMap" type="ProductListDto">
+        <id column="prod_no" property="prodNo"/>
+        <association property="product" resultMap="productDtoResultMap" column="prod_no" javaType="ProductDto" columnPrefix="p_"/>
+        <association property="mainImg" resultMap="imageDtoResultMap" column="img_no" javaType="ImageDto" columnPrefix="i_"/>
+        <collection property="prodColList" resultMap="productColorDtoResultMap" column="col_no" ofType="ProductColorDto" columnPrefix="c_"/>
+    </resultMap>
+
+    <!-- 상품 상세 조회용 Result Map -->
+    <resultMap id="productDetailResultMap" type="ProductRequest">
+        <association property="product" resultMap="productDtoResultMap" column="prod_no" javaType="ProductDto" columnPrefix="p_"/>
+        <association property="mainImg" resultMap="imageDtoResultMap" column="img_no" javaType="ImageDto" columnPrefix="i_"/>
+    </resultMap>
+
+    <!-- 정렬 기준 재사용 sql-->
+    <sql id="sort">
+        <choose>
+            <when test="sortBy != null and sortBy == 'highPrice'"> p.price desc </when>
+            <when test="sortBy != null and sortBy == 'lowPrice'"> p.price asc </when>
+            <when test="sortBy != null and sortBy == 'totalSales'"> p.total_sales desc </when>
+            <otherwise> STR_TO_DATE(p.first_reg_dt, '%Y-%m-%d %T') desc </otherwise>
+        </choose>
+        , p.name asc
+    </sql>
+
+    <!-- 모든 상품 조회 -->
+    <select id="selectAll" resultMap="productDtoResultMap">
+        SELECT prod_no,prod_catg_no,name,barc,price,
+               avg_ratg,total_sales,view_cnt,review_cnt,main_img_no,
+               expl_img_no,short_det,long_det,colors,material,
+               size_brim_len,size_hair_cm,size_depth,brand,mfg_dt,
+               mfg_country,mfgr,handle_princ,wash_way,qual_std,
+               as_mang_num,exch_info,pay_info,deli_info,min_ord_cnt,max_ord_cnt,
+               first_reg_dt,first_reg_id,last_mod_dt,last_mod_id
+        FROM product;
+    </select>
+
+    <!-- 상품 목록 조회 (정렬 기준 + 특정 카테고리별) -->
+    <select id="selectList" parameterType="Map" resultMap="productDtoResultMap">
+        SELECT p.prod_no
+             , p.prod_catg_no
+             , p.name
+             , p.barc
+             , p.price
+             , p.avg_ratg
+             , p.view_cnt
+             , p.colors
+             , p.total_sales
+             , p.first_reg_dt
+        FROM product p
+        LEFT JOIN prod_category pc ON pc.catg_no = p.prod_catg_no
+        WHERE true
+        <if test="prodCatgNo != null and prodCatgNo !=''">
+            AND pc.catg_no = #{prodCatgNo} OR pc.high_catg_no = #{prodCatgNo}
+        </if>
+        ORDER BY
+            <include refid="sort"/>
+    </select>
+
+    <select id="selectSearchList" parameterType="ProdSearchCondition" resultMap="productDtoResultMap">
+        SELECT p.prod_no
+        , p.prod_catg_no
+        , p.name
+        , p.barc
+        , p.price
+        , p.avg_ratg
+        , p.view_cnt
+        , p.colors
+        , p.total_sales
+        , p.first_reg_dt
+        FROM product p
+        LEFT JOIN prod_category pc ON pc.catg_no = p.prod_catg_no
+        WHERE true
+        <if test="catgNo != null and catgNo !=''">
+            AND pc.catg_no = #{catgNo} OR pc.high_catg_no = #{catgNo}
+        </if>
+        AND p.name LIKE concat('%', #{keyword}, '%')
+        ORDER BY
+        <include refid="sort"/>
+    </select>
+
+    <!-- 상품 목록 조회 - 페이지 단위로 -->
+    <select id="selectPage" parameterType="Map" resultMap="productDtoResultMap">
+        SELECT p.prod_no, p.prod_catg_no, p.name, p.barc, p.price, p.avg_ratg, p.view_cnt, p.colors, p.total_sales, p.first_reg_dt
+        FROM product p
+        WHERE true
+        <if test="prodCatgNo != null and prodCatgNo !=''">
+            AND prod_catg_no = #{prodCatgNo}
+        </if>
+        ORDER BY
+            <include refid="sort"/>
+        LIMIT #{offset}, #{rowCnt}
+    </select>
+
+    <!-- 상품 목록 조회(조인)  - 정렬 기준 + 카테고리 + 페이지 단위 -->
+    <select id="selectPageWithJoin" parameterType="Map" resultMap="productListResultMap">
+        SELECT    pp.prod_no
+                , p_prod_catg_no
+                , p_name
+                , p_price
+                , p_avg_ratg
+                , p_total_sales
+                , p_view_cnt
+                , p_first_reg_dt
+                , i.img_no          as i_main_img_no
+                , i.url            as i_url
+                , i.file_name      as i_file_name
+                , i.file_ext       as i_file_ext
+                , c.col_no         as c_col_no
+                , c.col_rgb_cd     as c_col_rgb_cd
+        FROM (SELECT p.prod_no        as prod_no
+                    , p.prod_catg_no   as p_prod_catg_no
+                    , p.name           as p_name
+                    , p.price          as p_price
+                    , p.avg_ratg       as p_avg_ratg
+                    , p.total_sales    as p_total_sales
+                    , p.view_cnt       as p_view_cnt
+                    , p.first_reg_dt   as p_first_reg_dt
+                    , p.main_img_no 	as p_main_img_no
+                    FROM product p
+                    LEFT JOIN prod_category pc ON pc.catg_no = p.prod_catg_no
+                    WHERE true
+                    <if test="prodCatgNo != null and prodCatgNo != ''">
+                        AND pc.catg_no = #{prodCatgNo} OR pc.high_catg_no = #{prodCatgNo}
+                    </if>
+                    ORDER BY
+                        <include refid="sort"/>
+                    LIMIT #{offset}, #{rowCnt}) pp
+        LEFT JOIN image i ON p_main_img_no = i.img_no
+        LEFT JOIN prod_col c ON pp.prod_no = c.prod_no
+
+    </select>
+
+    <select id="selectSearchPage" parameterType="ProdSearchCondition" resultMap="productListResultMap">
+        SELECT    pp.prod_no
+        , p_prod_catg_no
+        , p_name
+        , p_price
+        , p_avg_ratg
+        , p_total_sales
+        , p_view_cnt
+        , p_first_reg_dt
+        , i.img_no          as i_main_img_no
+        , i.url            as i_url
+        , i.file_name      as i_file_name
+        , i.file_ext       as i_file_ext
+        , c.col_no         as c_col_no
+        , c.col_rgb_cd     as c_col_rgb_cd
+        FROM (SELECT p.prod_no        as prod_no
+        , p.prod_catg_no   as p_prod_catg_no
+        , p.name           as p_name
+        , p.price          as p_price
+        , p.avg_ratg       as p_avg_ratg
+        , p.total_sales    as p_total_sales
+        , p.view_cnt       as p_view_cnt
+        , p.first_reg_dt   as p_first_reg_dt
+        , p.main_img_no 	as p_main_img_no
+        FROM product p
+        LEFT JOIN prod_category pc ON pc.catg_no = p.prod_catg_no
+        WHERE true
+        <if test="catgNo != null and catgNo != ''">
+            AND pc.catg_no = #{catgNo} OR pc.high_catg_no = #{catgNo}
+        </if>
+        AND p.name LIKE concat('%', #{keyword}, '%')
+        ORDER BY
+        <include refid="sort"/>
+        LIMIT #{offset}, #{pageSize}) pp
+        LEFT JOIN image i ON p_main_img_no = i.img_no
+        LEFT JOIN prod_col c ON pp.prod_no = c.prod_no
+
+    </select>
+
+    <!-- 특정 상품 정보 읽어오기-->
+    <select id="select" parameterType="int" resultMap="productDtoResultMap">
+        SELECT prod_no,prod_catg_no,name,barc,price,
+               avg_ratg,total_sales,view_cnt,review_cnt,main_img_no,
+               expl_img_no,short_det,long_det,colors,material,
+               size_brim_len,size_hair_cm,size_depth,brand,mfg_dt,
+               mfg_country,mfgr,handle_princ,wash_way,qual_std,
+               as_mang_num,exch_info,pay_info,deli_info,min_ord_cnt,max_ord_cnt,
+               first_reg_dt,first_reg_id,last_mod_dt,last_mod_id
+        FROM product
+        WHERE prod_no=#{prodNo};
+    </select>
+
+
+    <!-- 상품 등록-->
+    <insert id="insert" parameterType="ProductDto">
+        INSERT INTO product
+            (prod_catg_no, name, barc, price,
+             short_det, long_det, colors,
+             first_reg_dt, first_reg_id, last_mod_dt,last_mod_id)
+        values (#{prodCatgNo}, #{name}, #{barc}, #{price},
+                #{shortDet}, #{longDet}, #{colors},
+                DATE_FORMAT(NOW(), '%Y-%m-%d %T'), #{firstRegId}, DATE_FORMAT(NOW(), '%Y-%m-%d %T'), #{lastModId});
+    </insert>
+
+    <!-- 상품 정보 변경 -->
+    <update id="updateInfo" parameterType="ProductDto">
+        UPDATE product
+        SET  name= #{name} ,
+             prod_catg_no                                                                                                                                                                                                                                                     = #{prodCatgNo},
+             short_det = #{shortDet} ,
+             long_det =  #{longDet},
+             last_mod_dt = DATE_FORMAT(NOW(), '%Y-%m-%d %T'),
+             last_mod_id = #{lastModId}
+        where prod_no = #{prodNo};
+    </update>
+
+    <!-- 상품 조회수 변경-->
+    <update id="increaseViewCnt" parameterType="int">
+        UPDATE product
+        SET  view_cnt = view_cnt + 1
+        WHERE prod_no = #{prodNo};
+    </update>
+
+    <!-- 상품별 리뷰개수, 평균평점 변경 -->
+    <!-- Q. 매번 리뷰 개수와 평균 평점을 select하는 것 vs. 리뷰가 달릴 때마다 개수, 평점을 update 하는 것 둘 중 무엇이 더 나은가 -->
+    <update id="updateRvCntAndAvgRatg" parameterType="Map">
+        UPDATE product
+        SET  view_cnt = view_cnt + #{amount}
+             ,avg_ratg = #{avgRatg}
+        where prod_no = #{prodNo};
+    </update>
+
+    <!-- 상품 판매량 증가-->
+    <update id="increaseTotalSales" parameterType="int">
+        UPDATE product
+        SET  total_sales= total_sales + 1
+        where prod_no = #{prodNo};
+    </update>
+
+    <!--특정 상품 제거-->
+    <delete id="delete" parameterType="int">
+        DELETE FROM product
+        WHERE prod_no = #{prodNo}
+    </delete>
+
+    <!--모든 상품 제거 -->
+    <delete id="deleteAll">
+        DELETE FROM product;
+    </delete>
+
+    <!-- 상품 등록 - 날짜 지정 버전(테스트용) -->
+    <insert id="insertTest" parameterType="ProductDto">
+        INSERT INTO product
+        (  prod_catg_no, name, barc, price,
+         short_det, long_det, colors, total_sales,
+         first_reg_dt, first_reg_id, last_mod_dt,last_mod_id)
+        values ( #{prodCatgNo}, #{name}, #{barc}, #{price},
+                #{shortDet}, #{longDet}, #{colors}, #{totalSales},
+                #{firstRegDt}, #{firstRegId}, #{lastModDt}, #{lastModId});
+    </insert>
+
+
+</mapper>

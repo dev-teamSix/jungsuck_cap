@@ -6,9 +6,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+    <title>장바구니</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF;
+        }
+
+        /* 전체 레이아웃 */
+        .container {
+            display: flex;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 카테고리 레이아웃 */
+        .category-menu {
+            width: 220px;
+            margin-right: 20px;
+            padding: 20px;
+            background-color: #fff;
+            /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .category-menu h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .category-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-menu li {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .category-menu li.high {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .category-menu li.low {
+            font-size: 14px;
+            margin-left: 15px;
+            color: #555;
+            display: none;
+        }
+
+        .category-menu li a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .category-menu li a:hover {
+            background-color: rgba(14, 5, 5, 0.62);
+            color: white;
+        }
+
+        .category-menu li:hover .low {
+            display: block;
+        }
+
+        .category-menu .separator {
+            height: 1px;
+            background-color: #000000;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        /* 상품 목록 컨테이너 */
+        .product-list-container {
+            flex-grow: 1;
+        }
+
+        /* 상품 개수 및 정렬 기준 */
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .product-header p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .sort-options select {
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* 검색창 스타일 */
+        .search-form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 12px;
+            font-size: 16px;
+            width: 350px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: rgba(0, 0, 0, 0.62);
+        }
+
+        .search-button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #000000;
+            color: white;
+            cursor: pointer;
+            border-radius: 25px;
+            margin-left: 10px;
+        }
+
+        .search-button:hover {
+            background-color: rgba(0, 0, 0, 0.68);
+        }
+
+        /* 상품 목록 스타일 */
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-item {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-img img {
+            width: 70%;
+            height: auto;
+        }
+
+        .product-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 15px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .product-info p.price {
+            font-size: 15px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin: 5px 0;
+        }
+
+        .product-info .old-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+
+        .product-manage-button {
+            padding: 10px 10px;
+            font-size: 10px;
+            border: none;
+            background-color: rgba(0, 0, 0, 0.22);
+            color: white;
+            cursor: pointer;
+            border-radius: 25px;
+            margin-left: 10px;
+        }
+
+        .color-chips {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .color-chips span {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+        }
+
+        /* 페이지네이션 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .pagination a {
+            color: #000000;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid #000000;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination a:hover {
+            background-color: #000000;
+            color: white;
+        }
+    </style>
     <!-- jQuery, Popper.js, and Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -27,63 +269,7 @@
 </head>
 
 <body>
-<header class="main-header">
-    <div class="container">
-        <a href="/" class="logo">
-            <span class="logo-lg"><b>모자의 정석</b></span>
-        </a>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <a href="#" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <c:choose>
-                        <c:when test="${!empty sessionUser}">
-                            <button type="button" id="toCart" onclick="location.href='/cart/cartList'">장바구니</button>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        ${sessionUser.name}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <p class="dropdown-item">
-                                        가입일자 : <fmt:formatDate value="${sessionUser.regDt}" pattern="yyyy-MM-dd"/> <br>
-                                        최근 로그인일자 : <fmt:formatDate value="${sessionUser.recentLogin}" pattern="yyyy-MM-dd"/>
-                                    </p>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">게시글</a>
-                                    <a class="dropdown-item" href="#">공지사항</a>
-                                    <a class="dropdown-item" href="#">Q&A</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/login/out" id="logoutButton">
-                                        <i class="glyphicon glyphicon-log-out"></i> 로그아웃
-                                    </a>
-                                </div>
-                            </li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    회원가입 또는 로그인
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <p class="dropdown-item">회원가입 또는 로그인해주세요</p>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<c:url value='/user/register'/>">
-                                        <i class="fa fa-user-plus"></i> 회원가입
-                                    </a>
-                                    <a class="dropdown-item" href="<c:url value='/login/form'/>">
-                                        <i class="glyphicon glyphicon-log-in"></i> 로그인
-                                    </a>
-                                </div>
-                            </li>
-                        </c:otherwise>
-                    </c:choose>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
+<jsp:include page="./header.jsp" flush="true" />
 
 <div class="content-mg">
 
@@ -169,6 +355,8 @@
     </div>
 
 </div>
+
+<jsp:include page="./footer.jsp" flush="true" />
 
 <script>
     $(document).ready(function () {
