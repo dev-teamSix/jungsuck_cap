@@ -109,8 +109,6 @@ public class CartController {
                 }
             }
 
-            System.out.println("notUpdate = " + notUpdate);
-
             if(notUpdate)
                 success = cartService.insertCartItem(cust_id, cartItemDto);
 
@@ -209,20 +207,25 @@ public class CartController {
 //            String cust_id = "asdf";
             Integer cart_no = cartService.getCartNo(cust_id);
 
-            for (CartItemDto cartItemDto : cartItemDtoList) {
+            for (int i = 0; i < cartItemDtoList.size(); i++) {
+                CartItemDto cartItemDto = cartItemDtoList.get(i);
+
                 cartItemDto.setCart_no(cart_no);
 
                 OrderItemDto orderItemDto = new OrderItemDto();
+                if (i == 0) {
+                    orderItemDto.setFrom_cart(0);
+                } else {
+                    orderItemDto.setFrom_cart(cartItemDto.getFrom_cart());
+                }
+
                 orderItemDto.setProd_no(cartItemDto.getProd_no());
                 orderItemDto.setCol_no(cartItemDto.getCol_no());
                 orderItemDto.setQty(cartItemDto.getQty());
                 orderItemDto.setProd_name(cartItemDto.getProd_name());
                 orderItemDto.setPrice(cartItemDto.getPrice());
                 orderItemDto.setCol_name(cartItemDto.getCol_name());
-                orderItemDto.setFrom_cart(cartItemDto.getFrom_cart());
                 int success = orderService.order(orderItemDto, cust_id);
-                System.out.println("cartItemDto.getFrom_cart() = " + cartItemDto.getFrom_cart());
-                System.out.println("cartItemDto.getCol_name() = " + cartItemDto.getCol_name());
                 if(success == 0) {
                     throw new Exception("cart order error");
                 }

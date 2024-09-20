@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class ResponseHandler {
+public class  ResponseHandler {
 
     // response에 정보를 담을 map
     private final static Map<String, Object> response = new HashMap<>();

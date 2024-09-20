@@ -2,18 +2,23 @@ package com.firstSpring.dao.product;
 
 import com.firstSpring.domain.product.ProductDto;
 import com.firstSpring.domain.product.ProductListDto;
+import com.firstSpring.domain.product.SearchCondition;
 
 import java.util.List;
 import java.util.Map;
 
-public interface ProductDao {
+public interface  ProductDao {
     // 전체 or 특정 카테고리의 상품 목록 조회
     // map에는 카테고리 코드, 정렬 기준이 전달되어야 한다.
     List<ProductDto> selectList(Map map) throws Exception;
 
+    List<ProductDto> selectSearchList(SearchCondition sc) throws Exception;
+
     List<ProductDto> selectPage(Map map) throws Exception;
 
     List<ProductListDto> selectPageWithJoin(Map map) throws Exception;
+
+    List<ProductListDto> selectSearchPage(SearchCondition sc) throws Exception;
 
     // 특정 상품 정보 읽기
     ProductDto select(Integer prodNo) throws Exception;

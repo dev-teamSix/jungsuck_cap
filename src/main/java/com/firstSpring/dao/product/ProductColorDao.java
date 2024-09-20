@@ -5,7 +5,7 @@ import com.firstSpring.domain.product.ProductColorDto;
 
 import java.util.List;
 
-public interface ProductColorDao {
+public interface  ProductColorDao {
     // 특정 상품의 컬러 정보 리스트 조회
     List<ProductColorDto> selectListByProd(Integer prodNo);
 

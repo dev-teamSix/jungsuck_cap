@@ -5,7 +5,7 @@ import com.firstSpring.domain.product.ProductHighCategoryDto;
 
 import java.util.List;
 
-public interface ProductCategoryDao {
+public interface  ProductCategoryDao {
     // 특정 카테고리 정보 조회
     ProductCategoryDto select(Integer catgNo) throws Exception;
 
@@ -23,6 +23,9 @@ public interface ProductCategoryDao {
 
     // 모든 카테고리의 하위 카테고리 정보 목록 조회
     List<ProductHighCategoryDto> selectHighLowList() throws Exception;
+
+    // 특정 상위 카테고리의 하위 카테고리 목록 조회(상위 카테고리 정보 포함)
+    List<ProductHighCategoryDto> selectListByHigh(Integer highCatgNo) throws Exception;
 
     // 카테고리 추가
     Integer insert(ProductCategoryDto productCategoryDto) throws Exception;

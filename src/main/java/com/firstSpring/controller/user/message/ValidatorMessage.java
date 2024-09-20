@@ -10,7 +10,7 @@ public enum ValidatorMessage {
 
     // 비밀번호
     PASSWORD_MISSING("! 비밀번호를 입력하지 않으셨습니다."),
-    WRONG_PASSWORD("! 비밀번호가 일치하지 않습니다."),
+     WRONG_PASSWORD("! 비밀번호가 일치하지 않습니다."),
     MISMATCHED_PASSWORD("! 동일한 비밀번호를 입력하지 않으셨습니다."),
     PASSWORD_LENGTH_OUT_OF_BOUNDS("! 비밀번호의 길이는 8이상 30이하로 입력해야 합니다."),
     INVALID_PASSWORD_FORMAT("! 비밀번호는 영문자, 숫자, 특수문자를 사용한 조합으로 입력해야 합니다."),

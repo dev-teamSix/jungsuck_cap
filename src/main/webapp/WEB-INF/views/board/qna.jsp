@@ -90,6 +90,16 @@
                 }
             });
 
+            $("#reply_btn").on("click", function(){
+                let form = $("#form");
+                let action = "/qna/reply";
+                form.attr("action", action);
+                form.attr("method","post");
+                if(formCheck()){
+                    form.submit();
+                }
+            });
+
             $("#mod_btn").on("click", function(){
                 let form = $("#form");
                 let action = "/qna/modify";
@@ -193,7 +203,7 @@
             <button type="button" id="list_btn" name="list_btn">목록</button>
         </div>
         <div class="button-group-right">
-            <button type="button" id="reg_btn" name="reg_btn">등록</button>
+            <button type="button" id="reply_btn" name="reply_btn">답변</button>
             <button type="button" id="mod_btn" name="mod_btn">수정</button>
             <button type="button" id="can_btn" name="can_btn">취소</button>
             <button type="button" id="del_btn" name="del_btn">삭제</button>

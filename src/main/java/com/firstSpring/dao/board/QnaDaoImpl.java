@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class QnaDaoImpl implements QnaDao{
+public class  QnaDaoImpl implements QnaDao{
     @Autowired
     private SqlSession session;
     private static String namespace = "com.firstSpring.dao.board.QnaMapper.";

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class ProductCategoryDaoImpl implements ProductCategoryDao {
+public class  ProductCategoryDaoImpl implements ProductCategoryDao {
     @Autowired
     SqlSession session;
 
@@ -54,6 +54,12 @@ public class ProductCategoryDaoImpl implements ProductCategoryDao {
     @Override
     public List<ProductHighCategoryDto> selectHighLowList() throws Exception {
         return session.selectList(namespace+"selectHighLowList");
+    }
+
+    // 특정 상위 카테고리의 하위 카테고리 목록 조회(상위 카테고리 정보 포함)
+    @Override
+    public List<ProductHighCategoryDto> selectListByHigh(Integer highCatgNo) throws Exception {
+        return session.selectList(namespace+"selectListByHigh", highCatgNo);
     }
 
     // 카테고리 추가
