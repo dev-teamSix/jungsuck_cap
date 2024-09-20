@@ -6,7 +6,7 @@
     <div class="top-nav">
         <c:choose>
             <c:when test="${!empty sessionUser}">
-                <a href="#">관심상품 0개</a>
+                <a href="/cart/cartList">관심상품 0개</a>
                 <a href="#">좋아요 0개</a>
             </c:when>
         </c:choose>
@@ -19,9 +19,9 @@
                 <a href="<c:url value='/login/out'/>">로그아웃</a>
             </c:otherwise>
         </c:choose>
-        <a href="#">주문조회</a>
+        <a href="/order/list">주문조회</a>
         <a href="#">최근 본 상품</a>
-        <a href="#">고객센터</a>
+        <a href="/chat2/showchat">고객센터</a>
     </div>
 
     <!-- 메인 헤더 -->

@@ -73,7 +73,7 @@ public class Chat2Controller {
         try {
             List<Chat2Dto> messages = this.chat2Service.getMsgData(cust_id);
             m.addAttribute("messages", messages);
-            return "chatbot";
+            return "chat2";
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

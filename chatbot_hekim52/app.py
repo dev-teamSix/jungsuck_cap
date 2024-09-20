@@ -14,9 +14,9 @@ client = OpenAI(api_key=api_key)
 db_passwd = os.getenv('DB_PASSWD')
 db = pymysql.connect(host='localhost',
                      port=3306,
-                     user='root',
+                     user='test',
                      passwd=db_passwd,
-                     db='cap_jungsuck',
+                     db='springbasic',
                      charset='utf8mb4')
 
 cursor = db.cursor()
@@ -71,7 +71,7 @@ def receive_string():
                         
                     order_detail = "\n".join(order_tmp_list)
 
-                    bot_response = f"{cust[4]}({cust[0]})님의 주문 내역은 다음과 같습니다.\n{order_detail}"
+                    bot_response = f"{cust[5]}({cust[0]})님의 주문 내역은 다음과 같습니다.\n{order_detail}"
                 else:
                     bot_response = '주문 내역이 없습니다.'
             else:
