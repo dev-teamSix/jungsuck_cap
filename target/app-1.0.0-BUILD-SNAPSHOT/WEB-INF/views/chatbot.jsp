@@ -130,7 +130,7 @@
 <script>
     $(document).ready(function () {
         $('#sendBtn').on("click", function () {
-            var url = "/chat/sendchat";
+            var url = "/chat2/sendchat";
             var user_input = $("#user_input").val();
 
             // var paramData = new Object();
@@ -150,7 +150,7 @@
                 // dataType : "json",
                 cache   : false,
                 success  : function(result, status){
-                    location.replace('/chat/showchat');
+                    location.replace('/chat2/showchat');
                 },
                 error : function(jqXHR, status, error){
                     if(jqXHR.status == '401'){

@@ -10,7 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d614d619-fb49-4533-ab34-6815895e8d3c" name="Changes" comment="first commit">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/firstSpring/controller/order/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot_python/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot_hekim52/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot_python/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbot_hekim52/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/chatbot.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/chatbot.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/app-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/firstSpring/controller/order/ChatController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/firstSpring/controller/order/ChatController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,46 +72,46 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.CartDaoImplTest.insertCart.executor": "Run",
-    "JUnit.CartDaoImplTest.selectCartNo.executor": "Run",
-    "JUnit.OrderDaoImplTest.increaseInvAmnt.executor": "Run",
-    "JUnit.OrderDaoImplTest.insertOrder.executor": "Run",
-    "JUnit.OrderDaoImplTest.selectOrder.executor": "Run",
-    "JUnit.OrderDaoImplTest.selectProdName.executor": "Run",
-    "JUnit.PageHandlerTest.test.executor": "Run",
-    "JUnit.PageHandlerTest.test2.executor": "Run",
-    "JUnit.PageHandlerTest.test3.executor": "Run",
-    "Maven.app [clean].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 9.0.821.executor": "Run",
-    "Tomcat Server.Tomcat 9.0.89.executor": "Run",
-    "Tomcat Server.Tomcat 9.0.90.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "git-widget-placeholder": "cart__copy4",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Mydata/Code_Study/java/devcamp/toyproject/jungsuck_cap",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.30804598",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.CartDaoImplTest.insertCart.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CartDaoImplTest.selectCartNo.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrderDaoImplTest.increaseInvAmnt.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrderDaoImplTest.insertOrder.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrderDaoImplTest.selectOrder.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrderDaoImplTest.selectProdName.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PageHandlerTest.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PageHandlerTest.test2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PageHandlerTest.test3.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.app [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.821.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.89.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.90.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;cart__copy4&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Mydata/Code_Study/java/devcamp/toyproject/jungsuck_cap&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\IdeaProjects\jungsuk_cap\src\main\java\com\firstSpring\service" />
@@ -135,7 +142,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.89">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.90">
     <configuration name="CartDaoImplTest.insertCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
@@ -216,7 +223,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.89" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.89" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 9.0.90" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.90" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80" />
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -228,7 +235,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="b81f9601-ecc6-4cb7-b29c-11509f3f9294" />
+        <option name="BASE_DIRECTORY_NAME" value="b645c30b-c7ab-4a3d-983f-536630a9225d" />
         <option name="HTTP_PORT" value="80" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
@@ -398,7 +405,7 @@
       <item itemvalue="JUnit.OrderDaoImplTest.selectProdName" />
       <item itemvalue="JUnit.OrderDaoImplTest.insertOrder" />
       <item itemvalue="JUnit.OrderDaoImplTest.selectOrder" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.89" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.90" />
     </list>
     <recent_temporary>
       <list>
@@ -413,8 +420,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.22855.74" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.22855.74" />
       </set>
     </attachedChunks>
   </component>
@@ -433,6 +440,9 @@
       <workItem from="1723768974048" duration="24941000" />
       <workItem from="1724029398141" duration="364000" />
       <workItem from="1726214010650" duration="1661000" />
+      <workItem from="1726776559520" duration="594000" />
+      <workItem from="1726777163965" duration="441000" />
+      <workItem from="1726777615938" duration="4623000" />
     </task>
     <task id="LOCAL-00001" summary="init : first commit">
       <option name="closed" value="true" />
