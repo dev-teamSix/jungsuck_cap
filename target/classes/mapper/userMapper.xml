@@ -71,7 +71,34 @@
     <!-- 특정 id를 가진 회원 & 활성화인 상태 & 이메일 인증 여부가 Y 인 회원을 select-->
     <!-- stCd(회원상태)가 비활성화,탈퇴상태는 조회 불가 -->
     <select id="selectUser" parameterType="string" resultType="UserDto">
-        SELECT id, st_cd, email, pwd, name, birth, gender, ph_num, mail_key, reg_dt,recent_login
+        SELECT id,
+               grd_cd,
+               st_cd,
+               email,
+               pwd,
+               name,
+               birth,
+               gender,
+               ph_num,
+               zip,
+               road_adr,
+               jibun_adr,
+               det_adr,
+               is_mail_auth,
+               mail_key,
+               is_adm,
+               reg_dt,
+               quit_dt,
+               is_quit,
+               is_blok,
+               blok_res,
+               blok_dt,
+               un_blok_dt,
+               frst_reg_dt,
+               frst_reg_id,
+               last_mod_dt,
+               last_mod_id,
+               recent_login
         FROM cust
         WHERE id = #{id}
           AND st_cd = 'O'

@@ -1,18 +1,18 @@
 package com.firstSpring.dao.order;
 
-import com.firstSpring.domain.order.ChatDto;
+import com.firstSpring.domain.order.Chat2Dto;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ChatDao {
+public class Chat2Dao {
     @Autowired
     private SqlSession session;
     private static String namespace = "com.firstSpring.dao.order.ChatMapper.";
 
-    public List<ChatDto> selectMsgData(String cust_id) throws Exception {
+    public List<Chat2Dto> selectMsgData(String cust_id) throws Exception {
         return session.selectList(namespace + "selectMsgData", cust_id);
     }
 

@@ -2,8 +2,8 @@ package com.firstSpring.service.order;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.firstSpring.dao.order.ChatDao;
-import com.firstSpring.domain.order.ChatDto;
+import com.firstSpring.dao.order.Chat2Dao;
+import com.firstSpring.domain.order.Chat2Dto;
 import com.firstSpring.domain.order.RequestSendToFlaskDto;
 import java.util.List;
 
@@ -18,9 +18,9 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
-public class ChatService {
+public class Chat2Service {
     @Autowired
-    private ChatDao chatDao;
+    private Chat2Dao chat2Dao;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Transactional
@@ -34,11 +34,11 @@ public class ChatService {
         return restTemplate.postForObject(url, entity, String.class);
     }
 
-    public List<ChatDto> getMsgData(String cust_id) throws Exception {
-        return chatDao.selectMsgData(cust_id);
+    public List<Chat2Dto> getMsgData(String cust_id) throws Exception {
+        return chat2Dao.selectMsgData(cust_id);
     }
 
     public Integer getMsgNo() throws Exception {
-        return chatDao.selectMsgNo();
+        return chat2Dao.selectMsgNo();
     }
 }

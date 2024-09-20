@@ -1,10 +1,10 @@
 package com.firstSpring.controller.order;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.firstSpring.domain.order.ChatDto;
+import com.firstSpring.domain.order.Chat2Dto;
 import com.firstSpring.domain.order.RequestSendToFlaskDto;
 import com.firstSpring.domain.user.UserDto;
-import com.firstSpring.service.order.ChatService;
+import com.firstSpring.service.order.Chat2Service;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping({"/chat2"})
-public class ChatController {
+public class Chat2Controller {
     @Autowired
-    ChatService chatService;
+    Chat2Service chat2Service;
 
     private boolean loginCheck(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -36,7 +36,7 @@ public class ChatController {
             if (this.loginCheck(request)) {
                 cust_id = ((UserDto)request.getSession().getAttribute("sessionUser")).getId();
             } else {
-                Integer msgNo = this.chatService.getMsgNo();
+                Integer msgNo = this.chat2Service.getMsgNo();
                 int lastMsgNo;
                 if (msgNo == null) {
                     lastMsgNo = 0;
@@ -52,7 +52,7 @@ public class ChatController {
             }
 
             dto.setCust_id(cust_id);
-            String str = this.chatService.sendToFlask(dto);
+            String str = this.chat2Service.sendToFlask(dto);
             if (str.equals("로그인 해주세요.")) {
                 return new ResponseEntity("권한이 없습니다.", HttpStatus.UNAUTHORIZED);
             }
@@ -71,7 +71,7 @@ public class ChatController {
         }
 
         try {
-            List<ChatDto> messages = this.chatService.getMsgData(cust_id);
+            List<Chat2Dto> messages = this.chat2Service.getMsgData(cust_id);
             m.addAttribute("messages", messages);
             return "chatbot";
         } catch (Exception e) {

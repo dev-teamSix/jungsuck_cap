@@ -12,8 +12,13 @@
     <title>Title</title>
     <link rel="stylesheet" href="<c:url value='/resources/css/product.css'/>"/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 <body>
+<jsp:include page="./header.jsp" flush="true" />
 <form action="" id="form">
 <div class="container">
     <input type="hidden" name="prod_no" id="prod_no" value=${pr.product.prodNo}>
@@ -55,6 +60,7 @@
     </div>
 </div>
 </form>
+<jsp:include page="./footer.jsp" flush="true" />
 <script>
     $(document).ready(function () {
 

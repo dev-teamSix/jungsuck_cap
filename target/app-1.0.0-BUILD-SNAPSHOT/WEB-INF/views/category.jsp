@@ -50,19 +50,19 @@
     </div>
 
     <div>
-      <label>카테고리 설명</label>
-      <textarea name="detail" cols="30" rows="10"  ${mode == "new"? '' : 'readonly'}>${category.detail}</textarea>
+        <label>카테고리 설명</label>
+        <textarea name="detail" cols="30" rows="10"  ${mode == "new"? '' : 'readonly'}>${category.detail}</textarea>
     </div>
     <div>
-       <label>사용 여부</label>
+        <label>사용 여부</label>
         <input type="radio" name="isUsed" value="Y" ${category.isUsed == 'Y' || category.isUsed == 'y' ? 'checked': ''} ${mode == "new"? '' : 'onclick="return false"'} /> Y
         <input type="radio" name="isUsed" value="N" ${category.isUsed == 'N' || category.isUsed == 'n' ? 'checked': ''} ${mode == "new"? '' : 'onclick="return false"'} /> N
     </div>
     <div>
         <label>표시 여부</label>
-       <input type="radio" name="isDisp" value="Y" ${category.isDisp == 'Y' || category.isDisp == 'y' ? 'checked': ''}  ${mode == "new"? '' : 'onclick="return false"'} /> Y
-       <input type="radio" name="isDisp"  value="N" ${category.isDisp == 'N' || category.isDisp == 'n' ? 'checked': ''}  ${mode == "new"? '' : 'onclick="return false"'} /> N
-     </div>
+        <input type="radio" name="isDisp" value="Y" ${category.isDisp == 'Y' || category.isDisp == 'y' ? 'checked': ''}  ${mode == "new"? '' : 'onclick="return false"'} /> Y
+        <input type="radio" name="isDisp"  value="N" ${category.isDisp == 'N' || category.isDisp == 'n' ? 'checked': ''}  ${mode == "new"? '' : 'onclick="return false"'} /> N
+    </div>
     ${mode != "new" ? '<button type="button" id="modifyBtn" class="btn">수정</button>' : null}
     ${mode != "new" ? ' <button type="button" id="removeBtn" class="btn">삭제</button>' :null}
     ${mode != "new" ? ' <button type="button" id="listBtn" class="btn">목록</button>' : null}
